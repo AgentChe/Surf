@@ -1,0 +1,34 @@
+/* 
+  Localizable.strings
+  Surf
+
+  Created by Andrey Chernyshev on 10.07.2020.
+  Copyright © 2020 Andrey Chernyshev. All rights reserved.
+*/
+
+// MARK: Common
+"NoInternetConnection" = "No internet connection";
+
+// MARK: Splash
+"Splash.Surf" = "SURF";
+
+// MARK: Onboarding
+"Onboarding.I'Am" = "I am...";
+"Onboarding.ShowMe" = "Show me...";
+"Onboarding.IWasBornOn" = "I Was Born On...";
+"Onboarding.YouMustBe18AndOver" = "You must be 18 and over";
+"Onboarding.Continue" = "Continue";
+"Onboarding.AddSomePhotos" = "Add Some\nPhotos";
+"Onboarding.ChooseYourName" = "Choose You\nName";
+"Onboarding.EnterYourName" = "Enter Your Name";
+"Onboarding.RandomizeEmoji" = "Randomize Emoji";
+"Onboarding.Niccce!" = "Niccce!";
+"Onboarding.FinalStepBeforeYouBegin" = "Final step before\nyou begin";
+"Onboarding.PushNotificationInfo" = "If you accept the permission request Surf will notify you on new matches and messages";
+
+// MARK: Welcome
+"Welcome.Title" = "SURF";
+"Welcome.SubTitle" = "Your best tool\nfor finding\na chat match in\na short time";
+"Welcome.ContinueWithFacebook" = "Continue with Facebook";
+"Welcome.AboutFacebookSignInInfo" = "We never post anything on Facebook. And also do not send mailings.";
+"Welcome.ContinueWithEmail" = "Continue with Email";
