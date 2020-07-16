@@ -8,7 +8,7 @@
 
 import Alamofire
 
-struct RandomizeAvatarRequest: APIRequestBody {
+struct RandomizeEmojiRequest: APIRequestBody {
     private let userToken: String
     
     init(userToken: String) {

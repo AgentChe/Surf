@@ -45,7 +45,7 @@ final class ImagePicker: NSObject {
             alertController.addAction(action)
         }
 
-        alertController.addAction(UIAlertAction(title: "ImagePicker.Cancel".localized, style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel, handler: nil))
 
         if UIDevice.current.userInterfaceIdiom == .pad {
             alertController.popoverPresentationController?.sourceView = sourceView

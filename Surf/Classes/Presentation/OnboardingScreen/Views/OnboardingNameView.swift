@@ -9,11 +9,12 @@
 import UIKit
 
 final class OnboardingNameView: UIView {
-    var didContinueWithName: ((String) -> Void)?
+    var onNext: ((String) -> Void)?
     
-    private lazy var titleLabel = makeTitleLabel()
-    private lazy var textField = makeTextField()
-    private lazy var button = makeButton()
+    lazy var titleLabel = makeTitleLabel()
+    lazy var subTitleLabel = makeSubTitleLabel()
+    lazy var textField = makeTextField()
+    lazy var continueButton = makeContinueButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,85 +29,9 @@ final class OnboardingNameView: UIView {
     func setup() {
         textField.becomeFirstResponder()
     }
-    
-    // MARK: Lazy initialization
-    
-    private func makeTitleLabel() -> UILabel {
-        let view = UILabel()
-        view.font = Font.OpenSans.bold(size: 28)
-        view.textColor = .white
-        view.numberOfLines = 1
-        view.textAlignment = .center
-        view.text = "Onboarding.NameTitle".localized
-        view.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(view)
-        return view
-    }
-    
-    private func makeTextField() -> UITextField {
-        let view = UITextField()
-        view.backgroundColor = UIColor(red: 25 / 255, green: 25 / 255, blue: 25 / 255, alpha: 1)
-        view.layer.cornerRadius = 24
-        view.textColor = .white
-        view.font = Font.OpenSans.regular(size: 17)
-        view.autocapitalizationType = .sentences
-        view.leftViewMode = .always
-        view.leftView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 12, height: 17)))
-        view.delegate = self
-        view.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(view)
-        return view
-    }
-    
-    private func makeButton() -> UIButton {
-        let view = UIButton()
-        view.setBackgroundImage(UIImage(named: "btn_bg"), for: .normal)
-        view.titleLabel?.font = Font.OpenSans.semibold(size: 17)
-        view.setTitleColor(.white, for: .normal)
-        view.setTitle("Onboarding.NameButton".localized, for: .normal)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.isEnabled = false
-        view.addTarget(self, action: #selector(buttonTapped(sender:)), for: .touchUpInside)
-        addSubview(view)
-        return view
-    }
-    
-    // MARK: Make constraints
-    
-    private func makeConstraints() {
-        titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 96).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 36).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -36).isActive = true
-        
-        textField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40).isActive = true
-        textField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 36).isActive = true
-        textField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -36).isActive = true
-        textField.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
-        button.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 24).isActive = true
-        button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 36).isActive = true
-        button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -36).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 56).isActive = true
-    }
-    
-    // MARK: Private
-    
-    @objc
-    private func textFieldDidChange(textField: UITextField) {
-        button.isEnabled = textField.text?.isEmpty == false
-    }
-    
-    @objc
-    private func buttonTapped(sender: Any) {
-        complete(with: textField.text ?? "")
-    }
-    
-    private func complete(with text: String) {
-        textField.resignFirstResponder()
-        didContinueWithName?(text)
-    }
 }
+
+// MARK: UITextFieldDelegate
 
 extension OnboardingNameView: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -117,5 +42,120 @@ extension OnboardingNameView: UITextFieldDelegate {
         complete(with: textField.text ?? "")
         
         return true
+    }
+}
+
+// MARK: Private
+
+private extension OnboardingNameView {
+    @objc
+    private func textFieldDidChange(textField: UITextField) {
+        continueButton.isEnabled = textField.text?.isEmpty == false
+    }
+    
+    @objc
+    private func buttonTapped(sender: Any) {
+        complete(with: textField.text ?? "")
+    }
+    
+    private func complete(with text: String) {
+        textField.resignFirstResponder()
+        onNext?(text)
+    }
+}
+
+// MARK: Make constraints
+
+private extension OnboardingNameView {
+    func makeConstraints() {
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 120.scale),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 36.scale),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -36.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 28.scale.scale),
+            subTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 36.scale),
+            subTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -36.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            textField.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 28.scale),
+            textField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 36.scale),
+            textField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -36.scale),
+        ])
+        
+        NSLayoutConstraint.activate([
+            continueButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 40.scale),
+            continueButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40.scale),
+            continueButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40.scale),
+            continueButton.heightAnchor.constraint(equalToConstant: 56.scale)
+        ])
+    }
+}
+
+// MARK: Lazy initialization
+
+private extension OnboardingNameView {
+    func makeTitleLabel() -> UILabel {
+        let view = UILabel()
+        view.font = Font.OpenSans.bold(size: 34.scale)
+        view.textColor = .black
+        view.numberOfLines = 0
+        view.textAlignment = .center
+        view.text = "Onboarding.EnterYourName".localized
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeSubTitleLabel() -> UILabel {
+        let view = UILabel()
+        view.font = Font.OpenSans.regular(size: 20.scale)
+        view.textColor = .black
+        view.numberOfLines = 0
+        view.textAlignment = .center
+        view.text = "Onboarding.EnterNameInfo".localized
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeTextField() -> PaddingTextField {
+        let view = PaddingTextField()
+        view.leftInset = 20.scale
+        view.rightInset = 20.scale
+        view.topInset = 4.scale
+        view.bottomInset = 4.scale
+        view.placeholder = "Onboarding.EnterYourName.Placeholder".localized
+        view.backgroundColor = UIColor.white
+        view.layer.cornerRadius = 9.scale
+        view.textColor = .black
+        view.font = Font.OpenSans.regular(size: 24.scale)
+        view.autocapitalizationType = .sentences
+        view.layer.shadowRadius = 9.0.scale
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = CGSize(width: 3.scale, height: 3.scale)
+        view.layer.shadowOpacity = 0.2
+        view.delegate = self
+        view.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeContinueButton() -> UIButton {
+        let view = UIButton()
+        view.isEnabled = false
+        view.titleLabel?.font = Font.OpenSans.semibold(size: 17.scale)
+        view.setTitleColor(.white, for: .normal)
+        view.setTitle("Onboarding.Continue".localized, for: .normal)
+        view.layer.cornerRadius = 28.scale
+        view.backgroundColor = UIColor(red: 86 / 255, green: 86 / 255, blue: 214 / 255, alpha: 1)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.addTarget(self, action: #selector(buttonTapped(sender:)), for: .touchUpInside)
+        addSubview(view)
+        return view
     }
 }

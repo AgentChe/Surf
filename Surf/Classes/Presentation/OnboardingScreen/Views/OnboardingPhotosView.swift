@@ -9,15 +9,14 @@
 import UIKit
 
 final class OnboardingPhotosView: UIView {
-    var didContinueWithUrls: (([String]) -> Void)?
+    var onNext: (([String]) -> Void)?
     
-    private lazy var titleLabel = makeTitleLabel()
-    private lazy var subTitleLabel = makeSubTitleLabel()
-    private lazy var imageView1 = makeImageView(tag: 1)
-    private lazy var imageView2 = makeImageView(tag: 2)
-    private lazy var imageView3 = makeImageView(tag: 3)
-    private lazy var addButton = makeAddButton()
-    private lazy var continueButton = makeContinueButton()
+    lazy var titleLabel = makeTitleLabel()
+    lazy var subTitleLabel = makeSubTitleLabel()
+    lazy var imageView1 = makeImageView(tag: 1)
+    lazy var imageView2 = makeImageView(tag: 2)
+    lazy var imageView3 = makeImageView(tag: 3)
+    lazy var continueButton = makeContinueButton()
     
     private let photosManager = OnboardingPhotosManager()
     
@@ -29,125 +28,6 @@ final class OnboardingPhotosView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: Lazy initialization
-    
-    private func makeTitleLabel() -> UILabel {
-        let view = UILabel()
-        view.font = Font.OpenSans.bold(size: 28)
-        view.textColor = .white
-        view.numberOfLines = 1
-        view.textAlignment = .center
-        view.text = "Onboarding.PhotosTitle".localized
-        view.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(view)
-        return view
-    }
-    
-    private func makeSubTitleLabel() -> UILabel {
-        let view = UILabel()
-        view.font = Font.OpenSans.regular(size: 17)
-        view.textColor = .white
-        view.numberOfLines = 0
-        view.textAlignment = .center
-        view.text = "Onboarding.PhotosSubTitle".localized
-        view.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(view)
-        return view
-    }
-    
-    private func makeImageView(tag: Int) -> OnboardingPhotoView {
-        let view = OnboardingPhotoView(tag: tag)
-        view.delegate = self
-        view.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(view)
-        return view
-    }
-    
-    private func makeAddButton() -> UIButton {
-        let view = UIButton()
-        view.setBackgroundImage(UIImage(named: "btn_bg"), for: .normal)
-        view.titleLabel?.font = Font.OpenSans.semibold(size: 17)
-        view.setTitle("Onboarding.PhotosAdd".localized, for: .normal)
-        view.setTitleColor(.white, for: .normal)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.addTarget(self, action: #selector(addButtonTapped(sender:)), for: .touchUpInside)
-        addSubview(view)
-        return view
-    }
-    
-    private func makeContinueButton() -> UIButton {
-        let view = UIButton()
-        view.backgroundColor = .clear
-        view.titleLabel?.font = Font.OpenSans.semibold(size: 17)
-        view.setTitle("Onboarding.PhotosContinue".localized, for: .normal)
-        view.setTitleColor(UIColor(red: 239 / 255, green: 239 / 255, blue: 244 / 255, alpha: 0.3), for: .normal)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.addTarget(self, action: #selector(continueButtonTapped(sender:)), for: .touchUpInside)
-        addSubview(view)
-        return view
-    }
-    
-    // MARK: Make constraints
-    
-    private func makeConstraints() {
-        titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 130).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 36).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -36).isActive = true
-        
-        subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20).isActive = true
-        subTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 36).isActive = true
-        subTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -36).isActive = true
-        
-        imageView1.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 43).isActive = true
-        imageView1.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 40).isActive = true
-        imageView1.widthAnchor.constraint(equalTo: imageView2.widthAnchor).isActive = true
-        imageView1.heightAnchor.constraint(equalTo: imageView1.widthAnchor).isActive = true
-        imageView1.trailingAnchor.constraint(equalTo: imageView2.leadingAnchor, constant: -12).isActive = true
-        
-        imageView2.centerYAnchor.constraint(equalTo: imageView1.centerYAnchor).isActive = true
-        imageView2.widthAnchor.constraint(equalTo: imageView3.widthAnchor).isActive = true
-        imageView2.heightAnchor.constraint(equalTo: imageView2.widthAnchor).isActive = true
-        imageView2.trailingAnchor.constraint(equalTo: imageView3.leadingAnchor, constant: -12).isActive = true
-        
-        imageView3.centerYAnchor.constraint(equalTo: imageView1.centerYAnchor).isActive = true
-        imageView3.widthAnchor.constraint(equalTo: imageView1.widthAnchor).isActive = true
-        imageView3.heightAnchor.constraint(equalTo: imageView3.widthAnchor).isActive = true
-        imageView3.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -43).isActive = true
-        
-        addButton.topAnchor.constraint(equalTo: imageView1.bottomAnchor, constant: 40).isActive = true
-        addButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 36).isActive = true
-        addButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -36).isActive = true
-        addButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
-        
-        continueButton.topAnchor.constraint(equalTo: addButton.bottomAnchor, constant: 24).isActive = true
-        continueButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 36).isActive = true
-        continueButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -36).isActive = true
-        continueButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
-    }
-    
-    // MARK: Private
-    
-    @objc
-    private func addButtonTapped(sender: Any) {
-        let imageViews = [imageView1, imageView2, imageView3]
-        if let withoutImageView = imageViews.first(where: { !photosManager.isContainsUrl(for: $0.tag) && !photosManager.isBlocked(tag: $0.tag) }) {
-            withoutImageView.select()
-        } else if let lastImageView = imageViews.last, !photosManager.isBlocked(tag: lastImageView.tag) {
-            lastImageView.select()
-        }
-    }
-    
-    @objc
-    private func continueButtonTapped(sender: Any) {
-        guard !photosManager.isEmpty() else {
-            return
-        }
-        
-        [imageView1, imageView2, imageView3].forEach { $0.cancel() }
-        
-        didContinueWithUrls?(photosManager.getUrls())
     }
 }
 
@@ -164,12 +44,123 @@ extension OnboardingPhotosView: OnboardingPhotoViewDelegate {
         }
         
         let alert = UIAlertController(title: nil, message: error, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Utils.OK".localized, style: .cancel))
+        alert.addAction(UIAlertAction(title: "OK".localized, style: .cancel))
         
         rootVC.present(alert, animated: true)
     }
     
     func blockTagForSelect(tag: Int, isBlocked: Bool) {
         photosManager.blockSelect(tag: tag, isBlocked: isBlocked)
+    }
+}
+
+// MARK: Private
+
+private extension OnboardingPhotosView {
+    @objc
+    private func continueButtonTapped(sender: Any) {
+        guard !photosManager.isEmpty() else {
+            return
+        }
+        
+        [imageView1, imageView2, imageView3].forEach { $0.cancel() }
+        
+        onNext?(photosManager.getUrls())
+    }
+}
+
+// MARK: Make constraints
+
+private extension OnboardingPhotosView {
+    func makeConstraints() {
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 92.scale),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 36.scale),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -36.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 35.scale),
+            subTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 36.scale),
+            subTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -36.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            imageView1.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 43.scale),
+            imageView1.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 40.scale),
+            imageView1.widthAnchor.constraint(equalTo: imageView2.widthAnchor),
+            imageView1.heightAnchor.constraint(equalTo: imageView1.widthAnchor),
+            imageView1.trailingAnchor.constraint(equalTo: imageView2.leadingAnchor, constant: -12.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            imageView2.centerYAnchor.constraint(equalTo: imageView1.centerYAnchor),
+            imageView2.widthAnchor.constraint(equalTo: imageView3.widthAnchor),
+            imageView2.heightAnchor.constraint(equalTo: imageView2.widthAnchor),
+            imageView2.trailingAnchor.constraint(equalTo: imageView3.leadingAnchor, constant: -12.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            imageView3.centerYAnchor.constraint(equalTo: imageView1.centerYAnchor),
+            imageView3.widthAnchor.constraint(equalTo: imageView1.widthAnchor),
+            imageView3.heightAnchor.constraint(equalTo: imageView3.widthAnchor),
+            imageView3.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -43.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            continueButton.topAnchor.constraint(equalTo: imageView1.bottomAnchor, constant: 40.scale),
+            continueButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40.scale),
+            continueButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40.scale),
+            continueButton.heightAnchor.constraint(equalToConstant: 56.scale)
+        ])
+    }
+}
+
+// MARK: Lazy initialization
+
+private extension OnboardingPhotosView {
+    func makeTitleLabel() -> UILabel {
+        let view = UILabel()
+        view.font = Font.OpenSans.bold(size: 34.scale)
+        view.textColor = .black
+        view.numberOfLines = 0
+        view.textAlignment = .center
+        view.text = "Onboarding.AddSomePhotos".localized
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeSubTitleLabel() -> UILabel {
+        let view = UILabel()
+        view.font = Font.OpenSans.regular(size: 20.scale)
+        view.textColor = .black
+        view.numberOfLines = 0
+        view.textAlignment = .center
+        view.text = "Onboarding.PhotosInfo".localized
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeImageView(tag: Int) -> OnboardingPhotoView {
+        let view = OnboardingPhotoView(tag: tag)
+        view.delegate = self
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeContinueButton() -> UIButton {
+        let view = UIButton()
+        view.titleLabel?.font = Font.OpenSans.semibold(size: 17.scale)
+        view.setTitleColor(.white, for: .normal)
+        view.setTitle("Onboarding.Continue".localized, for: .normal)
+        view.layer.cornerRadius = 28.scale
+        view.backgroundColor = UIColor(red: 86 / 255, green: 86 / 255, blue: 214 / 255, alpha: 1)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.addTarget(self, action: #selector(continueButtonTapped(sender:)), for: .touchUpInside)
+        addSubview(view)
+        return view
     }
 }

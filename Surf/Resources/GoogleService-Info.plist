@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>409987546974-cf3kfocofka0672o7hq0jrbt1f178msq.apps.googleusercontent.com</string>
+	<string>331993587410-feio5tl46hs039h7mhe3n663tu37l59l.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.409987546974-cf3kfocofka0672o7hq0jrbt1f178msq</string>
+	<string>com.googleusercontent.apps.331993587410-feio5tl46hs039h7mhe3n663tu37l59l</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBVUR7KtwKTYdjXvF_Kwo3QWvcfgykOgz4</string>
+	<string>AIzaSyB-Pc6Fibfzfi0z12je_g6YngVYiAwWJaI</string>
 	<key>GCM_SENDER_ID</key>
-	<string>409987546974</string>
+	<string>331993587410</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>chat.fawn</string>
+	<string>app.dating.surf</string>
 	<key>PROJECT_ID</key>
-	<string>test-fawn-chat</string>
+	<string>surf-988c3</string>
 	<key>STORAGE_BUCKET</key>
-	<string>test-fawn-chat.appspot.com</string>
+	<string>surf-988c3.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:409987546974:ios:4d5aac0aa1a5b58b</string>
+	<string>1:331993587410:ios:fb0e3f852f62a54eed970b</string>
 	<key>DATABASE_URL</key>
-	<string>https://test-fawn-chat.firebaseio.com</string>
+	<string>https://surf-988c3.firebaseio.com</string>
 </dict>
 </plist>

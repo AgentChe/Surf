@@ -68,9 +68,10 @@ extension ImageService {
                     progress?(value.fractionCompleted)
                 }
                 .responseJSON { response in
-                    if let result = response.data {
-                        event(.success(result))
-                    } else {
+                    switch response.result {
+                    case .success(let json):
+                        event(.success(json))
+                    case .failure(_):
                         event(.error(ApiError.serverNotAvailable))
                     }
                 }

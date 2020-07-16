@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "i_Virgo@3x.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

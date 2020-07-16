@@ -13,7 +13,7 @@ final class ProfileService {}
 // MARK: Profile
 
 extension ProfileService {
-    static func fillProfile(name: String, birthdate: Date) -> Single<Bool> {
+    static func fillProfile(myGender: Gender, showMeToGenders: [Gender], birthdate: Date, name: String, pushNotificationsToken: String?) -> Single<Bool> {
         guard let userToken = SessionService.shared.userToken else {
             return .deferred { .just(false) }
         }
@@ -21,17 +21,18 @@ extension ProfileService {
         return RestAPITransport()
             .callServerApi(requestBody: SetRequest(userToken: userToken,
                                                    name: name,
-                                                   birthdate: birthdate.yearMonthDay))
+                                                   birthdate: birthdate.yearMonthDay,
+                                                   pushNotificationsToken: pushNotificationsToken))
             .map { (try? !CheckResponseForError.isError(jsonResponse: $0)) ?? false }
     }
     
-    static func randomizeAvatar() -> Single<String?> {
+    static func randomizeEmoji() -> Single<String?> {
         guard let userToken = SessionService.shared.userToken else {
             return .deferred { .just(nil) }
         }
         
         return RestAPITransport()
-            .callServerApi(requestBody: RandomizeAvatarRequest(userToken: userToken))
-            .map { ImageTransformation.avatarUrlFromRandomizeResponse(response: $0) }
+            .callServerApi(requestBody: RandomizeEmojiRequest(userToken: userToken))
+            .map { ImageTransformation.emojiUrlFromRandomizeResponse(response: $0) }
     }
 }

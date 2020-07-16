@@ -9,7 +9,7 @@
 import UIKit
 
 final class OnboardingNotificationsView: UIView {
-    var didContinueWithNotificationsToken: (() -> Void)?
+    var onNext: ((String?) -> Void)?
     
     private lazy var titleLabel = makeTitleLabel()
     private lazy var footerLabel = makeFooterLabel()
@@ -25,76 +25,63 @@ final class OnboardingNotificationsView: UIView {
     }
     
     func setup() {
-//        NotificationManager.shared.startManagment()
-//        NotificationManager.shared.delegate = self
-//        NotificationManager.shared.requestAccess()
-    }
-    
-    // MARK: Lazy initialization
-    
-    private func makeTitleLabel() -> UILabel {
-        let attrs = TextAttributes()
-//            .font(Font.Montserrat.regular(size: 28))
-            .lineHeight(34)
-        
-        let part1 = "Onboarding.NotificationsTitlePart1".localized
-            .attributed(with: attrs.textColor(UIColor(red: 1, green: 150 / 255, blue: 51 / 255, alpha: 1)))
-        
-        let part2 = "Onboarding.NotificationsTitlePart2".localized
-            .attributed(with: attrs.textColor(UIColor.white))
-        
-        let text = NSMutableAttributedString()
-        text.append(part1)
-        text.append(part2)
-        
-        let view = UILabel()
-        view.attributedText = text
-        view.numberOfLines = 0
-        view.textAlignment = .center
-        view.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(view)
-        return view
-    }
-    
-    private func makeFooterLabel() -> UILabel {
-        let attrs = TextAttributes()
-//            .font(Font.Montserrat.regular(size: 20))
-            .lineHeight(25)
-        
-        let part1 = "Onboarding.NotificationsFooterPart1".localized
-            .attributed(with: attrs.textColor(UIColor(red: 1, green: 150 / 255, blue: 51 / 255, alpha: 1)))
-        
-        let part2 = "Onboarding.NotificationsFooterPart2".localized
-            .attributed(with: attrs.textColor(UIColor.white))
-        
-        let text = NSMutableAttributedString()
-        text.append(part1)
-        text.append(part2)
-        
-        let view = UILabel()
-        view.attributedText = text
-        view.numberOfLines = 0
-        view.textAlignment = .center
-        view.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(view)
-        return view
-    }
-    
-    // MARK: Make constraints
-    
-    private func makeConstraints() {
-        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 35).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -35).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 135).isActive = true
-        
-        footerLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 35).isActive = true
-        footerLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -35).isActive = true
-        footerLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -58).isActive = true
+        PushNotificationsManager.shared.add(observer: self)
+        PushNotificationsManager.shared.requestAuthorization()
     }
 }
 
-//extension OnboardingNotificationsView: NotificationDelegate {
-//    func notificationRequestWasEnd(success: Bool) {
-//        didContinueWithNotificationsToken?()
-//    }
-//}
+// MARK: PushNotificationsManagerDelegate
+
+extension OnboardingNotificationsView: PushNotificationsManagerDelegate {
+    func retrieved(token: String?) {
+        PushNotificationsManager.shared.remove(observer: self)
+        
+        onNext?(token)
+    }
+}
+
+// MARK: Make constraints
+
+private extension OnboardingNotificationsView {
+    func makeConstraints() {
+        NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40.scale),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40.scale),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: ScreenSize.isIphoneXFamily ? 190.scale : 100.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            footerLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40.scale),
+            footerLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40.scale),
+            footerLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: ScreenSize.isIphoneXFamily ? -148.scale : -80.scale)
+        ])
+    }
+}
+
+// MARK: Lazy initialization
+
+private extension OnboardingNotificationsView {
+    func makeTitleLabel() -> UILabel {
+        let view = UILabel()
+        view.textColor = .black
+        view.font = Font.OpenSans.bold(size: 28.scale)
+        view.textAlignment = .center
+        view.numberOfLines = 0
+        view.text = "Onboarding.FinalStepBeforeYouBegin".localized
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeFooterLabel() -> UILabel {
+        let view = UILabel()
+        view.textColor = .black
+        view.font = Font.OpenSans.regular(size: 20.scale)
+        view.textAlignment = .center
+        view.numberOfLines = 0
+        view.text = "Onboarding.PushNotificationInfo".localized
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+}

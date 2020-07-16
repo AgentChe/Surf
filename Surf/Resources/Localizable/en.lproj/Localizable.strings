@@ -8,6 +8,13 @@
 
 // MARK: Common
 "NoInternetConnection" = "No internet connection";
+"OK" = "OK";
+"Cancel" = "Cancel";
+
+// MARK: ImagePicker
+"ImagePicker.TakePhoto" = "Take photo";
+"ImagePicker.CameraRoll" = "Camera roll";
+"ImagePicker.PhotoLibrary" = "Photo library";
 
 // MARK: Splash
 "Splash.Surf" = "SURF";
@@ -19,12 +26,17 @@
 "Onboarding.YouMustBe18AndOver" = "You must be 18 and over";
 "Onboarding.Continue" = "Continue";
 "Onboarding.AddSomePhotos" = "Add Some\nPhotos";
+"Onboarding.PhotosInfo" = "These are seen by everyone at your profile. SFW content only.";
 "Onboarding.ChooseYourName" = "Choose You\nName";
-"Onboarding.EnterYourName" = "Enter Your Name";
+"Onboarding.EnterYourName" = "Enter Your\nName";
+"Onboarding.EnterYourName.Placeholder" = "Enter Your Name";
+"Onboarding.EnterNameInfo" = "Displayed publicly at your profile.";
+"Onboarding.WelcomeHi" = "Hi, %@, %i";
 "Onboarding.RandomizeEmoji" = "Randomize Emoji";
 "Onboarding.Niccce!" = "Niccce!";
 "Onboarding.FinalStepBeforeYouBegin" = "Final step before\nyou begin";
 "Onboarding.PushNotificationInfo" = "If you accept the permission request Surf will notify you on new matches and messages";
+"Onboarding.FailedUploadImage" = "Failed upload image";
 
 // MARK: Welcome
 "Welcome.Title" = "SURF";

@@ -14,15 +14,39 @@ final class OnboardingViewModel {
         case main
     }
     
-    let name = BehaviorRelay<String>(value: "")
-    let birthdate = BehaviorRelay<Date>(value: Date())
-    let photoUrls = BehaviorRelay<[String]>(value: [])
+    let myGender = BehaviorRelay<Gender?>(value: nil)
+    let showMeToGenders = BehaviorRelay<[Gender]?>(value: nil)
+    let name = BehaviorRelay<String?>(value: nil)
+    let birthdate = BehaviorRelay<Date?>(value: nil)
+    let photoUrls = BehaviorRelay<[String]?>(value: nil)
+    let pushNotificationsToken = BehaviorRelay<String?>(value: nil)
+    
     let onboardingPassed = PublishRelay<Void>()
     
     func step() -> Driver<Step?> {
         let fillProfile = Observable
-            .zip(name.skip(1).asObservable(), birthdate.skip(1).asObservable())
-            .flatMap { ProfileService.fillProfile(name: $0, birthdate: $1) }
+            .zip(myGender.skip(1),
+                 showMeToGenders.skip(1),
+                 birthdate.skip(1),
+                 name.skip(1),
+                 pushNotificationsToken.skip(1))
+            .flatMap { myGender, showMeToGenders, birthdate, name, pushNotificationsToken -> Single<Bool> in
+                guard
+                    let myGender = myGender,
+                    let showMeToGenders = showMeToGenders,
+                    let birthdate = birthdate,
+                    let name = name
+                else {
+                    return .deferred { .just(false) }
+                }
+                
+                return ProfileService.fillProfile(myGender: myGender,
+                                                  showMeToGenders: showMeToGenders,
+                                                  birthdate: birthdate,
+                                                  name: name,
+                                                  pushNotificationsToken: pushNotificationsToken)
+                
+            }
         
         let passed = onboardingPassed.map { true }
         

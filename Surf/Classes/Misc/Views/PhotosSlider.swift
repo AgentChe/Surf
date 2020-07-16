@@ -12,10 +12,11 @@ import Kingfisher
 final class PhotosSlider: UIView {
     struct Constants {
         static let selectedColor = UIColor.white
-        static let unselectedColor = UIColor(red: 142 / 255, green: 142 / 255, blue: 147 / 255, alpha: 1)
+        static let unselectedColor = UIColor(red: 142 / 255, green: 142 / 255, blue: 147 / 255, alpha: 0.6)
         
-        static let sliderIndicatorWidth = 20
-        static let sliderIndicatorMargin = 4
+        static let sliderIndicatorWidth = 3.scale
+        static let sliderIndicatorHeight = 20.scale
+        static let sliderIndicatorMargin = 4.scale
     }
     
     private lazy var slideIndicators = [UIView]()
@@ -59,7 +60,7 @@ final class PhotosSlider: UIView {
 
 extension PhotosSlider: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let slideIndex = Int(round(scrollView.contentOffset.x / frame.width))
+        let slideIndex = Int(round(scrollView.contentOffset.y / frame.height))
         
         for (index, slideIndicator) in slideIndicators.enumerated() {
             slideIndicator.backgroundColor = slideIndex == index ? Constants.selectedColor : Constants.unselectedColor
@@ -71,31 +72,30 @@ extension PhotosSlider: UIScrollViewDelegate {
 
 private extension PhotosSlider {
     private func configure() {
-        backgroundColor = .black
-        
         let scrollView = makeScrollView()
         scrollView.frame.size = CGSize(width: frame.width, height: frame.height)
         scrollView.frame.origin = CGPoint(x: 0, y: 0)
-        scrollView.contentSize = CGSize(width: frame.width * CGFloat(urls.count), height: frame.height)
+        scrollView.contentSize = CGSize(width: frame.width, height: frame.height * CGFloat(urls.count))
         addSubview(scrollView)
         
-        var sliderIndicatorX = (frame.width - CGFloat(Constants.sliderIndicatorWidth * urls.count + (urls.count - 1) * Constants.sliderIndicatorMargin)) / 2
+        let sliderIndicatorX = frame.width - Constants.sliderIndicatorWidth - 20.scale
+        var sliderIndicatorY = 24.scale
         
         for (index, url) in urls.enumerated() {
             let slide = makeSlide()
             slide.frame.size = CGSize(width: frame.width, height: frame.height)
-            slide.frame.origin = CGPoint(x: frame.width * CGFloat(index), y: 0)
+            slide.frame.origin = CGPoint(x: 0, y: frame.height * CGFloat(index))
             slide.kf.setImage(with: url)
             slides.append(slide)
             scrollView.addSubview(slide)
             
             let slideIndicator = makeSlideIndicator()
-            slideIndicator.frame.size = CGSize(width: Constants.sliderIndicatorWidth, height: 4)
-            slideIndicator.frame.origin = CGPoint(x: sliderIndicatorX, y: 16)
+            slideIndicator.frame.size = CGSize(width: Constants.sliderIndicatorWidth, height: Constants.sliderIndicatorHeight)
+            slideIndicator.frame.origin = CGPoint(x: sliderIndicatorX, y: sliderIndicatorY)
             slideIndicator.backgroundColor = index == 0 ? Constants.selectedColor : Constants.unselectedColor
             slideIndicators.append(slideIndicator)
             
-            sliderIndicatorX += CGFloat(Constants.sliderIndicatorWidth + Constants.sliderIndicatorMargin)
+            sliderIndicatorY += CGFloat(Constants.sliderIndicatorHeight + Constants.sliderIndicatorMargin)
         }
     }
 }
@@ -115,8 +115,8 @@ private extension PhotosSlider {
     
     private func makeSlide() -> UIImageView {
         let view = UIImageView()
-        view.layer.cornerRadius = 26
-        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        view.layer.cornerRadius = 26.scale
+        view.layer.masksToBounds = true
         view.contentMode = .scaleAspectFill
         view.clipsToBounds = true
         return view
@@ -124,7 +124,7 @@ private extension PhotosSlider {
     
     private func makeSlideIndicator() -> UIView {
         let view = UIView()
-        view.layer.cornerRadius = 2
+        view.layer.cornerRadius = 2.scale
         addSubview(view)
         return view
     }

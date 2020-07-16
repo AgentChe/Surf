@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IDFAService.shared.configure()
         AmplitudeAnalytics.shared.configure()
         FacebookAnalytics.shared.configure()
+        PushNotificationsManager.shared.configure(launchOptions: launchOptions)
         
         return true
     }
@@ -40,5 +41,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidEnterBackground(_ application: UIApplication) {
         AppStateProxy.ApplicationProxy.didEnterBackground.accept(Void())
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        PushNotificationsManager.shared.received(pushToken: deviceToken, error: nil)
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        PushNotificationsManager.shared.received(pushToken: nil, error: error)
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        PushNotificationsManager.shared.received(userInfo: userInfo)
+        completionHandler(.noData)
     }
 }

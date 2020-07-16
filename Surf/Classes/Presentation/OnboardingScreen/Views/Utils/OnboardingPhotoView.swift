@@ -51,24 +51,31 @@ final class OnboardingPhotoView: UIImageView {
         disposable?.dispose()
         disposable = nil
     }
-    
-    // MARK: Lazy initialization
-    
-    private func makeImagePicker() -> ImagePicker? {
-        guard let vc = UIApplication.shared.keyWindow?.rootViewController else {
-            return nil
+}
+
+// MARK: ImagePickerDelegate
+
+extension OnboardingPhotoView: ImagePickerDelegate {
+    func didSelect(image: UIImage?) {
+        guard let image = image else {
+            return
         }
         
-        return ImagePicker(presentationController: vc, delegate: self)
+        isUserInteractionEnabled = false
+        delegate?.blockTagForSelect?(tag: tag, isBlocked: true)
+        
+        uploadPhoto.accept(image)
     }
-    
-    // MARK: Private
-    
-    private func configure() {
+}
+
+// MARK: Private
+
+private extension OnboardingPhotoView {
+    func configure() {
         clipsToBounds = true
         contentMode = .scaleAspectFill
-        image = UIImage(named: "onboarding_photo_frame")
-        layer.cornerRadius = 12
+        image = UIImage(named: "Onboarding.CameraPlaceholder")
+        layer.cornerRadius = 12.scale
         isUserInteractionEnabled = true
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageViewTapped(sender:)))
@@ -97,24 +104,23 @@ final class OnboardingPhotoView: UIImageView {
     }
     
     @objc
-    private func imageViewTapped(sender: UITapGestureRecognizer) {
+    func imageViewTapped(sender: UITapGestureRecognizer) {
         openImagePicker()
     }
     
-    private func openImagePicker() {
+    func openImagePicker() {
         imagePicker?.present(from: self)
     }
 }
 
-extension OnboardingPhotoView: ImagePickerDelegate {
-    func didSelect(image: UIImage?) {
-        guard let image = image else {
-            return
+// MARK: Lazy initialization
+
+private extension OnboardingPhotoView {
+    func makeImagePicker() -> ImagePicker? {
+        guard let vc = UIApplication.shared.keyWindow?.rootViewController else {
+            return nil
         }
         
-        isUserInteractionEnabled = false
-        delegate?.blockTagForSelect?(tag: tag, isBlocked: true)
-        
-        uploadPhoto.accept(image)
+        return ImagePicker(presentationController: vc, delegate: self)
     }
 }
