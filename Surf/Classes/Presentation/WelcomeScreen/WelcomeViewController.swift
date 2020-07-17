@@ -62,7 +62,9 @@ final class WelcomeViewController: UIViewController {
 
 extension WelcomeViewController {
     static func make() -> WelcomeViewController {
-        WelcomeViewController(nibName: nil, bundle: nil)
+        let vc = WelcomeViewController(nibName: nil, bundle: nil)
+        vc.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        return vc
     }
 }
 

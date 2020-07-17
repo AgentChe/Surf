@@ -10,15 +10,15 @@ final class GlobalDefinitions {
     struct ChatService {
         static let wsDomain = "ws://84.201.169.190"
         static let restDomain = "http://84.201.169.190"
-        static let appKey = "9df4d65b-3e28-4a5e-89a2-364d20bc353c"
+        static let appKey = "b410fe27-2b11-4573-8e92-d02fe2a2d083"
     }
     
     struct Backend {
-//        static let domain = "http://test.fawn.chat" // prod
-        static let domain = "http://test.fawn.chat" // dev
+//        static let domain = "https://surf.korrekted.com" // prod
+        static let domain = "https://surf.korrekted.com" // dev
         
 //        static let apiKey = "56eq2dCAkHgzgok=" // prod
-        static let apiKey = "aIlfMTHipXdSapMc" // dev
+        static let apiKey = "56eq2dCAkHgzgok=" // dev
     }
     
     struct Analytics {
@@ -29,8 +29,8 @@ final class GlobalDefinitions {
     }
     
     struct TermsOfService {
-        static let termsUrl = "https://test.fawn.chat/legal/terms"
-        static let policyUrl = "https://test.fawn.chat/legal/policy"
-        static let contactUrl = "https://test.fawn.chat/legal/contact"
+        static let termsUrl = "https://surf.korrekted.com/legal/terms"
+        static let policyUrl = "https://surf.korrekted.com/legal/policy"
+        static let contactUrl = "https://surf.korrekted.com/legal/contact"
     }
 }

@@ -10,15 +10,7 @@ import UIKit
 import RxSwift
 
 final class RegistrationEmailViewController: UIViewController {
-    static func make() -> UIViewController {
-        UIStoryboard(name: "RegistrationEmailScreen", bundle: .main).instantiateInitialViewController()!
-    }
-    
-    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet private weak var scrollView: UIScrollView!
-    @IBOutlet private weak var textField: UITextField!
-    @IBOutlet private weak var invalidEmailLabel: UILabel!
-    @IBOutlet private weak var continueButton: UIButton!
+    var registrationEmailView = RegistrationEmailView()
     
     private let viewModel = RegistrationEmailViewModel()
     
@@ -26,28 +18,25 @@ final class RegistrationEmailViewController: UIViewController {
     
     private var email: String?
     
+    override func loadView() {
+        super.loadView()
+        
+        view = registrationEmailView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         AmplitudeAnalytics.shared.log(with: .emailScr)
         
-        textField.delegate = self
+        registrationEmailView.emailTextField.delegate = self
+        registrationEmailView.emailTextField.addTarget(self, action: #selector(emailDidChanged), for: .editingChanged)
         
-        let scrollViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(tapToHideKeyboard))
-        scrollView.addGestureRecognizer(scrollViewTapGesture)
+        let registrationEmailViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(tapToHideKeyboard))
+        registrationEmailView.addGestureRecognizer(registrationEmailViewTapGesture)
         
-        activityIndicator.isHidden = true
-
-//        textField.setLeftPaddingPoints(12)
-        continueButton(disable: true)
-        
-        view.rx.keyboardHeight
-            .subscribe(onNext: { [weak self] keyboardHeight in
-                self?.scrollView.contentInset.bottom = keyboardHeight == 0 ? 0 : keyboardHeight + 100
-            })
-            .disposed(by: disposeBag)
-        
-        continueButton.rx.tap
+        registrationEmailView
+            .continueButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 AmplitudeAnalytics.shared.log(with: .emailTap)
                 
@@ -55,12 +44,23 @@ final class RegistrationEmailViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        registrationEmailView
+            .termsOfServiceButton.rx.tap
+            .subscribe(onNext: {
+                guard let url = URL(string: GlobalDefinitions.TermsOfService.termsUrl) else {
+                    return
+                }
+                
+                UIApplication.shared.open(url, options: [:])
+            })
+            .disposed(by: disposeBag)
+        
         viewModel
             .loading
             .drive(onNext: { [weak self] isLoading in
-                self?.continueButton.isHidden = isLoading
-                self?.textField.isHidden = isLoading
-                isLoading ? self?.activityIndicator.startAnimating() : self?.activityIndicator.stopAnimating()
+                self?.registrationEmailView.continueButton.isHidden = isLoading
+                self?.registrationEmailView.emailTextField.isHidden = isLoading
+                isLoading ? self?.registrationEmailView.activityIndicator.startAnimating() : self?.registrationEmailView.activityIndicator.stopAnimating()
             })
             .disposed(by: disposeBag)
         
@@ -81,79 +81,65 @@ final class RegistrationEmailViewController: UIViewController {
             })
             .disposed(by: disposeBag)
     }
-    
-    @objc func tapToHideKeyboard() {
-        textField.resignFirstResponder()
-    }
-    
-    private func checkEmailAndContinue() {
-        guard var email = self.email else {
-            return
-        }
-        
-        tapToHideKeyboard()
-        
-        if email.last == " " {
-            email.removeLast()
-        }
-        
-        if viewModel.isValid(email: email) {
-            viewModel.createUser.accept(email)
-        } else {
-            showEmail(invalid: true)
-        }
-    }
-    
-    private func showEmail(invalid: Bool) {
-        let image: UIImage = invalid ? #imageLiteral(resourceName: "textfield_invalid") : #imageLiteral(resourceName: "textfield_bg")
-        textField.background = image
-        invalidEmailLabel.isHidden = !invalid
-        continueButton(disable: invalid)
-    }
-    
-    private func continueButton(disable: Bool) {
-        continueButton.isEnabled = !disable
-        continueButton.alpha = disable ? 0.5 : 1.0
-    }
-    
-    private func goToOnboardingScreen() {
-        UIApplication.shared.keyWindow?.rootViewController = OnboardingViewController.make()
-    }
-    
-    private func goToConfirmCode(with email: String) {
-        UIApplication.shared.keyWindow?.rootViewController = RegistrationConfirmCodeViewController.make(email: email)
+}
+
+// MARK: Make
+
+extension RegistrationEmailViewController {
+    static func make() -> RegistrationEmailViewController {
+        let vc = RegistrationEmailViewController()
+        vc.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        return vc
     }
 }
 
+// MARK: UITextFieldDelegate
+
 extension RegistrationEmailViewController: UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        var email = textField.text! + string
-        
-        if string == "" {
-            email.removeLast()
-        }
-        
-        if email != "" {
-            continueButton(disable: false)
-        }  else {
-            continueButton(disable: true)
-        }
-        
-        if viewModel.isValid(email: email) {
-            showEmail(invalid: false)
-        }
-        
-        self.email = email
-        
-        return true
-    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         checkEmailAndContinue()
+        
         return true
     }
+}
+
+// MARK: Private
+
+private extension RegistrationEmailViewController {
+    @objc
+    func emailDidChanged() {
+        registrationEmailView.emailTextField.backgroundColor = UIColor.white
+        
+        registrationEmailView.invalidateEmailLabel.isHidden = true
+    }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        self.email = textField.text
+    @objc
+    func tapToHideKeyboard() {
+        registrationEmailView.emailTextField.resignFirstResponder()
+    }
+    
+    func checkEmailAndContinue() {
+        guard let email = registrationEmailView.emailTextField.text else {
+            return
+        }
+        
+        if NSPredicate(format:"SELF MATCHES[c] %@",
+                       "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}")
+            .evaluate(with: email) {
+            tapToHideKeyboard()
+            
+            viewModel.createUser.accept(email)
+        } else {
+            registrationEmailView.emailTextField.backgroundColor = UIColor.red.withAlphaComponent(0.2)
+            registrationEmailView.invalidateEmailLabel.isHidden = false
+        }
+    }
+    
+    func goToOnboardingScreen() {
+        UIApplication.shared.keyWindow?.rootViewController = SurfNavigationController(rootViewController: OnboardingViewController.make())
+    }
+    
+    func goToConfirmCode(with email: String) {
+        UIApplication.shared.keyWindow?.rootViewController = RegistrationConfirmCodeViewController.make(email: email)
     }
 }

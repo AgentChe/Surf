@@ -44,3 +44,15 @@
 "Welcome.ContinueWithFacebook" = "Continue with Facebook";
 "Welcome.AboutFacebookSignInInfo" = "We never post anything on Facebook. And also do not send mailings.";
 "Welcome.ContinueWithEmail" = "Continue with Email";
+
+// MARK: Registration email
+"RegistrationEmail.TellUsYourEmail" = "Tell us\nyour email";
+"RegistrationEmail.WeWillSendYouCode" = "We will send you a code.";
+"RegistrationEmail.TermsOfService.Part1" = "By continue, you agree to our";
+"RegistrationEmail.TermsOfService.Part2" = "Terms of Service.";
+"RegistrationEmail.InvalidateEmail" = "Invalidate email";
+
+// MARK: Confirm code
+"ConfirmCode.EnterCode" = "Enter the code";
+"ConfirmCode.WeJustSentTo" = "We've just sent to\n%@ ";
+"ConfirmCode.SendNewCode" = "Send a New Code";

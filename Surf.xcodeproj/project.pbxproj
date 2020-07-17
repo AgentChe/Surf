@@ -147,8 +147,8 @@
 		963F5A4024BCD02F0063D615 /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F59A424BCD02E0063D615 /* AnalyticsEvent.swift */; };
 		963F5A4124BCD02F0063D615 /* IDFAService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F59A524BCD02E0063D615 /* IDFAService.swift */; };
 		963F5A4224BCD02F0063D615 /* AmplitudeAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F59A624BCD02E0063D615 /* AmplitudeAnalytics.swift */; };
-		963F5A4824BCECCC0063D615 /* RegistrationEmailScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963F5A4724BCECCC0063D615 /* RegistrationEmailScreen.storyboard */; };
 		963F5A4A24BCECD00063D615 /* RegistrationConfirmCodeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963F5A4924BCECD00063D615 /* RegistrationConfirmCodeScreen.storyboard */; };
+		9648700F24C093530084CC2D /* RegistrationEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9648700E24C093530084CC2D /* RegistrationEmailView.swift */; };
 		965588B024BDC8D400D6EB83 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965588AF24BDC8D400D6EB83 /* NotificationView.swift */; };
 		965588BD24BDD5DE00D6EB83 /* SF-Pro-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 965588B924BDD4DD00D6EB83 /* SF-Pro-Text-Light.otf */; };
 		965588BE24BDD5DE00D6EB83 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 965588BB24BDD4ED00D6EB83 /* SF-Pro-Text-Regular.otf */; };
@@ -322,8 +322,8 @@
 		963F59A424BCD02E0063D615 /* AnalyticsEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsEvent.swift; sourceTree = "<group>"; };
 		963F59A524BCD02E0063D615 /* IDFAService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDFAService.swift; sourceTree = "<group>"; };
 		963F59A624BCD02E0063D615 /* AmplitudeAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmplitudeAnalytics.swift; sourceTree = "<group>"; };
-		963F5A4724BCECCC0063D615 /* RegistrationEmailScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RegistrationEmailScreen.storyboard; sourceTree = "<group>"; };
 		963F5A4924BCECD00063D615 /* RegistrationConfirmCodeScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RegistrationConfirmCodeScreen.storyboard; sourceTree = "<group>"; };
+		9648700E24C093530084CC2D /* RegistrationEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationEmailView.swift; sourceTree = "<group>"; };
 		965588AF24BDC8D400D6EB83 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		965588B424BDD4C600D6EB83 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		965588B524BDD4C600D6EB83 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
@@ -411,7 +411,6 @@
 		963F54CB24B8959F0063D615 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				963F5A4724BCECCC0063D615 /* RegistrationEmailScreen.storyboard */,
 				963F5A4924BCECD00063D615 /* RegistrationConfirmCodeScreen.storyboard */,
 				963F54C024B893A10063D615 /* LaunchScreen.storyboard */,
 			);
@@ -725,9 +724,9 @@
 		963F594824BCD02E0063D615 /* PaygateScreen */ = {
 			isa = PBXGroup;
 			children = (
+				963F594B24BCD02E0063D615 /* PaygateViewController.swift */,
 				963F594924BCD02E0063D615 /* PaygateViewModel.swift */,
 				963F594A24BCD02E0063D615 /* PaygateViewControllerDelegate.swift */,
-				963F594B24BCD02E0063D615 /* PaygateViewController.swift */,
 				963F594C24BCD02E0063D615 /* Views */,
 			);
 			path = PaygateScreen;
@@ -784,6 +783,7 @@
 		963F595B24BCD02E0063D615 /* RegistrationEmailScreen */ = {
 			isa = PBXGroup;
 			children = (
+				9648700D24C093400084CC2D /* Views */,
 				963F595D24BCD02E0063D615 /* RegistrationEmailViewController.swift */,
 				963F595C24BCD02E0063D615 /* RegistrationEmailViewModel.swift */,
 			);
@@ -953,9 +953,9 @@
 		963F59A024BCD02E0063D615 /* Analytics */ = {
 			isa = PBXGroup;
 			children = (
+				963F59A324BCD02E0063D615 /* Model */,
 				963F59A124BCD02E0063D615 /* FacebookAnalytics.swift */,
 				963F59A224BCD02E0063D615 /* SearchAttributionsDetails.swift */,
-				963F59A324BCD02E0063D615 /* Model */,
 				963F59A524BCD02E0063D615 /* IDFAService.swift */,
 				963F59A624BCD02E0063D615 /* AmplitudeAnalytics.swift */,
 			);
@@ -968,6 +968,14 @@
 				963F59A424BCD02E0063D615 /* AnalyticsEvent.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		9648700D24C093400084CC2D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9648700E24C093530084CC2D /* RegistrationEmailView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		965588B124BDD43E00D6EB83 /* Fonts */ = {
@@ -1131,7 +1139,6 @@
 				963F5A1F24BCD02F0063D615 /* ReportViewController.xib in Resources */,
 				963F59EE24BCD02E0063D615 /* Second~.storyboard in Resources */,
 				96A1BC8C24C04D010043DCCC /* GoogleService-Info.plist in Resources */,
-				963F5A4824BCECCC0063D615 /* RegistrationEmailScreen.storyboard in Resources */,
 				963F54C224B893A10063D615 /* LaunchScreen.storyboard in Resources */,
 				963F54CF24B895D70063D615 /* Localizable.strings in Resources */,
 				963F59EF24BCD02E0063D615 /* First.storyboard in Resources */,
@@ -1325,6 +1332,7 @@
 				963F59F824BCD02E0063D615 /* ProposedInterlocutorsCollectionView.swift in Sources */,
 				963F59D424BCD02E0063D615 /* Token.swift in Sources */,
 				963F5A2F24BCD02F0063D615 /* MyChatImageCell.swift in Sources */,
+				9648700F24C093530084CC2D /* RegistrationEmailView.swift in Sources */,
 				963F59B224BCD02E0063D615 /* Scalable.swift in Sources */,
 				963F5A1324BCD02F0063D615 /* RegistrationEmailViewModel.swift in Sources */,
 				963F5A3524BCD02F0063D615 /* ChatService.swift in Sources */,

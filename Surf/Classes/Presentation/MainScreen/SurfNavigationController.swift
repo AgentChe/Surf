@@ -15,7 +15,7 @@ final class SurfNavigationController: UINavigationController {
         navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.shadowImage = UIImage()
         navigationBar.isTranslucent = true
-        navigationBar.tintColor = UIColor(red: 239 / 255, green: 239 / 255, blue: 244 / 255, alpha: 1)
+        navigationBar.tintColor = UIColor.black
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
