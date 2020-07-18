@@ -15,7 +15,7 @@ final class OnboardingWelcomeView: UIView {
     var onNext: (() -> Void)?
     
     lazy var photosSlider = makePhotosSlider()
-    lazy var emojiImageView = makeEmojiImageView()
+    lazy var emojiLabel = makeEmojiLabel()
     lazy var welcomeLabel = makeWelcomeLabel()
     lazy var horoImageView = makeHoroImageView()
     lazy var activityIndicator = makeActivityIndicator()
@@ -82,12 +82,8 @@ private extension OnboardingWelcomeView {
             .share()
         
         randomize
-            .subscribe(onNext: { [weak self] path in
-                guard let path = path, let url = URL(string: path) else {
-                    return
-                }
-                
-                self?.emojiImageView.kf.setImage(with: url)
+            .subscribe(onNext: { [weak self] emoji in
+                self?.emojiLabel.text = emoji
             })
             .disposed(by: disposeBag)
         
@@ -114,10 +110,8 @@ private extension OnboardingWelcomeView {
         ])
         
         NSLayoutConstraint.activate([
-            emojiImageView.leadingAnchor.constraint(equalTo: photosSlider.leadingAnchor, constant: 24.scale),
-            emojiImageView.widthAnchor.constraint(equalToConstant: 64.scale),
-            emojiImageView.heightAnchor.constraint(equalToConstant: 64.scale),
-            emojiImageView.bottomAnchor.constraint(equalTo: welcomeLabel.topAnchor, constant: -8.scale)
+            emojiLabel.leadingAnchor.constraint(equalTo: photosSlider.leadingAnchor, constant: 24.scale),
+            emojiLabel.bottomAnchor.constraint(equalTo: welcomeLabel.topAnchor, constant: -8.scale)
         ])
         
         NSLayoutConstraint.activate([
@@ -167,10 +161,9 @@ private extension OnboardingWelcomeView {
         return view
     }
     
-    func makeEmojiImageView() -> UIImageView {
-        let view = UIImageView()
-        view.clipsToBounds = true
-        view.contentMode = .scaleAspectFit
+    func makeEmojiLabel() -> UILabel {
+        let view = UILabel()
+        view.textAlignment = .center
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

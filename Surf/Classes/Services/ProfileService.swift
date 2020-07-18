@@ -10,7 +10,7 @@ import RxSwift
 
 final class ProfileService {}
 
-// MARK: Profile
+// MARK: Set
 
 extension ProfileService {
     static func fillProfile(myGender: Gender, showMeToGenders: [Gender], birthdate: Date, name: String, pushNotificationsToken: String?) -> Single<Bool> {
@@ -18,14 +18,24 @@ extension ProfileService {
             return .deferred { .just(false) }
         }
         
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let birthdateInFormat = formatter.string(from: birthdate)
+        
         return RestAPITransport()
             .callServerApi(requestBody: SetRequest(userToken: userToken,
                                                    name: name,
-                                                   birthdate: birthdate.yearMonthDay,
+                                                   birthdate: birthdateInFormat,
+                                                   gender: GenderMapper.rawCode(from: myGender),
+                                                   lookingFor: GenderMapper.lookingForCode(from: showMeToGenders),
                                                    pushNotificationsToken: pushNotificationsToken))
             .map { (try? !CheckResponseForError.isError(jsonResponse: $0)) ?? false }
     }
-    
+}
+
+// MARK: Emoji
+
+extension ProfileService {
     static func randomizeEmoji() -> Single<String?> {
         guard let userToken = SessionService.shared.userToken else {
             return .deferred { .just(nil) }
@@ -33,6 +43,6 @@ extension ProfileService {
         
         return RestAPITransport()
             .callServerApi(requestBody: RandomizeEmojiRequest(userToken: userToken))
-            .map { ImageTransformation.emojiUrlFromRandomizeResponse(response: $0) }
+            .map { EmojiMapper.emoji(response: $0) }
     }
 }

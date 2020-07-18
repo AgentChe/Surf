@@ -27,26 +27,4 @@ extension String {
     var localized: String {
         return NSLocalizedString(self, comment: "")
     }
-    
-    func capitalizingFirstLetter() -> String {
-        return prefix(1).capitalized + dropFirst()
-    }
-
-    mutating func capitalizeFirstLetter() {
-        self = self.capitalizingFirstLetter()
-    }
-
-    func mobilePhoneMask() -> String {
-        var characters = Array(self)
-
-        characters.insert("+", at: 0)
-        characters.insert(" ", at: 2)
-        characters.insert("(", at: 3)
-        characters.insert(")", at:7)
-        characters.insert(" ", at: 8)
-        characters.insert("-", at: 12)
-        characters.insert("-", at: 15)
-
-        return String(characters)
-    }
 }

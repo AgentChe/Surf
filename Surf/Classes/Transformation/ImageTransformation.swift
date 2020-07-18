@@ -21,14 +21,6 @@ final class ImageTransformation {
         }
     }
     
-    static func emojiUrlFromRandomizeResponse(response: Any) -> String? {
-        guard let json = response as? [String: Any], let data = json["_data"] as? [String: Any] else {
-            return nil
-        }
-        
-        return data["avatar"] as? String
-    }
-    
     static func imageUrlFromUploadChatImageResponse(response: Any) -> UploadedImage {
         guard let json = response as? [String: Any] else {
             return (nil, nil)

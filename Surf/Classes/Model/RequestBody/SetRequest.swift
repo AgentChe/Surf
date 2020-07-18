@@ -12,6 +12,10 @@ struct SetRequest: APIRequestBody {
     private let userToken: String
     private let name: String?
     private let birthdate: String?
+    private let gender: Int?
+    private let lookingFor: Int?
+    private let minAge: Int?
+    private let maxAge: Int?
     private let storeCountry: String?
     private let version: String?
     private let locale: String?
@@ -24,6 +28,10 @@ struct SetRequest: APIRequestBody {
     init(userToken: String,
          name: String? = nil,
          birthdate: String? = nil,
+         gender: Int? = nil,
+         lookingFor: Int? = nil,
+         minAge: Int? = nil,
+         maxAge: Int? = nil,
          storeCountry: String? = nil,
          version: String? = nil,
          locale: String? = nil,
@@ -35,6 +43,10 @@ struct SetRequest: APIRequestBody {
         self.userToken = userToken
         self.name = name
         self.birthdate = birthdate
+        self.gender = gender
+        self.lookingFor = lookingFor
+        self.minAge = minAge
+        self.maxAge = maxAge
         self.storeCountry = storeCountry
         self.version = version
         self.locale = locale
@@ -65,6 +77,22 @@ struct SetRequest: APIRequestBody {
         
         if let birthdate = self.birthdate {
             params["birthdate"] = birthdate
+        }
+        
+        if let gender = self.gender {
+            params["gender"] = gender
+        }
+        
+        if let lookingFor = self.lookingFor {
+            params["looking_for"] = lookingFor
+        }
+        
+        if let minAge = self.minAge {
+            params["min_age"] = minAge
+        }
+        
+        if let maxAge = self.maxAge {
+            params["max_age"] = maxAge
         }
         
         if let storeCountry = self.storeCountry {
