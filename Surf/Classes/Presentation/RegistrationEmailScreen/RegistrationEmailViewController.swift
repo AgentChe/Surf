@@ -140,6 +140,7 @@ private extension RegistrationEmailViewController {
     }
     
     func goToConfirmCode(with email: String) {
-        UIApplication.shared.keyWindow?.rootViewController = RegistrationConfirmCodeViewController.make(email: email)
+        let vc = ConfirmCodeViewController.make(bundle: ConfirmCodeViewController.Bundle(email: email))
+        UIApplication.shared.keyWindow?.rootViewController = SurfNavigationController(rootViewController: vc)
     }
 }

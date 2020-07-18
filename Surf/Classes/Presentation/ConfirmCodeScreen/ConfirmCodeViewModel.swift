@@ -9,7 +9,7 @@
 import RxSwift
 import RxCocoa
 
-final class RegistrationConfirmCodeViewModel {
+final class ConfirmCodeViewModel {
     enum Step {
         case main
     }
@@ -17,12 +17,10 @@ final class RegistrationConfirmCodeViewModel {
     let requireCode = PublishRelay<String>()
     let confirmCode = PublishRelay<(email: String, code: String)>()
     
-    private(set) lazy var isLoading = activityIndicator.asDriver()
+    private(set) lazy var loading = activityIndicator.asDriver()
     private let activityIndicator = RxActivityIndicator()
     
-    private(set) lazy var step = createStep()
-    
-    private func createStep() -> Driver<Step?> {
+    func step() -> Driver<Step?> {
         let confirm = confirmCode
             .flatMapLatest { [unowned self] stub -> Observable<Token?> in
                 let (email, code) = stub

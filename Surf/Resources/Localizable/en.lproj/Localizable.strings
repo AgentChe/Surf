@@ -54,5 +54,6 @@
 
 // MARK: Confirm code
 "ConfirmCode.EnterCode" = "Enter the code";
-"ConfirmCode.WeJustSentTo" = "We've just sent to\n%@ ";
+"ConfirmCode.WeJustSentTo" = "We've just sent to\n%@";
 "ConfirmCode.SendNewCode" = "Send a New Code";
+"ConfirmCode.CodeIncorrect" = "The code is\nincorrect.";

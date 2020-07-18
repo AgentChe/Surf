@@ -113,8 +113,8 @@
 		963F5A1E24BCD02F0063D615 /* ReportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F597424BCD02E0063D615 /* ReportViewModel.swift */; };
 		963F5A1F24BCD02F0063D615 /* ReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 963F597524BCD02E0063D615 /* ReportViewController.xib */; };
 		963F5A2024BCD02F0063D615 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F597624BCD02E0063D615 /* ReportViewController.swift */; };
-		963F5A2124BCD02F0063D615 /* RegistrationConfirmCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F597824BCD02E0063D615 /* RegistrationConfirmCodeViewController.swift */; };
-		963F5A2224BCD02F0063D615 /* RegistrationConfirmCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F597924BCD02E0063D615 /* RegistrationConfirmCodeViewModel.swift */; };
+		963F5A2124BCD02F0063D615 /* ConfirmCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F597824BCD02E0063D615 /* ConfirmCodeViewController.swift */; };
+		963F5A2224BCD02F0063D615 /* ConfirmCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F597924BCD02E0063D615 /* ConfirmCodeViewModel.swift */; };
 		963F5A2324BCD02F0063D615 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F597B24BCD02E0063D615 /* ChatViewController.swift */; };
 		963F5A2424BCD02F0063D615 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F597C24BCD02E0063D615 /* ChatViewModel.swift */; };
 		963F5A2524BCD02F0063D615 /* ChatAttachCaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F598024BCD02E0063D615 /* ChatAttachCaseView.swift */; };
@@ -147,8 +147,8 @@
 		963F5A4024BCD02F0063D615 /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F59A424BCD02E0063D615 /* AnalyticsEvent.swift */; };
 		963F5A4124BCD02F0063D615 /* IDFAService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F59A524BCD02E0063D615 /* IDFAService.swift */; };
 		963F5A4224BCD02F0063D615 /* AmplitudeAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F59A624BCD02E0063D615 /* AmplitudeAnalytics.swift */; };
-		963F5A4A24BCECD00063D615 /* RegistrationConfirmCodeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963F5A4924BCECD00063D615 /* RegistrationConfirmCodeScreen.storyboard */; };
 		9648700F24C093530084CC2D /* RegistrationEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9648700E24C093530084CC2D /* RegistrationEmailView.swift */; };
+		9648701224C1CE5E0084CC2D /* ConfirmCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9648701124C1CE5E0084CC2D /* ConfirmCodeView.swift */; };
 		965588B024BDC8D400D6EB83 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965588AF24BDC8D400D6EB83 /* NotificationView.swift */; };
 		965588BD24BDD5DE00D6EB83 /* SF-Pro-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 965588B924BDD4DD00D6EB83 /* SF-Pro-Text-Light.otf */; };
 		965588BE24BDD5DE00D6EB83 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 965588BB24BDD4ED00D6EB83 /* SF-Pro-Text-Regular.otf */; };
@@ -288,8 +288,8 @@
 		963F597424BCD02E0063D615 /* ReportViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportViewModel.swift; sourceTree = "<group>"; };
 		963F597524BCD02E0063D615 /* ReportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportViewController.xib; sourceTree = "<group>"; };
 		963F597624BCD02E0063D615 /* ReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
-		963F597824BCD02E0063D615 /* RegistrationConfirmCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationConfirmCodeViewController.swift; sourceTree = "<group>"; };
-		963F597924BCD02E0063D615 /* RegistrationConfirmCodeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationConfirmCodeViewModel.swift; sourceTree = "<group>"; };
+		963F597824BCD02E0063D615 /* ConfirmCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmCodeViewController.swift; sourceTree = "<group>"; };
+		963F597924BCD02E0063D615 /* ConfirmCodeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmCodeViewModel.swift; sourceTree = "<group>"; };
 		963F597B24BCD02E0063D615 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		963F597C24BCD02E0063D615 /* ChatViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		963F598024BCD02E0063D615 /* ChatAttachCaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatAttachCaseView.swift; sourceTree = "<group>"; };
@@ -322,8 +322,8 @@
 		963F59A424BCD02E0063D615 /* AnalyticsEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsEvent.swift; sourceTree = "<group>"; };
 		963F59A524BCD02E0063D615 /* IDFAService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDFAService.swift; sourceTree = "<group>"; };
 		963F59A624BCD02E0063D615 /* AmplitudeAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmplitudeAnalytics.swift; sourceTree = "<group>"; };
-		963F5A4924BCECD00063D615 /* RegistrationConfirmCodeScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RegistrationConfirmCodeScreen.storyboard; sourceTree = "<group>"; };
 		9648700E24C093530084CC2D /* RegistrationEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationEmailView.swift; sourceTree = "<group>"; };
+		9648701124C1CE5E0084CC2D /* ConfirmCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmCodeView.swift; sourceTree = "<group>"; };
 		965588AF24BDC8D400D6EB83 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		965588B424BDD4C600D6EB83 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		965588B524BDD4C600D6EB83 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
@@ -411,7 +411,6 @@
 		963F54CB24B8959F0063D615 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				963F5A4924BCECD00063D615 /* RegistrationConfirmCodeScreen.storyboard */,
 				963F54C024B893A10063D615 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -613,7 +612,7 @@
 				963F596B24BCD02E0063D615 /* ImageScreen */,
 				963F596D24BCD02E0063D615 /* ProfileScreen */,
 				963F597324BCD02E0063D615 /* ReportScreen */,
-				963F597724BCD02E0063D615 /* RegistrationConfirmCodeScreen */,
+				963F597724BCD02E0063D615 /* ConfirmCodeScreen */,
 				963F597A24BCD02E0063D615 /* ChatScreen */,
 			);
 			path = Presentation;
@@ -825,13 +824,14 @@
 			path = ReportScreen;
 			sourceTree = "<group>";
 		};
-		963F597724BCD02E0063D615 /* RegistrationConfirmCodeScreen */ = {
+		963F597724BCD02E0063D615 /* ConfirmCodeScreen */ = {
 			isa = PBXGroup;
 			children = (
-				963F597824BCD02E0063D615 /* RegistrationConfirmCodeViewController.swift */,
-				963F597924BCD02E0063D615 /* RegistrationConfirmCodeViewModel.swift */,
+				9648701024C1C48B0084CC2D /* Views */,
+				963F597824BCD02E0063D615 /* ConfirmCodeViewController.swift */,
+				963F597924BCD02E0063D615 /* ConfirmCodeViewModel.swift */,
 			);
-			path = RegistrationConfirmCodeScreen;
+			path = ConfirmCodeScreen;
 			sourceTree = "<group>";
 		};
 		963F597A24BCD02E0063D615 /* ChatScreen */ = {
@@ -974,6 +974,14 @@
 			isa = PBXGroup;
 			children = (
 				9648700E24C093530084CC2D /* RegistrationEmailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9648701024C1C48B0084CC2D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9648701124C1CE5E0084CC2D /* ConfirmCodeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1142,7 +1150,6 @@
 				963F54C224B893A10063D615 /* LaunchScreen.storyboard in Resources */,
 				963F54CF24B895D70063D615 /* Localizable.strings in Resources */,
 				963F59EF24BCD02E0063D615 /* First.storyboard in Resources */,
-				963F5A4A24BCECD00063D615 /* RegistrationConfirmCodeScreen.storyboard in Resources */,
 				963F54BF24B893A10063D615 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1259,7 +1266,7 @@
 				963F59CF24BCD02E0063D615 /* GlobalDefinitions.swift in Sources */,
 				965588C824BDEF4200D6EB83 /* WelcomeView.swift in Sources */,
 				963F59EC24BCD02E0063D615 /* PaymentError.swift in Sources */,
-				963F5A2224BCD02F0063D615 /* RegistrationConfirmCodeViewModel.swift in Sources */,
+				963F5A2224BCD02F0063D615 /* ConfirmCodeViewModel.swift in Sources */,
 				963F5A2E24BCD02F0063D615 /* InterlocutorChatImageCell.swift in Sources */,
 				963F5A2A24BCD02F0063D615 /* ChatInputView.swift in Sources */,
 				963F59AE24BCD02E0063D615 /* UIDeviceExtension.swift in Sources */,
@@ -1277,6 +1284,7 @@
 				965588E324BF390800D6EB83 /* OnboardingView.swift in Sources */,
 				963F59D124BCD02E0063D615 /* ChatMessage.swift in Sources */,
 				963F59B024BCD02E0063D615 /* DictionaryExtension.swift in Sources */,
+				9648701224C1CE5E0084CC2D /* ConfirmCodeView.swift in Sources */,
 				9655986224C05DDC0022931D /* Zodiac.swift in Sources */,
 				965588E124BF287A00D6EB83 /* Gender.swift in Sources */,
 				963F5A1224BCD02F0063D615 /* ChatsEmptyView.swift in Sources */,
@@ -1350,7 +1358,7 @@
 				963F59BE24BCD02E0063D615 /* ImagePicker.swift in Sources */,
 				963F5A2924BCD02F0063D615 /* ChatAttachButton.swift in Sources */,
 				963F59ED24BCD02E0063D615 /* DataBaseError.swift in Sources */,
-				963F5A2124BCD02F0063D615 /* RegistrationConfirmCodeViewController.swift in Sources */,
+				963F5A2124BCD02F0063D615 /* ConfirmCodeViewController.swift in Sources */,
 				963F59D724BCD02E0063D615 /* GetChatsRequest.swift in Sources */,
 				963F5A0C24BCD02F0063D615 /* PaygateSpecialOfferView.swift in Sources */,
 				963F5A3D24BCD02F0063D615 /* SessionService.swift in Sources */,
