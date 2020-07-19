@@ -1,26 +1,15 @@
 //
 //  MainViewController.swift
-//  FAWN
+//  Surf
 //
-//  Created by Алексей Петров on 26/03/2019.
-//  Copyright © 2019 Алексей Петров. All rights reserved.
+//  Created by Andrey Chernyshev on 19.07.2020.
+//  Copyright © 2020 Andrey Chernyshev. All rights reserved.
 //
 
 import UIKit
-import RxSwift
-
-protocol MainViewControllerDelegate: class {
-    func tapOnChats()
-    func tapOnSearch()
-}
 
 final class MainViewController: UIViewController {
     var mainView = MainView()
-    lazy var profileItem = makeProfileBarButtonItem()
-    
-    weak var delegate: MainViewControllerDelegate?
-    
-    private let disposeBag = DisposeBag()
     
     override func loadView() {
         super.loadView()
@@ -32,35 +21,6 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         
         addPagesController()
-        updateViews(isSearchSelected: true)
-        
-        mainView.searchButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.updateViews(isSearchSelected: true)
-                
-                self?.delegate?.tapOnSearch()
-            })
-            .disposed(by: disposeBag)
-        
-        mainView.chatsButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.updateViews(isSearchSelected: false)
-                
-                self?.delegate?.tapOnChats()
-            })
-            .disposed(by: disposeBag)
-        
-        profileItem.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.navigationController?.pushViewController(ProfileViewController.make(), animated: true)
-            })
-            .disposed(by: disposeBag)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "page" {
-            delegate = segue.destination as! PageViewController
-        }
     }
 }
 
@@ -68,7 +28,9 @@ final class MainViewController: UIViewController {
 
 extension MainViewController {
     static func make() -> MainViewController {
-        MainViewController(nibName: nil, bundle: .main)
+        let vc = MainViewController()
+        vc.modalPresentationStyle = .fullScreen
+        return vc
     }
 }
 
@@ -76,9 +38,17 @@ extension MainViewController {
 
 extension MainViewController: ChatsViewControllerDelegate {
     func newSearchTapped() {
-        updateViews(isSearchSelected: true)
-        
-        delegate?.tapOnSearch()
+        mainView.tabBarView.selectSearchItem()
+    }
+}
+
+extension MainViewController: MainPageViewControllerDelegate {
+    func changed(page index: Int) {
+        if index == 0 {
+            mainView.tabBarView.selectSearchItem()
+        } else if index == 1 {
+            mainView.tabBarView.selectChatsItem()
+        }
     }
 }
 
@@ -87,42 +57,25 @@ extension MainViewController: ChatsViewControllerDelegate {
 private extension MainViewController {
     func addPagesController() {
         let searchVC = SearchViewController.make()
-        
+       
         let chatsVC = ChatsViewController.make()
         chatsVC.delegate = self
         
-        let pageVC = PageViewController.make(viewControllers: [searchVC, chatsVC])
+        let pageVC = MainPageController.make(viewControllers: [searchVC, chatsVC])
+        pageVC.pageControllerDelegate = self
         addChild(pageVC)
         
         pageVC.view.translatesAutoresizingMaskIntoConstraints = false
         
-        mainView.pageContainerView.addSubview(pageVC.view)
+        mainView.screensContainerView.addSubview(pageVC.view)
         
         NSLayoutConstraint.activate([
-            pageVC.view.leadingAnchor.constraint(equalTo: mainView.pageContainerView.leadingAnchor),
-            pageVC.view.trailingAnchor.constraint(equalTo: mainView.pageContainerView.trailingAnchor),
-            pageVC.view.topAnchor.constraint(equalTo: mainView.pageContainerView.topAnchor),
-            pageVC.view.bottomAnchor.constraint(equalTo: mainView.pageContainerView.bottomAnchor)
+            pageVC.view.leadingAnchor.constraint(equalTo: mainView.screensContainerView.leadingAnchor),
+            pageVC.view.trailingAnchor.constraint(equalTo: mainView.screensContainerView.trailingAnchor),
+            pageVC.view.topAnchor.constraint(equalTo: mainView.screensContainerView.topAnchor),
+            pageVC.view.bottomAnchor.constraint(equalTo: mainView.screensContainerView.bottomAnchor)
         ])
         
-        delegate = pageVC
-    }
-    
-    func updateViews(isSearchSelected: Bool) {
-        profileItem.image = isSearchSelected ? nil : UIImage(named: "profile_icon")
-        profileItem.isEnabled = !isSearchSelected
-        mainView.searchButton.setImage(UIImage(named: isSearchSelected ? "search_btn_hight" : "search_btn"), for: .normal)
-        mainView.chatsButton.setImage(UIImage(named: isSearchSelected ? "chat_btn" : "chat_btn_hight"), for: .normal)
-    }
-}
-
-// MARK: Lazy initializatioon
-
-private extension MainViewController {
-    func makeProfileBarButtonItem() -> UIBarButtonItem {
-        let view = UIBarButtonItem()
-        view.tintColor = .white 
-        navigationItem.rightBarButtonItem = view
-        return view
+        mainView.tabBarView.delegate = pageVC
     }
 }

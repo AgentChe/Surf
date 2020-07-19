@@ -1,23 +1,19 @@
 //
 //  MainView.swift
-//  FAWN
+//  Surf
 //
-//  Created by Andrey Chernyshev on 06/06/2020.
-//  Copyright © 2020 Алексей Петров. All rights reserved.
+//  Created by Andrey Chernyshev on 19.07.2020.
+//  Copyright © 2020 Andrey Chernyshev. All rights reserved.
 //
 
 import UIKit
 
 final class MainView: UIView {
-    lazy var pageContainerView = makePageContainerView()
-    lazy var buttonsBackgroundView = makeButtonsBackgroundView()
-    lazy var searchButton = makeButton()
-    lazy var chatsButton = makeButton()
+    lazy var screensContainerView = makeScreensContainerView()
+    lazy var tabBarView = makeTabBarView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        backgroundColor = .black
         
         makeConstraints()
     }
@@ -32,31 +28,17 @@ final class MainView: UIView {
 private extension MainView {
     func makeConstraints() {
         NSLayoutConstraint.activate([
-            pageContainerView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            pageContainerView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            pageContainerView.topAnchor.constraint(equalTo: topAnchor),
-            pageContainerView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+            screensContainerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            screensContainerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            screensContainerView.topAnchor.constraint(equalTo: topAnchor),
+            screensContainerView.bottomAnchor.constraint(equalTo: tabBarView.topAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            buttonsBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            buttonsBackgroundView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            buttonsBackgroundView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-            buttonsBackgroundView.heightAnchor.constraint(equalToConstant: 100.scale)
-        ])
-        
-        NSLayoutConstraint.activate([
-            searchButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 78.scale),
-            searchButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -48.scale),
-            searchButton.widthAnchor.constraint(equalToConstant: 50.scale),
-            searchButton.heightAnchor.constraint(equalToConstant: 50.scale)
-        ])
-        
-        NSLayoutConstraint.activate([
-            chatsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -78.scale),
-            chatsButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -48.scale),
-            chatsButton.widthAnchor.constraint(equalToConstant: 50.scale),
-            chatsButton.heightAnchor.constraint(equalToConstant: 50.scale)
+            tabBarView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            tabBarView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tabBarView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            tabBarView.heightAnchor.constraint(equalToConstant: 96.scale)
         ])
     }
 }
@@ -64,26 +46,17 @@ private extension MainView {
 // MARK: Lazy initialization
 
 private extension MainView {
-    func makePageContainerView() -> UIView {
+    func makeScreensContainerView() -> UIView {
         let view = UIView()
-        view.backgroundColor = .clear
+        view.backgroundColor = UIColor.white.withAlphaComponent(0.8)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
     }
     
-    func makeButtonsBackgroundView() -> UIImageView {
-        let view = UIImageView()
-        view.contentMode = .scaleToFill
-        view.clipsToBounds = true
-        view.image = UIImage(named: "gard")
-        view.translatesAutoresizingMaskIntoConstraints = false 
-        addSubview(view)
-        return view
-    }
-    
-    func makeButton() -> UIButton {
-        let view = UIButton()
+    func makeTabBarView() -> MainTabBarView {
+        let view = MainTabBarView()
+        view.backgroundColor = UIColor.white
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

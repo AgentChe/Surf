@@ -57,3 +57,7 @@
 "ConfirmCode.WeJustSentTo" = "We've just sent to\n%@";
 "ConfirmCode.SendNewCode" = "Send a New Code";
 "ConfirmCode.CodeIncorrect" = "The code is\nincorrect.";
+
+// MARK: Main tab bar
+"MainTabBar.Search" = "Surf";
+"MainTabBar.Chats" = "Chats";
