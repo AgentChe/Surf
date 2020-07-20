@@ -69,7 +69,7 @@ private extension OnboardingNameView {
 private extension OnboardingNameView {
     func makeConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 120.scale),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: ScreenSize.isIphoneXFamily ? 120.scale : 80.scale),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 36.scale),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -36.scale)
         ])
@@ -134,6 +134,7 @@ private extension OnboardingNameView {
         view.textColor = .black
         view.font = Font.OpenSans.regular(size: 24.scale)
         view.autocapitalizationType = .sentences
+        view.autocorrectionType = .no
         view.layer.shadowRadius = 9.0.scale
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOffset = CGSize(width: 3.scale, height: 3.scale)

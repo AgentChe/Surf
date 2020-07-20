@@ -8,8 +8,10 @@
 
 protocol ProfileTableActionDelegate: class {
     func profileTable(selected direct: ProfileTableDirection)
+    func profileTable(changed lookingFor: [Gender], minAge: Int, maxAge: Int)
 }
 
 extension ProfileTableActionDelegate {
     func profileTable(selected direct: ProfileTableDirection) {}
+    func profileTable(changed lookingFor: [Gender], minAge: Int, maxAge: Int) {}
 }

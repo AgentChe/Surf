@@ -10,6 +10,11 @@ import RxSwift
 import RxCocoa
 
 final class ProfileViewModel {
+    let activityIndicator = RxActivityIndicator()
+    
+    let restorePurchases = PublishRelay<Void>()
+    let updateLookingFor = PublishRelay<([Gender], Int, Int)>()
+    
     func sections() -> Driver<[ProfileTableSection]> {
         ProfileService
             .retrieve()
@@ -23,9 +28,27 @@ final class ProfileViewModel {
             .asDriver(onErrorJustReturn: [])
     }
     
-    func restorePurchases() -> Driver<Bool> {
-        PurchaseService.shared
-            .paymentValidate()
+    func restoredPurchases() -> Driver<Bool> {
+        restorePurchases
+            .flatMapLatest { [activityIndicator] _ -> Observable<Bool> in
+                PurchaseService.shared
+                    .paymentValidate()
+                    .trackActivity(activityIndicator)
+                    .catchErrorJustReturn(false)
+            }
+            .asDriver(onErrorJustReturn: false)
+    }
+    
+    func updatedLookingFor() -> Driver<Bool> {
+        updateLookingFor
+            .debounce(.milliseconds(500), scheduler: MainScheduler.asyncInstance)
+            .flatMapLatest { bundle -> Single<Bool> in
+                let (lookingFor, minAge, maxAge) = bundle
+                
+                return ProfileService
+                    .change(lookingFor: lookingFor, minAge: minAge, maxAge: maxAge)
+                    .catchErrorJustReturn(false)
+            }
             .asDriver(onErrorJustReturn: false)
     }
 }
@@ -42,14 +65,20 @@ private extension ProfileViewModel {
         let section1 = ProfileTableSection(items: [personalItem])
         result.append(section1)
         
+        let lookingForItem = ProfileTableItem.lookingFor(genders: profile.lookingFor,
+                                                         minAge: profile.minAge ?? 18,
+                                                         maxAge: profile.maxAge ?? 60)
+        let section2 = ProfileTableSection(items: [lookingForItem])
+        result.append(section2)
+        
         let clearAllHistoryItem = ProfileTableItem.direction(direction: .clearAllHistory,
                                                              title: "Profile.Direction.ClearAllHistory".localized,
                                                              withIcon: false, maskedCorners: [.layerMinXMinYCorner,
                                                                                               .layerMinXMaxYCorner,
                                                                                               .layerMaxXMinYCorner,
                                                                                               .layerMaxXMaxYCorner])
-        let section2 = ProfileTableSection(items: [clearAllHistoryItem])
-        result.append(section2)
+        let section3 = ProfileTableSection(items: [clearAllHistoryItem])
+        result.append(section3)
         
         let restorePurchasesItem = ProfileTableItem.direction(direction: .restorePurchases,
                                                               title: "Profile.Direction.RestorePurchases".localized,
@@ -63,8 +92,8 @@ private extension ProfileViewModel {
                                                        title: "Profile.Direction.ContactUs".localized,
                                                        withIcon: true,
                                                        maskedCorners: [.layerMinXMaxYCorner, .layerMaxXMaxYCorner])
-        let section3 = ProfileTableSection(items: [restorePurchasesItem, shareSurfItem, contactUsItem])
-        result.append(section3)
+        let section4 = ProfileTableSection(items: [restorePurchasesItem, shareSurfItem, contactUsItem])
+        result.append(section4)
         
         let privacyPolicyItem = ProfileTableItem.direction(direction: .privacyPolicy,
                                                            title: "Profile.Direction.PrivacyPolicy".localized,
@@ -74,8 +103,8 @@ private extension ProfileViewModel {
                                                         title: "Profile.Direction.TermsOfService".localized,
                                                         withIcon: true,
                                                         maskedCorners: [.layerMinXMaxYCorner, .layerMaxXMaxYCorner])
-        let section4 = ProfileTableSection(items: [privacyPolicyItem, termsOfService])
-        result.append(section4)
+        let section5 = ProfileTableSection(items: [privacyPolicyItem, termsOfService])
+        result.append(section5)
         
         return result
     }

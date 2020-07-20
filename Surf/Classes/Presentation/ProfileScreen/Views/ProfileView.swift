@@ -48,6 +48,7 @@ private extension ProfileView {
 private extension ProfileView {
     func makeTableView() -> ProfileTableView {
         let view = ProfileTableView()
+        view.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: ScreenSize.isIphoneXFamily ? 10.scale : 30.scale, right: 0)
         view.backgroundColor = UIColor(red: 240 / 255, green: 240 / 255, blue: 242 / 255, alpha: 1)
         view.separatorStyle = .none
         view.allowsSelection = false

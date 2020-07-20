@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 final class ProfileViewController: UIViewController {
     var profileView = ProfileView()
@@ -28,9 +29,35 @@ final class ProfileViewController: UIViewController {
         profileView.tableView.actionDelegate = self
         
         viewModel
+            .activityIndicator
+            .drive(onNext: { [weak self] isLoading in
+                isLoading ? self?.profileView.activityIndicator.startAnimating() : self?.profileView.activityIndicator.stopAnimating()
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel
             .sections()
             .drive(onNext: { [weak self] sections in
                 self?.profileView.tableView.setup(sections: sections)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel
+            .restoredPurchases()
+            .drive(onNext: {
+                Toast.notify(with: $0 ? "Profile.RestorePurchases.Success".localized : "Profile.RestorePurchases.Failure".localized,
+                             style: $0 ? .success : .danger)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel
+            .updatedLookingFor()
+            .drive(onNext: {
+                guard !$0 else {
+                    return
+                }
+                
+                Toast.notify(with: "Profile.UpdateLookingFor.Failure".localized, style: .danger)
             })
             .disposed(by: disposeBag)
     }
@@ -52,7 +79,7 @@ extension ProfileViewController: ProfileTableActionDelegate {
         case .clearAllHistory:
             break
         case .restorePurchases:
-            restorePurchases()
+            viewModel.restorePurchases.accept(Void())
         case .shareSurf:
             share()
         case .contactUs:
@@ -63,25 +90,15 @@ extension ProfileViewController: ProfileTableActionDelegate {
             openWeb(with: GlobalDefinitions.TermsOfService.termsUrl)
         }
     }
+    
+    func profileTable(changed lookingFor: [Gender], minAge: Int, maxAge: Int) {
+        viewModel.updateLookingFor.accept((lookingFor, minAge, maxAge))
+    }
 }
 
 // MARK: Private
 
 private extension ProfileViewController {
-    func restorePurchases() {
-        profileView.activityIndicator.startAnimating()
-        
-        viewModel
-            .restorePurchases()
-            .drive(onNext: { [weak self] success in
-                self?.profileView.activityIndicator.stopAnimating()
-
-                Toast.notify(with: success ? "Profile.RestorePurchases.Success".localized : "Profile.RestorePurchases.Failure".localized,
-                             style: success ? .success : .danger)
-            })
-            .disposed(by: disposeBag)
-    }
-    
     func openWeb(with path: String) {
         guard let url = URL(string: path) else {
             return

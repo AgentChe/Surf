@@ -64,6 +64,16 @@ extension ProfileService {
                                                    pushNotificationsToken: pushNotificationsToken))
             .map { (try? !CheckResponseForError.isError(jsonResponse: $0)) ?? false }
     }
+    
+    static func change(lookingFor: [Gender], minAge: Int, maxAge: Int) -> Single<Bool> {
+        guard let userToken = SessionService.shared.userToken else {
+            return .deferred { .just(false) }
+        }
+        
+        return RestAPITransport()
+            .callServerApi(requestBody: SetRequest(userToken: userToken, lookingFor: GenderMapper.lookingForCode(from: lookingFor), minAge: minAge, maxAge: maxAge))
+            .map { (try? !CheckResponseForError.isError(jsonResponse: $0)) ?? false }
+    }
 }
 
 // MARK: Emoji

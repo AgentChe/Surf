@@ -85,3 +85,9 @@
 "Profile.Direction.TermsOfService" = "Terms of Service";
 "Profile.RestorePurchases.Success" = "Purchases have been restored";
 "Profile.RestorePurchases.Failure" = "Failed to restore purchases";
+"Profile.ShowMe.Title" = "Show me";
+"Profile.ShowMe.Years" = "y.o.";
+"Profile.ShowMe.Girls" = "Girls";
+"Profile.ShowMe.Guys" = "Guys";
+"Profile.ShowMe.Both" = "Both";
+"Profile.UpdateLookingFor.Failure" = "Failed to update show me parameters";

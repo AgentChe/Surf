@@ -121,6 +121,7 @@ PODS:
     - SnapKit (~> 5.0.0)
   - PromisesObjC (1.2.8)
   - Protobuf (3.11.4)
+  - RangeSeekSlider (1.8.0)
   - RxCocoa (5.1.0):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
@@ -141,6 +142,7 @@ DEPENDENCIES:
   - Firebase/Messaging
   - Kingfisher
   - NotificationBannerSwift
+  - RangeSeekSlider
   - RxCocoa
   - RxSwift
   - Starscream
@@ -174,6 +176,7 @@ SPEC REPOS:
     - NotificationBannerSwift
     - PromisesObjC
     - Protobuf
+    - RangeSeekSlider
     - RxCocoa
     - RxRelay
     - RxSwift
@@ -208,6 +211,7 @@ SPEC CHECKSUMS:
   NotificationBannerSwift: 713e20f21b6105f4a36a00e5d9fa414a930d3d8e
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
+  RangeSeekSlider: 650b11fa1edcb92e1e0ede797669d98622570fb5
   RxCocoa: 13d2a4d7546a34b8ececae8c281e4ea1dbb94f2b
   RxRelay: a168bd6caf712d00c676ac344e9295afc93b418e
   RxSwift: ad5874f24bb0dbffd1e9bb8443604e3578796c7a
@@ -215,6 +219,6 @@ SPEC CHECKSUMS:
   Starscream: ef06f0961fff0880bca0604416d61141e4faca67
   SwiftyStoreKit: 033d06b6f87955405d3f844a18a7687c2438592a
 
-PODFILE CHECKSUM: 954d24edaddbeb274745367a2f62cc759c2c9523
+PODFILE CHECKSUM: 6959e6759e542b6e617fddd24cac0cd70f5f500f
 
 COCOAPODS: 1.9.3

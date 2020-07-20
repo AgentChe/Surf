@@ -18,6 +18,7 @@ final class ProfileTableView: UITableView {
         
         register(ProfilePersonalTableCell.self, forCellReuseIdentifier: String(describing: ProfilePersonalTableCell.self))
         register(ProfileTableDirectionCell.self, forCellReuseIdentifier: String(describing: ProfileTableDirectionCell.self))
+        register(ProfileTableLookingForCell.self, forCellReuseIdentifier: String(describing: ProfileTableLookingForCell.self))
         
         dataSource = self
         delegate = self
@@ -59,6 +60,11 @@ extension ProfileTableView: UITableViewDataSource {
             cell.actionDelegate = actionDelegate
             cell.setup(direction: direction, title: title, withIcon: withIcon, maskedCorners: maskedCorners)
             return cell
+        case .lookingFor(let genders, let minAge, let maxAge):
+            let cell = dequeueReusableCell(withIdentifier: String(describing: ProfileTableLookingForCell.self), for: indexPath) as! ProfileTableLookingForCell
+            cell.actionDelegate = actionDelegate
+            cell.setup(lookingFor: genders, minAge: minAge, maxAge: maxAge)
+            return cell
         }
     }
 }
@@ -66,6 +72,19 @@ extension ProfileTableView: UITableViewDataSource {
 // MARK: UITableViewDelegate
 
 extension ProfileTableView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let item = sections[indexPath.section].items[indexPath.row]
+        
+        switch item {
+        case .direction:
+            return 48.scale
+        case .lookingFor:
+            return 197.scale
+        default:
+            return UITableView.automaticDimension
+        }
+    }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch section {
         case 0:

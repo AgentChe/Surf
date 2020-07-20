@@ -20,6 +20,7 @@ target 'Surf' do
   pod 'Amplitude-iOS'
   
   pod 'NotificationBannerSwift'
+  pod 'RangeSeekSlider'
   
   pod 'Firebase/Messaging'
   pod 'Firebase/Crashlytics'

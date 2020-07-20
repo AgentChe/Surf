@@ -9,11 +9,11 @@
 import UIKit
 
 final class ProfileTableDirectionCell: UITableViewCell {
+    weak var actionDelegate: ProfileTableActionDelegate?
+    
     lazy var containerView = makeContainerView()
     lazy var directionLabel = makeDirectionLabel()
     lazy var directionIcon = makeDirectionIcon()
-    
-    weak var actionDelegate: ProfileTableActionDelegate?
     
     private var direction: ProfileTableDirection!
     
@@ -61,8 +61,7 @@ private extension ProfileTableDirectionCell {
         NSLayoutConstraint.activate([
             directionLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16.scale),
             directionLabel.trailingAnchor.constraint(equalTo: directionIcon.leadingAnchor, constant:  -16.scale),
-            directionLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 13.scale),
-            directionLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -13.scale)
+            directionLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor)
         ])
         
         NSLayoutConstraint.activate([

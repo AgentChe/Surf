@@ -48,7 +48,7 @@ extension Profile: Model {
         email = try data.decode(String.self, forKey: .email)
         name = try data.decode(String.self, forKey: .name)
     
-        // TODO
+        // TODO: Replace date from json
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         guard let birthdate = dateFormatter.date(from: "1992-05-22") else {
