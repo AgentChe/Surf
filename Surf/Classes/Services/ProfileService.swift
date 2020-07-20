@@ -8,7 +8,40 @@
 
 import RxSwift
 
-final class ProfileService {}
+final class ProfileService {
+    private struct Constants {
+        static let profileKey = "profile_cached_key"
+    }
+}
+
+//  MARK: Retrieve
+
+extension ProfileService {
+    static func retrieve() -> Single<Profile?> {
+        guard let userToken = SessionService.shared.userToken else {
+            return .deferred { .just(nil) }
+        }
+        
+        return RestAPITransport()
+            .callServerApi(requestBody: GetProfileRequest(userToken: userToken))
+            .map { Profile.parseFromDictionary(any: $0) }
+            .do(onSuccess: { profile in
+                guard let profile = profile, let data = try? Profile.encode(object: profile) else {
+                    return
+                }
+                
+                UserDefaults.standard.set(data, forKey: Constants.profileKey)
+            })
+    }
+    
+    static func get() -> Profile? {
+        guard let data = UserDefaults.standard.data(forKey: Constants.profileKey) else {
+            return nil
+        }
+        
+        return try? Profile.parse(from: data)
+    }
+}
 
 // MARK: Set
 

@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		3AE3E10436F736DF84CFB9AC /* Pods_Surf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D476E91FC71BFA0464962B8 /* Pods_Surf.framework */; };
+		960183E324C4E2BB005AD038 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960183E224C4E2BB005AD038 /* ProfileViewModel.swift */; };
+		960183E624C4E309005AD038 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960183E524C4E309005AD038 /* ProfileView.swift */; };
+		960814F524C4E5CD00992DFB /* ProfileTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960814F424C4E5CD00992DFB /* ProfileTableView.swift */; };
+		960814F824C4E68A00992DFB /* ProfilePersonalTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960814F724C4E68A00992DFB /* ProfilePersonalTableCell.swift */; };
+		960814FA24C4EB5500992DFB /* ZodiacSignMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960814F924C4EB5500992DFB /* ZodiacSignMapper.swift */; };
+		960814FC24C4ED2000992DFB /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960814FB24C4ED2000992DFB /* Profile.swift */; };
+		960814FE24C4F8EE00992DFB /* GetProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960814FD24C4F8EE00992DFB /* GetProfileRequest.swift */; };
+		9608150124C4FDC400992DFB /* ProfileTableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9608150024C4FDC400992DFB /* ProfileTableSection.swift */; };
+		9608150324C4FDE600992DFB /* ProfileTableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9608150224C4FDE600992DFB /* ProfileTableItem.swift */; };
 		963F54B624B8939F0063D615 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F54B524B8939F0063D615 /* AppDelegate.swift */; };
 		963F54BF24B893A10063D615 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 963F54BE24B893A10063D615 /* Assets.xcassets */; };
 		963F54C224B893A10063D615 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963F54C024B893A10063D615 /* LaunchScreen.storyboard */; };
@@ -183,6 +192,15 @@
 		1D33BE2A16FFF9A5A90838DB /* Pods-Surf.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surf.release.xcconfig"; path = "Target Support Files/Pods-Surf/Pods-Surf.release.xcconfig"; sourceTree = "<group>"; };
 		406B15797879BD9C335CBEB2 /* Pods-Surf.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surf.debug.xcconfig"; path = "Target Support Files/Pods-Surf/Pods-Surf.debug.xcconfig"; sourceTree = "<group>"; };
 		8D476E91FC71BFA0464962B8 /* Pods_Surf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Surf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		960183E224C4E2BB005AD038 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		960183E524C4E309005AD038 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		960814F424C4E5CD00992DFB /* ProfileTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableView.swift; sourceTree = "<group>"; };
+		960814F724C4E68A00992DFB /* ProfilePersonalTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePersonalTableCell.swift; sourceTree = "<group>"; };
+		960814F924C4EB5500992DFB /* ZodiacSignMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZodiacSignMapper.swift; sourceTree = "<group>"; };
+		960814FB24C4ED2000992DFB /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		960814FD24C4F8EE00992DFB /* GetProfileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProfileRequest.swift; sourceTree = "<group>"; };
+		9608150024C4FDC400992DFB /* ProfileTableSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableSection.swift; sourceTree = "<group>"; };
+		9608150224C4FDE600992DFB /* ProfileTableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableItem.swift; sourceTree = "<group>"; };
 		963F54B224B8939F0063D615 /* Surf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Surf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		963F54B524B8939F0063D615 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		963F54BE24B893A10063D615 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -370,6 +388,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		960183E424C4E2FC005AD038 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				960814F324C4E4A500992DFB /* TableView */,
+				960183E524C4E309005AD038 /* ProfileView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		960814F324C4E4A500992DFB /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				960814FF24C4FD4800992DFB /* Elements */,
+				960814F624C4E64A00992DFB /* Cells */,
+				960814F424C4E5CD00992DFB /* ProfileTableView.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		960814F624C4E64A00992DFB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				960814F724C4E68A00992DFB /* ProfilePersonalTableCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		960814FF24C4FD4800992DFB /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				9608150024C4FDC400992DFB /* ProfileTableSection.swift */,
+				9608150224C4FDE600992DFB /* ProfileTableItem.swift */,
+			);
+			path = Elements;
+			sourceTree = "<group>";
+		};
 		963F54A924B8939F0063D615 = {
 			isa = PBXGroup;
 			children = (
@@ -585,6 +639,7 @@
 				963F591824BCD02E0063D615 /* CheckUserTokenRequest.swift */,
 				963F591924BCD02E0063D615 /* AddSearchAdsInfoRequest.swift */,
 				963F591A24BCD02E0063D615 /* SetRequest.swift */,
+				960814FD24C4F8EE00992DFB /* GetProfileRequest.swift */,
 			);
 			path = RequestBody;
 			sourceTree = "<group>";
@@ -784,7 +839,9 @@
 		963F596D24BCD02E0063D615 /* ProfileScreen */ = {
 			isa = PBXGroup;
 			children = (
+				960183E424C4E2FC005AD038 /* Views */,
 				963F597224BCD02E0063D615 /* ProfileViewController.swift */,
+				960183E224C4E2BB005AD038 /* ProfileViewModel.swift */,
 			);
 			path = ProfileScreen;
 			sourceTree = "<group>";
@@ -966,6 +1023,7 @@
 			children = (
 				9648701424C30EB90084CC2D /* GenderMapper.swift */,
 				9648701624C315190084CC2D /* EmojiMapper.swift */,
+				960814F924C4EB5500992DFB /* ZodiacSignMapper.swift */,
 			);
 			path = Personal;
 			sourceTree = "<group>";
@@ -1073,6 +1131,7 @@
 				965588E024BF287A00D6EB83 /* Gender.swift */,
 				9655985F24C05C570022931D /* ZodiacSign.swift */,
 				9655986124C05DDC0022931D /* Zodiac.swift */,
+				960814FB24C4ED2000992DFB /* Profile.swift */,
 			);
 			path = Personal;
 			sourceTree = "<group>";
@@ -1252,6 +1311,8 @@
 				963F59E824BCD02E0063D615 /* SetRequest.swift in Sources */,
 				963F59D324BCD02E0063D615 /* ProposedInterlocutor.swift in Sources */,
 				963F59CE24BCD02E0063D615 /* MessageTransformation.swift in Sources */,
+				960814FA24C4EB5500992DFB /* ZodiacSignMapper.swift in Sources */,
+				9608150324C4FDE600992DFB /* ProfileTableItem.swift in Sources */,
 				963F59DE24BCD02E0063D615 /* GetPaygateRequest.swift in Sources */,
 				965588CE24BEF9A000D6EB83 /* PaddingTextField.swift in Sources */,
 				963F5A2724BCD02F0063D615 /* ChatInputPlaceholderTextView.swift in Sources */,
@@ -1271,6 +1332,7 @@
 				963F5A3924BCD02F0063D615 /* ProductPrice.swift in Sources */,
 				963F5A0524BCD02F0063D615 /* OnboardingViewModel.swift in Sources */,
 				963F59C124BCD02E0063D615 /* PhotosSlider.swift in Sources */,
+				960814F824C4E68A00992DFB /* ProfilePersonalTableCell.swift in Sources */,
 				963F5A4224BCD02F0063D615 /* AmplitudeAnalytics.swift in Sources */,
 				9648702124C4490B0084CC2D /* MainView.swift in Sources */,
 				963F5A3624BCD02F0063D615 /* AppStateProxy.swift in Sources */,
@@ -1282,6 +1344,8 @@
 				963F5A2624BCD02F0063D615 /* ChatAttachView.swift in Sources */,
 				963F5A2824BCD02F0063D615 /* ChatInpuTextView.swift in Sources */,
 				963F59E524BCD02E0063D615 /* PurchaseValidateRequest.swift in Sources */,
+				960814F524C4E5CD00992DFB /* ProfileTableView.swift in Sources */,
+				960183E624C4E309005AD038 /* ProfileView.swift in Sources */,
 				963F5A3024BCD02F0063D615 /* ChatTableView.swift in Sources */,
 				963F5A3A24BCD02F0063D615 /* PurchaseService.swift in Sources */,
 				963F59C724BCD02E0063D615 /* ChatTransformation.swift in Sources */,
@@ -1315,7 +1379,9 @@
 				963F5A1124BCD02F0063D615 /* ChatsView.swift in Sources */,
 				963F5A0124BCD02E0063D615 /* OnboardingWelcomeView.swift in Sources */,
 				963F5A3224BCD02F0063D615 /* ImageService.swift in Sources */,
+				9608150124C4FDC400992DFB /* ProfileTableSection.swift in Sources */,
 				963F59FB24BCD02E0063D615 /* WelcomeViewController.swift in Sources */,
+				960183E324C4E2BB005AD038 /* ProfileViewModel.swift in Sources */,
 				963F59C824BCD02E0063D615 /* Paygate.swift in Sources */,
 				963F5A2424BCD02F0063D615 /* ChatViewModel.swift in Sources */,
 				9655986624C05F1D0022931D /* ZodiacManager.swift in Sources */,
@@ -1358,6 +1424,7 @@
 				963F59FE24BCD02E0063D615 /* OnboardingPhotosManager.swift in Sources */,
 				963F59B324BCD02E0063D615 /* TextAttributes.swift in Sources */,
 				963F5A1E24BCD02F0063D615 /* ReportViewModel.swift in Sources */,
+				960814FC24C4ED2000992DFB /* Profile.swift in Sources */,
 				963F5A3B24BCD02F0063D615 /* ChatsService.swift in Sources */,
 				963F5A3E24BCD02F0063D615 /* FacebookAnalytics.swift in Sources */,
 				965588DA24BF22A500D6EB83 /* PushNotificationsManager.swift in Sources */,
@@ -1388,6 +1455,7 @@
 				963F5A3D24BCD02F0063D615 /* SessionService.swift in Sources */,
 				963F5A2524BCD02F0063D615 /* ChatAttachCaseView.swift in Sources */,
 				963F59C224BCD02E0063D615 /* PaddingLabel.swift in Sources */,
+				960814FE24C4F8EE00992DFB /* GetProfileRequest.swift in Sources */,
 				963F5A0224BCD02F0063D615 /* OnboardingNotificationsView.swift in Sources */,
 				963F59B824BCD02E0063D615 /* PaginatedDataLoader.swift in Sources */,
 				963F59DF24BCD02E0063D615 /* DislikeProposedInterlocutorRequest.swift in Sources */,

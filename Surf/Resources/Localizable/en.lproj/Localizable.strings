@@ -61,3 +61,17 @@
 // MARK: Main tab bar
 "MainTabBar.Search" = "Surf";
 "MainTabBar.Chats" = "Chats";
+
+// MARK: Zodiac signs
+"ZodiacSign.Scorpio" = "Scorpio";
+"ZodiacSign.Pisces" = "Pisces";
+"ZodiacSign.Libra" = "Libra";
+"ZodiacSign.Sagittarius" = "Sagittarius";
+"ZodiacSign.Leo" = "Leo";
+"ZodiacSign.Capricorn" = "Capricorn";
+"ZodiacSign.Aquarius" = "Aquarius";
+"ZodiacSign.Gemini" = "Gemini";
+"ZodiacSign.Aries" = "Aries";
+"ZodiacSign.Cancer" = "Cancer";
+"ZodiacSign.Taurus" = "Taurus";
+"ZodiacSign.Virgo" = "Virgo";

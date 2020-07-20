@@ -60,4 +60,3 @@ extension Chat: Model {
         interlocutorGalleryPhotos = photos?.compactMap { URL(string: $0) } ?? []
     }
 }
-
