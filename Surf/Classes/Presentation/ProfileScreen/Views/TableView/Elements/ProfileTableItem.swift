@@ -6,8 +6,9 @@
 //  Copyright © 2020 Andrey Chernyshev. All rights reserved.
 //
 
-import Foundation.NSDate
+import UIKit
 
 enum ProfileTableItem {
     case personal(name: String, birthdate: Date, emoji: String)
+    case direction(direction: ProfileTableDirection, title: String, withIcon: Bool, maskedCorners: CACornerMask)
 }

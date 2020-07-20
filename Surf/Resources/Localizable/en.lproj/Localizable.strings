@@ -75,3 +75,11 @@
 "ZodiacSign.Cancer" = "Cancer";
 "ZodiacSign.Taurus" = "Taurus";
 "ZodiacSign.Virgo" = "Virgo";
+
+// MARK: Profile
+"Profile.Direction.ClearAllHistory" = "Clear All History";
+"Profile.Direction.RestorePurchases" = "Restore Purchases";
+"Profile.Direction.ShareSurf" = "Share Surf";
+"Profile.Direction.ContactUs" = "Contact Us";
+"Profile.Direction.PrivacyPolicy" = "Privacy Policy";
+"Profile.Direction.TermsOfService" = "Terms of Service";

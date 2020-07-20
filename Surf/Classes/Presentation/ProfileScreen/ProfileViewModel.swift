@@ -33,8 +33,43 @@ private extension ProfileViewModel {
         let personalItem = ProfileTableItem.personal(name: profile.name,
                                                      birthdate: profile.birthdate,
                                                      emoji: profile.emoji)
-        let personalSection = ProfileTableSection(items: [personalItem])
-        result.append(personalSection)
+        let section1 = ProfileTableSection(items: [personalItem])
+        result.append(section1)
+        
+        let clearAllHistoryItem = ProfileTableItem.direction(direction: .clearAllHistory,
+                                                             title: "Profile.Direction.ClearAllHistory".localized,
+                                                             withIcon: false, maskedCorners: [.layerMinXMinYCorner,
+                                                                                              .layerMinXMaxYCorner,
+                                                                                              .layerMaxXMinYCorner,
+                                                                                              .layerMaxXMaxYCorner])
+        let section2 = ProfileTableSection(items: [clearAllHistoryItem])
+        result.append(section2)
+        
+        let restorePurchasesItem = ProfileTableItem.direction(direction: .restorePurchases,
+                                                              title: "Profile.Direction.RestorePurchases".localized,
+                                                              withIcon: true,
+                                                              maskedCorners: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
+        let shareSurfItem = ProfileTableItem.direction(direction: .shareSurf,
+                                                       title: "Profile.Direction.ShareSurf".localized,
+                                                       withIcon: true,
+                                                       maskedCorners: [])
+        let contactUsItem = ProfileTableItem.direction(direction: .contactUs,
+                                                       title: "Profile.Direction.ContactUs".localized,
+                                                       withIcon: true,
+                                                       maskedCorners: [.layerMinXMaxYCorner, .layerMaxXMaxYCorner])
+        let section3 = ProfileTableSection(items: [restorePurchasesItem, shareSurfItem, contactUsItem])
+        result.append(section3)
+        
+        let privacyPolicyItem = ProfileTableItem.direction(direction: .privacyPolicy,
+                                                           title: "Profile.Direction.PrivacyPolicy".localized,
+                                                           withIcon: true,
+                                                           maskedCorners: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
+        let termsOfService = ProfileTableItem.direction(direction: .termsOfService,
+                                                        title: "Profile.Direction.TermsOfService".localized,
+                                                        withIcon: true,
+                                                        maskedCorners: [.layerMinXMaxYCorner, .layerMaxXMaxYCorner])
+        let section4 = ProfileTableSection(items: [privacyPolicyItem, termsOfService])
+        result.append(section4)
         
         return result
     }

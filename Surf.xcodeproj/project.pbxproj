@@ -186,6 +186,8 @@
 		9655986224C05DDC0022931D /* Zodiac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9655986124C05DDC0022931D /* Zodiac.swift */; };
 		9655986624C05F1D0022931D /* ZodiacManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9655986524C05F1D0022931D /* ZodiacManager.swift */; };
 		96A1BC8C24C04D010043DCCC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 96A1BC8B24C04D010043DCCC /* GoogleService-Info.plist */; };
+		96E43E9124C5B16700831DC3 /* ProfileTableDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E43E9024C5B16700831DC3 /* ProfileTableDirection.swift */; };
+		96E43E9324C5B21700831DC3 /* ProfileTableDirectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E43E9224C5B21700831DC3 /* ProfileTableDirectionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -373,6 +375,8 @@
 		9655986124C05DDC0022931D /* Zodiac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zodiac.swift; sourceTree = "<group>"; };
 		9655986524C05F1D0022931D /* ZodiacManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZodiacManager.swift; sourceTree = "<group>"; };
 		96A1BC8B24C04D010043DCCC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		96E43E9024C5B16700831DC3 /* ProfileTableDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableDirection.swift; sourceTree = "<group>"; };
+		96E43E9224C5B21700831DC3 /* ProfileTableDirectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableDirectionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -411,6 +415,7 @@
 			isa = PBXGroup;
 			children = (
 				960814F724C4E68A00992DFB /* ProfilePersonalTableCell.swift */,
+				96E43E9224C5B21700831DC3 /* ProfileTableDirectionCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -420,6 +425,7 @@
 			children = (
 				9608150024C4FDC400992DFB /* ProfileTableSection.swift */,
 				9608150224C4FDE600992DFB /* ProfileTableItem.swift */,
+				96E43E9024C5B16700831DC3 /* ProfileTableDirection.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -1312,6 +1318,7 @@
 				963F59D324BCD02E0063D615 /* ProposedInterlocutor.swift in Sources */,
 				963F59CE24BCD02E0063D615 /* MessageTransformation.swift in Sources */,
 				960814FA24C4EB5500992DFB /* ZodiacSignMapper.swift in Sources */,
+				96E43E9124C5B16700831DC3 /* ProfileTableDirection.swift in Sources */,
 				9608150324C4FDE600992DFB /* ProfileTableItem.swift in Sources */,
 				963F59DE24BCD02E0063D615 /* GetPaygateRequest.swift in Sources */,
 				965588CE24BEF9A000D6EB83 /* PaddingTextField.swift in Sources */,
@@ -1419,6 +1426,7 @@
 				963F5A0024BCD02E0063D615 /* OnboardingNameView.swift in Sources */,
 				963F59F224BCD02E0063D615 /* SurfNavigationController.swift in Sources */,
 				963F5A0824BCD02F0063D615 /* PaygateViewController.swift in Sources */,
+				96E43E9324C5B21700831DC3 /* ProfileTableDirectionCell.swift in Sources */,
 				963F59D924BCD02E0063D615 /* ConfirmCodeRequest.swift in Sources */,
 				963F59D024BCD02E0063D615 /* Model.swift in Sources */,
 				963F59FE24BCD02E0063D615 /* OnboardingPhotosManager.swift in Sources */,
