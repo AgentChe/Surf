@@ -9,8 +9,9 @@
 import UIKit
 
 final class ProfileTableView: UITableView {
-    private var sections = [ProfileTableSection]()
+    weak var actionDelegate: ProfileTableActionDelegate?
     
+    private var sections = [ProfileTableSection]()
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -55,6 +56,7 @@ extension ProfileTableView: UITableViewDataSource {
             return cell
         case .direction(let direction, let title, let withIcon, let maskedCorners):
             let cell = dequeueReusableCell(withIdentifier: String(describing: ProfileTableDirectionCell.self), for: indexPath) as! ProfileTableDirectionCell
+            cell.actionDelegate = actionDelegate
             cell.setup(direction: direction, title: title, withIcon: withIcon, maskedCorners: maskedCorners)
             return cell
         }

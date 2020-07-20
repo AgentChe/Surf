@@ -22,6 +22,12 @@ final class ProfileViewModel {
             }
             .asDriver(onErrorJustReturn: [])
     }
+    
+    func restorePurchases() -> Driver<Bool> {
+        PurchaseService.shared
+            .paymentValidate()
+            .asDriver(onErrorJustReturn: false)
+    }
 }
 
 // MARK: Private

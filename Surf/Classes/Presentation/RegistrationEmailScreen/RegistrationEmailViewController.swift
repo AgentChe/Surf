@@ -68,7 +68,7 @@ final class RegistrationEmailViewController: UIViewController {
             .step()
             .drive(onNext: { [weak self] step in
                 guard let step = step else {
-                    NotificationView.notify(with: "NoInternetConnection".localized)
+                    Toast.notify(with: "NoInternetConnection".localized, style: .danger)
                     return
                 }
                 

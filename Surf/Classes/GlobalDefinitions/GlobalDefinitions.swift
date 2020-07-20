@@ -33,4 +33,6 @@ final class GlobalDefinitions {
         static let policyUrl = "https://surf.korrekted.com/legal/policy"
         static let contactUrl = "https://surf.korrekted.com/legal/contact"
     }
+    
+    static let appStoreUrl = "https://apps.apple.com/us/app/celestial-motives/id1480953385?l=ru&ls=1"
 }

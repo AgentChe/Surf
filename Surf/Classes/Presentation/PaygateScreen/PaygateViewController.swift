@@ -178,7 +178,7 @@ final class PaygateViewController: UIViewController {
         viewModel
             .error
             .drive(onNext: { error in
-                NotificationView.notify(with: error)
+                Toast.notify(with: error, style: .danger)
             })
             .disposed(by: disposeBag)
         

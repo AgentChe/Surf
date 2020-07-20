@@ -13,6 +13,8 @@ final class ProfileTableDirectionCell: UITableViewCell {
     lazy var directionLabel = makeDirectionLabel()
     lazy var directionIcon = makeDirectionIcon()
     
+    weak var actionDelegate: ProfileTableActionDelegate?
+    
     private var direction: ProfileTableDirection!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -33,6 +35,15 @@ final class ProfileTableDirectionCell: UITableViewCell {
         directionLabel.text = title
         directionIcon.isHidden = !withIcon
         containerView.layer.maskedCorners = maskedCorners
+    }
+}
+
+// MARK: Private
+
+private extension ProfileTableDirectionCell {
+    @objc
+    func tapped() {
+        actionDelegate?.profileTable(selected: direction)
     }
 }
 
@@ -71,8 +82,13 @@ private extension ProfileTableDirectionCell {
         view.backgroundColor = .white
         view.layer.cornerRadius = 9.scale
         view.layer.maskedCorners = []
+        view.isUserInteractionEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapped))
+        view.addGestureRecognizer(tapGesture)
+        
         return view
     }
     

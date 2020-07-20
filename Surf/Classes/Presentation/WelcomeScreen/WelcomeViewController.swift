@@ -30,7 +30,7 @@ final class WelcomeViewController: UIViewController {
         viewModel.authWithFBComplete()
             .drive(onNext: { [weak self] new in
                 guard let isNew = new else {
-                    NotificationView.notify(with: "NoInternetConnection".localized)
+                    Toast.notify(with: "NoInternetConnection".localized, style: .danger)
                     return
                 }
                 

@@ -25,6 +25,8 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        profileView.tableView.actionDelegate = self
+        
         viewModel
             .sections()
             .drive(onNext: { [weak self] sections in
@@ -39,5 +41,62 @@ final class ProfileViewController: UIViewController {
 extension ProfileViewController {
     static func make() -> ProfileViewController {
         ProfileViewController()
+    }
+}
+
+// MARK: ProfileTableActionDelegate
+
+extension ProfileViewController: ProfileTableActionDelegate {
+    func profileTable(selected direct: ProfileTableDirection) {
+        switch direct {
+        case .clearAllHistory:
+            break
+        case .restorePurchases:
+            restorePurchases()
+        case .shareSurf:
+            share()
+        case .contactUs:
+            openWeb(with: GlobalDefinitions.TermsOfService.contactUrl)
+        case .privacyPolicy:
+            openWeb(with: GlobalDefinitions.TermsOfService.policyUrl)
+        case .termsOfService:
+            openWeb(with: GlobalDefinitions.TermsOfService.termsUrl)
+        }
+    }
+}
+
+// MARK: Private
+
+private extension ProfileViewController {
+    func restorePurchases() {
+        profileView.activityIndicator.startAnimating()
+        
+        viewModel
+            .restorePurchases()
+            .drive(onNext: { [weak self] success in
+                self?.profileView.activityIndicator.stopAnimating()
+
+                Toast.notify(with: success ? "Profile.RestorePurchases.Success".localized : "Profile.RestorePurchases.Failure".localized,
+                             style: success ? .success : .danger)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func openWeb(with path: String) {
+        guard let url = URL(string: path) else {
+            return
+        }
+        
+        UIApplication.shared.open(url, options: [:])
+    }
+    
+    func share() {
+        guard let url = URL(string: GlobalDefinitions.appStoreUrl) else {
+            return
+        }
+        
+        let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        
+        present(activityVC, animated: true)
     }
 }

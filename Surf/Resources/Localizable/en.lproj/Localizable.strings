@@ -83,3 +83,5 @@
 "Profile.Direction.ContactUs" = "Contact Us";
 "Profile.Direction.PrivacyPolicy" = "Privacy Policy";
 "Profile.Direction.TermsOfService" = "Terms of Service";
+"Profile.RestorePurchases.Success" = "Purchases have been restored";
+"Profile.RestorePurchases.Failure" = "Failed to restore purchases";

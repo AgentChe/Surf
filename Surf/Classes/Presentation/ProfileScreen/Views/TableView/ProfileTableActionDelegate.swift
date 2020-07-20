@@ -1,0 +1,15 @@
+//
+//  ProfileTableActionDelegate.swift
+//  Surf
+//
+//  Created by Andrey Chernyshev on 20.07.2020.
+//  Copyright © 2020 Andrey Chernyshev. All rights reserved.
+//
+
+protocol ProfileTableActionDelegate: class {
+    func profileTable(selected direct: ProfileTableDirection)
+}
+
+extension ProfileTableActionDelegate {
+    func profileTable(selected direct: ProfileTableDirection) {}
+}

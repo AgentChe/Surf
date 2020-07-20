@@ -129,9 +129,9 @@ extension PurchaseService {
     }
 }
 
-// MARK: Private
+// MARK: Receipt
 
-private extension PurchaseService {
+extension PurchaseService {
     static var receipt: Single<String?> {
         .deferred { .just(SwiftyStoreKit.localReceiptData?.base64EncodedString()) }
     }

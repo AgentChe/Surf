@@ -10,6 +10,7 @@ import UIKit
 
 final class ProfileView: UIView {
     lazy var tableView = makeTableView()
+    lazy var activityIndicator = makeActivityIndicator()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,6 +33,13 @@ private extension ProfileView {
             tableView.topAnchor.constraint(equalTo: topAnchor),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+        
+        NSLayoutConstraint.activate([
+            activityIndicator.leadingAnchor.constraint(equalTo: leadingAnchor),
+            activityIndicator.trailingAnchor.constraint(equalTo: trailingAnchor),
+            activityIndicator.topAnchor.constraint(equalTo: topAnchor),
+            activityIndicator.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
 }
 
@@ -42,7 +50,17 @@ private extension ProfileView {
         let view = ProfileTableView()
         view.backgroundColor = UIColor(red: 240 / 255, green: 240 / 255, blue: 242 / 255, alpha: 1)
         view.separatorStyle = .none
-        view.allowsSelection = false 
+        view.allowsSelection = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeActivityIndicator() -> ProfileFullScreenPreloader {
+        let view = ProfileFullScreenPreloader()
+        view.stopAnimating()
+        view.isUserInteractionEnabled = false
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
