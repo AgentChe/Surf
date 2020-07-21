@@ -195,6 +195,9 @@
 		96E625FF24C6EBC100533C05 /* RemoveAllChatsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E625FE24C6EBC100533C05 /* RemoveAllChatsRequest.swift */; };
 		96E6260224C6ED3F00533C05 /* ChatsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E6260124C6ED3F00533C05 /* ChatsManager.swift */; };
 		96E6260424C6F6AB00533C05 /* ChatsManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E6260324C6F6AB00533C05 /* ChatsManagerDelegate.swift */; };
+		96E6260624C6FE7900533C05 /* CheckUserBannedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E6260524C6FE7900533C05 /* CheckUserBannedRequest.swift */; };
+		96E6260824C702F700533C05 /* CheckUserBannedResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E6260724C702F700533C05 /* CheckUserBannedResponseMapper.swift */; };
+		96E6260D24C7085200533C05 /* BannedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E6260C24C7085200533C05 /* BannedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -391,6 +394,9 @@
 		96E625FE24C6EBC100533C05 /* RemoveAllChatsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveAllChatsRequest.swift; sourceTree = "<group>"; };
 		96E6260124C6ED3F00533C05 /* ChatsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsManager.swift; sourceTree = "<group>"; };
 		96E6260324C6F6AB00533C05 /* ChatsManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsManagerDelegate.swift; sourceTree = "<group>"; };
+		96E6260524C6FE7900533C05 /* CheckUserBannedRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckUserBannedRequest.swift; sourceTree = "<group>"; };
+		96E6260724C702F700533C05 /* CheckUserBannedResponseMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckUserBannedResponseMapper.swift; sourceTree = "<group>"; };
+		96E6260C24C7085200533C05 /* BannedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -596,6 +602,7 @@
 				963F58FA24BCD02E0063D615 /* ProposedInterlocutorTransformation.swift */,
 				963F58FB24BCD02E0063D615 /* CheckResponseForError.swift */,
 				963F58FC24BCD02E0063D615 /* MessageTransformation.swift */,
+				96E6260724C702F700533C05 /* CheckUserBannedResponseMapper.swift */,
 			);
 			path = Transformation;
 			sourceTree = "<group>";
@@ -665,6 +672,7 @@
 				963F591A24BCD02E0063D615 /* SetRequest.swift */,
 				960814FD24C4F8EE00992DFB /* GetProfileRequest.swift */,
 				96E625FE24C6EBC100533C05 /* RemoveAllChatsRequest.swift */,
+				96E6260524C6FE7900533C05 /* CheckUserBannedRequest.swift */,
 			);
 			path = RequestBody;
 			sourceTree = "<group>";
@@ -846,6 +854,7 @@
 		963F596824BCD02E0063D615 /* SplashScreen */ = {
 			isa = PBXGroup;
 			children = (
+				96E6260924C707F200533C05 /* Views */,
 				963F592C24BCD02E0063D615 /* SurfNavigationController.swift */,
 				963F596924BCD02E0063D615 /* SplashViewController.swift */,
 				963F596A24BCD02E0063D615 /* SplashViewModel.swift */,
@@ -1179,6 +1188,14 @@
 			path = Chats;
 			sourceTree = "<group>";
 		};
+		96E6260924C707F200533C05 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				96E6260C24C7085200533C05 /* BannedView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		A640CC0DC9EC606E8ACEE63A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1362,6 +1379,7 @@
 				965588CE24BEF9A000D6EB83 /* PaddingTextField.swift in Sources */,
 				963F5A2724BCD02F0063D615 /* ChatInputPlaceholderTextView.swift in Sources */,
 				963F59D624BCD02E0063D615 /* AppRegisterRequest.swift in Sources */,
+				96E6260624C6FE7900533C05 /* CheckUserBannedRequest.swift in Sources */,
 				965588DD24BF22A500D6EB83 /* PushNotificationsManagerDelegate.swift in Sources */,
 				9648702824C45BCF0084CC2D /* MainTabBarView.swift in Sources */,
 				963F59E024BCD02E0063D615 /* CreateUserRequest.swift in Sources */,
@@ -1379,11 +1397,13 @@
 				963F59C124BCD02E0063D615 /* PhotosSlider.swift in Sources */,
 				960814F824C4E68A00992DFB /* ProfilePersonalTableCell.swift in Sources */,
 				963F5A4224BCD02F0063D615 /* AmplitudeAnalytics.swift in Sources */,
+				96E6260D24C7085200533C05 /* BannedView.swift in Sources */,
 				9648702124C4490B0084CC2D /* MainView.swift in Sources */,
 				96E6260224C6ED3F00533C05 /* ChatsManager.swift in Sources */,
 				963F5A3624BCD02F0063D615 /* AppStateProxy.swift in Sources */,
 				965588DB24BF22A500D6EB83 /* PushNotificationModel.swift in Sources */,
 				963F59DB24BCD02E0063D615 /* FacebookLoginRequest.swift in Sources */,
+				96E6260824C702F700533C05 /* CheckUserBannedResponseMapper.swift in Sources */,
 				963F5A3124BCD02F0063D615 /* ChatInterlocutorView.swift in Sources */,
 				963F59EB24BCD02E0063D615 /* PurchaseError.swift in Sources */,
 				963F59AF24BCD02E0063D615 /* StringExtension.swift in Sources */,

@@ -106,6 +106,20 @@ extension SessionService {
     }
 }
 
+// MARK: Banned
+
+extension SessionService {
+    static func banned() -> Single<Bool?> {
+        guard let userToken = SessionService.shared.userToken else {
+            return .error(NSError())
+        }
+        
+        return RestAPITransport()
+            .callServerApi(requestBody: CheckUserBannedRequest(userToken: userToken))
+            .map { CheckUserBannedResponseMapper.banned(response: $0) } 
+    }
+}
+
 // MARK: Private
 
 private extension SessionService {

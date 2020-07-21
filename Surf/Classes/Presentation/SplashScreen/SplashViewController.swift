@@ -10,7 +10,8 @@ import UIKit
 import RxSwift
 
 final class SplashViewController: UIViewController {
-    private lazy var label = makeLabel()
+    lazy var label = makeLabel()
+    lazy var bannedView = makeBannedView()
     
     private let viewModel = SplashViewModel()
     
@@ -33,6 +34,8 @@ final class SplashViewController: UIViewController {
                 }
 
                 switch step {
+                case .banned:
+                    self?.bannedView.isHidden = false
                 case .main:
                     self?.goToMainScreen()
                 case .registration:
@@ -72,6 +75,13 @@ private extension SplashViewController {
             label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16.scale),
             label.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
+        
+        NSLayoutConstraint.activate([
+            bannedView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            bannedView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            bannedView.topAnchor.constraint(equalTo: view.topAnchor),
+            bannedView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
 }
 
@@ -85,6 +95,15 @@ private extension SplashViewController {
         view.text = "Splash.Surf".localized
         view.font = Font.OpenSans.bold(size: 66)
         view.textColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(view)
+        return view
+    }
+    
+    func makeBannedView() -> BannedView {
+        let view = BannedView()
+        view.backgroundColor = .white
+        view.isHidden = true
         view.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(view)
         return view

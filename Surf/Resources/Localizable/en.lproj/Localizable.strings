@@ -18,6 +18,7 @@
 
 // MARK: Splash
 "Splash.Surf" = "SURF";
+"Splash.Banned" = "Sorry. Your\nAccount's Been\nDisabled.";
 
 // MARK: Onboarding
 "Onboarding.I'Am" = "I am...";

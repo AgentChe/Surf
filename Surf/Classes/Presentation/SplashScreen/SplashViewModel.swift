@@ -11,7 +11,7 @@ import RxCocoa
 
 final class SplashViewModel {
     enum Step {
-        case registration, main
+        case banned, registration, main
     }
     
     func step() -> Driver<Step?> {
@@ -20,8 +20,20 @@ final class SplashViewModel {
         }
         
         return SessionService
-            .check(token: userToken)
-            .map { $0 ? Step.main : Step.registration }
+            .banned()
+            .flatMap { banned -> Single<Step?> in
+                guard let banned = banned else {
+                    return .deferred { .just(nil) }
+                }
+                
+                if banned {
+                    return .deferred { .just(.banned) }
+                }
+                
+                return SessionService
+                    .check(token: userToken)
+                    .map { $0 ? Step.main : Step.registration }
+            }
             .asDriver(onErrorJustReturn: nil)
     }
 }
