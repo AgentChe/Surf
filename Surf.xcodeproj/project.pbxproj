@@ -656,27 +656,18 @@
 		963F590624BCD02E0063D615 /* RequestBody */ = {
 			isa = PBXGroup;
 			children = (
+				96CD2AE824C740C00026A1DA /* Profile */,
+				96CD2AE724C740820026A1DA /* Analytics */,
+				96CD2AE524C73FF20026A1DA /* CreateUser */,
+				96CD2AE424C73FE70026A1DA /* Search */,
 				963F590724BCD02E0063D615 /* GetMessagesRequest.swift */,
-				963F590824BCD02E0063D615 /* AppRegisterRequest.swift */,
 				963F590924BCD02E0063D615 /* GetChatsRequest.swift */,
-				963F590A24BCD02E0063D615 /* RandomizeEmojiRequest.swift */,
-				963F590B24BCD02E0063D615 /* ConfirmCodeRequest.swift */,
 				963F590C24BCD02E0063D615 /* PaygatePingRequest.swift */,
-				963F590D24BCD02E0063D615 /* FacebookLoginRequest.swift */,
 				963F590E24BCD02E0063D615 /* APIRequestBody.swift */,
-				963F590F24BCD02E0063D615 /* GetProposedInterlocutorsRequest.swift */,
 				963F591024BCD02E0063D615 /* GetPaygateRequest.swift */,
-				963F591124BCD02E0063D615 /* DislikeProposedInterlocutorRequest.swift */,
-				963F591224BCD02E0063D615 /* CreateUserRequest.swift */,
-				963F591324BCD02E0063D615 /* RequireConfirmCodeRequest.swift */,
-				963F591424BCD02E0063D615 /* LikeProposedInterlocutorRequest.swift */,
-				963F591524BCD02E0063D615 /* UnmatchRequest.swift */,
-				963F591624BCD02E0063D615 /* CreateReportRequest.swift */,
 				963F591724BCD02E0063D615 /* PurchaseValidateRequest.swift */,
-				963F591824BCD02E0063D615 /* CheckUserTokenRequest.swift */,
-				963F591924BCD02E0063D615 /* AddSearchAdsInfoRequest.swift */,
 				963F591A24BCD02E0063D615 /* SetRequest.swift */,
-				960814FD24C4F8EE00992DFB /* GetProfileRequest.swift */,
+				963F591824BCD02E0063D615 /* CheckUserTokenRequest.swift */,
 				96E625FE24C6EBC100533C05 /* RemoveAllChatsRequest.swift */,
 				96E6260524C6FE7900533C05 /* CheckUserBannedRequest.swift */,
 			);
@@ -1176,6 +1167,47 @@
 				960814FB24C4ED2000992DFB /* Profile.swift */,
 			);
 			path = Personal;
+			sourceTree = "<group>";
+		};
+		96CD2AE424C73FE70026A1DA /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				963F591624BCD02E0063D615 /* CreateReportRequest.swift */,
+				963F591524BCD02E0063D615 /* UnmatchRequest.swift */,
+				963F591124BCD02E0063D615 /* DislikeProposedInterlocutorRequest.swift */,
+				963F591424BCD02E0063D615 /* LikeProposedInterlocutorRequest.swift */,
+				963F590F24BCD02E0063D615 /* GetProposedInterlocutorsRequest.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		96CD2AE524C73FF20026A1DA /* CreateUser */ = {
+			isa = PBXGroup;
+			children = (
+				963F591324BCD02E0063D615 /* RequireConfirmCodeRequest.swift */,
+				963F591224BCD02E0063D615 /* CreateUserRequest.swift */,
+				963F590D24BCD02E0063D615 /* FacebookLoginRequest.swift */,
+				963F590B24BCD02E0063D615 /* ConfirmCodeRequest.swift */,
+			);
+			path = CreateUser;
+			sourceTree = "<group>";
+		};
+		96CD2AE724C740820026A1DA /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				963F591924BCD02E0063D615 /* AddSearchAdsInfoRequest.swift */,
+				963F590824BCD02E0063D615 /* AppRegisterRequest.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
+		96CD2AE824C740C00026A1DA /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				960814FD24C4F8EE00992DFB /* GetProfileRequest.swift */,
+				963F590A24BCD02E0063D615 /* RandomizeEmojiRequest.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		96D81C5F24C729980095CE2B /* Profile */ = {
