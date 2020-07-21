@@ -60,6 +60,14 @@ final class ProfileViewController: UIViewController {
                 Toast.notify(with: "Profile.UpdateLookingFor.Failure".localized, style: .danger)
             })
             .disposed(by: disposeBag)
+        
+        viewModel
+            .removedAllChats()
+            .drive(onNext: {
+                Toast.notify(with: $0 ? "Profile.RemoveAllChats.Success".localized : "Profile.RemoveAllChats.Failure".localized,
+                             style: $0 ? .success : .danger)
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -77,7 +85,7 @@ extension ProfileViewController: ProfileTableActionDelegate {
     func profileTable(selected direct: ProfileTableDirection) {
         switch direct {
         case .clearAllHistory:
-            break
+            viewModel.removeAllChats.accept(Void())
         case .restorePurchases:
             viewModel.restorePurchases.accept(Void())
         case .shareSurf:

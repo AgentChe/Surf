@@ -24,6 +24,8 @@ final class ChatsViewController: UIViewController {
     
     deinit {
         viewModel.disconnect()
+        
+        ChatsManager.shared.remove(observer: self)
     }
     
     override func loadView() {
@@ -34,6 +36,8 @@ final class ChatsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ChatsManager.shared.add(observer: self)
         
         AmplitudeAnalytics.shared.log(with: .chatListScr)
         
@@ -97,6 +101,14 @@ extension ChatsViewController: ChatViewControllerDelegate {
         readedChat.change(unreadMessageCount: 0)
         
         chatsView.tableView.replace(chat: readedChat)
+    }
+}
+
+// MARK: ChatsManagerDelegate
+
+extension ChatsViewController: ChatsManagerDelegate {
+    func didRemovedAllChats() {
+        chatsView.tableView.removeAll()
     }
 }
 

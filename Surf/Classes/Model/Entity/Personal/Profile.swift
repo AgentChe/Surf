@@ -48,10 +48,10 @@ extension Profile: Model {
         email = try data.decode(String.self, forKey: .email)
         name = try data.decode(String.self, forKey: .name)
     
-        // TODO: Replace date from json
+        let birthdateStringFormat = try data.decode(String.self, forKey: .birthdate)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        guard let birthdate = dateFormatter.date(from: "1992-05-22") else {
+        guard let birthdate = dateFormatter.date(from: birthdateStringFormat) else {
             throw NSError()
         }
         self.birthdate = birthdate

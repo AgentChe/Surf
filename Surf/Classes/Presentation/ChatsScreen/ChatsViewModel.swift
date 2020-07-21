@@ -21,7 +21,7 @@ final class ChatsViewModel {
     }
     
     var chats: Driver<[Chat]> {
-        ChatsService
+        ChatsManager.shared
             .getChats()
             .asDriver(onErrorJustReturn: [])
     }

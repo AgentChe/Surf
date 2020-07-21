@@ -14,6 +14,7 @@ final class ProfileViewModel {
     
     let restorePurchases = PublishRelay<Void>()
     let updateLookingFor = PublishRelay<([Gender], Int, Int)>()
+    let removeAllChats = PublishRelay<Void>()
     
     func sections() -> Driver<[ProfileTableSection]> {
         ProfileService
@@ -47,6 +48,17 @@ final class ProfileViewModel {
                 
                 return ProfileService
                     .change(lookingFor: lookingFor, minAge: minAge, maxAge: maxAge)
+                    .catchErrorJustReturn(false)
+            }
+            .asDriver(onErrorJustReturn: false)
+    }
+
+    func removedAllChats() -> Driver<Bool> {
+        removeAllChats
+            .flatMapLatest { [activityIndicator] _ -> Observable<Bool> in
+                ChatsManager.shared
+                    .removeAllChats()
+                    .trackActivity(activityIndicator)
                     .catchErrorJustReturn(false)
             }
             .asDriver(onErrorJustReturn: false)

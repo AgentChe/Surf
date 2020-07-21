@@ -55,17 +55,3 @@ final class ChatsService {
         }
     }().share(replay: 1, scope: .forever)
 }
-
-// MARK: REST
-
-extension ChatsService {
-    static func getChats() -> Single<[Chat]> {
-        guard let userToken = SessionService.shared.userToken else {
-            return .deferred { .just([]) }
-        }
-        
-        return RestAPITransport()
-            .callServerApi(requestBody: GetChatsRequest(userToken: userToken))
-            .map { ChatTransformation.from(response: $0) }
-    }
-}

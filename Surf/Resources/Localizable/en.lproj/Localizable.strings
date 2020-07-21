@@ -91,3 +91,5 @@
 "Profile.ShowMe.Guys" = "Guys";
 "Profile.ShowMe.Both" = "Both";
 "Profile.UpdateLookingFor.Failure" = "Failed to update show me parameters";
+"Profile.RemoveAllChats.Success" = "All chats have been removed";
+"Profile.RemoveAllChats.Failure" = "Failed to remove chats";

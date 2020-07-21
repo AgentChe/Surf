@@ -75,6 +75,15 @@ extension ChatsTableView {
         }
     }
     
+    func removeAll() {
+        itemsQueue.sync { [weak self] in
+            self?.items.removeAll()
+            self?.items = []
+            
+            self?.reloadData()
+        }
+    }
+    
     func insert(chat: Chat) {
         itemsQueue.sync { [weak self] in
             self?.items.insert(chat, at: 0)
