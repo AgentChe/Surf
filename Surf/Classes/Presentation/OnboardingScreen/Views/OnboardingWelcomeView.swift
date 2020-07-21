@@ -74,7 +74,7 @@ private extension OnboardingWelcomeView {
         
         let randomize = randomizeEmoji
             .flatMapLatest { [unowned self] in
-                ProfileService
+                ProfileManager
                     .randomizeEmoji()
                     .trackActivity(self.loading)
                     .catchErrorJustReturn(nil)

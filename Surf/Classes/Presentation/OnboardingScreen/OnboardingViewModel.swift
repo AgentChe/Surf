@@ -40,7 +40,7 @@ final class OnboardingViewModel {
                     return .deferred { .just(false) }
                 }
                 
-                return ProfileService.fillProfile(myGender: myGender,
+                return ProfileManager.fillProfile(myGender: myGender,
                                                   showMeToGenders: showMeToGenders,
                                                   birthdate: birthdate,
                                                   name: name,

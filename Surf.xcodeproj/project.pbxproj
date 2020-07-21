@@ -137,7 +137,7 @@
 		963F5A3424BCD02F0063D615 /* PaygateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F599424BCD02E0063D615 /* PaygateManager.swift */; };
 		963F5A3524BCD02F0063D615 /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F599524BCD02E0063D615 /* ChatService.swift */; };
 		963F5A3624BCD02F0063D615 /* AppStateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F599624BCD02E0063D615 /* AppStateProxy.swift */; };
-		963F5A3724BCD02F0063D615 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F599724BCD02E0063D615 /* ProfileService.swift */; };
+		963F5A3724BCD02F0063D615 /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F599724BCD02E0063D615 /* ProfileManager.swift */; };
 		963F5A3824BCD02F0063D615 /* RetrievedProductsPrices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F599A24BCD02E0063D615 /* RetrievedProductsPrices.swift */; };
 		963F5A3924BCD02F0063D615 /* ProductPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F599B24BCD02E0063D615 /* ProductPrice.swift */; };
 		963F5A3A24BCD02F0063D615 /* PurchaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F599C24BCD02E0063D615 /* PurchaseService.swift */; };
@@ -186,6 +186,7 @@
 		9655986224C05DDC0022931D /* Zodiac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9655986124C05DDC0022931D /* Zodiac.swift */; };
 		9655986624C05F1D0022931D /* ZodiacManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9655986524C05F1D0022931D /* ZodiacManager.swift */; };
 		96A1BC8C24C04D010043DCCC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 96A1BC8B24C04D010043DCCC /* GoogleService-Info.plist */; };
+		96CD2AE324C72A2F0026A1DA /* ProfileManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CD2AE224C72A2F0026A1DA /* ProfileManagerDelegate.swift */; };
 		96E43E9124C5B16700831DC3 /* ProfileTableDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E43E9024C5B16700831DC3 /* ProfileTableDirection.swift */; };
 		96E43E9324C5B21700831DC3 /* ProfileTableDirectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E43E9224C5B21700831DC3 /* ProfileTableDirectionCell.swift */; };
 		96E43E9524C5C0F400831DC3 /* ProfileTableActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E43E9424C5C0F400831DC3 /* ProfileTableActionDelegate.swift */; };
@@ -198,6 +199,8 @@
 		96E6260624C6FE7900533C05 /* CheckUserBannedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E6260524C6FE7900533C05 /* CheckUserBannedRequest.swift */; };
 		96E6260824C702F700533C05 /* CheckUserBannedResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E6260724C702F700533C05 /* CheckUserBannedResponseMapper.swift */; };
 		96E6260D24C7085200533C05 /* BannedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E6260C24C7085200533C05 /* BannedView.swift */; };
+		96E6261124C71FC200533C05 /* ProfileComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E6261024C71FC200533C05 /* ProfileComponents.swift */; };
+		96E6261324C7229E00533C05 /* ProfileBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E6261224C7229E00533C05 /* ProfileBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -335,7 +338,7 @@
 		963F599424BCD02E0063D615 /* PaygateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaygateManager.swift; sourceTree = "<group>"; };
 		963F599524BCD02E0063D615 /* ChatService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
 		963F599624BCD02E0063D615 /* AppStateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStateProxy.swift; sourceTree = "<group>"; };
-		963F599724BCD02E0063D615 /* ProfileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
+		963F599724BCD02E0063D615 /* ProfileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
 		963F599A24BCD02E0063D615 /* RetrievedProductsPrices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetrievedProductsPrices.swift; sourceTree = "<group>"; };
 		963F599B24BCD02E0063D615 /* ProductPrice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductPrice.swift; sourceTree = "<group>"; };
 		963F599C24BCD02E0063D615 /* PurchaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseService.swift; sourceTree = "<group>"; };
@@ -385,6 +388,7 @@
 		9655986124C05DDC0022931D /* Zodiac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zodiac.swift; sourceTree = "<group>"; };
 		9655986524C05F1D0022931D /* ZodiacManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZodiacManager.swift; sourceTree = "<group>"; };
 		96A1BC8B24C04D010043DCCC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		96CD2AE224C72A2F0026A1DA /* ProfileManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManagerDelegate.swift; sourceTree = "<group>"; };
 		96E43E9024C5B16700831DC3 /* ProfileTableDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableDirection.swift; sourceTree = "<group>"; };
 		96E43E9224C5B21700831DC3 /* ProfileTableDirectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableDirectionCell.swift; sourceTree = "<group>"; };
 		96E43E9424C5C0F400831DC3 /* ProfileTableActionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableActionDelegate.swift; sourceTree = "<group>"; };
@@ -397,6 +401,8 @@
 		96E6260524C6FE7900533C05 /* CheckUserBannedRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckUserBannedRequest.swift; sourceTree = "<group>"; };
 		96E6260724C702F700533C05 /* CheckUserBannedResponseMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckUserBannedResponseMapper.swift; sourceTree = "<group>"; };
 		96E6260C24C7085200533C05 /* BannedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannedView.swift; sourceTree = "<group>"; };
+		96E6261024C71FC200533C05 /* ProfileComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileComponents.swift; sourceTree = "<group>"; };
+		96E6261224C7229E00533C05 /* ProfileBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -973,6 +979,7 @@
 		963F599024BCD02E0063D615 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				96D81C5F24C729980095CE2B /* Profile */,
 				96E6260024C6ED2700533C05 /* Chats */,
 				965588D224BF22A500D6EB83 /* PushNotifications */,
 				963F59A024BCD02E0063D615 /* Analytics */,
@@ -980,7 +987,6 @@
 				963F599224BCD02E0063D615 /* Paygate */,
 				963F599124BCD02E0063D615 /* ImageService.swift */,
 				963F599624BCD02E0063D615 /* AppStateProxy.swift */,
-				963F599724BCD02E0063D615 /* ProfileService.swift */,
 				963F599D24BCD02E0063D615 /* ChatsService.swift */,
 				963F599524BCD02E0063D615 /* ChatService.swift */,
 				963F599E24BCD02E0063D615 /* SearchService.swift */,
@@ -1056,6 +1062,7 @@
 		9648701324C30EA90084CC2D /* Personal */ = {
 			isa = PBXGroup;
 			children = (
+				96E6260F24C71FAE00533C05 /* ProfileComponents */,
 				9648701424C30EB90084CC2D /* GenderMapper.swift */,
 				9648701624C315190084CC2D /* EmojiMapper.swift */,
 				960814F924C4EB5500992DFB /* ZodiacSignMapper.swift */,
@@ -1171,6 +1178,15 @@
 			path = Personal;
 			sourceTree = "<group>";
 		};
+		96D81C5F24C729980095CE2B /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				963F599724BCD02E0063D615 /* ProfileManager.swift */,
+				96CD2AE224C72A2F0026A1DA /* ProfileManagerDelegate.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		96E43EA624C6007100831DC3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1194,6 +1210,15 @@
 				96E6260C24C7085200533C05 /* BannedView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		96E6260F24C71FAE00533C05 /* ProfileComponents */ = {
+			isa = PBXGroup;
+			children = (
+				96E6261024C71FC200533C05 /* ProfileComponents.swift */,
+				96E6261224C7229E00533C05 /* ProfileBuilder.swift */,
+			);
+			path = ProfileComponents;
 			sourceTree = "<group>";
 		};
 		A640CC0DC9EC606E8ACEE63A /* Frameworks */ = {
@@ -1464,8 +1489,9 @@
 				963F59C924BCD02E0063D615 /* PaygateMapper.swift in Sources */,
 				963F59F624BCD02E0063D615 /* SearchViewModel.swift in Sources */,
 				963F5A2B24BCD02F0063D615 /* InterlocutorChatMessageCell.swift in Sources */,
-				963F5A3724BCD02F0063D615 /* ProfileService.swift in Sources */,
+				963F5A3724BCD02F0063D615 /* ProfileManager.swift in Sources */,
 				965588DF24BF233000D6EB83 /* Weak.swift in Sources */,
+				96E6261124C71FC200533C05 /* ProfileComponents.swift in Sources */,
 				963F5A4024BCD02F0063D615 /* AnalyticsEvent.swift in Sources */,
 				96E43E9524C5C0F400831DC3 /* ProfileTableActionDelegate.swift in Sources */,
 				963F5A3424BCD02F0063D615 /* PaygateManager.swift in Sources */,
@@ -1495,6 +1521,7 @@
 				963F59FE24BCD02E0063D615 /* OnboardingPhotosManager.swift in Sources */,
 				963F59B324BCD02E0063D615 /* TextAttributes.swift in Sources */,
 				963F5A1E24BCD02F0063D615 /* ReportViewModel.swift in Sources */,
+				96E6261324C7229E00533C05 /* ProfileBuilder.swift in Sources */,
 				960814FC24C4ED2000992DFB /* Profile.swift in Sources */,
 				963F5A3B24BCD02F0063D615 /* ChatsService.swift in Sources */,
 				963F5A3E24BCD02F0063D615 /* FacebookAnalytics.swift in Sources */,
@@ -1515,6 +1542,7 @@
 				963F59E424BCD02E0063D615 /* CreateReportRequest.swift in Sources */,
 				965588B024BDC8D400D6EB83 /* Toast.swift in Sources */,
 				963F59E124BCD02E0063D615 /* RequireConfirmCodeRequest.swift in Sources */,
+				96CD2AE324C72A2F0026A1DA /* ProfileManagerDelegate.swift in Sources */,
 				963F59B924BCD02E0063D615 /* Fonts.swift in Sources */,
 				963F59AD24BCD02E0063D615 /* UIViewExtension.swift in Sources */,
 				963F59BE24BCD02E0063D615 /* ImagePicker.swift in Sources */,

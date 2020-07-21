@@ -17,7 +17,7 @@ final class ProfileViewModel {
     let removeAllChats = PublishRelay<Void>()
     
     func sections() -> Driver<[ProfileTableSection]> {
-        ProfileService
+        let retrieved = ProfileManager
             .retrieve()
             .map { [weak self] profile -> [ProfileTableSection] in
                 guard let `self` = self, let profile = profile else {
@@ -27,6 +27,20 @@ final class ProfileViewModel {
                 return self.prepare(profile: profile)
             }
             .asDriver(onErrorJustReturn: [])
+        
+        let updated = ProfileManager.shared.rx
+            .updated.map { [weak self] profile -> [ProfileTableSection] in
+                guard let `self` = self else {
+                    return []
+                }
+                
+                return self.prepare(profile: profile)
+            }
+            .asDriver(onErrorJustReturn: [])
+        
+        return Driver
+            .merge(retrieved, updated)
+        
     }
     
     func restoredPurchases() -> Driver<Bool> {
@@ -42,11 +56,11 @@ final class ProfileViewModel {
     
     func updatedLookingFor() -> Driver<Bool> {
         updateLookingFor
-            .debounce(.milliseconds(500), scheduler: MainScheduler.asyncInstance)
+            .debounce(.milliseconds(300), scheduler: MainScheduler.asyncInstance)
             .flatMapLatest { bundle -> Single<Bool> in
                 let (lookingFor, minAge, maxAge) = bundle
                 
-                return ProfileService
+                return ProfileManager
                     .change(lookingFor: lookingFor, minAge: minAge, maxAge: maxAge)
                     .catchErrorJustReturn(false)
             }
