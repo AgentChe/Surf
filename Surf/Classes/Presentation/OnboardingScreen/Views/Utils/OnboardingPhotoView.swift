@@ -82,14 +82,14 @@ private extension OnboardingPhotoView {
         addGestureRecognizer(tapGesture)
         
         disposable = uploadPhoto
-            .flatMapLatest { ImageService.upload(image: $0) }
-            .catchErrorJustReturn((nil, nil))
+            .flatMapLatest { ImageService.addUserPhoto(image: $0) }
+            .catchErrorJustReturn(nil)
             .subscribe(onNext: { [weak self] response in
                 guard let `self` = self else {
                     return
                 }
                 
-                if let path = response.url, let url = URL(string: path) {
+                if let path = response?.url, let url = URL(string: path) {
                     self.kf.cancelDownloadTask()
                     self.kf.setImage(with: url)
                     
@@ -98,7 +98,7 @@ private extension OnboardingPhotoView {
                     self.isUserInteractionEnabled = true
                     self.delegate?.blockTagForSelect?(tag: self.tag, isBlocked: false)
                     
-                    self.delegate?.photoUploadFailure?(with: response.error ?? "Onboarding.FailedUploadImage".localized)
+                    self.delegate?.photoUploadFailure?(with: response?.error ?? "Onboarding.FailedUploadImage".localized)
                 }
             })
     }

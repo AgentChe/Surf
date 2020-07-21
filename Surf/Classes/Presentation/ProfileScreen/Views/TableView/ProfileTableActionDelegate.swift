@@ -9,9 +9,11 @@
 protocol ProfileTableActionDelegate: class {
     func profileTable(selected direct: ProfileTableDirection)
     func profileTable(changed lookingFor: [Gender], minAge: Int, maxAge: Int)
+    func profileTable(selected photo: Photo?)
 }
 
 extension ProfileTableActionDelegate {
     func profileTable(selected direct: ProfileTableDirection) {}
     func profileTable(changed lookingFor: [Gender], minAge: Int, maxAge: Int) {}
+    func profileTable(selected photo: Photo?) {}
 }

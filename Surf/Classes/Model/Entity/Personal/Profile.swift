@@ -18,7 +18,7 @@ struct Profile {
     let emoji: String
     let minAge: Int?
     let maxAge: Int?
-    let photosUrls: [String]
+    let photos: [Photo]
 }
 
 // MARK: Model
@@ -36,7 +36,7 @@ extension Profile: Model {
         case emoji
         case minAge = "min_age"
         case maxAge = "max_age"
-        case photosUrls = "photos"
+        case photos = "photos"
     }
     
     init(from decoder: Decoder) throws {
@@ -71,7 +71,8 @@ extension Profile: Model {
         emoji = try data.decode(String.self, forKey: .emoji)
         minAge = try? data.decode(Int.self, forKey: .minAge)
         maxAge = try? data.decode(Int.self, forKey: .maxAge)
-        photosUrls = try data.decode([String].self, forKey: .photosUrls)
+        
+        photos = try data.decode([Photo].self, forKey: .photos)
     }
     
     func encode(to encoder: Encoder) throws {
@@ -104,6 +105,6 @@ extension Profile: Model {
             try data.encode(maxAge, forKey: .maxAge)
         }
         
-        try data.encode(photosUrls, forKey: .photosUrls)
+        try data.encode(photos, forKey: .photos)
     }
 }

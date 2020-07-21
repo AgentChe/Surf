@@ -11,17 +11,17 @@ import Alamofire
 import RxSwift
 
 final class ImageService {
-    static func upload(image: UIImage) -> Single<ImageTransformation.UploadedImage> {
+    static func addUserPhoto(image: UIImage) -> Single<AddUserPhotoResponseMapper.AddUserPhotoResponse?> {
         guard let userToken = SessionService.shared.userToken else {
-            return .deferred { .just((nil, nil)) }
+            return .deferred { .just(nil) }
         }
         
         return upload(url: GlobalDefinitions.Backend.domain + "/api/users/add_photo",
                       image: image,
-                      fileName: String(format: "%@%@", UUID().uuidString, String(Date().timeIntervalSinceNow)),
+                      fileName: String(format: "%@%@.jpeg", UUID().uuidString, String(Date().timeIntervalSinceNow)),
                       parameters: ["_api_key": GlobalDefinitions.Backend.apiKey,
                                    "_user_token": userToken])
-            .map { ImageTransformation.imageUrlFromUploadedImageResponse(response: $0) }
+            .map { AddUserPhotoResponseMapper.from(response: $0) }
     }
     
     static func upload(chatImage: UIImage) -> Single<ImageTransformation.UploadedImage> {

@@ -18,7 +18,7 @@ final class ProfileComponents {
     var emoji: String
     var minAge: Int?
     var maxAge: Int?
-    var photosUrls: [String]
+    var photos: [Photo]
     
     init(profile: Profile) {
         id = profile.id
@@ -30,6 +30,6 @@ final class ProfileComponents {
         emoji = profile.emoji
         minAge = profile.minAge
         maxAge = profile.maxAge
-        photosUrls = profile.photosUrls
+        photos = profile.photos
     }
 }

@@ -56,8 +56,8 @@ final class ProfileBuilder {
         return self
     }
     
-    func photosUrls(_ photosUrls: [String]) -> ProfileBuilder {
-        components.photosUrls = photosUrls
+    func photos(_ photos: [Photo]) -> ProfileBuilder {
+        components.photos = photos
         return self
     }
     
@@ -71,6 +71,6 @@ final class ProfileBuilder {
                 emoji: components.emoji,
                 minAge: components.minAge,
                 maxAge: components.maxAge,
-                photosUrls: components.photosUrls)
+                photos: components.photos)
     }
 }

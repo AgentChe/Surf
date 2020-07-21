@@ -146,6 +146,113 @@ extension ProfileManager {
     }
 }
 
+// MARK: Photo
+
+extension ProfileManager {
+    static func setDefaultPhoto(photoId: Int) -> Single<Bool> {
+        guard let userToken = SessionService.shared.userToken else {
+            return .deferred { .just(false) }
+        }
+        
+        return RestAPITransport()
+            .callServerApi(requestBody: SetDefaultPhotoRequest(userToken: userToken, photoId: photoId))
+            .map { SetDefaultPhotoResponseMapper.from(response: $0) }
+            .flatMap { photos in
+                guard let photos = photos else {
+                    return .deferred { .just(false) }
+                }
+                
+                guard let profile = get() else {
+                    return .deferred( { .just(true) })
+                }
+                
+                return .deferred {
+                    let updated = ProfileBuilder()
+                        .initial(profile: profile)
+                        .photos(photos)
+                        .build()
+                    
+                    if save(profile: updated) {
+                        ProfileManager.shared.delegates.forEach( {
+                            $0.weak?.profileMagager(updated: updated)
+                        })
+                        
+                        ProfileManager.shared.updatedTrigger.accept(updated)
+                    }
+                    
+                    return .just(true)
+                }
+            }
+    }
+    
+    static func removePhoto(photoId: Int) -> Single<Bool> {
+        guard let userToken = SessionService.shared.userToken else {
+            return .deferred { .just(false) }
+        }
+        
+        return RestAPITransport()
+            .callServerApi(requestBody: RemovePhotoRequest(userToken: userToken, photoId: photoId))
+            .map { RemovePhotoResponseMapper.from(response: $0) }
+            .flatMap { photos in
+                guard let photos = photos else {
+                    return .deferred { .just(false) }
+                }
+                
+                guard let profile = get() else {
+                    return .deferred( { .just(true) })
+                }
+                
+                return .deferred {
+                    let updated = ProfileBuilder()
+                        .initial(profile: profile)
+                        .photos(photos)
+                        .build()
+                    
+                    if save(profile: updated) {
+                        ProfileManager.shared.delegates.forEach( {
+                            $0.weak?.profileMagager(updated: updated)
+                        })
+                        
+                        ProfileManager.shared.updatedTrigger.accept(updated)
+                    }
+                    
+                    return .just(true)
+                }
+            }
+    }
+    
+    static func addUserPhoto(image: UIImage) -> Single<AddUserPhotoResponseMapper.AddUserPhotoResponse?> {
+        ImageService
+            .addUserPhoto(image: image)
+            .flatMap { response in
+                guard let response = response else {
+                    return .deferred { .just(nil) }
+                }
+                
+                guard let photos = response.photos, let profile = get() else {
+                    return .deferred { .just(response) }
+                }
+                
+                return .deferred {
+                    let updated = ProfileBuilder()
+                        .initial(profile: profile)
+                        .photos(photos)
+                        .build()
+                    
+                    if save(profile: updated) {
+                        ProfileManager.shared.delegates.forEach( {
+                            $0.weak?.profileMagager(updated: updated)
+                        })
+                        
+                        ProfileManager.shared.updatedTrigger.accept(updated)
+                    }
+                    
+                    return .just(response)
+                }
+            }
+    }
+}
+
 // MARK: Observer
 
 extension ProfileManager {

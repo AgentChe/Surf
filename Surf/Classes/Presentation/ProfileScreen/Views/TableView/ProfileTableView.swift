@@ -19,6 +19,7 @@ final class ProfileTableView: UITableView {
         register(ProfilePersonalTableCell.self, forCellReuseIdentifier: String(describing: ProfilePersonalTableCell.self))
         register(ProfileTableDirectionCell.self, forCellReuseIdentifier: String(describing: ProfileTableDirectionCell.self))
         register(ProfileTableLookingForCell.self, forCellReuseIdentifier: String(describing: ProfileTableLookingForCell.self))
+        register(ProfileTablePhotosCell.self, forCellReuseIdentifier: String(describing: ProfileTablePhotosCell.self))
         
         dataSource = self
         delegate = self
@@ -65,6 +66,11 @@ extension ProfileTableView: UITableViewDataSource {
             cell.actionDelegate = actionDelegate
             cell.setup(lookingFor: genders, minAge: minAge, maxAge: maxAge)
             return cell
+        case .photos(let photos):
+            let cell = dequeueReusableCell(withIdentifier: String(describing: ProfileTablePhotosCell.self), for: indexPath) as! ProfileTablePhotosCell
+            cell.actionDelegate = actionDelegate
+            cell.setup(photos: photos)
+            return cell
         }
     }
 }
@@ -80,6 +86,8 @@ extension ProfileTableView: UITableViewDelegate {
             return 48.scale
         case .lookingFor:
             return 197.scale
+        case .photos:
+            return 337.scale
         default:
             return UITableView.automaticDimension
         }
@@ -100,6 +108,8 @@ extension ProfileTableView: UITableViewDelegate {
         switch section {
         case 0:
             return 0
+        case 1:
+            return 38.scale
         default:
             return 52.scale
         }

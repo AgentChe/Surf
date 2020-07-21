@@ -9,18 +9,6 @@
 final class ImageTransformation {
     typealias UploadedImage = (url: String?, error: String?)
     
-    static func imageUrlFromUploadedImageResponse(response: Any) -> UploadedImage {
-        guard let json = response as? [String: Any] else {
-            return (nil, nil)
-        }
-        
-        if let data = json["_data"] as? [String: Any], let url = data["url"] as? String {
-            return (url, nil)
-        } else {
-            return (nil, json["_msg"] as? String)
-        }
-    }
-    
     static func imageUrlFromUploadChatImageResponse(response: Any) -> UploadedImage {
         guard let json = response as? [String: Any] else {
             return (nil, nil)

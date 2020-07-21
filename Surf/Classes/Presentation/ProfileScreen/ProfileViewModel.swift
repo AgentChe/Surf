@@ -15,6 +15,10 @@ final class ProfileViewModel {
     let restorePurchases = PublishRelay<Void>()
     let updateLookingFor = PublishRelay<([Gender], Int, Int)>()
     let removeAllChats = PublishRelay<Void>()
+    let deletePhoto = PublishRelay<Int>()
+    let setDefaultPhoto = PublishRelay<Int>()
+    let addUserPhoto = PublishRelay<UIImage>()
+    let replacePhoto = PublishRelay<(UIImage, Int)>()
     
     func sections() -> Driver<[ProfileTableSection]> {
         let retrieved = ProfileManager
@@ -77,6 +81,75 @@ final class ProfileViewModel {
             }
             .asDriver(onErrorJustReturn: false)
     }
+    
+    func photoDeleted() -> Driver<Bool> {
+        deletePhoto
+            .flatMapLatest { [activityIndicator] id -> Observable<Bool> in
+                ProfileManager
+                    .removePhoto(photoId: id)
+                    .trackActivity(activityIndicator)
+                    .catchErrorJustReturn(false)
+            }
+            .asDriver(onErrorJustReturn: false)
+    }
+    
+    func photoTakenByDefault() -> Driver<Bool> {
+        setDefaultPhoto
+            .flatMapLatest { [activityIndicator] id -> Observable<Bool> in
+                ProfileManager
+                    .setDefaultPhoto(photoId: id)
+                    .trackActivity(activityIndicator)
+                    .catchErrorJustReturn(false)
+            }
+            .asDriver(onErrorJustReturn: false)
+    }
+    
+    func userPhotoAdded() -> Driver<(Bool, String?)> {
+        addUserPhoto
+            .flatMapLatest { [activityIndicator] image -> Observable<(Bool, String?)> in
+                ProfileManager
+                    .addUserPhoto(image: image)
+                    .trackActivity(activityIndicator)
+                    .catchErrorJustReturn(nil)
+                    .map { response -> (Bool, String?) in
+                        guard let response = response else {
+                            return (false, "Profile.AddUserPhoto.Failure".localized)
+                        }
+                        
+                        return (response.photos != nil, response.error)
+                    }
+            }
+            .asDriver(onErrorJustReturn: (false, "Profile.AddUserPhoto.Failure".localized))
+    }
+    
+    func photoReplaced() -> Driver<(Bool, String?)> {
+        replacePhoto
+            .flatMapLatest { [activityIndicator] stub -> Observable<(Bool, String?)> in
+                let (image, id) = stub
+                
+                return ProfileManager
+                    .removePhoto(photoId: id)
+                    .catchErrorJustReturn(false)
+                    .flatMap { success -> Single<(Bool, String?)> in
+                        guard success else {
+                            return .deferred { .just((false, "Profile.AddUserPhoto.Failure".localized)) }
+                        }
+                        
+                        return ProfileManager
+                            .addUserPhoto(image: image)
+                            .catchErrorJustReturn(nil)
+                            .map { response -> (Bool, String?) in
+                                guard let response = response else {
+                                    return (false, "Profile.AddUserPhoto.Failure".localized)
+                                }
+                            
+                                return (response.photos != nil, response.error)
+                            }
+                    }
+                    .trackActivity(activityIndicator)
+            }
+            .asDriver(onErrorJustReturn: (false, "Profile.AddUserPhoto.Failure".localized))
+    }
 }
 
 // MARK: Private
@@ -91,11 +164,15 @@ private extension ProfileViewModel {
         let section1 = ProfileTableSection(items: [personalItem])
         result.append(section1)
         
+        let photosItem = ProfileTableItem.photos(photos: profile.photos)
+        let section2 = ProfileTableSection(items: [photosItem])
+        result.append(section2)
+        
         let lookingForItem = ProfileTableItem.lookingFor(genders: profile.lookingFor,
                                                          minAge: profile.minAge ?? 18,
                                                          maxAge: profile.maxAge ?? 60)
-        let section2 = ProfileTableSection(items: [lookingForItem])
-        result.append(section2)
+        let section3 = ProfileTableSection(items: [lookingForItem])
+        result.append(section3)
         
         let clearAllHistoryItem = ProfileTableItem.direction(direction: .clearAllHistory,
                                                              title: "Profile.Direction.ClearAllHistory".localized,
@@ -103,8 +180,8 @@ private extension ProfileViewModel {
                                                                                               .layerMinXMaxYCorner,
                                                                                               .layerMaxXMinYCorner,
                                                                                               .layerMaxXMaxYCorner])
-        let section3 = ProfileTableSection(items: [clearAllHistoryItem])
-        result.append(section3)
+        let section4 = ProfileTableSection(items: [clearAllHistoryItem])
+        result.append(section4)
         
         let restorePurchasesItem = ProfileTableItem.direction(direction: .restorePurchases,
                                                               title: "Profile.Direction.RestorePurchases".localized,
@@ -118,8 +195,8 @@ private extension ProfileViewModel {
                                                        title: "Profile.Direction.ContactUs".localized,
                                                        withIcon: true,
                                                        maskedCorners: [.layerMinXMaxYCorner, .layerMaxXMaxYCorner])
-        let section4 = ProfileTableSection(items: [restorePurchasesItem, shareSurfItem, contactUsItem])
-        result.append(section4)
+        let section5 = ProfileTableSection(items: [restorePurchasesItem, shareSurfItem, contactUsItem])
+        result.append(section5)
         
         let privacyPolicyItem = ProfileTableItem.direction(direction: .privacyPolicy,
                                                            title: "Profile.Direction.PrivacyPolicy".localized,
@@ -129,8 +206,8 @@ private extension ProfileViewModel {
                                                         title: "Profile.Direction.TermsOfService".localized,
                                                         withIcon: true,
                                                         maskedCorners: [.layerMinXMaxYCorner, .layerMaxXMaxYCorner])
-        let section5 = ProfileTableSection(items: [privacyPolicyItem, termsOfService])
-        result.append(section5)
+        let section6 = ProfileTableSection(items: [privacyPolicyItem, termsOfService])
+        result.append(section6)
         
         return result
     }

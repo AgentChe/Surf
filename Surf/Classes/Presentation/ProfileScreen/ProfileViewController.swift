@@ -17,6 +17,8 @@ final class ProfileViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     
+    private lazy var photosMaker = ProfilePhotosMaker(presentationController: self, delegate: self)
+    
     override func loadView() {
         super.loadView()
         
@@ -68,6 +70,42 @@ final class ProfileViewController: UIViewController {
                              style: $0 ? .success : .danger)
             })
             .disposed(by: disposeBag)
+        
+        viewModel
+            .photoDeleted()
+            .drive(onNext: {
+                guard !$0 else {
+                    return
+                }
+                
+                Toast.notify(with: "Profile.DeletedPhoto.Failure".localized, style: .danger)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel
+            .photoTakenByDefault()
+            .drive(onNext: {
+                guard !$0 else {
+                    return
+                }
+                
+                Toast.notify(with: "Profile.SetDefaultPhoto.Failure".localized, style: .danger)
+            })
+            .disposed(by: disposeBag)
+        
+        Driver
+            .merge(viewModel.userPhotoAdded(),
+                   viewModel.photoReplaced())
+            .drive(onNext: { stub in
+                let (success, error) = stub
+                
+                guard !success, let message = error else {
+                    return
+                }
+                
+                Toast.notify(with: message, style: .danger)
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -101,6 +139,35 @@ extension ProfileViewController: ProfileTableActionDelegate {
     
     func profileTable(changed lookingFor: [Gender], minAge: Int, maxAge: Int) {
         viewModel.updateLookingFor.accept((lookingFor, minAge, maxAge))
+    }
+    
+    func profileTable(selected photo: Photo?) {
+        let actionSheet = ProfilePhotosActionSheet().actionSheet(photo: photo) { [unowned self] step in
+            switch step {
+            case .make:
+                self.photosMaker.forMake()
+            case .replace(let id):
+                self.photosMaker.forReplace(id: id)
+            case .setDefault(let id):
+                self.viewModel.setDefaultPhoto.accept(id)
+            case .delete(let id):
+                self.viewModel.deletePhoto.accept(id)
+            }
+        }
+        
+        present(actionSheet, animated: true)
+    }
+}
+
+// MARK: ProfilePhotosMakerDelegate
+
+extension ProfileViewController: ProfilePhotosMakerDelegate {
+    func photosMakerForMake(image: UIImage) {
+        viewModel.addUserPhoto.accept(image)
+    }
+    
+    func photosMakerForReplace(image: UIImage, id: Int) {
+        viewModel.replacePhoto.accept((image, id))
     }
 }
 
