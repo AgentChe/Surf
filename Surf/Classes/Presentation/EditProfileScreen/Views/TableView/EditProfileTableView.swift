@@ -56,10 +56,10 @@ extension EditProfileTableView: UITableViewDataSource {
             cell.actionDelegate = actionDelegate
             cell.setup(photos: photos)
             return cell
-//        case .name(let name):
-//            let cell = dequeueReusableCell(withIdentifier: String(describing: EditProfileTableNameCell.self), for: indexPath) as! EditProfileTableNameCell
-//            cell.setup(name: name)
-//            return cell
+        case .name(let name):
+            let cell = dequeueReusableCell(withIdentifier: String(describing: EditProfileTableNameCell.self), for: indexPath) as! EditProfileTableNameCell
+            cell.setup(name: name)
+            return cell
         case .delete(let email):
             let cell = dequeueReusableCell(withIdentifier: String(describing: EditProfileTableDeleteCell.self), for: indexPath) as! EditProfileTableDeleteCell
             cell.actionDelegate = actionDelegate

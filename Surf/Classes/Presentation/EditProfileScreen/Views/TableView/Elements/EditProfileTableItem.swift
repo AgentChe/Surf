@@ -9,4 +9,5 @@
 enum EditProfileTableItem {
     case photos(photos: [Photo])
     case delete(email: String)
+    case name(name: EditProfileTableNameElement)
 }

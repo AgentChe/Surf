@@ -209,6 +209,7 @@
 		9655986224C05DDC0022931D /* Zodiac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9655986124C05DDC0022931D /* Zodiac.swift */; };
 		9655986624C05F1D0022931D /* ZodiacManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9655986524C05F1D0022931D /* ZodiacManager.swift */; };
 		969DE79824C857FE000BD2E8 /* EditProfileConfirmDeletingAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969DE79724C857FE000BD2E8 /* EditProfileConfirmDeletingAlert.swift */; };
+		969DE79A24C863F5000BD2E8 /* EditProfileTableNameElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969DE79924C863F5000BD2E8 /* EditProfileTableNameElement.swift */; };
 		96A1BC8C24C04D010043DCCC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 96A1BC8B24C04D010043DCCC /* GoogleService-Info.plist */; };
 		96CD2AE324C72A2F0026A1DA /* ProfileManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CD2AE224C72A2F0026A1DA /* ProfileManagerDelegate.swift */; };
 		96E43E9124C5B16700831DC3 /* ProfileTableDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E43E9024C5B16700831DC3 /* ProfileTableDirection.swift */; };
@@ -435,6 +436,7 @@
 		9655986124C05DDC0022931D /* Zodiac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zodiac.swift; sourceTree = "<group>"; };
 		9655986524C05F1D0022931D /* ZodiacManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZodiacManager.swift; sourceTree = "<group>"; };
 		969DE79724C857FE000BD2E8 /* EditProfileConfirmDeletingAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileConfirmDeletingAlert.swift; sourceTree = "<group>"; };
+		969DE79924C863F5000BD2E8 /* EditProfileTableNameElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableNameElement.swift; sourceTree = "<group>"; };
 		96A1BC8B24C04D010043DCCC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		96CD2AE224C72A2F0026A1DA /* ProfileManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManagerDelegate.swift; sourceTree = "<group>"; };
 		96E43E9024C5B16700831DC3 /* ProfileTableDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableDirection.swift; sourceTree = "<group>"; };
@@ -584,6 +586,7 @@
 			children = (
 				96228AD224C832AF00F5B129 /* EditProfileTableSection.swift */,
 				96228AD424C832C800F5B129 /* EditProfileTableItem.swift */,
+				969DE79924C863F5000BD2E8 /* EditProfileTableNameElement.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -1652,6 +1655,7 @@
 				963F59C624BCD02E0063D615 /* RestAPITransport.swift in Sources */,
 				963F59B524BCD02E0063D615 /* ScreenSize.swift in Sources */,
 				963F5A3F24BCD02F0063D615 /* SearchAttributionsDetails.swift in Sources */,
+				969DE79A24C863F5000BD2E8 /* EditProfileTableNameElement.swift in Sources */,
 				965588E324BF390800D6EB83 /* OnboardingView.swift in Sources */,
 				963F59D124BCD02E0063D615 /* ChatMessage.swift in Sources */,
 				96228AD124C8303800F5B129 /* EditProfileTablePhotosCell.swift in Sources */,

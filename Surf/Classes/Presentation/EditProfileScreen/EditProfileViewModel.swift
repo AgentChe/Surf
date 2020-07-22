@@ -12,11 +12,14 @@ import RxCocoa
 final class EditProfileViewModel {
     let activityIndicator = RxActivityIndicator()
     
+    let applyChanges = PublishRelay<Void>()
     let deletePhoto = PublishRelay<Int>()
     let setDefaultPhoto = PublishRelay<Int>()
     let addUserPhoto = PublishRelay<UIImage>()
     let replacePhoto = PublishRelay<(UIImage, Int)>()
     let deleteAccount = PublishRelay<Void>()
+    
+    let nameItem = EditProfileTableNameElement()
     
     func sections() -> Driver<[EditProfileTableSection]> {
         let initial = Driver<Profile?>
@@ -43,6 +46,21 @@ final class EditProfileViewModel {
         
         return Driver
             .merge(initial, updated)
+    }
+    
+    func changedApplied() -> Driver<Bool> {
+        applyChanges
+            .flatMapLatest { [activityIndicator, nameItem] _ -> Observable<Bool> in
+                guard let name = nameItem.getText?() else {
+                    return .deferred { .just(false) }
+                }
+                
+                return ProfileManager
+                    .change(name: name)
+                    .trackActivity(activityIndicator)
+                    .catchErrorJustReturn(false)
+            }
+            .asDriver(onErrorJustReturn: false)
     }
     
     func photoDeleted() -> Driver<Bool> {
@@ -120,6 +138,7 @@ final class EditProfileViewModel {
                 SessionService
                     .deleteUser()
                     .trackActivity(activityIndicator)
+                    .catchErrorJustReturn(false)
             }
             .asDriver(onErrorJustReturn: false)
     }
@@ -134,6 +153,10 @@ private extension EditProfileViewModel {
         let photosItem = EditProfileTableItem.photos(photos: profile.photos)
         let section1 = EditProfileTableSection(items: [photosItem])
         result.append(section1)
+        
+        nameItem.setupIfNeeded(name: profile.name)
+        let section2 = EditProfileTableSection(items: [EditProfileTableItem.name(name: nameItem)])
+        result.append(section2)
         
         let deleteItem = EditProfileTableItem.delete(email: profile.email)
         let section3 = EditProfileTableSection(items: [deleteItem])

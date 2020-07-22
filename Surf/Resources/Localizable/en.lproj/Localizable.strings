@@ -113,3 +113,4 @@
 "EditProfile.ConfirmDeleteAccount.Yes" = "Yes";
 "EditProfile.ConfirmDeleteAccount.No" = "No";
 "EditProfile.ConfirmDeleteAccount.ConfirmDeleting" = "Do you really want to delete your account?";
+"EditProfile.SaveChanges.Failure" = "Failed to save changes";

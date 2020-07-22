@@ -110,6 +110,36 @@ extension ProfileManager {
                 ProfileManager.shared.updatedTrigger.accept(updated)
             })
     }
+    
+    static func change(name: String) -> Single<Bool> {
+        guard let userToken = SessionService.shared.userToken else {
+            return .deferred { .just(false) }
+        }
+        
+        return RestAPITransport()
+            .callServerApi(requestBody: SetRequest(userToken: userToken, name: name))
+            .map { (try? !CheckResponseForError.isError(jsonResponse: $0)) ?? false }
+            .do(onSuccess: { success in
+                guard success, let profile = get() else {
+                    return
+                }
+                
+                let updated = ProfileBuilder()
+                    .initial(profile: profile)
+                    .name(name)
+                    .build()
+                
+                guard save(profile: updated) else {
+                    return
+                }
+                
+                ProfileManager.shared.delegates.forEach( {
+                    $0.weak?.profileMagager(updated: updated)
+                })
+                
+                ProfileManager.shared.updatedTrigger.accept(updated)
+            })
+    }
 }
 
 // MARK: Emoji

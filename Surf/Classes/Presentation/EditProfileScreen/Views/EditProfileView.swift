@@ -7,19 +7,37 @@
 //
 
 import UIKit
+import RxSwift
 
 final class EditProfileView: UIView {
     lazy var tableView = makeTableView()
     lazy var activityIndicator = makeActivityIndicator()
     
+    private let disposeBag = DisposeBag()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         makeConstraints()
+        
+        rx.keyboardHeight
+            .subscribe(onNext: { [weak self] keyboardHeight in
+                self?.tableView.contentInset.bottom = keyboardHeight + (ScreenSize.isIphoneXFamily ? 10.scale : 30.scale)
+            })
+            .disposed(by: disposeBag)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: Private
+
+private extension EditProfileView {
+    @objc
+    func hideKeyboard() {
+        endEditing(true)
     }
 }
 
@@ -54,6 +72,10 @@ private extension EditProfileView {
         view.allowsSelection = false
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        view.addGestureRecognizer(tapGesture)
+        
         return view
     }
     

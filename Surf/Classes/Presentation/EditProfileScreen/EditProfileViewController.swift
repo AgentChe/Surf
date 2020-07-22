@@ -92,6 +92,17 @@ final class EditProfileViewController: UIViewController {
                 }
             })
             .disposed(by: disposeBag)
+        
+        viewModel
+            .changedApplied()
+            .drive(onNext: {
+                guard !$0 else {
+                    return
+                }
+                
+                Toast.notify(with: "EditProfile.SaveChanges.Failure".localized, style: .danger)
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -125,10 +136,6 @@ extension EditProfileViewController: EditProfileTableActionDelegate {
     
     func editProfileTableDeleteTapped() {
         confirmDeletingAccount()
-    }
-    
-    func editProfileTable(changed name: String) {
-        
     }
 }
 
@@ -165,7 +172,9 @@ private extension EditProfileViewController {
     
     @objc
     func confirmChanges() {
+        view.endEditing(true)
         
+        viewModel.applyChanges.accept(Void())
     }
     
     func goToWelcomeScreen() {

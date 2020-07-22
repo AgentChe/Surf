@@ -9,11 +9,9 @@
 protocol EditProfileTableActionDelegate: class {
     func editProfileTable(selected photo: Photo?)
     func editProfileTableDeleteTapped()
-    func editProfileTable(changed name: String)
 }
 
 extension EditProfileTableActionDelegate {
     func editProfileTable(selected photo: Photo?) {}
     func editProfileTableDeleteTapped() {}
-    func editProfileTable(changed name: String) {}
 }
