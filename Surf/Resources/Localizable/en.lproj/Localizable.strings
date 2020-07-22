@@ -101,3 +101,15 @@
 "Profile.DeletedPhoto.Failure" = "Failed to remove photo";
 "Profile.SetDefaultPhoto.Failure" = "Failed to set default photo";
 "Profile.AddUserPhoto.Failure" = "Failed to change photo";
+"Profile.Edit" = "Edit";
+
+// MARK: Edit profile
+"EditProfile.Edit" = "Edit";
+"EditProfile.Done" = "Done";
+"EditProfile.FullName" = "FULL NAME";
+"EditProfile.DeleteAccount" = "Delete Account";
+"EditProfile.AuthInfo" = "You are authorized as %@";
+"EditProfile.DeleteAccount.Failure" = "Failed to delete account";
+"EditProfile.ConfirmDeleteAccount.Yes" = "Yes";
+"EditProfile.ConfirmDeleteAccount.No" = "No";
+"EditProfile.ConfirmDeleteAccount.ConfirmDeleting" = "Do you really want to delete your account?";

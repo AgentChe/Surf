@@ -17,7 +17,7 @@ final class ProfilePhotosActionSheet {
     }
     
     func actionSheet(photo: Photo?, handler: @escaping ((Step) -> Void)) -> UIAlertController {
-        let actionSheet = UIAlertController(title:nil, message: nil, preferredStyle: .actionSheet)
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         if let photo = photo {
             actionSheet.addAction(UIAlertAction(title: "Profile.ProfilePhotosActionSheet.Change".localized, style: .default) { _ in

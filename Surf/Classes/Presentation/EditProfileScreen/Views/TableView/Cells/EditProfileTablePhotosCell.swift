@@ -1,16 +1,16 @@
 //
-//  ProfileTablePhotosCell.swift
+//  EditProfileTablePhotosCell.swift
 //  Surf
 //
-//  Created by Andrey Chernyshev on 21.07.2020.
+//  Created by Andrey Chernyshev on 22.07.2020.
 //  Copyright © 2020 Andrey Chernyshev. All rights reserved.
 //
 
 import UIKit
 import Kingfisher
 
-final class ProfileTablePhotosCell: UITableViewCell {
-    weak var actionDelegate: ProfileTableActionDelegate?
+final class EditProfileTablePhotosCell: UITableViewCell {
+    weak var actionDelegate: EditProfileTableActionDelegate?
     
     lazy var photoView1 = makePhotoView()
     lazy var photoView2 = makePhotoView()
@@ -36,16 +36,17 @@ final class ProfileTablePhotosCell: UITableViewCell {
         [photoView1, photoView2, photoView3].enumerated().forEach { stub in
             let (index, photoView) = stub
             
-            photoView.tag = index
-            
-            photoView.label.text = "\(index + 1)"
-            
             photoView.imageView.kf.cancelDownloadTask()
             photoView.imageView.image = nil
+            
+            photoView.shadowView.isHidden = true
+            
+            photoView.tag = index
             
             if sortedPhotos.indices.contains(index) {
                 if let url = URL(string: sortedPhotos[index].url) {
                     photoView.imageView.kf.setImage(with: url)
+                    photoView.shadowView.isHidden = false
                 }
             }
         }
@@ -54,12 +55,12 @@ final class ProfileTablePhotosCell: UITableViewCell {
 
 // MARK: Private
 
-private extension ProfileTablePhotosCell {
+private extension EditProfileTablePhotosCell {
     @objc
     func tapped(sender: Any) {
         guard
             let tapGesture = sender as? UITapGestureRecognizer,
-            let photoView = tapGesture.view as? ProfileTablePhotoView
+            let photoView = tapGesture.view as? EditProfileTablePhotoView
         else {
             return
         }
@@ -70,13 +71,13 @@ private extension ProfileTablePhotosCell {
             selectedPhoto = sortedPhotos[photoView.tag]
         }
 
-        actionDelegate?.profileTable(selected: selectedPhoto)
+        actionDelegate?.editProfileTable(selected: selectedPhoto)
     }
 }
 
 // MARK: Make constraints
 
-private extension ProfileTablePhotosCell {
+private extension EditProfileTablePhotosCell {
     func makeConstraints() {
         NSLayoutConstraint.activate([
             photoView1.widthAnchor.constraint(equalToConstant: 239.scale),
@@ -103,9 +104,9 @@ private extension ProfileTablePhotosCell {
 
 // MARK: Lazy initialization
 
-private extension ProfileTablePhotosCell {
-    func makePhotoView() -> ProfileTablePhotoView {
-        let view = ProfileTablePhotoView()
+private extension EditProfileTablePhotosCell {
+    func makePhotoView() -> EditProfileTablePhotoView {
+        let view = EditProfileTablePhotoView()
         view.backgroundColor = .clear
         view.layer.cornerRadius = 16.scale
         view.layer.masksToBounds = true

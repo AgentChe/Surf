@@ -1,14 +1,14 @@
 //
-//  ProfileView.swift
+//  EditProfileView.swift
 //  Surf
 //
-//  Created by Andrey Chernyshev on 19.07.2020.
+//  Created by Andrey Chernyshev on 22.07.2020.
 //  Copyright © 2020 Andrey Chernyshev. All rights reserved.
 //
 
 import UIKit
 
-final class ProfileView: UIView {
+final class EditProfileView: UIView {
     lazy var tableView = makeTableView()
     lazy var activityIndicator = makeActivityIndicator()
     
@@ -25,7 +25,7 @@ final class ProfileView: UIView {
 
 // MARK: Make constraints
 
-private extension ProfileView {
+private extension EditProfileView {
     func makeConstraints() {
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -45,9 +45,9 @@ private extension ProfileView {
 
 // MARK: Lazy initialization
 
-private extension ProfileView {
-    func makeTableView() -> ProfileTableView {
-        let view = ProfileTableView()
+private extension EditProfileView {
+    func makeTableView() -> EditProfileTableView {
+        let view = EditProfileTableView()
         view.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: ScreenSize.isIphoneXFamily ? 10.scale : 30.scale, right: 0)
         view.backgroundColor = UIColor(red: 240 / 255, green: 240 / 255, blue: 242 / 255, alpha: 1)
         view.separatorStyle = .none
@@ -67,3 +67,4 @@ private extension ProfileView {
         return view
     }
 }
+

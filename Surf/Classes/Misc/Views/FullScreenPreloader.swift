@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class ProfileFullScreenPreloader: UIView {
+final class FullScreenPreloader: UIView {
     lazy var activityIndicator = makeActivityIndicator()
     
     override init(frame: CGRect) {
@@ -34,7 +34,7 @@ final class ProfileFullScreenPreloader: UIView {
 
 // MARK: Make constraints
 
-private extension ProfileFullScreenPreloader {
+private extension FullScreenPreloader {
     func makeConstraints() {
         NSLayoutConstraint.activate([
             activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),
@@ -45,7 +45,7 @@ private extension ProfileFullScreenPreloader {
 
 // MARK: Lazy initialization
 
-private extension ProfileFullScreenPreloader {
+private extension FullScreenPreloader {
     func makeActivityIndicator() -> UIActivityIndicatorView {
         let view = UIActivityIndicatorView()
         view.hidesWhenStopped = true

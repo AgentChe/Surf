@@ -111,12 +111,34 @@ extension SessionService {
 extension SessionService {
     static func banned() -> Single<Bool?> {
         guard let userToken = SessionService.shared.userToken else {
-            return .error(NSError())
+            return .deferred { .just(false) }
         }
         
         return RestAPITransport()
             .callServerApi(requestBody: CheckUserBannedRequest(userToken: userToken))
             .map { CheckUserBannedResponseMapper.banned(response: $0) } 
+    }
+}
+
+// MARK: Delete user
+
+extension SessionService {
+    static func deleteUser() -> Single<Bool> {
+        guard let userToken = SessionService.shared.userToken else {
+            return .deferred { .just(false) }
+        }
+        
+        return RestAPITransport()
+            .callServerApi(requestBody: DeleteAccountRequest(userToken: userToken))
+            .map { (try? !CheckResponseForError.isError(jsonResponse: $0)) ?? false }
+            .do(onSuccess: { success in
+                guard success else {
+                    return
+                }
+                
+                UserDefaults.standard.removeObject(forKey: Constants.userTokenKey)
+                UserDefaults.standard.removeObject(forKey: Constants.userIdKey)
+            })
     }
 }
 

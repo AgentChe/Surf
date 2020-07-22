@@ -28,6 +28,8 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addNavigationItem()
+        
         profileView.tableView.actionDelegate = self
         
         viewModel
@@ -190,5 +192,14 @@ private extension ProfileViewController {
         let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
         
         present(activityVC, animated: true)
+    }
+    
+    func addNavigationItem() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Profile.Edit".localized, style: .plain, target: self, action: #selector(goToEditProfileScreen))
+    }
+    
+    @objc
+    func goToEditProfileScreen() {
+        navigationController?.pushViewController(EditProfileViewController.make(), animated: true)
     }
 }
