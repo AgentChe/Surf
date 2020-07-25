@@ -22,7 +22,7 @@ final class EditProfileViewModel {
     let nameItem = EditProfileTableNameElement()
     
     func sections() -> Driver<[EditProfileTableSection]> {
-        let initial = Driver<Profile?>
+        let cached = Driver<Profile?>
             .deferred { .just(ProfileManager.get()) }
             .map { [weak self] profile -> [EditProfileTableSection] in
                 guard let `self` = self, let profile = profile else {
@@ -45,7 +45,7 @@ final class EditProfileViewModel {
             .asDriver(onErrorJustReturn: [])
         
         return Driver
-            .merge(initial, updated)
+            .merge(cached, updated)
     }
     
     func changedApplied() -> Driver<Bool> {

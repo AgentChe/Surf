@@ -10,25 +10,42 @@ import RxSwift
 import RxCocoa
 
 final class ChatsViewModel {
-    private let chatsService = ChatsService()
+    private let chatsLiveManager = ChatsLiveManager()
     
     func connect() {
-        chatsService.connect()
+        chatsLiveManager.connect()
     }
     
     func disconnect() {
-        chatsService.disconnect()
+        chatsLiveManager.disconnect()
     }
     
     var chats: Driver<[Chat]> {
-        ChatsManager.shared
+        ChatsManager
             .getChats()
             .asDriver(onErrorJustReturn: [])
     }
     
-    func chatEvent() -> Driver<ChatsService.Event> {
-        chatsService
+    func chatEvent() -> Driver<ChatsLiveManager.Event> {
+        chatsLiveManager
             .event
             .asDriver(onErrorDriveWith: .never())
+    }
+    
+    func profile() -> Driver<Profile?> {
+        let cached = Driver<Profile?>
+            .deferred { .just(ProfileManager.get()) }
+        
+        let retrieved = ProfileManager
+            .retrieve()
+            .asDriver(onErrorJustReturn: nil)
+        
+        let updated = ProfileManager.shared.rx
+            .updated
+            .map { profile -> Profile? in return profile }
+            .asDriver(onErrorJustReturn: nil)
+        
+        return Driver
+            .merge(cached, retrieved, updated)
     }
 }

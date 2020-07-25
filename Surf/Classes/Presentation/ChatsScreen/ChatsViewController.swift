@@ -9,10 +9,6 @@
 import UIKit
 import RxSwift
 
-protocol ChatsViewControllerDelegate: class {
-    func newSearchTapped()
-}
-
 final class ChatsViewController: UIViewController {
     var chatsView = ChatsView()
     
@@ -41,7 +37,25 @@ final class ChatsViewController: UIViewController {
         
         AmplitudeAnalytics.shared.log(with: .chatListScr)
         
-        chatsView.tableView.selectedChat
+        addActions()
+        
+        viewModel
+            .profile()
+            .drive(onNext: { [weak self] profile in
+                guard let mainPhoto = profile?.photos.first(where: { $0.order == 1 }) else {
+                    return
+                }
+                
+                guard let url = URL(string: mainPhoto.url) else {
+                    return
+                }
+                
+                self?.chatsView.photoView.kf.setImage(with: url)
+            })
+            .disposed(by: disposeBag)
+        
+        chatsView.collectionView.rx
+            .selectedChat
             .emit(onNext: { [weak self] chat in
                 AmplitudeAnalytics.shared.log(with: .chatListTap("chat"))
                 
@@ -49,20 +63,19 @@ final class ChatsViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        chatsView.tableView
-            .changedItemsCount
-            .emit(onNext: { [weak self] itemsCount in
-                let isEmpty = itemsCount == 0
+        chatsView.collectionView.rx
+            .changedElementsCount
+            .emit(onNext: { [weak self] elementsCount in
+                let isEmpty = elementsCount == 0
                 
-                self?.chatsView.tableView.isHidden = isEmpty
-                self?.chatsView.titleLabel.isHidden = isEmpty
+                self?.chatsView.collectionView.isHidden = isEmpty
                 self?.chatsView.emptyView.isHidden = !isEmpty
             })
             .disposed(by: disposeBag)
         
         viewModel.chats
             .drive(onNext: { [weak self] chats in
-                self?.chatsView.tableView.add(chats: chats)
+                self?.chatsView.collectionView.add(chats: chats)
             })
             .disposed(by: disposeBag)
         
@@ -70,11 +83,11 @@ final class ChatsViewController: UIViewController {
             .drive(onNext: { [weak self] event in
                 switch event {
                 case .changedChat(let chat):
-                    self?.chatsView.tableView.replace(chat: chat)
+                    self?.chatsView.collectionView.replace(chat: chat)
                 case .removedChat(let chat):
-                    self?.chatsView.tableView.remove(chat: chat)
+                    self?.chatsView.collectionView.remove(chat: chat)
                 case .createdChat(let chat):
-                    self?.chatsView.tableView.insert(chat: chat)
+                    self?.chatsView.collectionView.insert(chat: chat)
                 }
             })
             .disposed(by: disposeBag)
@@ -100,7 +113,7 @@ extension ChatsViewController: ChatViewControllerDelegate {
         var readedChat = chat
         readedChat.change(unreadMessageCount: 0)
         
-        chatsView.tableView.replace(chat: readedChat)
+        chatsView.collectionView.replace(chat: readedChat)
     }
 }
 
@@ -108,13 +121,23 @@ extension ChatsViewController: ChatViewControllerDelegate {
 
 extension ChatsViewController: ChatsManagerDelegate {
     func didRemovedAllChats() {
-        chatsView.tableView.removeAll()
+        chatsView.collectionView.removeAll()
     }
 }
 
 // MARK: Private
 
 private extension ChatsViewController {
+    func addActions() {
+        let photoTapGesture = UITapGestureRecognizer(target: self, action: #selector(goToProfileScreen))
+        chatsView.photoView.addGestureRecognizer(photoTapGesture)
+    }
+    
+    @objc
+    func goToProfileScreen() {
+        navigationController?.pushViewController(ProfileViewController.make(), animated: true)
+    }
+    
     func goToChatScreen(with chat: Chat) {
         let vc = ChatViewController.make(with: chat)
         vc.delegate = self 

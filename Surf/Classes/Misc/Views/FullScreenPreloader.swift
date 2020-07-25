@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class FullScreenPreloader: UIView {
+class FullScreenPreloader: UIView {
     lazy var activityIndicator = makeActivityIndicator()
     
     override init(frame: CGRect) {

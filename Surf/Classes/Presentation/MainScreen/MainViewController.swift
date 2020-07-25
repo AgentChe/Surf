@@ -48,7 +48,6 @@ extension MainViewController: MainPageViewControllerDelegate {
             mainView.tabBarView.selectSearchItem()
         } else if index == 1 {
             mainView.tabBarView.selectChatsItem()
-            navigationController?.pushViewController(ProfileViewController.make(), animated: true)
         }
     }
 }

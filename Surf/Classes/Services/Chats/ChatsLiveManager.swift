@@ -1,15 +1,15 @@
 //
-//  ChatsService.swift
-//  FAWN
+//  ChatsLiveManager.swift
+//  Surf
 //
-//  Created by Andrey Chernyshev on 06/06/2020.
-//  Copyright © 2020 Алексей Петров. All rights reserved.
+//  Created by Andrey Chernyshev on 25.07.2020.
+//  Copyright © 2020 Andrey Chernyshev. All rights reserved.
 //
 
 import RxSwift
 import Starscream
 
-final class ChatsService {
+final class ChatsLiveManager {
     enum Event {
         case changedChat(Chat)
         case removedChat(Chat)
@@ -41,7 +41,7 @@ final class ChatsService {
             self?.socket?.onEvent = { event in
                 switch event {
                 case .text(let string):
-                    guard let response = ChatTransformation.from(chatsWebSocket: string) else {
+                    guard let response = ChatsLiveEventMapper.from(string: string) else {
                         return
                     }
                     

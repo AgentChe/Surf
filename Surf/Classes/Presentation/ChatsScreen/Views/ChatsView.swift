@@ -10,13 +10,14 @@ import UIKit
 
 final class ChatsView: UIView {
     lazy var titleLabel = makeTitleLabel()
-    lazy var tableView = makeTableView()
+    lazy var photoView = makePhotoView()
+    lazy var collectionView = makeCollectionView()
     lazy var emptyView = makeEmptyView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .black 
+        backgroundColor = .white
         
         makeConstraints()
     }
@@ -31,22 +32,28 @@ final class ChatsView: UIView {
 private extension ChatsView {
     func makeConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 66.scale)
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40.scale),
+            titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 22.scale)
+            photoView.widthAnchor.constraint(equalToConstant: 40.scale),
+            photoView.heightAnchor.constraint(equalToConstant: 40.scale),
+            photoView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40.scale),
+            photoView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20.scale)
         ])
         
         NSLayoutConstraint.activate([
             emptyView.leadingAnchor.constraint(equalTo: leadingAnchor),
             emptyView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            emptyView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            emptyView.topAnchor.constraint(equalTo: topAnchor)
+            emptyView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
 }
@@ -56,19 +63,31 @@ private extension ChatsView {
 private extension ChatsView {
     func makeTitleLabel() -> UILabel {
         let view = UILabel()
-        view.textColor = UIColor(red: 239 / 255, green: 239 / 255, blue: 244 / 255, alpha: 1)
-//        view.font = Font.Merriweather.bold(size: 34.scale)
-        view.textAlignment = .center
+        view.textColor = UIColor(red: 34 / 255, green: 34 / 255, blue: 34 / 255, alpha: 1)
+        view.font = Font.OpenSans.bold(size: 28.scale)
+        view.textAlignment = .left
         view.text = "Chats.Title".localized
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
     }
     
-    func makeTableView() -> ChatsTableView {
-        let view = ChatsTableView()
-        view.backgroundColor = .black
-        view.separatorStyle = .none
+    func makePhotoView() -> UIImageView {
+        let view = UIImageView()
+        view.layer.cornerRadius = 20.scale
+        view.layer.masksToBounds = true
+        view.clipsToBounds = true 
+        view.contentMode = .scaleAspectFill
+        view.isUserInteractionEnabled = true 
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeCollectionView() -> ChatsCollectionView {
+        let view = ChatsCollectionView(frame: .zero, collectionViewLayout: ChatsCollectionViewLayout())
+        view.backgroundColor = .white
+        view.contentInset = UIEdgeInsets(top: 0, left: 40.scale, bottom: 20.scale, right: 40.scale)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

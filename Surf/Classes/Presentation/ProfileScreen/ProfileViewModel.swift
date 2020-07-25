@@ -21,6 +21,17 @@ final class ProfileViewModel {
     let replacePhoto = PublishRelay<(UIImage, Int)>()
     
     func sections() -> Driver<[ProfileTableSection]> {
+        let cached = Driver<Profile?>
+            .deferred { .just(ProfileManager.get()) }
+            .map { [weak self] profile -> [ProfileTableSection] in
+                guard let `self` = self, let profile = profile else {
+                    return []
+                }
+            
+                return self.prepare(profile: profile)
+            }
+            .asDriver(onErrorJustReturn: [])
+        
         let retrieved = ProfileManager
             .retrieve()
             .map { [weak self] profile -> [ProfileTableSection] in
@@ -43,7 +54,7 @@ final class ProfileViewModel {
             .asDriver(onErrorJustReturn: [])
         
         return Driver
-            .merge(retrieved, updated)
+            .merge(cached, retrieved, updated)
         
     }
     
@@ -74,7 +85,7 @@ final class ProfileViewModel {
     func removedAllChats() -> Driver<Bool> {
         removeAllChats
             .flatMapLatest { [activityIndicator] _ -> Observable<Bool> in
-                ChatsManager.shared
+                ChatsManager
                     .removeAllChats()
                     .trackActivity(activityIndicator)
                     .catchErrorJustReturn(false)

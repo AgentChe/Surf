@@ -38,7 +38,7 @@ private extension MainView {
             tabBarView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tabBarView.trailingAnchor.constraint(equalTo: trailingAnchor),
             tabBarView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            tabBarView.heightAnchor.constraint(equalToConstant: 96.scale)
+            tabBarView.heightAnchor.constraint(equalToConstant: ScreenSize.isIphoneXFamily ? 96.scale : 70.scale)
         ])
     }
 }

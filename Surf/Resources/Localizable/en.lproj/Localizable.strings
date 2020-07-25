@@ -114,3 +114,8 @@
 "EditProfile.ConfirmDeleteAccount.No" = "No";
 "EditProfile.ConfirmDeleteAccount.ConfirmDeleting" = "Do you really want to delete your account?";
 "EditProfile.SaveChanges.Failure" = "Failed to save changes";
+
+// MARK: Chats
+"Chats.Title" = "Chats";
+"Chats.NewSearch" = "New Search";
+"Chats.Empty" = "No chats yet,\nkeep looking for a match.";

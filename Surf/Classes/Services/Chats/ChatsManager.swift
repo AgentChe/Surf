@@ -19,21 +19,21 @@ final class ChatsManager {
 // MARK: Retrieve
 
 extension ChatsManager {
-    func getChats() -> Single<[Chat]> {
+    static func getChats() -> Single<[Chat]> {
         guard let userToken = SessionService.shared.userToken else {
             return .deferred { .just([]) }
         }
         
         return RestAPITransport()
             .callServerApi(requestBody: GetChatsRequest(userToken: userToken))
-            .map { ChatTransformation.from(response: $0) }
+            .map { GetChatsResponseMapper.from(response: $0) }
     }
 }
 
-// NARK: Remove
+// MARK: Remove
 
 extension ChatsManager {
-    func removeAllChats() -> Single<Bool> {
+    static func removeAllChats() -> Single<Bool> {
         guard let userToken = SessionService.shared.userToken else {
             return .deferred { .just(false) }
         }
@@ -46,7 +46,7 @@ extension ChatsManager {
                     return
                 }
                 
-                ChatsManager.shared.delegates.forEach {
+                shared.delegates.forEach {
                     $0.weak?.didRemovedAllChats()
                 }
             })
