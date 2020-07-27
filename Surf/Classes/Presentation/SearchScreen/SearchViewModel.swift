@@ -15,16 +15,11 @@ final class SearchViewModel {
         case needPayment
     }
     
-    let like = PublishRelay<ProposedInterlocutor>()
-    private(set) lazy var likeWasPut = createLikeComplete()
-    
-    let dislike = PublishRelay<ProposedInterlocutor>()
-    private(set) lazy var dislikeWasPut = createDislikeComplete()
-    
     let downloadProposedInterlocutors = PublishRelay<Void>()
-    private(set) lazy var step = createStep()
+    let like = PublishRelay<ProposedInterlocutor>()
+    let dislike = PublishRelay<ProposedInterlocutor>()
     
-    private func createStep() -> Driver<Step> {
+    func step() -> Driver<Step> {
         downloadProposedInterlocutors
             .startWith(Void())
             .flatMapLatest {
@@ -45,18 +40,24 @@ final class SearchViewModel {
             .asDriver(onErrorDriveWith: .never())
     }
     
-    private func createLikeComplete() -> Signal<ProposedInterlocutor> {
+    func liked() -> Driver<(ProposedInterlocutor, Bool)> {
         like
             .flatMap { prposedInterlocutor in
                 SearchService
                     .likeProposedInterlocutor(with: prposedInterlocutor.id)
-                    .map { prposedInterlocutor }
+                    .flatMap { mutual -> Single<(ProposedInterlocutor, Bool)> in
+                        guard let mutual = mutual else {
+                            return .never()
+                        }
+                        
+                        return .deferred { .just((prposedInterlocutor, mutual)) }
+                    }
                     .catchError { _ in .never() }
                 }
-            .asSignal(onErrorSignalWith: .never())
+        .asDriver(onErrorDriveWith: .never())
     }
     
-    private func createDislikeComplete() -> Signal<ProposedInterlocutor> {
+    func disliked() -> Driver<ProposedInterlocutor> {
         dislike
             .flatMap { prposedInterlocutor in
                 SearchService
@@ -64,6 +65,6 @@ final class SearchViewModel {
                     .map { prposedInterlocutor }
                     .catchError { _ in .never() }
                 }
-            .asSignal(onErrorSignalWith: .never())
+            .asDriver(onErrorDriveWith: .never())
     }
 }

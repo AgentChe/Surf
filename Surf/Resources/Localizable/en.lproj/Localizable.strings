@@ -119,3 +119,11 @@
 "Chats.Title" = "Chats";
 "Chats.NewSearch" = "New Search";
 "Chats.Empty" = "No chats yet,\nkeep looking for a match.";
+
+// MARK: Search
+"Search.NoProposedInterlocutors.Title" = "No One's New\nOnline Right\nNow";
+"Search.NoProposedInterlocutors.Setting" = "Adjust Search Settings";
+"Search.NoProposedInterlocutors.TryMoreTime" = "Try one more time";
+"Search.Matched.Title" = "It's Match!";
+"Search.Matched.SendMessage" = "Send a message";
+"Search.Matched.KeepSurfing" = "Keep Surfing";

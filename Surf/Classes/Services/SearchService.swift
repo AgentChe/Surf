@@ -28,14 +28,14 @@ extension SearchService {
 // MARK: Match
 
 extension SearchService {
-    static func likeProposedInterlocutor(with id: Int) -> Single<Void> {
+    static func likeProposedInterlocutor(with id: Int) -> Single<Bool?> {
         guard let userToken = SessionService.shared.userToken else {
-            return .deferred { .error(SignError.tokenNotFound) }
+            return .deferred { .just(nil) }
         }
         
         return RestAPITransport()
             .callServerApi(requestBody: LikeProposedInterlocutorRequest(userToken: userToken, proposedInterlocutorId: id))
-            .map { try CheckResponseForError.throwIfError(response: $0) }
+            .map { LikeProposedInterlocutorResponseMapper.from(response: $0) }
     }
     
     static func dislikeProposedInterlocutor(with id: Int) -> Single<Void> {

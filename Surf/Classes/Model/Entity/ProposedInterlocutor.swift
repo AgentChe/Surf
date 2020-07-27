@@ -6,38 +6,41 @@
 //  Copyright © 2020 Алексей Петров. All rights reserved.
 //
 
-import Foundation.NSURL
+import Foundation
 
 struct ProposedInterlocutor {
     let id: Int
-    let interlocutorFullName: String
-    let interlocutorAvatarUrl: URL?
-    let interlocutorPhotoUrls: [URL]
-    let age: Int
+    let name: String
+    let photos: [Photo]
+    let emoji: String
+    let birthdate: Date
 }
 
 extension ProposedInterlocutor: Model {
     private enum Keys: String, CodingKey {
         case id
         case name
-        case avatarUrl = "avatar"
         case photos = "photos"
-        case age
+        case emoji
+        case birthdate
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Keys.self)
         
         id = try container.decode(Int.self, forKey: .id)
-        interlocutorFullName = try container.decode(String.self, forKey: .name)
+        name = try container.decode(String.self, forKey: .name)
+        photos = try container.decode([Photo].self, forKey: .photos)
+        emoji = try container.decode(String.self, forKey: .emoji)
         
-        age = try container.decode(Int.self, forKey: .age)
-        
-        let avatarPath = try? container.decode(String.self, forKey: .avatarUrl)
-        interlocutorAvatarUrl = URL(string: avatarPath ?? "")
-        
-        let photosPaths = (try? container.decode([String].self, forKey: .photos)) ?? []
-        interlocutorPhotoUrls = photosPaths.compactMap { URL(string: $0) }
+        // TODO
+        let birthdateStringFormat = "1992-04-17" //try data.decode(String.self, forKey: .birthdate)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        guard let birthdate = dateFormatter.date(from: birthdateStringFormat) else {
+            throw NSError()
+        }
+        self.birthdate = birthdate
     }
     
     func encode(to encoder: Encoder) throws {}

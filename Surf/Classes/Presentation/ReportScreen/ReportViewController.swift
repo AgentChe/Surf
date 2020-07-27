@@ -86,7 +86,7 @@ final class ReportViewController: UIViewController {
         case .chatInterlocutor(let chat):
             headerLabel.text = String(format: "Report.Menu.Header".localized, chat.interlocutorName)
         case .proposedInterlocutor(let proposedInterlocutor):
-            headerLabel.text = String(format: "Report.Menu.Header".localized, proposedInterlocutor.interlocutorFullName)
+            headerLabel.text = String(format: "Report.Menu.Header".localized, proposedInterlocutor.name)
         }
     }
 }

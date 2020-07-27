@@ -9,16 +9,10 @@
 import UIKit
 
 final class NoProposedInterlocutorsView: UIView {
-    enum DisplayType {
-        case noProposedInterlocutors, needPayment
-    }
-    
-    var newSearchTapped: (() -> Void)?
-    
-    private lazy var imageView = makeImageView()
-    private lazy var titleLabel = makeTitleLabel()
-    private lazy var subTitleLabel = makeSubTitleLabel()
-    private lazy var newSearchButton = makeNewSearchButton()
+    lazy var iconView = makeIconView()
+    lazy var titleLabel = makeTitleLabel()
+    lazy var settingsButton = makeSettingsButton()
+    lazy var tryMoreTimeButton = makeTryMoreTimeButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,101 +23,95 @@ final class NoProposedInterlocutorsView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func setup(type: DisplayType) {
-        switch type {
-        case .noProposedInterlocutors:
-            titleLabel.attributedText = "Search.NoProposedInterlocutorsTitle".localized.attributed(with: makeTitleAttrs())
-            subTitleLabel.attributedText = "Search.NoProposedInterlocutorsSubTitle".localized.attributed(with: makeSubTitleAttrs())
-        case .needPayment:
-            titleLabel.attributedText = "Search.NeedPaymentTitle".localized.attributed(with: makeTitleAttrs())
-            subTitleLabel.attributedText = "Search.NeedPaymentSubTitle".localized.attributed(with: makeSubTitleAttrs())
-        }
+}
+
+// MARK: Make constraints
+
+private extension NoProposedInterlocutorsView {
+    func makeConstraints() {
+        NSLayoutConstraint.activate([
+            iconView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            iconView.widthAnchor.constraint(equalToConstant: 95.scale),
+            iconView.heightAnchor.constraint(equalToConstant: 80.scale),
+            iconView.topAnchor.constraint(equalTo: topAnchor, constant: ScreenSize.isIphoneXFamily ? 163.scale : 110.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16.scale),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16.scale),
+            titleLabel.topAnchor.constraint(equalTo: iconView.bottomAnchor, constant: 24.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            settingsButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40.scale),
+            settingsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40.scale),
+            settingsButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 70.scale),
+            settingsButton.heightAnchor.constraint(equalToConstant: 56.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            tryMoreTimeButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40.scale),
+            tryMoreTimeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40.scale),
+            tryMoreTimeButton.topAnchor.constraint(equalTo: settingsButton.bottomAnchor, constant: 20.scale),
+            tryMoreTimeButton.heightAnchor.constraint(equalToConstant: 56.scale)
+        ])
     }
-    
-    // MARK: Lazy initialization
-    
-    private func makeImageView() -> UIImageView {
+}
+
+// MARK: Lazy initialization
+
+private extension NoProposedInterlocutorsView {
+    func makeIconView() -> UIImageView {
         let view = UIImageView()
-        view.clipsToBounds = true
         view.contentMode = .scaleAspectFit
-        view.image = UIImage(named: "Search.NoProposedInterlcutors")
+        view.clipsToBounds = true
+        view.image = UIImage(named: "Search.NoProposedInterlocutors.Icon")
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
     }
     
-    private func makeTitleLabel() -> UILabel {
+    func makeTitleLabel() -> UILabel {
+        let attrs = TextAttributes()
+            .font(Font.OpenSans.bold(size: 34.scale))
+            .textColor(.black)
+            .textAlignment(.center)
+            .lineHeight(36.scale)
+        
         let view = UILabel()
         view.numberOfLines = 0
+        view.attributedText = "Search.NoProposedInterlocutors.Title".localized.attributed(with: attrs)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
     }
     
-    private func makeSubTitleLabel() -> UILabel {
-        let view = UILabel()
-        view.numberOfLines = 0
-        view.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(view)
-        return view
-    }
-    
-    private func makeNewSearchButton() -> UIButton {
+    func makeSettingsButton() -> UIButton {
         let view = UIButton()
-        view.setBackgroundImage(UIImage(named: "btn_bg"), for: .normal)
-        view.titleLabel?.font = Font.OpenSans.semibold(size: 17)
-        view.setTitle("Search.NoProposedInterlocutorsNewSearch".localized, for: .normal)
-        view.setTitleColor(.white, for: .normal)
+        view.backgroundColor = UIColor(red: 50 / 255, green: 50 / 255, blue: 52 / 255, alpha: 1)
+        view.layer.cornerRadius = 28.scale
+        view.layer.masksToBounds = true
+        view.setTitle("Search.NoProposedInterlocutors.Setting".localized, for: .normal)
+        view.setTitleColor(UIColor.white, for: .normal)
+        view.titleLabel?.font = Font.OpenSans.semibold(size: 17.scale)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.addTarget(self, action: #selector(newSearchTapped(sender:)), for: .touchUpInside)
         addSubview(view)
         return view
     }
     
-    private func makeTitleAttrs() -> TextAttributes {
-        TextAttributes()
-            .textColor(UIColor(red: 239 / 255, green: 239 / 255, blue: 244 / 255, alpha: 1))
-            .font(Font.OpenSans.regular(size: 22))
-            .lineHeight(28)
-            .textAlignment(.center)
-    }
-    
-    private func makeSubTitleAttrs() -> TextAttributes {
-        TextAttributes()
-            .textColor(.white)
-            .font(Font.OpenSans.regular(size: 17))
-            .lineHeight(22)
-            .letterSpacing(-0.6)
-            .textAlignment(.center)
-    }
-    
-    // MARK: Make constraints
-    
-    private func makeConstraints() {
-        imageView.widthAnchor.constraint(equalToConstant: 64).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 64).isActive = true
-        imageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        imageView.topAnchor.constraint(equalTo: topAnchor, constant: 150).isActive = true
-        
-        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 35).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -35).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 24).isActive = true
-        
-        subTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 35).isActive = true
-        subTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -35).isActive = true
-        subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12).isActive = true
-        
-        newSearchButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 44).isActive = true
-        newSearchButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -44).isActive = true
-        newSearchButton.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 32).isActive = true
-        newSearchButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
-    }
-    
-    // MARK: Private
-    
-    @objc
-    private func newSearchTapped(sender: Any) {
-        newSearchTapped?()
+    func makeTryMoreTimeButton() -> UIButton {
+        let view = UIButton()
+        view.backgroundColor = UIColor.white
+        view.layer.cornerRadius = 23.scale
+        view.setTitle("Search.NoProposedInterlocutors.TryMoreTime".localized, for: .normal)
+        view.setTitleColor(UIColor(red: 17 / 255, green: 17 / 255, blue: 17 / 255, alpha: 1), for: .normal)
+        view.titleLabel?.font = Font.OpenSans.semibold(size: 17.scale)
+        view.layer.shadowRadius = 9.0.scale
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = CGSize(width: 3.scale, height: 3.scale)
+        view.layer.shadowOpacity = 0.2
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
     }
 }

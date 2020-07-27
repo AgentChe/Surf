@@ -19,6 +19,10 @@ final class SurfNavigationController: UINavigationController {
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        .lightContent
+        if #available(iOS 13.0, *) {
+            return .darkContent
+        } else {
+            return .default
+        }
     }
 }

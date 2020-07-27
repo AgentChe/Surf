@@ -26,6 +26,18 @@ final class PhotosSlider: UIView {
     
     private var isConfigured = false
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        guard !isConfigured && !urls.isEmpty else {
+            return
+        }
+        
+        configure()
+        
+        isConfigured = true
+    }
+    
     func setup(urls: [URL]) {
         slideIndicators.forEach { $0.removeFromSuperview() }
         slideIndicators = []
@@ -41,18 +53,6 @@ final class PhotosSlider: UIView {
         
         setNeedsLayout()
         layoutIfNeeded()
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        guard !isConfigured && !urls.isEmpty else {
-            return
-        }
-        
-        configure()
-        
-        isConfigured = true
     }
 }
 

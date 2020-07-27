@@ -42,6 +42,16 @@ extension MainViewController: ChatsViewControllerDelegate {
     }
 }
 
+// MARK: SearchViewControllerDelegate
+
+extension MainViewController: SearchViewControllerDelegate {
+    func searchViewControllerSendMessageTapped() {
+        mainView.tabBarView.selectChatsItem()
+    }
+}
+
+// MARK: MainPageViewControllerDelegate
+
 extension MainViewController: MainPageViewControllerDelegate {
     func changed(page index: Int) {
         if index == 0 {
@@ -57,6 +67,7 @@ extension MainViewController: MainPageViewControllerDelegate {
 private extension MainViewController {
     func addPagesController() {
         let searchVC = SearchViewController.make()
+        searchVC.delegate = self
        
         let chatsVC = ChatsViewController.make()
         chatsVC.delegate = self

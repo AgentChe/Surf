@@ -106,7 +106,7 @@ extension ChatsViewController {
     }
 }
 
-// MARK: ChatsViewControllerDelegate
+// MARK: ChatViewControllerDelegate
 
 extension ChatsViewController: ChatViewControllerDelegate {
     func markReaded(chat: Chat, message: Message) {

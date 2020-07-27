@@ -11,144 +11,81 @@ import RxSwift
 import RxCocoa
 
 final class SearchViewController: UIViewController {
-    static func make() -> UIViewController {
-        SearchViewController(nibName: nil, bundle: nil)
-    }
+    var searchView = SearchView()
     
-    private lazy var collectionView = makeCollectionView()
-    private lazy var emptyView = makeEmptyView()
+    weak var delegate: SearchViewControllerDelegate?
     
     private let viewModel = SearchViewModel()
     
     private let disposeBag = DisposeBag()
+    
+    override func loadView() {
+        super.loadView()
+        
+        view = searchView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         AmplitudeAnalytics.shared.log(with: .searchScr)
         
-        makeConstraints()
-        bind()
-    }
-    
-    // MARK: Bind
-    
-    private func bind() {
-        collectionView
-            .report
-            .emit(onNext: { [weak self] proposedInterlocutor in
-                self?.goToReportScreen(proposedInterlocutor: proposedInterlocutor)
-            })
-            .disposed(by: disposeBag)
-        
-        collectionView
-            .changeItemsCount
-            .distinctUntilChanged()
-            .filter { $0 == 0 }
-            .emit(onNext: { [weak self] count in
-                self?.viewModel.downloadProposedInterlocutors.accept(Void())
-            })
-            .disposed(by: disposeBag)
+        searchView.collectionView.proposedInterlocutorsDelegate = self 
         
         viewModel
-            .step
+            .step()
             .drive(onNext: { [weak self] step in
                 switch step {
                 case .proposedInterlocutors(let proposedInterlocutors):
-                    self?.collectionView.add(proposedInterlocutors: proposedInterlocutors)
+                    self?.searchView.collectionView.add(proposedInterlocutors: proposedInterlocutors)
                     
-                    self?.collectionView.isHidden = proposedInterlocutors.isEmpty
-                    self?.emptyView.isHidden = !proposedInterlocutors.isEmpty
-                    
-                    if proposedInterlocutors.isEmpty {
-                        self?.emptyView.setup(type: .noProposedInterlocutors)
-                    }
+                    self?.searchView.collectionView.isHidden = proposedInterlocutors.isEmpty
+                    self?.searchView.noProposedInterlocutorsView.isHidden = !proposedInterlocutors.isEmpty
                 case .needPayment:
-                    self?.emptyView.isHidden = false
-                    self?.emptyView.setup(type: .needPayment)
-                    
                     self?.goToPaygateScreen()
                 }
             })
             .disposed(by: disposeBag)
         
-        Signal
-            .merge(viewModel.likeWasPut,
-                   viewModel.dislikeWasPut)
-            .emit(onNext: { [weak self] proposedInterlocutor in
-                self?.collectionView.remove(proposedInterlocutor: proposedInterlocutor)
+        viewModel
+            .liked()
+            .drive(onNext: { [weak self] stub in
+                let (proposedInterlocutor, mutual) = stub
+                
+                self?.searchView.collectionView.remove(proposedInterlocutor: proposedInterlocutor)
+                
+                if mutual {
+                    self?.goToMutualLikedScreen()
+                }
             })
             .disposed(by: disposeBag)
         
-        collectionView
-            .like
-            .emit(to: viewModel.like)
+        viewModel
+            .disliked()
+            .drive(onNext: { [weak self] proposedInterlocutor in
+                self?.searchView.collectionView.remove(proposedInterlocutor: proposedInterlocutor)
+            })
             .disposed(by: disposeBag)
         
-        collectionView
-            .dislike
-            .emit(to: viewModel.dislike)
+        searchView
+            .noProposedInterlocutorsView
+            .tryMoreTimeButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.viewModel.downloadProposedInterlocutors.accept(Void())
+            })
             .disposed(by: disposeBag)
-    }
-    
-    // MARK: Lazy initialization
-    
-    private func makeCollectionView() -> ProposedInterlocutorsCollectionView {
-        let view = ProposedInterlocutorsCollectionView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(view)
-        return view
-    }
-    
-    private func makeEmptyView() -> NoProposedInterlocutorsView {
-        let view = NoProposedInterlocutorsView()
-        view.backgroundColor = .clear
-        view.isHidden = true
-        view.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(view)
-        
-        view.newSearchTapped = { [weak self] in
-            self?.emptyView.isHidden = true
-            self?.viewModel.downloadProposedInterlocutors.accept(Void())
-        }
-        
-        return view
-    }
-    
-    // MARK: Make constraints
-    
-    private func makeConstraints() {
-        NSLayoutConstraint.activate([
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
-            
-            emptyView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            emptyView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            emptyView.topAnchor.constraint(equalTo: view.topAnchor),
-            emptyView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-    }
-    
-    // MARK: Private
-    
-    private func goToPaygateScreen() {
-        let vc = PaygateViewController.make(delegate: self)
-        vc.modalPresentationStyle = .overCurrentContext
-        vc.modalTransitionStyle = .coverVertical
-
-        present(vc, animated: true)
-    }
-    
-    private func goToReportScreen(proposedInterlocutor: ProposedInterlocutor) {
-        let vc = ReportViewController(on: .proposedInterlocutor(proposedInterlocutor))
-        vc.modalPresentationStyle = .fullScreen
-        vc.delegate = self
-        
-        present(vc, animated: true)
     }
 }
+
+// MARK: Make
+
+extension SearchViewController {
+    static func make() -> SearchViewController {
+        SearchViewController()
+    }
+}
+
+// MARK: PaygateViewControllerDelegate
 
 extension SearchViewController: PaygateViewControllerDelegate {
     func wasPurchased() {
@@ -160,10 +97,67 @@ extension SearchViewController: PaygateViewControllerDelegate {
     }
 }
 
+// MARK: ReportViewControllerDelegate
+
 extension SearchViewController: ReportViewControllerDelegate {
     func reportWasCreated(reportOn: ReportViewController.ReportOn) {
         if case let .proposedInterlocutor(proposedInterlocutor) = reportOn {
-            collectionView.remove(proposedInterlocutor: proposedInterlocutor)
+            searchView.collectionView.remove(proposedInterlocutor: proposedInterlocutor)
         }
+    }
+}
+
+// MARK: ProposedInterlocutorsCollectionViewDelegate
+
+extension SearchViewController: ProposedInterlocutorsCollectionViewDelegate {
+    func liked(proposedInterlocutor: ProposedInterlocutor) {
+        viewModel.like.accept(proposedInterlocutor)
+    }
+    
+    func disliked(proposedInterlocutor: ProposedInterlocutor) {
+        viewModel.dislike.accept(proposedInterlocutor)
+    }
+    
+    func report(on proposedInterlocutor: ProposedInterlocutor) {
+        goToReportScreen(proposedInterlocutor: proposedInterlocutor)
+    }
+    
+    func proposedInterlocutorsCollectionView(changed items: Int) {
+        guard items == 0 else {
+            return
+        }
+        
+        viewModel.downloadProposedInterlocutors.accept(Void())
+    }
+}
+
+// MARK: MutualLikedViewControllerDelegate
+
+extension SearchViewController: MutualLikedViewControllerDelegate {
+    func sendMessageTapped() {
+        delegate?.searchViewControllerSendMessageTapped()
+    }
+}
+
+// MARK: Private
+
+private extension SearchViewController {
+    func goToPaygateScreen() {
+        let vc = PaygateViewController.make(delegate: self)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func goToReportScreen(proposedInterlocutor: ProposedInterlocutor) {
+        let vc = ReportViewController(on: .proposedInterlocutor(proposedInterlocutor))
+        vc.modalPresentationStyle = .fullScreen
+        vc.delegate = self
+        
+        present(vc, animated: true)
+    }
+    
+    func goToMutualLikedScreen() {
+        let vc = MutualLikedViewController.make()
+        vc.delegate = self
+        navigationController?.present(vc, animated: true)
     }
 }
