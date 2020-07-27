@@ -122,6 +122,10 @@ extension SearchViewController: ProposedInterlocutorsCollectionViewDelegate {
         goToReportScreen(proposedInterlocutor: proposedInterlocutor)
     }
     
+    func setupSettings() {
+        goToSettingsScreen()
+    }
+    
     func proposedInterlocutorsCollectionView(changed items: Int) {
         guard items == 0 else {
             return
@@ -158,6 +162,11 @@ private extension SearchViewController {
     func goToMutualLikedScreen() {
         let vc = MutualLikedViewController.make()
         vc.delegate = self
+        navigationController?.present(vc, animated: true)
+    }
+    
+    func goToSettingsScreen() {
+        let vc = SearchSettingsViewController.make()
         navigationController?.present(vc, animated: true)
     }
 }

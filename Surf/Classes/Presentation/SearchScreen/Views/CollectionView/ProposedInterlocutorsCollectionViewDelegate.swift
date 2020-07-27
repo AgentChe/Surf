@@ -10,6 +10,7 @@ protocol ProposedInterlocutorsCollectionViewDelegate: class {
     func liked(proposedInterlocutor: ProposedInterlocutor)
     func disliked(proposedInterlocutor: ProposedInterlocutor)
     func report(on proposedInterlocutor: ProposedInterlocutor)
+    func setupSettings()
     func proposedInterlocutorsCollectionView(changed items: Int)
 }
 
@@ -17,5 +18,6 @@ extension ProposedInterlocutorsCollectionViewDelegate {
     func liked(proposedInterlocutor: ProposedInterlocutor) {}
     func disliked(proposedInterlocutor: ProposedInterlocutor) {}
     func report(on proposedInterlocutor: ProposedInterlocutor) {}
+    func setupSettings() {}
     func proposedInterlocutorsCollectionView(changed items: Int) {}
 }

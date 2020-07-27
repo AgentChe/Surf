@@ -13,6 +13,7 @@ final class ProposedInterlocutorCollectionCell: UICollectionViewCell {
     weak var delegate: ProposedInterlocutorsCollectionViewDelegate?
     
     lazy var reportButton = makeReportButton()
+    lazy var settingsButton = makeSettingsButton()
     lazy var photosSlider = makePhotosSlider()
     lazy var emojiLabel = makeEmojiLabel()
     lazy var welcomeLabel = makeWelcomeLabel()
@@ -66,6 +67,11 @@ private extension ProposedInterlocutorCollectionCell {
     }
     
     @objc
+    func settingsTapped() {
+        delegate?.setupSettings()
+    }
+    
+    @objc
     func likeTapped() {
         delegate?.liked(proposedInterlocutor: proposedInterlocutor)
     }
@@ -85,6 +91,13 @@ private extension ProposedInterlocutorCollectionCell {
             reportButton.heightAnchor.constraint(equalToConstant: 30.scale),
             reportButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -32.scale),
             reportButton.topAnchor.constraint(equalTo: contentView.topAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            settingsButton.widthAnchor.constraint(equalToConstant: 30.scale),
+            settingsButton.heightAnchor.constraint(equalToConstant: 30.scale),
+            settingsButton.trailingAnchor.constraint(equalTo: reportButton.leadingAnchor, constant: -16.scale),
+            settingsButton.centerYAnchor.constraint(equalTo: reportButton.centerYAnchor)
         ])
         
         NSLayoutConstraint.activate([
@@ -138,6 +151,17 @@ private extension ProposedInterlocutorCollectionCell {
         contentView.addSubview(view)
         
         view.addTarget(self, action: #selector(reportTapped), for: .touchUpInside)
+        
+        return view
+    }
+    
+    func makeSettingsButton() -> UIButton {
+        let view = UIButton()
+        view.setImage(UIImage(named: "Search.Settings"), for: .normal)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(view)
+        
+        view.addTarget(self, action: #selector(settingsTapped), for: .touchUpInside)
         
         return view
     }

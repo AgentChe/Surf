@@ -217,6 +217,10 @@
 		96A1BC8C24C04D010043DCCC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 96A1BC8B24C04D010043DCCC /* GoogleService-Info.plist */; };
 		96BCD88524CF13E9004B40B2 /* MutualLikedViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BCD88424CF13E9004B40B2 /* MutualLikedViewControllerDelegate.swift */; };
 		96BCD88724CF2132004B40B2 /* SearchViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BCD88624CF2132004B40B2 /* SearchViewControllerDelegate.swift */; };
+		96BCD88B24CF24FC004B40B2 /* SearchSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BCD88A24CF24FC004B40B2 /* SearchSettingsViewController.swift */; };
+		96BCD88E24CF254E004B40B2 /* SearchSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BCD88D24CF254E004B40B2 /* SearchSettingsView.swift */; };
+		96BCD89024CF31A0004B40B2 /* SearchSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BCD88F24CF31A0004B40B2 /* SearchSettingsViewModel.swift */; };
+		96BCD89224CF42F4004B40B2 /* InterceptingEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BCD89124CF42F4004B40B2 /* InterceptingEventsView.swift */; };
 		96CD2AE324C72A2F0026A1DA /* ProfileManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CD2AE224C72A2F0026A1DA /* ProfileManagerDelegate.swift */; };
 		96E43E9124C5B16700831DC3 /* ProfileTableDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E43E9024C5B16700831DC3 /* ProfileTableDirection.swift */; };
 		96E43E9324C5B21700831DC3 /* ProfileTableDirectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E43E9224C5B21700831DC3 /* ProfileTableDirectionCell.swift */; };
@@ -455,6 +459,10 @@
 		96A1BC8B24C04D010043DCCC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		96BCD88424CF13E9004B40B2 /* MutualLikedViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutualLikedViewControllerDelegate.swift; sourceTree = "<group>"; };
 		96BCD88624CF2132004B40B2 /* SearchViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewControllerDelegate.swift; sourceTree = "<group>"; };
+		96BCD88A24CF24FC004B40B2 /* SearchSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSettingsViewController.swift; sourceTree = "<group>"; };
+		96BCD88D24CF254E004B40B2 /* SearchSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSettingsView.swift; sourceTree = "<group>"; };
+		96BCD88F24CF31A0004B40B2 /* SearchSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSettingsViewModel.swift; sourceTree = "<group>"; };
+		96BCD89124CF42F4004B40B2 /* InterceptingEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterceptingEventsView.swift; sourceTree = "<group>"; };
 		96CD2AE224C72A2F0026A1DA /* ProfileManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManagerDelegate.swift; sourceTree = "<group>"; };
 		96E43E9024C5B16700831DC3 /* ProfileTableDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableDirection.swift; sourceTree = "<group>"; };
 		96E43E9224C5B21700831DC3 /* ProfileTableDirectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableDirectionCell.swift; sourceTree = "<group>"; };
@@ -749,6 +757,7 @@
 				963F58EF24BCD02E0063D615 /* CircleView.swift */,
 				96E43E9624C5CAA100831DC3 /* FullScreenPreloader.swift */,
 				965588CD24BEF9A000D6EB83 /* PaddingTextField.swift */,
+				96BCD89124CF42F4004B40B2 /* InterceptingEventsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -857,6 +866,8 @@
 		963F592124BCD02E0063D615 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				96BCD88924CF24C9004B40B2 /* SearchSettingsScreen */,
+				96EDBC8124CF135600C814CA /* MutualLikedScreen */,
 				96228ABC24C8285E00F5B129 /* EditProfileScreen */,
 				9648701824C440B00084CC2D /* MainScreen */,
 				963F593024BCD02E0063D615 /* SearchScreen */,
@@ -889,7 +900,6 @@
 		963F593324BCD02E0063D615 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				96EDBC8124CF135600C814CA /* MutualLikedView */,
 				963F593424BCD02E0063D615 /* CollectionView */,
 				963F593724BCD02E0063D615 /* NoProposedInterlocutorsView.swift */,
 				96EDBC7824CDF74600C814CA /* SearchView.swift */,
@@ -1353,6 +1363,32 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		96BCD88824CF2428004B40B2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				96EDBC7C24CEC44D00C814CA /* MutualLikedView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		96BCD88924CF24C9004B40B2 /* SearchSettingsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				96BCD88C24CF253E004B40B2 /* Views */,
+				96BCD88A24CF24FC004B40B2 /* SearchSettingsViewController.swift */,
+				96BCD88F24CF31A0004B40B2 /* SearchSettingsViewModel.swift */,
+			);
+			path = SearchSettingsScreen;
+			sourceTree = "<group>";
+		};
+		96BCD88C24CF253E004B40B2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				96BCD88D24CF254E004B40B2 /* SearchSettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		96CD2AE424C73FE70026A1DA /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -1447,14 +1483,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		96EDBC8124CF135600C814CA /* MutualLikedView */ = {
+		96EDBC8124CF135600C814CA /* MutualLikedScreen */ = {
 			isa = PBXGroup;
 			children = (
-				96EDBC7C24CEC44D00C814CA /* MutualLikedView.swift */,
+				96BCD88824CF2428004B40B2 /* Views */,
 				96EDBC7F24CF134000C814CA /* MutualLikedViewController.swift */,
 				96BCD88424CF13E9004B40B2 /* MutualLikedViewControllerDelegate.swift */,
 			);
-			path = MutualLikedView;
+			path = MutualLikedScreen;
 			sourceTree = "<group>";
 		};
 		A640CC0DC9EC606E8ACEE63A /* Frameworks */ = {
@@ -1683,6 +1719,7 @@
 				963F59CF24BCD02E0063D615 /* GlobalDefinitions.swift in Sources */,
 				965588C824BDEF4200D6EB83 /* WelcomeView.swift in Sources */,
 				963F59EC24BCD02E0063D615 /* PaymentError.swift in Sources */,
+				96BCD88E24CF254E004B40B2 /* SearchSettingsView.swift in Sources */,
 				963F5A2224BCD02F0063D615 /* ConfirmCodeViewModel.swift in Sources */,
 				963F5A2E24BCD02F0063D615 /* InterlocutorChatImageCell.swift in Sources */,
 				96E625FF24C6EBC100533C05 /* RemoveAllChatsRequest.swift in Sources */,
@@ -1786,6 +1823,7 @@
 				965588DA24BF22A500D6EB83 /* PushNotificationsManager.swift in Sources */,
 				963F59D824BCD02E0063D615 /* RandomizeEmojiRequest.swift in Sources */,
 				963F59F924BCD02E0063D615 /* NoProposedInterlocutorsView.swift in Sources */,
+				96BCD89224CF42F4004B40B2 /* InterceptingEventsView.swift in Sources */,
 				963F59F824BCD02E0063D615 /* ProposedInterlocutorsCollectionView.swift in Sources */,
 				963F59D424BCD02E0063D615 /* Token.swift in Sources */,
 				963F5A2F24BCD02F0063D615 /* MyChatImageCell.swift in Sources */,
@@ -1795,6 +1833,7 @@
 				963F5A1324BCD02F0063D615 /* RegistrationEmailViewModel.swift in Sources */,
 				963F5A3524BCD02F0063D615 /* ChatService.swift in Sources */,
 				96228AC624C82B6700F5B129 /* EditProfileTableView.swift in Sources */,
+				96BCD89024CF31A0004B40B2 /* SearchSettingsViewModel.swift in Sources */,
 				96008BB924C779A400CFF84A /* SetDefaultPhotoResponseMapper.swift in Sources */,
 				965588CC24BEE82B00D6EB83 /* OnboardingShowMeToGendersView.swift in Sources */,
 				96EDBC8024CF134000C814CA /* MutualLikedViewController.swift in Sources */,
@@ -1826,6 +1865,7 @@
 				96228AD324C832AF00F5B129 /* EditProfileTableSection.swift in Sources */,
 				963F5A0224BCD02F0063D615 /* OnboardingNotificationsView.swift in Sources */,
 				96BCD88724CF2132004B40B2 /* SearchViewControllerDelegate.swift in Sources */,
+				96BCD88B24CF24FC004B40B2 /* SearchSettingsViewController.swift in Sources */,
 				96228AD924C8336C00F5B129 /* EditProfileTableActionDelegate.swift in Sources */,
 				963F59B824BCD02E0063D615 /* PaginatedDataLoader.swift in Sources */,
 				963F59DF24BCD02E0063D615 /* DislikeProposedInterlocutorRequest.swift in Sources */,

@@ -163,7 +163,7 @@ private extension ProfileTableLookingForCell {
         return view
     }
     
-    private func makeAgeRangeSlider() -> RangeSeekSlider {
+    func makeAgeRangeSlider() -> RangeSeekSlider {
         let view = RangeSeekSlider()
         view.delegate = self
         view.minValue = 16

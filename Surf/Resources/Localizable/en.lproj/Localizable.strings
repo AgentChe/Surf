@@ -127,3 +127,7 @@
 "Search.Matched.Title" = "It's Match!";
 "Search.Matched.SendMessage" = "Send a message";
 "Search.Matched.KeepSurfing" = "Keep Surfing";
+
+// MARK: Search Settings
+"SearchSettings.Title" = "ShowMe";
+"SearchSettings.AgeRange" = "Age Range";
