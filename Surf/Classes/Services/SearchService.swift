@@ -58,31 +58,3 @@ extension SearchService {
             .map { _ in Void() }
     }
 }
-
-// MARK: Report
-
-extension SearchService {
-    static func createReportOnChatInterlocutor(chatId: String, report: ReportViewController.Report) -> Single<Void> {
-        guard let userToken = SessionService.shared.userToken else {
-            return .deferred { .error(SignError.tokenNotFound) }
-        }
-        
-        return RestAPITransport()
-            .callServerApi(requestBody:  CreateReportOnChatInterlocutorRequest(userToken: userToken,
-                                                                               chatId: chatId,
-                                                                               report: report))
-            .map { _ in Void() }
-    }
-    
-    static func createReportOnProposedInterlocutor(proposedInterlocutorId: Int, report: ReportViewController.Report) -> Single<Void> {
-        guard let userToken = SessionService.shared.userToken else {
-            return .deferred { .error(SignError.tokenNotFound) }
-        }
-        
-        return RestAPITransport()
-            .callServerApi(requestBody: CreateReportOnProposedInterlocutorRequest(userToken: userToken,
-                                                                                  proposedInterlocutorId: proposedInterlocutorId,
-                                                                                  report: report))
-            .map { try CheckResponseForError.throwIfError(response: $0) }
-    }
-}

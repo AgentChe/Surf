@@ -100,8 +100,8 @@ extension SearchViewController: PaygateViewControllerDelegate {
 // MARK: ReportViewControllerDelegate
 
 extension SearchViewController: ReportViewControllerDelegate {
-    func reportWasCreated(reportOn: ReportViewController.ReportOn) {
-        if case let .proposedInterlocutor(proposedInterlocutor) = reportOn {
+    func reportViewController(reportWasCreated on: ReportOn) {
+        if case let .proposedInterlocutor(proposedInterlocutor) = on {
             searchView.collectionView.remove(proposedInterlocutor: proposedInterlocutor)
         }
     }
@@ -152,11 +152,10 @@ private extension SearchViewController {
     }
     
     func goToReportScreen(proposedInterlocutor: ProposedInterlocutor) {
-        let vc = ReportViewController(on: .proposedInterlocutor(proposedInterlocutor))
-        vc.modalPresentationStyle = .fullScreen
+        let vc = ReportViewController.make(reportOn: .proposedInterlocutor(proposedInterlocutor))
         vc.delegate = self
         
-        present(vc, animated: true)
+        navigationController?.present(vc, animated: false)
     }
     
     func goToMutualLikedScreen() {

@@ -10,21 +10,22 @@ import RxSwift
 import RxCocoa
 
 final class ReportViewModel {
-    let loading = RxActivityIndicator()
+    let activityIndicator = RxActivityIndicator()
     
-    func createOnChatInterlocutor(report: ReportViewController.Report, chatId: String, proposedInterlocutorId: Int) -> Driver<Void> {
-        SearchService
+    func createOnChatInterlocutor(report: Report, chatId: String, proposedInterlocutorId: Int) -> Driver<Bool> {
+        ReportManager
             .createReportOnChatInterlocutor(chatId: chatId, report: report)
-            .flatMap { SearchService.createReportOnProposedInterlocutor(proposedInterlocutorId: proposedInterlocutorId, report: report) }
-            .trackActivity(loading)
-            .asDriver(onErrorDriveWith: .never())
+            .flatMap { ReportManager.createReportOnProposedInterlocutor(proposedInterlocutorId: proposedInterlocutorId, report: report) }
+            .trackActivity(activityIndicator)
+            .map { true }
+            .asDriver(onErrorJustReturn: false)
     }
     
-    func createOnProposedInterlocutor(report: ReportViewController.Report, proposedInterlocutorId: Int) -> Driver<Void> {
-        SearchService
+    func createOnProposedInterlocutor(report: Report, proposedInterlocutorId: Int) -> Driver<Bool> {
+        ReportManager
             .createReportOnProposedInterlocutor(proposedInterlocutorId: proposedInterlocutorId, report: report)
-            .trackActivity(loading)
-            .asDriver(onErrorDriveWith: .never())
+            .trackActivity(activityIndicator)
+            .map { true }
+            .asDriver(onErrorJustReturn: false)
     }
 }
-

@@ -10,6 +10,7 @@
 "NoInternetConnection" = "No internet connection";
 "OK" = "OK";
 "Cancel" = "Cancel";
+"Send" = "Send";
 
 // MARK: ImagePicker
 "ImagePicker.TakePhoto" = "Take photo";
@@ -131,3 +132,14 @@
 // MARK: Search Settings
 "SearchSettings.Title" = "ShowMe";
 "SearchSettings.AgeRange" = "Age Range";
+
+// MARK: Report
+"Report.InappropriateMessages" = "Inappropriate Messages";
+"Report.InappropriatePhotos" = "Inappropriate Photos";
+"Report.FeelLikeSpam" = "Feel Like Spam";
+"Report.Other" = "Other";
+"Report.WhatExactly" = "What exactly?";
+"Report.Reporting" = "Reporting...";
+"Report.Gotcha" = "Gotcha!";
+"Report.SuccessInfo" = "We'll take a look into it. Good news is you'all never see %@ ever again.";
+"Report.CreateReport.Failure" = "Failure to create report";

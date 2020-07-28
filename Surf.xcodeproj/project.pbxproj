@@ -40,6 +40,9 @@
 		96228AD724C8332B00F5B129 /* EditProfileTablePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96228AD624C8332B00F5B129 /* EditProfileTablePhotoView.swift */; };
 		96228AD924C8336C00F5B129 /* EditProfileTableActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96228AD824C8336C00F5B129 /* EditProfileTableActionDelegate.swift */; };
 		96228ADB24C8540000F5B129 /* DeleteAccountRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96228ADA24C8540000F5B129 /* DeleteAccountRequest.swift */; };
+		963693AD24D052CB00BAA812 /* CreateReportOnChatInterlocutorRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963693AC24D052CB00BAA812 /* CreateReportOnChatInterlocutorRequest.swift */; };
+		963693AF24D0534D00BAA812 /* CreateReportOnProposedInterlocutorRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963693AE24D0534D00BAA812 /* CreateReportOnProposedInterlocutorRequest.swift */; };
+		963693B124D0540A00BAA812 /* ReportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963693B024D0540A00BAA812 /* ReportManager.swift */; };
 		963F54B624B8939F0063D615 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F54B524B8939F0063D615 /* AppDelegate.swift */; };
 		963F54BF24B893A10063D615 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 963F54BE24B893A10063D615 /* Assets.xcassets */; };
 		963F54C224B893A10063D615 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963F54C024B893A10063D615 /* LaunchScreen.storyboard */; };
@@ -89,7 +92,6 @@
 		963F59E124BCD02E0063D615 /* RequireConfirmCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F591324BCD02E0063D615 /* RequireConfirmCodeRequest.swift */; };
 		963F59E224BCD02E0063D615 /* LikeProposedInterlocutorRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F591424BCD02E0063D615 /* LikeProposedInterlocutorRequest.swift */; };
 		963F59E324BCD02E0063D615 /* UnmatchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F591524BCD02E0063D615 /* UnmatchRequest.swift */; };
-		963F59E424BCD02E0063D615 /* CreateReportRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F591624BCD02E0063D615 /* CreateReportRequest.swift */; };
 		963F59E524BCD02E0063D615 /* PurchaseValidateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F591724BCD02E0063D615 /* PurchaseValidateRequest.swift */; };
 		963F59E624BCD02E0063D615 /* CheckUserTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F591824BCD02E0063D615 /* CheckUserTokenRequest.swift */; };
 		963F59E724BCD02E0063D615 /* AddSearchAdsInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F591924BCD02E0063D615 /* AddSearchAdsInfoRequest.swift */; };
@@ -134,7 +136,6 @@
 		963F5A1824BCD02F0063D615 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F596C24BCD02E0063D615 /* ImageViewController.swift */; };
 		963F5A1D24BCD02F0063D615 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F597224BCD02E0063D615 /* ProfileViewController.swift */; };
 		963F5A1E24BCD02F0063D615 /* ReportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F597424BCD02E0063D615 /* ReportViewModel.swift */; };
-		963F5A1F24BCD02F0063D615 /* ReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 963F597524BCD02E0063D615 /* ReportViewController.xib */; };
 		963F5A2024BCD02F0063D615 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F597624BCD02E0063D615 /* ReportViewController.swift */; };
 		963F5A2124BCD02F0063D615 /* ConfirmCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F597824BCD02E0063D615 /* ConfirmCodeViewController.swift */; };
 		963F5A2224BCD02F0063D615 /* ConfirmCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F597924BCD02E0063D615 /* ConfirmCodeViewModel.swift */; };
@@ -221,6 +222,16 @@
 		96BCD88E24CF254E004B40B2 /* SearchSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BCD88D24CF254E004B40B2 /* SearchSettingsView.swift */; };
 		96BCD89024CF31A0004B40B2 /* SearchSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BCD88F24CF31A0004B40B2 /* SearchSettingsViewModel.swift */; };
 		96BCD89224CF42F4004B40B2 /* InterceptingEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BCD89124CF42F4004B40B2 /* InterceptingEventsView.swift */; };
+		96CAFFCC24D05438000F5668 /* ReportManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CAFFCB24D05438000F5668 /* ReportManagerDelegate.swift */; };
+		96CAFFCF24D05C21000F5668 /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CAFFCE24D05C21000F5668 /* ReportView.swift */; };
+		96CAFFD124D05C70000F5668 /* ReportViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CAFFD024D05C70000F5668 /* ReportViewControllerDelegate.swift */; };
+		96CAFFD324D064DA000F5668 /* ReportWhatExactlyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CAFFD224D064DA000F5668 /* ReportWhatExactlyView.swift */; };
+		96CAFFD524D06996000F5668 /* ReportPreloaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CAFFD424D06996000F5668 /* ReportPreloaderView.swift */; };
+		96CAFFD724D06BED000F5668 /* ReportGotchaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CAFFD624D06BED000F5668 /* ReportGotchaView.swift */; };
+		96CAFFD924D06E05000F5668 /* ReportActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CAFFD824D06E05000F5668 /* ReportActionSheet.swift */; };
+		96CAFFDC24D06EEC000F5668 /* ReportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CAFFDB24D06EEC000F5668 /* ReportType.swift */; };
+		96CAFFDE24D06EFC000F5668 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CAFFDD24D06EFC000F5668 /* Report.swift */; };
+		96CAFFE024D06F12000F5668 /* ReportOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CAFFDF24D06F12000F5668 /* ReportOn.swift */; };
 		96CD2AE324C72A2F0026A1DA /* ProfileManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CD2AE224C72A2F0026A1DA /* ProfileManagerDelegate.swift */; };
 		96E43E9124C5B16700831DC3 /* ProfileTableDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E43E9024C5B16700831DC3 /* ProfileTableDirection.swift */; };
 		96E43E9324C5B21700831DC3 /* ProfileTableDirectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E43E9224C5B21700831DC3 /* ProfileTableDirectionCell.swift */; };
@@ -279,6 +290,9 @@
 		96228AD624C8332B00F5B129 /* EditProfileTablePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTablePhotoView.swift; sourceTree = "<group>"; };
 		96228AD824C8336C00F5B129 /* EditProfileTableActionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableActionDelegate.swift; sourceTree = "<group>"; };
 		96228ADA24C8540000F5B129 /* DeleteAccountRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountRequest.swift; sourceTree = "<group>"; };
+		963693AC24D052CB00BAA812 /* CreateReportOnChatInterlocutorRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReportOnChatInterlocutorRequest.swift; sourceTree = "<group>"; };
+		963693AE24D0534D00BAA812 /* CreateReportOnProposedInterlocutorRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReportOnProposedInterlocutorRequest.swift; sourceTree = "<group>"; };
+		963693B024D0540A00BAA812 /* ReportManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportManager.swift; sourceTree = "<group>"; };
 		963F54B224B8939F0063D615 /* Surf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Surf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		963F54B524B8939F0063D615 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		963F54BE24B893A10063D615 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -330,7 +344,6 @@
 		963F591324BCD02E0063D615 /* RequireConfirmCodeRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequireConfirmCodeRequest.swift; sourceTree = "<group>"; };
 		963F591424BCD02E0063D615 /* LikeProposedInterlocutorRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikeProposedInterlocutorRequest.swift; sourceTree = "<group>"; };
 		963F591524BCD02E0063D615 /* UnmatchRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnmatchRequest.swift; sourceTree = "<group>"; };
-		963F591624BCD02E0063D615 /* CreateReportRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateReportRequest.swift; sourceTree = "<group>"; };
 		963F591724BCD02E0063D615 /* PurchaseValidateRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseValidateRequest.swift; sourceTree = "<group>"; };
 		963F591824BCD02E0063D615 /* CheckUserTokenRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckUserTokenRequest.swift; sourceTree = "<group>"; };
 		963F591924BCD02E0063D615 /* AddSearchAdsInfoRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSearchAdsInfoRequest.swift; sourceTree = "<group>"; };
@@ -375,7 +388,6 @@
 		963F596C24BCD02E0063D615 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		963F597224BCD02E0063D615 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		963F597424BCD02E0063D615 /* ReportViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportViewModel.swift; sourceTree = "<group>"; };
-		963F597524BCD02E0063D615 /* ReportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportViewController.xib; sourceTree = "<group>"; };
 		963F597624BCD02E0063D615 /* ReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		963F597824BCD02E0063D615 /* ConfirmCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmCodeViewController.swift; sourceTree = "<group>"; };
 		963F597924BCD02E0063D615 /* ConfirmCodeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmCodeViewModel.swift; sourceTree = "<group>"; };
@@ -463,6 +475,16 @@
 		96BCD88D24CF254E004B40B2 /* SearchSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSettingsView.swift; sourceTree = "<group>"; };
 		96BCD88F24CF31A0004B40B2 /* SearchSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSettingsViewModel.swift; sourceTree = "<group>"; };
 		96BCD89124CF42F4004B40B2 /* InterceptingEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterceptingEventsView.swift; sourceTree = "<group>"; };
+		96CAFFCB24D05438000F5668 /* ReportManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportManagerDelegate.swift; sourceTree = "<group>"; };
+		96CAFFCE24D05C21000F5668 /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
+		96CAFFD024D05C70000F5668 /* ReportViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewControllerDelegate.swift; sourceTree = "<group>"; };
+		96CAFFD224D064DA000F5668 /* ReportWhatExactlyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportWhatExactlyView.swift; sourceTree = "<group>"; };
+		96CAFFD424D06996000F5668 /* ReportPreloaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPreloaderView.swift; sourceTree = "<group>"; };
+		96CAFFD624D06BED000F5668 /* ReportGotchaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportGotchaView.swift; sourceTree = "<group>"; };
+		96CAFFD824D06E05000F5668 /* ReportActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportActionSheet.swift; sourceTree = "<group>"; };
+		96CAFFDB24D06EEC000F5668 /* ReportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportType.swift; sourceTree = "<group>"; };
+		96CAFFDD24D06EFC000F5668 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
+		96CAFFDF24D06F12000F5668 /* ReportOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportOn.swift; sourceTree = "<group>"; };
 		96CD2AE224C72A2F0026A1DA /* ProfileManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManagerDelegate.swift; sourceTree = "<group>"; };
 		96E43E9024C5B16700831DC3 /* ProfileTableDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableDirection.swift; sourceTree = "<group>"; };
 		96E43E9224C5B21700831DC3 /* ProfileTableDirectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableDirectionCell.swift; sourceTree = "<group>"; };
@@ -629,6 +651,24 @@
 				96228AD624C8332B00F5B129 /* EditProfileTablePhotoView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		963693AB24D052BE00BAA812 /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				963693AC24D052CB00BAA812 /* CreateReportOnChatInterlocutorRequest.swift */,
+				963693AE24D0534D00BAA812 /* CreateReportOnProposedInterlocutorRequest.swift */,
+			);
+			path = Report;
+			sourceTree = "<group>";
+		};
+		963693B224D0541800BAA812 /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				963693B024D0540A00BAA812 /* ReportManager.swift */,
+				96CAFFCB24D05438000F5668 /* ReportManagerDelegate.swift */,
+			);
+			path = Report;
 			sourceTree = "<group>";
 		};
 		963F54A924B8939F0063D615 = {
@@ -830,12 +870,12 @@
 		963F590624BCD02E0063D615 /* RequestBody */ = {
 			isa = PBXGroup;
 			children = (
+				963693AB24D052BE00BAA812 /* Report */,
 				96CD2AE824C740C00026A1DA /* Profile */,
 				96CD2AE724C740820026A1DA /* Analytics */,
 				96CD2AE524C73FF20026A1DA /* CreateUser */,
 				96CD2AE424C73FE70026A1DA /* Search */,
 				963F590724BCD02E0063D615 /* GetMessagesRequest.swift */,
-				963F591624BCD02E0063D615 /* CreateReportRequest.swift */,
 				963F591524BCD02E0063D615 /* UnmatchRequest.swift */,
 				963F590924BCD02E0063D615 /* GetChatsRequest.swift */,
 				963F590C24BCD02E0063D615 /* PaygatePingRequest.swift */,
@@ -1048,9 +1088,11 @@
 		963F597324BCD02E0063D615 /* ReportScreen */ = {
 			isa = PBXGroup;
 			children = (
-				963F597424BCD02E0063D615 /* ReportViewModel.swift */,
-				963F597524BCD02E0063D615 /* ReportViewController.xib */,
+				96CAFFDA24D06ED9000F5668 /* Models */,
+				96CAFFCD24D05C16000F5668 /* Views */,
 				963F597624BCD02E0063D615 /* ReportViewController.swift */,
+				963F597424BCD02E0063D615 /* ReportViewModel.swift */,
+				96CAFFD024D05C70000F5668 /* ReportViewControllerDelegate.swift */,
 			);
 			path = ReportScreen;
 			sourceTree = "<group>";
@@ -1138,6 +1180,7 @@
 		963F599024BCD02E0063D615 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				963693B224D0541800BAA812 /* Report */,
 				96D81C5F24C729980095CE2B /* Profile */,
 				96E6260024C6ED2700533C05 /* Chats */,
 				965588D224BF22A500D6EB83 /* PushNotifications */,
@@ -1389,6 +1432,28 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		96CAFFCD24D05C16000F5668 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				96CAFFCE24D05C21000F5668 /* ReportView.swift */,
+				96CAFFD224D064DA000F5668 /* ReportWhatExactlyView.swift */,
+				96CAFFD424D06996000F5668 /* ReportPreloaderView.swift */,
+				96CAFFD624D06BED000F5668 /* ReportGotchaView.swift */,
+				96CAFFD824D06E05000F5668 /* ReportActionSheet.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		96CAFFDA24D06ED9000F5668 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				96CAFFDB24D06EEC000F5668 /* ReportType.swift */,
+				96CAFFDD24D06EFC000F5668 /* Report.swift */,
+				96CAFFDF24D06F12000F5668 /* ReportOn.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		96CD2AE424C73FE70026A1DA /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -1582,7 +1647,6 @@
 				965588BF24BDD5DE00D6EB83 /* SF-Pro-Text-Semibold.otf in Resources */,
 				965588C024BDD5DE00D6EB83 /* SF-Pro-Text-Medium.otf in Resources */,
 				965588C124BDD5DE00D6EB83 /* SF-Pro-Text-Bold.otf in Resources */,
-				963F5A1F24BCD02F0063D615 /* ReportViewController.xib in Resources */,
 				96A1BC8C24C04D010043DCCC /* GoogleService-Info.plist in Resources */,
 				963F54C224B893A10063D615 /* LaunchScreen.storyboard in Resources */,
 				963F54CF24B895D70063D615 /* Localizable.strings in Resources */,
@@ -1658,16 +1722,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96CAFFD724D06BED000F5668 /* ReportGotchaView.swift in Sources */,
 				965588CA24BE543E00D6EB83 /* OnboardingMyGenderView.swift in Sources */,
 				9648702624C453110084CC2D /* MainTabBarItem.swift in Sources */,
+				96CAFFCF24D05C21000F5668 /* ReportView.swift in Sources */,
 				964890F424CC397200EA9F20 /* GetChatsResponseMapper.swift in Sources */,
 				965588DC24BF22A500D6EB83 /* PushNotificationModelMapper.swift in Sources */,
+				96CAFFD924D06E05000F5668 /* ReportActionSheet.swift in Sources */,
 				963F59DA24BCD02E0063D615 /* PaygatePingRequest.swift in Sources */,
 				963F59CB24BCD02E0063D615 /* TokenTransformation.swift in Sources */,
 				963F59CD24BCD02E0063D615 /* CheckResponseForError.swift in Sources */,
 				963F5A0624BCD02F0063D615 /* PaygateViewModel.swift in Sources */,
 				963F59E824BCD02E0063D615 /* SetRequest.swift in Sources */,
 				963F59D324BCD02E0063D615 /* ProposedInterlocutor.swift in Sources */,
+				96CAFFDC24D06EEC000F5668 /* ReportType.swift in Sources */,
 				963F59CE24BCD02E0063D615 /* MessageTransformation.swift in Sources */,
 				960814FA24C4EB5500992DFB /* ZodiacSignMapper.swift in Sources */,
 				96E43EA224C5E10D00831DC3 /* ProfileLookingForChoiceView.swift in Sources */,
@@ -1682,6 +1750,7 @@
 				9648702824C45BCF0084CC2D /* MainTabBarView.swift in Sources */,
 				963F59E024BCD02E0063D615 /* CreateUserRequest.swift in Sources */,
 				963F5A0B24BCD02F0063D615 /* PaygateView.swift in Sources */,
+				96CAFFD124D05C70000F5668 /* ReportViewControllerDelegate.swift in Sources */,
 				963F59E924BCD02E0063D615 /* ApiError.swift in Sources */,
 				963F5A2C24BCD02F0063D615 /* MessageTableCell.swift in Sources */,
 				963F59B424BCD02E0063D615 /* RxActivityIndicator.swift in Sources */,
@@ -1700,6 +1769,7 @@
 				963F5A3624BCD02F0063D615 /* AppStateProxy.swift in Sources */,
 				965588DB24BF22A500D6EB83 /* PushNotificationModel.swift in Sources */,
 				963F59DB24BCD02E0063D615 /* FacebookLoginRequest.swift in Sources */,
+				963693AF24D0534D00BAA812 /* CreateReportOnProposedInterlocutorRequest.swift in Sources */,
 				96E6260824C702F700533C05 /* CheckUserBannedResponseMapper.swift in Sources */,
 				963F5A3124BCD02F0063D615 /* ChatInterlocutorView.swift in Sources */,
 				96EDBC7B24CEC11400C814CA /* LikeProposedInterlocutorResponseMapper.swift in Sources */,
@@ -1710,6 +1780,7 @@
 				963F59E524BCD02E0063D615 /* PurchaseValidateRequest.swift in Sources */,
 				96228ADB24C8540000F5B129 /* DeleteAccountRequest.swift in Sources */,
 				96008BC224C78B5400CFF84A /* AddUserPhotoResponseMapper.swift in Sources */,
+				963693B124D0540A00BAA812 /* ReportManager.swift in Sources */,
 				960814F524C4E5CD00992DFB /* ProfileTableView.swift in Sources */,
 				960183E624C4E309005AD038 /* ProfileView.swift in Sources */,
 				963F5A3024BCD02F0063D615 /* ChatTableView.swift in Sources */,
@@ -1725,6 +1796,7 @@
 				96E625FF24C6EBC100533C05 /* RemoveAllChatsRequest.swift in Sources */,
 				963F5A2A24BCD02F0063D615 /* ChatInputView.swift in Sources */,
 				963F59AE24BCD02E0063D615 /* UIDeviceExtension.swift in Sources */,
+				96CAFFD524D06996000F5668 /* ReportPreloaderView.swift in Sources */,
 				96228AD524C832C800F5B129 /* EditProfileTableItem.swift in Sources */,
 				963F59F724BCD02E0063D615 /* ProposedInterlocutorCollectionCell.swift in Sources */,
 				963F59BA24BCD02E0063D615 /* SizeUtils.swift in Sources */,
@@ -1743,6 +1815,7 @@
 				963F59C624BCD02E0063D615 /* RestAPITransport.swift in Sources */,
 				963F59B524BCD02E0063D615 /* ScreenSize.swift in Sources */,
 				963F5A3F24BCD02F0063D615 /* SearchAttributionsDetails.swift in Sources */,
+				96CAFFDE24D06EFC000F5668 /* Report.swift in Sources */,
 				969DE79A24C863F5000BD2E8 /* EditProfileTableNameElement.swift in Sources */,
 				965588E324BF390800D6EB83 /* OnboardingView.swift in Sources */,
 				963F59D124BCD02E0063D615 /* ChatMessage.swift in Sources */,
@@ -1763,6 +1836,7 @@
 				963F59C824BCD02E0063D615 /* Paygate.swift in Sources */,
 				963F5A2424BCD02F0063D615 /* ChatViewModel.swift in Sources */,
 				9655986624C05F1D0022931D /* ZodiacManager.swift in Sources */,
+				963693AD24D052CB00BAA812 /* CreateReportOnChatInterlocutorRequest.swift in Sources */,
 				9648701524C30EB90084CC2D /* GenderMapper.swift in Sources */,
 				963F5A0924BCD02F0063D615 /* PaygateMainView.swift in Sources */,
 				963F5A1824BCD02F0063D615 /* ImageViewController.swift in Sources */,
@@ -1776,6 +1850,7 @@
 				963F59F624BCD02E0063D615 /* SearchViewModel.swift in Sources */,
 				963F5A2B24BCD02F0063D615 /* InterlocutorChatMessageCell.swift in Sources */,
 				96463DE324C9DBAD00EBC123 /* ChatsViewControllerDelegate.swift in Sources */,
+				96CAFFD324D064DA000F5668 /* ReportWhatExactlyView.swift in Sources */,
 				963F5A3724BCD02F0063D615 /* ProfileManager.swift in Sources */,
 				965588DF24BF233000D6EB83 /* Weak.swift in Sources */,
 				96E6261124C71FC200533C05 /* ProfileComponents.swift in Sources */,
@@ -1815,6 +1890,7 @@
 				963F59B324BCD02E0063D615 /* TextAttributes.swift in Sources */,
 				963F5A1E24BCD02F0063D615 /* ReportViewModel.swift in Sources */,
 				96008BB624C776B500CFF84A /* SetDefaultPhotoRequest.swift in Sources */,
+				96CAFFE024D06F12000F5668 /* ReportOn.swift in Sources */,
 				96EDBC7924CDF74600C814CA /* SearchView.swift in Sources */,
 				96E6261324C7229E00533C05 /* ProfileBuilder.swift in Sources */,
 				960814FC24C4ED2000992DFB /* Profile.swift in Sources */,
@@ -1841,11 +1917,11 @@
 				963F59DD24BCD02E0063D615 /* GetProposedInterlocutorsRequest.swift in Sources */,
 				96228AC324C82A6E00F5B129 /* EditProfileView.swift in Sources */,
 				9648701A24C440BF0084CC2D /* MainViewController.swift in Sources */,
-				963F59E424BCD02E0063D615 /* CreateReportRequest.swift in Sources */,
 				965588B024BDC8D400D6EB83 /* Toast.swift in Sources */,
 				963F59E124BCD02E0063D615 /* RequireConfirmCodeRequest.swift in Sources */,
 				96CD2AE324C72A2F0026A1DA /* ProfileManagerDelegate.swift in Sources */,
 				963F59B924BCD02E0063D615 /* Fonts.swift in Sources */,
+				96CAFFCC24D05438000F5668 /* ReportManagerDelegate.swift in Sources */,
 				969DE79824C857FE000BD2E8 /* EditProfileConfirmDeletingAlert.swift in Sources */,
 				963F59AD24BCD02E0063D615 /* UIViewExtension.swift in Sources */,
 				963F59BE24BCD02E0063D615 /* ImagePicker.swift in Sources */,

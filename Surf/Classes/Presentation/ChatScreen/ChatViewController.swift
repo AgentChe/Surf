@@ -214,8 +214,8 @@ private extension ChatViewController {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let reportAction = UIAlertAction(title: "Chat.Menu.Report".localized, style: .default) { [unowned self] _ in
-            let vc = ReportViewController(on: .chatInterlocutor(self.chat))
-            self.present(vc, animated: true)
+            let vc = ReportViewController.make(reportOn: .chatInterlocutor(self.chat))
+            self.present(vc, animated: false)
         }
 
         let doneAction = UIAlertAction(title: "Chat.Menu.Done".localized, style: .cancel)
