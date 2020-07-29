@@ -120,6 +120,12 @@
 "Chats.Title" = "Chats";
 "Chats.NewSearch" = "New Search";
 "Chats.Empty" = "No chats yet,\nkeep looking for a match.";
+"Chats.Menu.Unmatch" = "Unmatch";
+"Chats.Menu.Delete" = "Delete";
+"Chats.Menu.UnmatchFailure" = "Failure to unmatch chat";
+"Chats.Menu.UnmatchSuccess" = "Success unmatch chat";
+"Chats.Menu.DeleteFailure" = "Failure to delete chat";
+"Chats.Menu.DeleteSuccess" = "Success delete chat";
 
 // MARK: Search
 "Search.NoProposedInterlocutors.Title" = "No One's New\nOnline Right\nNow";

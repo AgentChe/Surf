@@ -13,6 +13,7 @@ import RxCocoa
 final class ChatsCollectionView: UICollectionView {
     fileprivate let selectedChat = PublishRelay<Chat>()
     fileprivate let changedElementsCount = PublishRelay<Int>()
+    fileprivate var longPressedChat = PublishRelay<Chat>()
     
     private var elements = [Chat]() {
         didSet {
@@ -29,6 +30,8 @@ final class ChatsCollectionView: UICollectionView {
         
         dataSource = self
         delegate = self
+        
+        addLongPressGesture()
     }
     
     required init?(coder: NSCoder) {
@@ -99,6 +102,10 @@ extension Reactive where Base: ChatsCollectionView {
     var changedElementsCount: Signal<Int> {
         base.changedElementsCount.asSignal()
     }
+    
+    var longPressedChat: Signal<Chat> {
+        base.longPressedChat.asSignal()
+    }
 }
 
 // MARK: UICollectionViewDelegate
@@ -121,4 +128,31 @@ extension ChatsCollectionView: UICollectionViewDataSource {
         cell.setup(chat: elements[indexPath.row])
         return cell
     }    
+}
+
+// MARK: Private
+
+private extension ChatsCollectionView {
+    func addLongPressGesture() {
+        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gesture:)))
+        gesture.minimumPressDuration = 0.5
+        gesture.delaysTouchesBegan = true
+        addGestureRecognizer(gesture)
+    }
+    
+    @objc func handleLongPress(gesture : UILongPressGestureRecognizer!) {
+        if gesture.state != .ended {
+            return
+        }
+        
+        let location = gesture.location(in: self)
+        
+        guard let indexPath = indexPathForItem(at: location) else {
+            return
+        }
+        
+        let chat = elements[indexPath.row]
+        
+        longPressedChat.accept(chat)
+    }
 }

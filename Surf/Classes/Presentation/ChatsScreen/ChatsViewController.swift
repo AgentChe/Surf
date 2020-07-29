@@ -73,6 +73,13 @@ final class ChatsViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        chatsView.collectionView.rx
+            .longPressedChat
+            .emit(onNext: { [weak self] chat in
+                self?.goToChatsMenuScreen(chat: chat)
+            })
+            .disposed(by: disposeBag)
+        
         viewModel.chats
             .drive(onNext: { [weak self] chats in
                 self?.chatsView.collectionView.add(chats: chats)
@@ -91,8 +98,6 @@ final class ChatsViewController: UIViewController {
                 }
             })
             .disposed(by: disposeBag)
-        
-        chatsView.emptyView.newSearchButton.addTarget(self, action: #selector(newSearchTapped(sender:)), for: .touchUpInside)
         
         viewModel.connect()
     }
@@ -125,10 +130,27 @@ extension ChatsViewController: ChatsManagerDelegate {
     }
 }
 
+// MARK: ChatsMenuViewControllerDelegate
+
+extension ChatsViewController: ChatsMenuViewControllerDelegate {
+    func chatsMenuViewController(unmatched: Chat) {
+        chatsView.collectionView.remove(chat: unmatched)
+    }
+    
+    func chatsMenuViewController(deleted: Chat) {
+        chatsView.collectionView.remove(chat: deleted)
+    }
+}
+
 // MARK: Private
 
 private extension ChatsViewController {
     func addActions() {
+        chatsView
+            .emptyView
+            .newSearchButton
+            .addTarget(self, action: #selector(newSearchTapped(sender:)), for: .touchUpInside)
+        
         let photoTapGesture = UITapGestureRecognizer(target: self, action: #selector(goToProfileScreen))
         chatsView.photoView.addGestureRecognizer(photoTapGesture)
     }
@@ -142,6 +164,12 @@ private extension ChatsViewController {
         let vc = ChatViewController.make(with: chat)
         vc.delegate = self 
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func goToChatsMenuScreen(chat: Chat) {
+        let vc = ChatsMenuViewController.make(chat: chat)
+        vc.delegate = self
+        navigationController?.present(vc, animated: false)
     }
     
     @objc

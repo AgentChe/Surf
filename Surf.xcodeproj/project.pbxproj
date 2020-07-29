@@ -213,6 +213,10 @@
 		9655986224C05DDC0022931D /* Zodiac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9655986124C05DDC0022931D /* Zodiac.swift */; };
 		9655986624C05F1D0022931D /* ZodiacManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9655986524C05F1D0022931D /* ZodiacManager.swift */; };
 		96708EA924CAEC4A003DC21C /* ChatsCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96708EA524CAEC4A003DC21C /* ChatsCollectionViewLayout.swift */; };
+		967947F824D20C2900F21A78 /* ChatsMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967947F724D20C2900F21A78 /* ChatsMenuCell.swift */; };
+		967947FA24D21EE800F21A78 /* ChatsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967947F924D21EE800F21A78 /* ChatsMenuViewController.swift */; };
+		967947FD24D2205100F21A78 /* ChatsMenuViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967947FC24D2205100F21A78 /* ChatsMenuViewControllerDelegate.swift */; };
+		967947FF24D220B100F21A78 /* ChatsMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967947FE24D220B100F21A78 /* ChatsMenuViewModel.swift */; };
 		969DE79824C857FE000BD2E8 /* EditProfileConfirmDeletingAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969DE79724C857FE000BD2E8 /* EditProfileConfirmDeletingAlert.swift */; };
 		969DE79A24C863F5000BD2E8 /* EditProfileTableNameElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969DE79924C863F5000BD2E8 /* EditProfileTableNameElement.swift */; };
 		96A1BC8C24C04D010043DCCC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 96A1BC8B24C04D010043DCCC /* GoogleService-Info.plist */; };
@@ -239,6 +243,7 @@
 		96CAFFED24D17062000F5668 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 96CAFFE724D16FE4000F5668 /* Montserrat-Regular.ttf */; };
 		96CAFFEE24D17062000F5668 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 96CAFFE324D16F74000F5668 /* Montserrat-Bold.ttf */; };
 		96CAFFF024D1BC21000F5668 /* PaygateMainFeatureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CAFFEF24D1BC21000F5668 /* PaygateMainFeatureCell.swift */; };
+		96CAFFF424D209A2000F5668 /* ChatsMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CAFFF324D209A2000F5668 /* ChatsMenuView.swift */; };
 		96CD2AE324C72A2F0026A1DA /* ProfileManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CD2AE224C72A2F0026A1DA /* ProfileManagerDelegate.swift */; };
 		96E43E9124C5B16700831DC3 /* ProfileTableDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E43E9024C5B16700831DC3 /* ProfileTableDirection.swift */; };
 		96E43E9324C5B21700831DC3 /* ProfileTableDirectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E43E9224C5B21700831DC3 /* ProfileTableDirectionCell.swift */; };
@@ -473,6 +478,10 @@
 		9655986124C05DDC0022931D /* Zodiac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zodiac.swift; sourceTree = "<group>"; };
 		9655986524C05F1D0022931D /* ZodiacManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZodiacManager.swift; sourceTree = "<group>"; };
 		96708EA524CAEC4A003DC21C /* ChatsCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsCollectionViewLayout.swift; sourceTree = "<group>"; };
+		967947F724D20C2900F21A78 /* ChatsMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsMenuCell.swift; sourceTree = "<group>"; };
+		967947F924D21EE800F21A78 /* ChatsMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsMenuViewController.swift; sourceTree = "<group>"; };
+		967947FC24D2205100F21A78 /* ChatsMenuViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsMenuViewControllerDelegate.swift; sourceTree = "<group>"; };
+		967947FE24D220B100F21A78 /* ChatsMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsMenuViewModel.swift; sourceTree = "<group>"; };
 		969DE79724C857FE000BD2E8 /* EditProfileConfirmDeletingAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileConfirmDeletingAlert.swift; sourceTree = "<group>"; };
 		969DE79924C863F5000BD2E8 /* EditProfileTableNameElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableNameElement.swift; sourceTree = "<group>"; };
 		96A1BC8B24C04D010043DCCC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -499,6 +508,7 @@
 		96CAFFE724D16FE4000F5668 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		96CAFFE824D16FE8000F5668 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		96CAFFEF24D1BC21000F5668 /* PaygateMainFeatureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaygateMainFeatureCell.swift; sourceTree = "<group>"; };
+		96CAFFF324D209A2000F5668 /* ChatsMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsMenuView.swift; sourceTree = "<group>"; };
 		96CD2AE224C72A2F0026A1DA /* ProfileManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManagerDelegate.swift; sourceTree = "<group>"; };
 		96E43E9024C5B16700831DC3 /* ProfileTableDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableDirection.swift; sourceTree = "<group>"; };
 		96E43E9224C5B21700831DC3 /* ProfileTableDirectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableDirectionCell.swift; sourceTree = "<group>"; };
@@ -1053,6 +1063,7 @@
 		963F595424BCD02E0063D615 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				96CAFFF524D20C08000F5668 /* ChatsMenuView */,
 				96463DDC24C98BFF00EBC123 /* CollectionView */,
 				963F595A24BCD02E0063D615 /* ChatsEmptyView.swift */,
 				963F595924BCD02E0063D615 /* ChatsView.swift */,
@@ -1125,9 +1136,9 @@
 		963F597A24BCD02E0063D615 /* ChatScreen */ = {
 			isa = PBXGroup;
 			children = (
+				963F597D24BCD02E0063D615 /* Views */,
 				963F597B24BCD02E0063D615 /* ChatViewController.swift */,
 				963F597C24BCD02E0063D615 /* ChatViewModel.swift */,
-				963F597D24BCD02E0063D615 /* Views */,
 			);
 			path = ChatScreen;
 			sourceTree = "<group>";
@@ -1415,6 +1426,15 @@
 			path = Personal;
 			sourceTree = "<group>";
 		};
+		967947FB24D2203F00F21A78 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				967947F724D20C2900F21A78 /* ChatsMenuCell.swift */,
+				96CAFFF324D209A2000F5668 /* ChatsMenuView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		969DE79624C8573B000BD2E8 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -1489,6 +1509,17 @@
 				96CAFFE324D16F74000F5668 /* Montserrat-Bold.ttf */,
 			);
 			path = Montserrat;
+			sourceTree = "<group>";
+		};
+		96CAFFF524D20C08000F5668 /* ChatsMenuView */ = {
+			isa = PBXGroup;
+			children = (
+				967947FB24D2203F00F21A78 /* Views */,
+				967947F924D21EE800F21A78 /* ChatsMenuViewController.swift */,
+				967947FE24D220B100F21A78 /* ChatsMenuViewModel.swift */,
+				967947FC24D2205100F21A78 /* ChatsMenuViewControllerDelegate.swift */,
+			);
+			path = ChatsMenuView;
 			sourceTree = "<group>";
 		};
 		96CD2AE424C73FE70026A1DA /* Search */ = {
@@ -1766,6 +1797,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96CAFFD724D06BED000F5668 /* ReportGotchaView.swift in Sources */,
+				96CAFFF424D209A2000F5668 /* ChatsMenuView.swift in Sources */,
 				965588CA24BE543E00D6EB83 /* OnboardingMyGenderView.swift in Sources */,
 				9648702624C453110084CC2D /* MainTabBarItem.swift in Sources */,
 				96CAFFCF24D05C21000F5668 /* ReportView.swift in Sources */,
@@ -1858,6 +1890,7 @@
 				96E43E9724C5CAA100831DC3 /* FullScreenPreloader.swift in Sources */,
 				963F59C624BCD02E0063D615 /* RestAPITransport.swift in Sources */,
 				963F59B524BCD02E0063D615 /* ScreenSize.swift in Sources */,
+				967947F824D20C2900F21A78 /* ChatsMenuCell.swift in Sources */,
 				963F5A3F24BCD02F0063D615 /* SearchAttributionsDetails.swift in Sources */,
 				96CAFFDE24D06EFC000F5668 /* Report.swift in Sources */,
 				969DE79A24C863F5000BD2E8 /* EditProfileTableNameElement.swift in Sources */,
@@ -1893,6 +1926,7 @@
 				96EDBC7D24CEC44D00C814CA /* MutualLikedView.swift in Sources */,
 				963F59F624BCD02E0063D615 /* SearchViewModel.swift in Sources */,
 				963F5A2B24BCD02F0063D615 /* InterlocutorChatMessageCell.swift in Sources */,
+				967947FD24D2205100F21A78 /* ChatsMenuViewControllerDelegate.swift in Sources */,
 				96463DE324C9DBAD00EBC123 /* ChatsViewControllerDelegate.swift in Sources */,
 				96CAFFD324D064DA000F5668 /* ReportWhatExactlyView.swift in Sources */,
 				963F5A3724BCD02F0063D615 /* ProfileManager.swift in Sources */,
@@ -1960,6 +1994,7 @@
 				963F59E624BCD02E0063D615 /* CheckUserTokenRequest.swift in Sources */,
 				963F59DD24BCD02E0063D615 /* GetProposedInterlocutorsRequest.swift in Sources */,
 				96228AC324C82A6E00F5B129 /* EditProfileView.swift in Sources */,
+				967947FA24D21EE800F21A78 /* ChatsMenuViewController.swift in Sources */,
 				9648701A24C440BF0084CC2D /* MainViewController.swift in Sources */,
 				965588B024BDC8D400D6EB83 /* Toast.swift in Sources */,
 				963F59E124BCD02E0063D615 /* RequireConfirmCodeRequest.swift in Sources */,
@@ -1976,6 +2011,7 @@
 				963F5A0C24BCD02F0063D615 /* PaygateSpecialOfferView.swift in Sources */,
 				96008BC424C7974200CFF84A /* ProfilePhotosMaker.swift in Sources */,
 				963F5A3D24BCD02F0063D615 /* SessionService.swift in Sources */,
+				967947FF24D220B100F21A78 /* ChatsMenuViewModel.swift in Sources */,
 				963F5A2524BCD02F0063D615 /* ChatAttachCaseView.swift in Sources */,
 				96008BB024C7424400CFF84A /* ProfileTablePhotoView.swift in Sources */,
 				96228ABE24C8287E00F5B129 /* EditProfileViewController.swift in Sources */,
