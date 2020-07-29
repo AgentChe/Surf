@@ -184,13 +184,11 @@ private extension PaygateMapper {
     static func map(specialOffer: [String: Any]?, productsPrices: [ProductPrice]?) -> PaygateSpecialOffer? {
         guard
             let specialOffer = specialOffer,
-            let productId = specialOffer["product_id"] as? String
-//            let productPrice = productsPrices?.first(where: { $0.id == productId })
+            let productId = specialOffer["product_id"] as? String,
+            let productPrice = productsPrices?.first(where: { $0.id == productId })
         else {
             return nil
         }
-        
-        let productPrice = ProductPrice(id: "", priceLocalized: "123", priceValue: 123, priceLocale: Locale.current, currency: "")
         
         let title = (specialOffer["subtitle"] as? String)?
             .uppercased()
