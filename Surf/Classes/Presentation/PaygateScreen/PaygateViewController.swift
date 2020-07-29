@@ -17,7 +17,7 @@ final class PaygateViewController: UIViewController {
     
     var paygateView = PaygateView()
     
-    private weak var delegate: PaygateViewControllerDelegate?
+    weak var delegate: PaygateViewControllerDelegate?
     
     private let disposeBag = DisposeBag()
     
@@ -182,12 +182,24 @@ final class PaygateViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        Signal
-            .merge(viewModel.purchaseCompleted,
-                   viewModel.restoredCompleted)
+        viewModel
+            .purchaseCompleted
             .emit(onNext: { [weak self] result in
                 PaygatePingManager.shared.stop()
                 
+                self?.delegate?.wasPurchased()
+                
+                self?.dismiss()
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel
+            .restoredCompleted
+            .emit(onNext: { [weak self] result in
+                PaygatePingManager.shared.stop()
+                
+                self?.delegate?.wasRestored()
+            
                 self?.dismiss()
             })
             .disposed(by: disposeBag)
@@ -207,9 +219,8 @@ final class PaygateViewController: UIViewController {
 // MARK: Make
 
 extension PaygateViewController {
-    static func make(delegate: PaygateViewControllerDelegate? = nil) -> PaygateViewController {
-        let vc = PaygateViewController(nibName: nil, bundle: nil)
-        vc.delegate = delegate
+    static func make() -> PaygateViewController {
+        let vc = PaygateViewController()
         vc.modalPresentationStyle = .overCurrentContext
         vc.modalTransitionStyle = .coverVertical
         return vc
@@ -274,7 +285,7 @@ private extension PaygateViewController {
     func animateShowMainContent(isLoading: Bool) {
         UIView.animate(withDuration: 1, animations: { [weak self] in
             self?.paygateView.mainView.greetingLabel.alpha = 1
-            self?.paygateView.mainView.textLabel.alpha = 1
+            self?.paygateView.mainView.featuresView.alpha = 1
             self?.paygateView.mainView.lockImageView.alpha = 1
             self?.paygateView.mainView.termsOfferLabel.alpha = 1
             self?.paygateView.mainView.leftOptionView.alpha = 1
@@ -298,9 +309,9 @@ private extension PaygateViewController {
     func updateCloseButton() {
         switch currentScene {
         case .not, .main:
-            paygateView.closeButton.setImage(UIImage(named: "paygate_main_close"), for: .normal)
+            paygateView.closeButton.setImage(UIImage(named: "Paygate.Main.Close"), for: .normal)
         case .specialOffer:
-            paygateView.closeButton.setImage(UIImage(named: "paygate_special_offer_close"), for: .normal)
+            paygateView.closeButton.setImage(UIImage(named: "Paygate.SpecialOffer.Close"), for: .normal)
         }
     }
     

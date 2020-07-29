@@ -143,3 +143,9 @@
 "Report.Gotcha" = "Gotcha!";
 "Report.SuccessInfo" = "We'll take a look into it. Good news is you'all never see %@ ever again.";
 "Report.CreateReport.Failure" = "Failure to create report";
+
+// MARK: Paygate
+"Paygate.Min" = "min";
+"Paygate.Sec" = "sec";
+"Paygate.FailedPurchase" = "Failed purchase";
+"Paygate.FailedRestore" = "Failed restore";

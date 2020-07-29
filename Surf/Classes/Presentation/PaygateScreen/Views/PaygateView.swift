@@ -24,10 +24,12 @@ final class PaygateView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    // MARK: Make constraints
-    
-    private func makeConstraints() {
+}
+
+// MARK: Make constraints
+
+private extension PaygateView {
+    func makeConstraints() {
         NSLayoutConstraint.activate([
             mainView.leadingAnchor.constraint(equalTo: leadingAnchor),
             mainView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -45,30 +47,32 @@ final class PaygateView: UIView {
         NSLayoutConstraint.activate([
             closeButton.widthAnchor.constraint(equalToConstant: 37.scale),
             closeButton.heightAnchor.constraint(equalToConstant: 37.scale),
-            closeButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20.scale),
-            closeButton.topAnchor.constraint(equalTo: topAnchor, constant: ScreenSize.isIphoneXFamily ? 38.scale : 24.scale)
+            closeButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 14.scale),
+            closeButton.topAnchor.constraint(equalTo: topAnchor, constant: ScreenSize.isIphoneXFamily ? 54.scale : 40.scale)
         ])
     }
-    
-    // MARK: Lazy initialization
-    
-    private func makeCloseButton() -> UIButton {
+}
+
+// MARK: Lazy initialization
+
+private extension PaygateView {
+    func makeCloseButton() -> UIButton {
         let view = UIButton()
-        view.setImage(UIImage(named: "paygate_main_close"), for: .normal)
+        view.setImage(UIImage(named: "Paygate.Main.Close"), for: .normal)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
     }
-    
-    private func makeMainView() -> PaygateMainView {
+
+    func makeMainView() -> PaygateMainView {
         let view = PaygateMainView()
         view.isHidden = true
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
     }
-    
-    private func makeSpecialOfferView() -> PaygateSpecialOfferView {
+
+    func makeSpecialOfferView() -> PaygateSpecialOfferView {
         let view = PaygateSpecialOfferView()
         view.isHidden = true
         view.translatesAutoresizingMaskIntoConstraints = false

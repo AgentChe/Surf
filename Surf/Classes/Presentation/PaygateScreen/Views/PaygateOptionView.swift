@@ -57,8 +57,8 @@ private extension PaygateOptionView {
     }
     
     func updateColors() {
-        layer.borderColor = isSelected ? UIColor(red: 239 / 255, green: 239 / 255, blue: 234 / 255, alpha: 1).cgColor : UIColor.white.cgColor
-        backgroundColor = isSelected ? UIColor(red: 239 / 255, green: 239 / 255, blue: 234 / 255, alpha: 1) : UIColor.clear
+        layer.borderColor = UIColor.white.cgColor
+        backgroundColor = isSelected ? UIColor.white : UIColor.clear
         
         checkedImageView.isHidden = !isSelected
         
@@ -119,7 +119,7 @@ private extension PaygateOptionView {
         let view = UIImageView()
         view.clipsToBounds = true
         view.contentMode = .scaleAspectFit
-        view.image = UIImage(named: "paygate_main_checked")
+        view.image = UIImage(named: "Paygate.Main.Checked")
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

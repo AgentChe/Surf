@@ -9,18 +9,16 @@
 import UIKit
 
 final class PaygateSpecialOfferView: UIView {
+    lazy var backgroundImageView = makeBackgroundImageView()
     lazy var restoreButton = makeRestoreButton()
-    lazy var iconImageView = makeIconImageView()
-    lazy var titleLabel = makeTitleLabel()
-    lazy var subTitleLabel = makeSubTitleLabel()
-    lazy var textLabel = makeTextLabel()
-    lazy var leftTimeLabel = makeTimeLabel()
-    lazy var rightTimeLabel = makeTimeLabel()
-    lazy var delimeterTimeLabel = makeTimeDelimeterLabel()
-    lazy var priceLabel = makePriceLabel()
+    lazy var titleLabel = makeLabel()
+    lazy var subTitleLabel = makeLabel()
+    lazy var textLabel = makeLabel()
+    lazy var timeLabel = makeLabel()
+    lazy var priceLabel = makeLabel()
     lazy var continueButton = makeContinueButton()
     lazy var lockImageView = makeLockIconView()
-    lazy var termsOfferLabel = makeTermsOfferLabel()
+    lazy var termsOfferLabel = makeLabel()
     lazy var purchasePreloaderView = makePreloaderView()
     
     var timer: Timer?
@@ -42,19 +40,15 @@ final class PaygateSpecialOfferView: UIView {
     func setup(paygate: PaygateSpecialOffer) {
         self.specialOffer = paygate
         
-        titleLabel.text = paygate.title
-        subTitleLabel.text = paygate.subTitle
-        textLabel.text = paygate.text
-        continueButton.setTitle(paygate.button, for: .normal)
-        termsOfferLabel.text = paygate.subButton
-        restoreButton.setAttributedTitle(paygate.restore?.attributed(with: TextAttributes()
-            .letterSpacing(-0.12.scale)
-            .textColor(UIColor.white)),
-                                         for: .normal)
+        titleLabel.attributedText = paygate.title
+        subTitleLabel.attributedText = paygate.subTitle
+        textLabel.attributedText = paygate.text
+        continueButton.setAttributedTitle(paygate.button, for: .normal)
+        termsOfferLabel.attributedText = paygate.subButton
+        restoreButton.setAttributedTitle(paygate.restore, for: .normal)
         
         let timeComponents = paygate.time?.split(separator: ":")
-        leftTimeLabel.text = String(timeComponents?.first ?? "0")
-        rightTimeLabel.text = String(timeComponents?.last ?? "0")
+        setupTime(minutes: String(timeComponents?.first ?? "0"), seconds: String(timeComponents?.last ?? "0"))
         
         setupPrice(paygate: paygate)
     }
@@ -65,8 +59,7 @@ final class PaygateSpecialOfferView: UIView {
         }
         
         guard let originalTime = specialOffer?.time else {
-            leftTimeLabel.text = "0"
-            rightTimeLabel.text = "0"
+            setupTime(minutes: "00", seconds: "00")
             
             return
         }
@@ -96,13 +89,13 @@ final class PaygateSpecialOfferView: UIView {
                 if leftMinutesString.count == 1 {
                     leftMinutesString = "0" + leftMinutesString
                 }
-                self?.leftTimeLabel.text = leftMinutesString
                 
                 var leftSecondsString = String(leftSeconds)
                 if leftSecondsString.count == 1 {
                     leftSecondsString = "0" + leftSecondsString
                 }
-                self?.rightTimeLabel.text = leftSecondsString
+                
+                self?.setupTime(minutes: leftMinutesString, seconds: leftSecondsString)
             }
             
             if left <= 0 {
@@ -122,24 +115,44 @@ final class PaygateSpecialOfferView: UIView {
 // MARK: Private
 
 private extension PaygateSpecialOfferView {
+    func setupTime(minutes: String, seconds: String) {
+        let valueAtts = TextAttributes()
+            .font(Font.Poppins.regular(size: 24.scale))
+            .textColor(UIColor.black)
+        
+        let placeholderAttrs = TextAttributes()
+            .font(Font.Poppins.regular(size: 17.scale))
+            .textColor(UIColor.black.withAlphaComponent(0.3))
+        
+        let result = NSMutableAttributedString()
+        
+        result.append(minutes.attributed(with: valueAtts))
+        result.append(NSAttributedString(string: " "))
+        
+        result.append("Paygate.Min".localized.attributed(with: placeholderAttrs))
+        result.append(NSAttributedString(string: "  "))
+        
+        result.append(seconds.attributed(with: valueAtts))
+        result.append(NSAttributedString(string: " "))
+        
+        result.append("Paygate.Sec".localized.attributed(with: placeholderAttrs))
+        
+        timeLabel.attributedText = result
+    }
+    
     func setupPrice(paygate: PaygateSpecialOffer) {
-        let priceAttrs = NSMutableAttributedString()
+        let price = NSMutableAttributedString()
         
         if let oldPrice = paygate.oldPrice {
-            priceAttrs.append(oldPrice.attributed(with: TextAttributes()
-                .font(Font.OpenSans.regular(size: 17.scale))
-                .textColor(UIColor.black)
-                .strikethroughStyle(.single)))
-            priceAttrs.append(NSAttributedString(string: " "))
+            price.append(oldPrice)
+            price.append(NSAttributedString(string: " "))
         }
         
         if let currentPrice = paygate.price {
-            priceAttrs.append(currentPrice.attributed(with: TextAttributes()
-                .font(Font.OpenSans.bold(size: 17.scale))
-                .textColor(.black)))
+            price.append(currentPrice)
         }
         
-        priceLabel.attributedText = priceAttrs
+        priceLabel.attributedText = price
     }
 }
 
@@ -148,57 +161,45 @@ private extension PaygateSpecialOfferView {
 private extension PaygateSpecialOfferView {
     func makeConstraints() {
         NSLayoutConstraint.activate([
-            restoreButton.topAnchor.constraint(equalTo: topAnchor, constant: ScreenSize.isIphoneXFamily ? 41.scale : 31.scale),
+            backgroundImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            backgroundImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            backgroundImageView.topAnchor.constraint(equalTo: topAnchor),
+            backgroundImageView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            restoreButton.topAnchor.constraint(equalTo: topAnchor, constant: ScreenSize.isIphoneXFamily ? 58.scale : 45.scale),
             restoreButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32.scale),
             restoreButton.heightAnchor.constraint(equalToConstant: 30.scale)
         ])
         
         NSLayoutConstraint.activate([
-            iconImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            iconImageView.widthAnchor.constraint(equalToConstant: 48.scale),
-            iconImageView.heightAnchor.constraint(equalToConstant: 48.scale),
-            iconImageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -16.scale)
-        ])
-        
-        NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: ScreenSize.isIphoneXFamily ? 184.scale : 135.scale),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: ScreenSize.isIphoneXFamily ? 167.scale : 99.scale),
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+            subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: ScreenSize.isIphoneXFamily ? 30.scale : 20.scale),
             subTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30.scale),
             subTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30.scale)
         ])
         
         NSLayoutConstraint.activate([
-            textLabel.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 15.scale),
+            timeLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            timeLabel.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: ScreenSize.isIphoneXFamily ? 30.scale : 20.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            textLabel.topAnchor.constraint(equalTo: topAnchor, constant: ScreenSize.isIphoneXFamily ? 493.scale : 370.scale),
             textLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30.scale),
             textLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30.scale)
-        ])
-        
-        NSLayoutConstraint.activate([
-            delimeterTimeLabel.centerYAnchor.constraint(equalTo: leftTimeLabel.centerYAnchor),
-            delimeterTimeLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            leftTimeLabel.topAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: ScreenSize.isIphoneXFamily ? 70.scale : 20.scale),
-            leftTimeLabel.trailingAnchor.constraint(equalTo: delimeterTimeLabel.leadingAnchor, constant: -8.scale),
-            leftTimeLabel.widthAnchor.constraint(equalToConstant: 66.scale)
-        ])
-        
-        NSLayoutConstraint.activate([
-            rightTimeLabel.topAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: ScreenSize.isIphoneXFamily ? 70.scale : 20.scale),
-            rightTimeLabel.leadingAnchor.constraint(equalTo: delimeterTimeLabel.trailingAnchor, constant: 8.scale),
-            rightTimeLabel.widthAnchor.constraint(equalToConstant: 66.scale)
         ])
         
         NSLayoutConstraint.activate([
             lockImageView.widthAnchor.constraint(equalToConstant: 12.scale),
             lockImageView.heightAnchor.constraint(equalToConstant: 16.scale),
             lockImageView.trailingAnchor.constraint(equalTo: termsOfferLabel.leadingAnchor, constant: -10.scale),
-            lockImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: ScreenSize.isIphoneXFamily ? -49.scale : -26.scale)
+            lockImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: ScreenSize.isIphoneXFamily ? -49.scale : -49.scale)
         ])
         
         NSLayoutConstraint.activate([
@@ -207,14 +208,14 @@ private extension PaygateSpecialOfferView {
         ])
         
         NSLayoutConstraint.activate([
-            continueButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: ScreenSize.isIphoneXFamily ? -86.scale : -64.scale),
+            continueButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: ScreenSize.isIphoneXFamily ? -82.scale : -82.scale),
             continueButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32.scale),
             continueButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32.scale),
             continueButton.heightAnchor.constraint(equalToConstant: 56.scale)
         ])
         
         NSLayoutConstraint.activate([
-            priceLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: ScreenSize.isIphoneXFamily ? -160.scale : -138.scale),
+            priceLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: ScreenSize.isIphoneXFamily ? -154.scale : -154.scale),
             priceLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
         
@@ -228,84 +229,26 @@ private extension PaygateSpecialOfferView {
 // MARK: Lazy initialization
 
 private extension PaygateSpecialOfferView {
+    func makeBackgroundImageView() -> UIImageView {
+        let view = UIImageView()
+        view.clipsToBounds = true
+        view.contentMode = .scaleAspectFill
+        view.image = UIImage(named: ScreenSize.isIphoneXFamily ? "Paygate.SpecialOffer.Background_X" : "Paygate.SpecialOffer.Background")
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
     func makeRestoreButton() -> UIButton {
         let view = UIButton()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.titleLabel?.font = Font.SFProText.regular(size: 18.scale)
         addSubview(view)
         return view
     }
     
-    func makeIconImageView() -> UIImageView {
-        let view = UIImageView()
-        view.contentMode = .scaleAspectFit
-        view.image = UIImage(named: "paygate_special_offer_icon")
-        view.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(view)
-        return view
-    }
-    
-    func makeTitleLabel() -> UILabel {
-        let view = UILabel()
-        view.textAlignment = .center
-        view.font = Font.OpenSans.bold(size: 80.scale)
-        view.textColor = UIColor.black
-        view.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(view)
-        return view
-    }
-    
-    func makeSubTitleLabel() -> UILabel {
+    func makeLabel() -> UILabel {
         let view = UILabel()
         view.numberOfLines = 0
-        view.textAlignment = .center
-        view.font = Font.OpenSans.bold(size: 22.scale)
-        view.textColor = UIColor.black
-        view.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(view)
-        return view
-    }
-    
-    func makeTextLabel() -> UILabel {
-        let view = UILabel()
-        view.numberOfLines = 0
-        view.textAlignment = .center
-        view.font = Font.OpenSans.regular(size: 17.scale)
-        view.textColor = UIColor.black
-        view.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(view)
-        return view
-    }
-    
-    func makeTimeLabel() -> PaddingLabel {
-        let view = PaddingLabel()
-        view.topInset = 16.scale
-        view.bottomInset = 16.scale
-        view.layer.borderColor = UIColor.white.cgColor
-        view.layer.borderWidth = 2.scale
-        view.layer.cornerRadius = 8.scale
-        view.font = Font.OpenSans.bold(size: 28.scale)
-        view.textColor = UIColor.black
-        view.textAlignment = .center
-        view.backgroundColor = .white
-        view.layer.masksToBounds = true
-        view.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(view)
-        return view
-    }
-    
-    func makeTimeDelimeterLabel() -> UILabel {
-        let view = UILabel()
-        view.text = ":"
-        view.font = Font.SFProText.bold(size: 30.scale)
-        view.textColor = UIColor.white
-        view.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(view)
-        return view
-    }
-    
-    func makePriceLabel() -> UILabel {
-        let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
@@ -313,10 +256,8 @@ private extension PaygateSpecialOfferView {
     
     func makeContinueButton() -> UIButton {
         let view = UIButton()
-        view.backgroundColor = UIColor.black
+        view.backgroundColor = UIColor(red: 252 / 255, green: 221 / 255, blue: 102 / 255, alpha: 1)
         view.layer.cornerRadius = 28.scale
-        view.titleLabel?.font = Font.SFProText.bold(size: 17.scale)
-        view.setTitleColor(UIColor.white, for: .normal)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
@@ -326,16 +267,7 @@ private extension PaygateSpecialOfferView {
         let view = UIImageView()
         view.clipsToBounds = true
         view.contentMode = .scaleAspectFit
-        view.image = UIImage(named: "paygate_special_offer_lock")
-        view.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(view)
-        return view
-    }
-    
-    func makeTermsOfferLabel() -> UILabel {
-        let view = UILabel()
-        view.font = Font.SFProText.semibold(size: 13.scale)
-        view.textColor = .black
+        view.image = UIImage(named: "Paygate.SpecialOffer.Secured")
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

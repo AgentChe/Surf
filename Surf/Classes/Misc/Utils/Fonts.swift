@@ -27,6 +27,34 @@ final class Font {
         }
     }
     
+    struct Montserrat {
+        static func semibold(size: CGFloat) -> UIFont {
+            UIFont(name: "Montserrat-SemiBold", size: size)!
+        }
+        
+        static func regular(size: CGFloat) -> UIFont {
+            UIFont(name: "Montserrat-Regular", size: size)!
+        }
+        
+        static func bold(size: CGFloat) -> UIFont {
+            UIFont(name: "Montserrat-Bold", size: size)!
+        }
+    }
+    
+    struct Poppins {
+        static func semibold(size: CGFloat) -> UIFont {
+            UIFont(name: "Poppins-SemiBold", size: size)!
+        }
+        
+        static func regular(size: CGFloat) -> UIFont {
+            UIFont(name: "Poppins-Regular", size: size)!
+        }
+        
+        static func bold(size: CGFloat) -> UIFont {
+            UIFont(name: "Poppins-Bold", size: size)!
+        }
+    }
+    
     struct SFProText {
         static func semibold(size: CGFloat) -> UIFont {
             UIFont(name: "SFProText-Semibold", size: size)!

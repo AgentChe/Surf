@@ -232,6 +232,13 @@
 		96CAFFDC24D06EEC000F5668 /* ReportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CAFFDB24D06EEC000F5668 /* ReportType.swift */; };
 		96CAFFDE24D06EFC000F5668 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CAFFDD24D06EFC000F5668 /* Report.swift */; };
 		96CAFFE024D06F12000F5668 /* ReportOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CAFFDF24D06F12000F5668 /* ReportOn.swift */; };
+		96CAFFE924D1705A000F5668 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 96CAFFE624D16F8C000F5668 /* Poppins-Bold.ttf */; };
+		96CAFFEA24D1705A000F5668 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 96CAFFE524D16F82000F5668 /* Poppins-Regular.ttf */; };
+		96CAFFEB24D1705A000F5668 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 96CAFFE424D16F7C000F5668 /* Poppins-SemiBold.ttf */; };
+		96CAFFEC24D17062000F5668 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 96CAFFE824D16FE8000F5668 /* Montserrat-SemiBold.ttf */; };
+		96CAFFED24D17062000F5668 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 96CAFFE724D16FE4000F5668 /* Montserrat-Regular.ttf */; };
+		96CAFFEE24D17062000F5668 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 96CAFFE324D16F74000F5668 /* Montserrat-Bold.ttf */; };
+		96CAFFF024D1BC21000F5668 /* PaygateMainFeatureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CAFFEF24D1BC21000F5668 /* PaygateMainFeatureCell.swift */; };
 		96CD2AE324C72A2F0026A1DA /* ProfileManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CD2AE224C72A2F0026A1DA /* ProfileManagerDelegate.swift */; };
 		96E43E9124C5B16700831DC3 /* ProfileTableDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E43E9024C5B16700831DC3 /* ProfileTableDirection.swift */; };
 		96E43E9324C5B21700831DC3 /* ProfileTableDirectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E43E9224C5B21700831DC3 /* ProfileTableDirectionCell.swift */; };
@@ -485,6 +492,13 @@
 		96CAFFDB24D06EEC000F5668 /* ReportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportType.swift; sourceTree = "<group>"; };
 		96CAFFDD24D06EFC000F5668 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		96CAFFDF24D06F12000F5668 /* ReportOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportOn.swift; sourceTree = "<group>"; };
+		96CAFFE324D16F74000F5668 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		96CAFFE424D16F7C000F5668 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		96CAFFE524D16F82000F5668 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		96CAFFE624D16F8C000F5668 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		96CAFFE724D16FE4000F5668 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		96CAFFE824D16FE8000F5668 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		96CAFFEF24D1BC21000F5668 /* PaygateMainFeatureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaygateMainFeatureCell.swift; sourceTree = "<group>"; };
 		96CD2AE224C72A2F0026A1DA /* ProfileManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManagerDelegate.swift; sourceTree = "<group>"; };
 		96E43E9024C5B16700831DC3 /* ProfileTableDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableDirection.swift; sourceTree = "<group>"; };
 		96E43E9224C5B21700831DC3 /* ProfileTableDirectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableDirectionCell.swift; sourceTree = "<group>"; };
@@ -1005,10 +1019,10 @@
 		963F594824BCD02E0063D615 /* PaygateScreen */ = {
 			isa = PBXGroup;
 			children = (
+				963F594C24BCD02E0063D615 /* Views */,
 				963F594B24BCD02E0063D615 /* PaygateViewController.swift */,
 				963F594924BCD02E0063D615 /* PaygateViewModel.swift */,
 				963F594A24BCD02E0063D615 /* PaygateViewControllerDelegate.swift */,
-				963F594C24BCD02E0063D615 /* Views */,
 			);
 			path = PaygateScreen;
 			sourceTree = "<group>";
@@ -1020,6 +1034,7 @@
 				963F594E24BCD02E0063D615 /* PaygateOptionView.swift */,
 				963F594F24BCD02E0063D615 /* PaygateView.swift */,
 				963F595024BCD02E0063D615 /* PaygateSpecialOfferView.swift */,
+				96CAFFEF24D1BC21000F5668 /* PaygateMainFeatureCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1330,6 +1345,8 @@
 		965588B124BDD43E00D6EB83 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				96CAFFE224D16F47000F5668 /* Montserrat */,
+				96CAFFE124D16F3D000F5668 /* Poppins */,
 				965588B324BDD44D00D6EB83 /* SFProText */,
 				965588B224BDD44800D6EB83 /* OpenSans */,
 			);
@@ -1452,6 +1469,26 @@
 				96CAFFDF24D06F12000F5668 /* ReportOn.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		96CAFFE124D16F3D000F5668 /* Poppins */ = {
+			isa = PBXGroup;
+			children = (
+				96CAFFE624D16F8C000F5668 /* Poppins-Bold.ttf */,
+				96CAFFE524D16F82000F5668 /* Poppins-Regular.ttf */,
+				96CAFFE424D16F7C000F5668 /* Poppins-SemiBold.ttf */,
+			);
+			path = Poppins;
+			sourceTree = "<group>";
+		};
+		96CAFFE224D16F47000F5668 /* Montserrat */ = {
+			isa = PBXGroup;
+			children = (
+				96CAFFE824D16FE8000F5668 /* Montserrat-SemiBold.ttf */,
+				96CAFFE724D16FE4000F5668 /* Montserrat-Regular.ttf */,
+				96CAFFE324D16F74000F5668 /* Montserrat-Bold.ttf */,
+			);
+			path = Montserrat;
 			sourceTree = "<group>";
 		};
 		96CD2AE424C73FE70026A1DA /* Search */ = {
@@ -1638,6 +1675,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96CAFFEC24D17062000F5668 /* Montserrat-SemiBold.ttf in Resources */,
+				96CAFFED24D17062000F5668 /* Montserrat-Regular.ttf in Resources */,
+				96CAFFEE24D17062000F5668 /* Montserrat-Bold.ttf in Resources */,
+				96CAFFE924D1705A000F5668 /* Poppins-Bold.ttf in Resources */,
+				96CAFFEA24D1705A000F5668 /* Poppins-Regular.ttf in Resources */,
+				96CAFFEB24D1705A000F5668 /* Poppins-SemiBold.ttf in Resources */,
 				965588C224BDD5E500D6EB83 /* OpenSans-Bold.ttf in Resources */,
 				965588C324BDD5E500D6EB83 /* OpenSans-Light.ttf in Resources */,
 				965588C424BDD5E500D6EB83 /* OpenSans-Regular.ttf in Resources */,
@@ -1784,6 +1827,7 @@
 				960814F524C4E5CD00992DFB /* ProfileTableView.swift in Sources */,
 				960183E624C4E309005AD038 /* ProfileView.swift in Sources */,
 				963F5A3024BCD02F0063D615 /* ChatTableView.swift in Sources */,
+				96CAFFF024D1BC21000F5668 /* PaygateMainFeatureCell.swift in Sources */,
 				963F5A3A24BCD02F0063D615 /* PurchaseService.swift in Sources */,
 				963F59C724BCD02E0063D615 /* ChatTransformation.swift in Sources */,
 				96228AC024C828EA00F5B129 /* EditProfileViewModel.swift in Sources */,

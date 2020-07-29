@@ -93,5 +93,3 @@ private extension PaygateViewModel {
             .asSignal(onErrorSignalWith: .never())
     }
 }
-
-

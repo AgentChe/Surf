@@ -42,6 +42,8 @@ final class SearchViewController: UIViewController {
                     self?.searchView.collectionView.isHidden = proposedInterlocutors.isEmpty
                     self?.searchView.noProposedInterlocutorsView.isHidden = !proposedInterlocutors.isEmpty
                 case .needPayment:
+                    self?.searchView.noProposedInterlocutorsView.isHidden = false
+                    
                     self?.goToPaygateScreen()
                 }
             })
@@ -147,8 +149,9 @@ extension SearchViewController: MutualLikedViewControllerDelegate {
 
 private extension SearchViewController {
     func goToPaygateScreen() {
-        let vc = PaygateViewController.make(delegate: self)
-        navigationController?.pushViewController(vc, animated: true)
+        let vc = PaygateViewController.make()
+        vc.delegate = self
+        navigationController?.present(vc, animated: true)
     }
     
     func goToReportScreen(proposedInterlocutor: ProposedInterlocutor) {

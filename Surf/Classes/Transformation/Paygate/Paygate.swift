@@ -15,7 +15,7 @@ struct Paygate {
 
 struct PaygateMain {
     let greeting: NSAttributedString?
-    let text: NSAttributedString?
+    let features: [NSAttributedString]
     let options: [PaygateOption]?
     let button: NSAttributedString?
     let subButton: NSAttributedString?
@@ -33,13 +33,13 @@ struct PaygateOption {
 
 struct PaygateSpecialOffer {
     let productId: String
-    let title: String?
-    let subTitle: String?
-    let text: String?
+    let title: NSAttributedString?
+    let subTitle: NSAttributedString?
+    let text: NSAttributedString?
     let time: String?
-    let oldPrice: String?
-    let price: String?
-    let button: String?
-    let subButton: String?
-    let restore: String?
+    let oldPrice: NSAttributedString?
+    let price: NSAttributedString?
+    let button: NSAttributedString?
+    let subButton: NSAttributedString?
+    let restore: NSAttributedString?
 }

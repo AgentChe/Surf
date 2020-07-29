@@ -20,7 +20,7 @@ struct GetPaygateRequest: APIRequestBody {
     }
     
     var url: String {
-        GlobalDefinitions.Backend.domain + "/api/payments/paygate2"
+        GlobalDefinitions.Backend.domain + "/api/payments/paygate"
     }
     
     var parameters: Alamofire.Parameters? {
