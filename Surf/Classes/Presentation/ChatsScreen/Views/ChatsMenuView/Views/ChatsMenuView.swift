@@ -31,8 +31,8 @@ final class ChatsMenuView: UIView {
         imageView.kf.cancelDownloadTask()
         imageView.image = nil
         
-        if let url = chat.interlocutorAvatarUrl {
-            imageView.kf.setImage(with: url)
+        if let photoPath = chat.interlocutor.photos.sorted(by: { $0.order < $1.order }).first?.url, let photoUrl = URL(string: photoPath) {
+            imageView.kf.setImage(with: photoUrl)
         }
     }
 }

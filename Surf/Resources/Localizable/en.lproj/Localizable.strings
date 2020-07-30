@@ -155,3 +155,9 @@
 "Paygate.Sec" = "sec";
 "Paygate.FailedPurchase" = "Failed purchase";
 "Paygate.FailedRestore" = "Failed restore";
+
+// MARK: Interlocutor Profile
+"InterlocutorProfile.Unmatch" = "Unmatch";
+"InterlocutorProfile.Report" = "Report";
+"InterlocutorProfile.UnmatchFailure" = "Failure to unmatch";
+"InterlocutorProfile.UnmatchSuccess" = "Success unmatch";

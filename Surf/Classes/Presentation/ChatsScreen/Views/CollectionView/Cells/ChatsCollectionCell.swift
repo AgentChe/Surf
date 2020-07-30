@@ -36,12 +36,12 @@ final class ChatsCollectionCell: UICollectionViewCell {
     }
     
     func setup(chat: Chat) {
-        if let interlocutorAvatarUrl = chat.interlocutorAvatarUrl {
-            photoView.kf.setImage(with: interlocutorAvatarUrl)
+        if let photoPath = chat.interlocutor.photos.sorted(by: { $0.order < $1.order }).first?.url, let photoUrl = URL(string: photoPath) {
+            photoView.kf.setImage(with: photoUrl)
         }
         
         let attrs = TextAttributes().lineHeight(20.scale)
-        nameLabel.attributedText = chat.interlocutorName.attributed(with: attrs)
+        nameLabel.attributedText = chat.interlocutor.name.attributed(with: attrs)
         
         unreadMessagesCountLabel.text = String(format: "%i", chat.unreadMessageCount)
         unreadMessagesCountLabel.isHidden = chat.unreadMessageCount == 0

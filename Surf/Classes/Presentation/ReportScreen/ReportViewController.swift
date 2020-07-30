@@ -87,7 +87,7 @@ private extension ReportViewController {
     func setup() {
         switch reportOn! {
         case .chatInterlocutor(let chat):
-            reportView.gotchaView.infoLabel.text = String(format: "Report.SuccessInfo".localized, chat.interlocutorName)
+            reportView.gotchaView.infoLabel.text = String(format: "Report.SuccessInfo".localized, chat.interlocutor.name)
         case .proposedInterlocutor(let proposedInterlocutor):
             reportView.gotchaView.infoLabel.text = String(format: "Report.SuccessInfo".localized, proposedInterlocutor.name)
         }
@@ -119,7 +119,7 @@ private extension ReportViewController {
         
         switch reportOn! {
         case .chatInterlocutor(let chat):
-            result = viewModel.createOnChatInterlocutor(report: report, chatId: chat.id, proposedInterlocutorId: chat.interlocutorId)
+            result = viewModel.createOnChatInterlocutor(report: report, chatId: chat.id, proposedInterlocutorId: chat.interlocutor.id)
         case .proposedInterlocutor(let proposedInterlocutor):
             result = viewModel.createOnProposedInterlocutor(report: report, proposedInterlocutorId: proposedInterlocutor.id)
         }

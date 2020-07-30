@@ -28,8 +28,8 @@ final class ChatInterlocutorView: UIView {
 
 extension ChatInterlocutorView {
     func setup(chat: Chat) {
-        avatarImageView.kf.setImage(with: chat.interlocutorAvatarUrl)
-        nameLabel.text = chat.interlocutorName
+//        avatarImageView.kf.setImage(with: chat.interlocutorAvatarUrl)
+//        nameLabel.text = chat.interlocutorName
     }
 }
 
