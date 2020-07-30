@@ -8,7 +8,7 @@
 
 final class GetChatsResponseMapper {
     static func from(response: Any) -> [Chat] {
-        guard let json = response as? [String: Any], let data = json["_data"] as? [[String: Any]] else {
+        guard let json = response as? [String: Any], let data = json["result"] as? [[String: Any]] else {
             return []
         }
         

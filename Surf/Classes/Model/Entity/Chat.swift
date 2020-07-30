@@ -29,6 +29,11 @@ extension Chat: Model {
     
     private enum InterlocutorKeys: String, CodingKey {
         case unreadMessageCount = "unread"
+        case id = "user_id"
+        case name
+        case photos
+        case emoji
+        case birthdate
     }
     
     init(from decoder: Decoder) throws {
@@ -40,7 +45,22 @@ extension Chat: Model {
         
         unreadMessageCount = (try? interlocutorJSON.decode(Int.self, forKey: .unreadMessageCount)) ?? 0
         
-        // TODO
-        interlocutor = try interlocutorJSON.decode(ProposedInterlocutor.self, forKey: .unreadMessageCount)
+        let interlocutorId = try interlocutorJSON.decode(Int.self, forKey: .id)
+        let interlocutorName = try interlocutorJSON.decode(String.self, forKey: .name)
+        let interlocutorPhotos = try interlocutorJSON.decode([Photo].self, forKey: .photos)
+        let interlocutorEmoji = try interlocutorJSON.decode(String.self, forKey: .emoji)
+        
+        let birthdateStringFormat = try interlocutorJSON.decode(String.self, forKey: .birthdate)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        guard let birthdate = dateFormatter.date(from: birthdateStringFormat) else {
+            throw NSError()
+        }
+        
+        interlocutor = ProposedInterlocutor(id: interlocutorId,
+                                            name: interlocutorName,
+                                            photos: interlocutorPhotos,
+                                            emoji: interlocutorEmoji,
+                                            birthdate: birthdate)
     }
 }
