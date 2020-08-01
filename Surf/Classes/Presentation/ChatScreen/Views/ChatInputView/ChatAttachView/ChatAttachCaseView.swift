@@ -15,8 +15,6 @@ final class ChatAttachCaseView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .clear
-        
         _ = imageView
         _ = label
     }
@@ -30,19 +28,19 @@ final class ChatAttachCaseView: UIView {
 
 private extension ChatAttachCaseView {
     func makeImageView() -> UIImageView {
-        let view = UIImageView(frame: CGRect(x: 14, y: 15, width: 32, height: 32))
+        let view = UIImageView(frame: CGRect(x: 14.scale, y: 15.scale, width: 32.scale, height: 32.scale))
         view.contentMode = .scaleAspectFit
         addSubview(view)
         return view
     }
     
     func makeLabel() -> UILabel {
-        let x: CGFloat = 14 + 32 + 15
+        let x: CGFloat = 14.scale + 32.scale + 15.scale
         let view = UILabel(frame: CGRect(x: x,
-                                         y: 19,
-                                         width: self.bounds.width - x - 16,
-                                         height: 23))
-        view.font = Font.SFProText.regular(size: 19)
+                                         y: 19.scale,
+                                         width: self.bounds.width - x - 16.scale,
+                                         height: 23.scale))
+        view.font = Font.SFProText.regular(size: 19.scale)
         view.textColor = .black
         addSubview(view)
         return view

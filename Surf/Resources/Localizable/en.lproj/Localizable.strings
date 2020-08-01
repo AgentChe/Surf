@@ -161,3 +161,7 @@
 "InterlocutorProfile.Report" = "Report";
 "InterlocutorProfile.UnmatchFailure" = "Failure to unmatch";
 "InterlocutorProfile.UnmatchSuccess" = "Success unmatch";
+
+// MARK: Chat
+"Chat.Attach.Photo" = "Photo";
+"Chat.Input.Placeholder" = "Message...";

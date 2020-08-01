@@ -23,13 +23,11 @@ final class ChatAttachButton: UIView {
     
     private let disposeBag = DisposeBag()
     
-    private let closeImage = UIImage(named: "close_menu_btn")
-    private let attachImage = UIImage(named: "plus_btn")
+    private let closeImage = UIImage(named: "Chat.Attach.Close")
+    private let attachImage = UIImage(named: "Chat.Attach.Add")
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        
-        backgroundColor = UIColor(red: 102 / 255, green: 102 / 255, blue: 102 / 255, alpha: 0.6)
         
         makeConstraints()
         addActions()
@@ -118,7 +116,7 @@ private extension ChatAttachButton {
 private extension ChatAttachButton {
     func makeImageView() -> UIImageView {
         let view = UIImageView()
-        view.image = UIImage(named: "plus_btn")
+        view.image = UIImage(named: "Chat.Attach.Add")
         view.clipsToBounds = true
         view.contentMode = .scaleAspectFit
         view.translatesAutoresizingMaskIntoConstraints = false

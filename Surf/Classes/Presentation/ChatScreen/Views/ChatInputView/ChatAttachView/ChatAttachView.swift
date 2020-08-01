@@ -47,10 +47,12 @@ extension ChatAttachView {
 
 private extension ChatAttachView {
     func makePhotoCaseView() -> ChatAttachCaseView {
-        let view = ChatAttachCaseView(frame: CGRect(x: 0, y: 0, width: self.bounds.width, height: 60))
-        view.imageView.image = UIImage(named: "photo_btn")
+        let view = ChatAttachCaseView(frame: CGRect(x: 0, y: 0, width: bounds.width, height: 60.scale))
+        view.backgroundColor = .clear
+        view.imageView.image = UIImage(named: "Chat.Attach.Photo")
         view.label.text = "Chat.Attach.Photo".localized
         view.label.sizeToFit()
+        view.isUserInteractionEnabled = true
         view.addGestureRecognizer(photoCaseTapGesture)
         addSubview(view)
         return view

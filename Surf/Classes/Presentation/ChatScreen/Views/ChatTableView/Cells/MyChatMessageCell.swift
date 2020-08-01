@@ -15,7 +15,7 @@ final class MyChatMessageCell: MessageTableCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        contentView.backgroundColor = UIColor(red: 33 / 255, green: 33 / 255, blue: 33 / 255, alpha: 1)
+        contentView.backgroundColor = .white
         
         makeConstraints()
     }
@@ -57,7 +57,7 @@ private extension MyChatMessageCell {
     func makeBackgroundView() -> UIView {
         let view = UIView()
         view.layer.cornerRadius = 18.scale
-        view.backgroundColor = UIColor(red: 239 / 255, green: 239 / 255, blue: 244 / 255, alpha: 1)
+        view.backgroundColor = UIColor(red: 251 / 255, green: 251 / 255, blue: 255 / 255, alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)
         return view
@@ -66,7 +66,7 @@ private extension MyChatMessageCell {
     func makeLabel() -> UILabel {
         let view = UILabel()
         view.numberOfLines = 0
-        view.textColor = .black
+        view.textColor = UIColor(red: 34 / 255, green: 34 / 255, blue: 34 / 255, alpha: 1)
         view.font = Font.SFProText.regular(size: 15.scale)
         view.textAlignment = .right
         view.translatesAutoresizingMaskIntoConstraints = false

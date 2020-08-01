@@ -153,7 +153,6 @@
 		963F5A2E24BCD02F0063D615 /* InterlocutorChatImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F598C24BCD02E0063D615 /* InterlocutorChatImageCell.swift */; };
 		963F5A2F24BCD02F0063D615 /* MyChatImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F598D24BCD02E0063D615 /* MyChatImageCell.swift */; };
 		963F5A3024BCD02F0063D615 /* ChatTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F598E24BCD02E0063D615 /* ChatTableView.swift */; };
-		963F5A3124BCD02F0063D615 /* ChatInterlocutorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F598F24BCD02E0063D615 /* ChatInterlocutorView.swift */; };
 		963F5A3224BCD02F0063D615 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F599124BCD02E0063D615 /* ImageService.swift */; };
 		963F5A3324BCD02F0063D615 /* PaygatePingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F599324BCD02E0063D615 /* PaygatePingManager.swift */; };
 		963F5A3424BCD02F0063D615 /* PaygateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F599424BCD02E0063D615 /* PaygateManager.swift */; };
@@ -229,6 +228,8 @@
 		9679481824D2BEFC00F21A78 /* InterlocutorProfilePersonalTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9679481724D2BEFC00F21A78 /* InterlocutorProfilePersonalTableCell.swift */; };
 		9679481A24D2BF3E00F21A78 /* InterlocutorProfileTableDirectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9679481924D2BF3E00F21A78 /* InterlocutorProfileTableDirectionCell.swift */; };
 		9679481C24D2C05C00F21A78 /* InterlocutorProfileTablePhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9679481B24D2C05C00F21A78 /* InterlocutorProfileTablePhotosCell.swift */; };
+		9679481E24D4B80D00F21A78 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9679481D24D4B80D00F21A78 /* ChatView.swift */; };
+		9679482024D4B8D500F21A78 /* ChatViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9679481F24D4B8D500F21A78 /* ChatViewControllerDelegate.swift */; };
 		969DE79824C857FE000BD2E8 /* EditProfileConfirmDeletingAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969DE79724C857FE000BD2E8 /* EditProfileConfirmDeletingAlert.swift */; };
 		969DE79A24C863F5000BD2E8 /* EditProfileTableNameElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969DE79924C863F5000BD2E8 /* EditProfileTableNameElement.swift */; };
 		96A1BC8C24C04D010043DCCC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 96A1BC8B24C04D010043DCCC /* GoogleService-Info.plist */; };
@@ -429,7 +430,6 @@
 		963F598C24BCD02E0063D615 /* InterlocutorChatImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterlocutorChatImageCell.swift; sourceTree = "<group>"; };
 		963F598D24BCD02E0063D615 /* MyChatImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyChatImageCell.swift; sourceTree = "<group>"; };
 		963F598E24BCD02E0063D615 /* ChatTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableView.swift; sourceTree = "<group>"; };
-		963F598F24BCD02E0063D615 /* ChatInterlocutorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatInterlocutorView.swift; sourceTree = "<group>"; };
 		963F599124BCD02E0063D615 /* ImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		963F599324BCD02E0063D615 /* PaygatePingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaygatePingManager.swift; sourceTree = "<group>"; };
 		963F599424BCD02E0063D615 /* PaygateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaygateManager.swift; sourceTree = "<group>"; };
@@ -506,6 +506,8 @@
 		9679481724D2BEFC00F21A78 /* InterlocutorProfilePersonalTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterlocutorProfilePersonalTableCell.swift; sourceTree = "<group>"; };
 		9679481924D2BF3E00F21A78 /* InterlocutorProfileTableDirectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterlocutorProfileTableDirectionCell.swift; sourceTree = "<group>"; };
 		9679481B24D2C05C00F21A78 /* InterlocutorProfileTablePhotosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterlocutorProfileTablePhotosCell.swift; sourceTree = "<group>"; };
+		9679481D24D4B80D00F21A78 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		9679481F24D4B8D500F21A78 /* ChatViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewControllerDelegate.swift; sourceTree = "<group>"; };
 		969DE79724C857FE000BD2E8 /* EditProfileConfirmDeletingAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileConfirmDeletingAlert.swift; sourceTree = "<group>"; };
 		969DE79924C863F5000BD2E8 /* EditProfileTableNameElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableNameElement.swift; sourceTree = "<group>"; };
 		96A1BC8B24C04D010043DCCC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -1164,6 +1166,7 @@
 				963F597D24BCD02E0063D615 /* Views */,
 				963F597B24BCD02E0063D615 /* ChatViewController.swift */,
 				963F597C24BCD02E0063D615 /* ChatViewModel.swift */,
+				9679481F24D4B8D500F21A78 /* ChatViewControllerDelegate.swift */,
 			);
 			path = ChatScreen;
 			sourceTree = "<group>";
@@ -1173,7 +1176,7 @@
 			children = (
 				963F597E24BCD02E0063D615 /* ChatInputView */,
 				963F598724BCD02E0063D615 /* ChatTableView */,
-				963F598F24BCD02E0063D615 /* ChatInterlocutorView.swift */,
+				9679481D24D4B80D00F21A78 /* ChatView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1889,9 +1892,11 @@
 				963F59E824BCD02E0063D615 /* SetRequest.swift in Sources */,
 				963F59D324BCD02E0063D615 /* ProposedInterlocutor.swift in Sources */,
 				96CAFFDC24D06EEC000F5668 /* ReportType.swift in Sources */,
+				9679482024D4B8D500F21A78 /* ChatViewControllerDelegate.swift in Sources */,
 				963F59CE24BCD02E0063D615 /* MessageTransformation.swift in Sources */,
 				960814FA24C4EB5500992DFB /* ZodiacSignMapper.swift in Sources */,
 				9679481C24D2C05C00F21A78 /* InterlocutorProfileTablePhotosCell.swift in Sources */,
+				9679481E24D4B80D00F21A78 /* ChatView.swift in Sources */,
 				96E43EA224C5E10D00831DC3 /* ProfileLookingForChoiceView.swift in Sources */,
 				96E43E9124C5B16700831DC3 /* ProfileTableDirection.swift in Sources */,
 				9608150324C4FDE600992DFB /* ProfileTableItem.swift in Sources */,
@@ -1927,7 +1932,6 @@
 				963F59DB24BCD02E0063D615 /* FacebookLoginRequest.swift in Sources */,
 				963693AF24D0534D00BAA812 /* CreateReportOnProposedInterlocutorRequest.swift in Sources */,
 				96E6260824C702F700533C05 /* CheckUserBannedResponseMapper.swift in Sources */,
-				963F5A3124BCD02F0063D615 /* ChatInterlocutorView.swift in Sources */,
 				96EDBC7B24CEC11400C814CA /* LikeProposedInterlocutorResponseMapper.swift in Sources */,
 				963F59EB24BCD02E0063D615 /* PurchaseError.swift in Sources */,
 				963F59AF24BCD02E0063D615 /* StringExtension.swift in Sources */,

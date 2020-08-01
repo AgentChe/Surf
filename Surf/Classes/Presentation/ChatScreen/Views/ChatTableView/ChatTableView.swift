@@ -21,8 +21,6 @@ final class ChatTableView: UITableView {
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         
-        backgroundColor = UIColor(red: 33 / 255, green: 33 / 255, blue: 33 / 255, alpha: 1)
-        
         register(InterlocutorChatMessageCell.self, forCellReuseIdentifier: String(describing: InterlocutorChatMessageCell.self))
         register(InterlocutorChatImageCell.self, forCellReuseIdentifier: String(describing: InterlocutorChatImageCell.self))
         register(MyChatMessageCell.self, forCellReuseIdentifier: String(describing: MyChatMessageCell.self))

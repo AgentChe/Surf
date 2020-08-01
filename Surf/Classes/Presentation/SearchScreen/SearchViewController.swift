@@ -76,6 +76,14 @@ final class SearchViewController: UIViewController {
                 self?.viewModel.downloadProposedInterlocutors.accept(Void())
             })
             .disposed(by: disposeBag)
+        
+        searchView
+            .noProposedInterlocutorsView
+            .settingsButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.goToSettingsScreen()
+            })
+            .disposed(by: disposeBag)
     }
 }
 

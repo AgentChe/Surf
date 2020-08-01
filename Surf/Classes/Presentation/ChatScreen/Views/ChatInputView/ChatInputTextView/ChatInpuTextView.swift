@@ -91,18 +91,18 @@ private extension ChatInpuTextView {
 private extension ChatInpuTextView {
     func makeConstraints() {
         NSLayoutConstraint.activate([
-            textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
+            textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12.scale),
             textView.topAnchor.constraint(equalTo: topAnchor),
             textView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            textView.trailingAnchor.constraint(equalTo: button.leadingAnchor, constant: -8)
+            textView.trailingAnchor.constraint(equalTo: button.leadingAnchor, constant: -8.scale)
         ])
         
-        textViewHeightConstraint = textView.heightAnchor.constraint(equalToConstant: 37)
+        textViewHeightConstraint = textView.heightAnchor.constraint(equalToConstant: 37.scale)
         textViewHeightConstraint.isActive = true
         
         NSLayoutConstraint.activate([
-            button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
-            button.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5)
+            button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12.scale),
+            button.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5.scale)
         ])
     }
 }
@@ -116,7 +116,7 @@ private extension ChatInpuTextView {
         view.showsVerticalScrollIndicator = true
         view.backgroundColor = .clear
         view.font = Font.SFProText.regular(size: 17.scale)
-        view.textColor = UIColor(red: 142 / 255, green: 142 / 255, blue: 147 / 255, alpha: 1)
+        view.textColor = UIColor(red: 50 / 255, green: 50 / 255, blue: 52 / 255, alpha: 1)
         view.text = "Chat.Input.Placeholder".localized
         view.sizeToFit()
         view.delegate = view
@@ -127,7 +127,7 @@ private extension ChatInpuTextView {
     
     func makeButton() -> UIButton {
         let view = UIButton()
-        view.setImage(UIImage(named: "send_btn"), for: .normal)
+        view.setImage(UIImage(named: "Chat.SendButton"), for: .normal)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

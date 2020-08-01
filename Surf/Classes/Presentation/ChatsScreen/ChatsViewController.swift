@@ -114,11 +114,19 @@ extension ChatsViewController {
 // MARK: ChatViewControllerDelegate
 
 extension ChatsViewController: ChatViewControllerDelegate {
-    func markReaded(chat: Chat, message: Message) {
+    func chatViewController(markedRead chat: Chat, message: Message) {
         var readedChat = chat
         readedChat.change(unreadMessageCount: 0)
         
         chatsView.collectionView.replace(chat: readedChat)
+    }
+    
+    func chatViewController(unmatched: Chat) {
+        chatsView.collectionView.remove(chat: unmatched)
+    }
+    
+    func chatViewController(reported: Chat) {
+        chatsView.collectionView.remove(chat: reported)
     }
 }
 

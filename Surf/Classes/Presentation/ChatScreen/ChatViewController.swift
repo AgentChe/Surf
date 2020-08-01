@@ -9,21 +9,12 @@
 import UIKit
 import RxSwift
 
-protocol ChatViewControllerDelegate: class {
-    func markReaded(chat: Chat, message: Message)
-}
-
 final class ChatViewController: UIViewController {
+    var chatView = ChatView()
+    
     weak var delegate: ChatViewControllerDelegate?
     
-    private lazy var tableView = makeTableView()
-    private lazy var chatInputView = makeChatInputView()
-    private lazy var menuItem = makeMenuBarButtonItem()
-    private lazy var intercolutorView = makeChatInterlocutorView()
-    
     private var attachView: ChatAttachView?
-    
-    private var chatInputViewBottomConstraint: NSLayoutConstraint!
     
     private let disposeBag = DisposeBag()
     private var detectAttachViewTappedDisposable: Disposable?
@@ -44,17 +35,95 @@ final class ChatViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func loadView() {
+        super.loadView()
+        
+        view = chatView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         AmplitudeAnalytics.shared.log(with: .chatScr)
         
-        view.backgroundColor = UIColor(red: 33 / 255, green: 33 / 255, blue: 33 / 255, alpha: 1)
+        addInterlocutorPhoto()
         
-        makeConstraints()
+        viewModel
+            .chatRemoved()
+            .emit(onNext: { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: disposeBag)
         
-        bind()
-        setupInterlocutorInfo()
+        viewModel.sender()
+            .subscribe()
+            .disposed(by: disposeBag)
+        
+        chatView.tableView
+            .reachedTop
+            .bind(to: viewModel.nextPage)
+            .disposed(by: disposeBag)
+        
+        chatView.tableView
+            .viewedMessage
+            .bind(to: viewModel.viewedMessage)
+            .disposed(by: disposeBag)
+        
+        chatView.tableView
+            .viewedMessage
+            .filter { !$0.isOwner }
+            .throttle(RxTimeInterval.milliseconds(500), scheduler: MainScheduler.asyncInstance)
+            .subscribe(onNext: { [weak self] message in
+                guard let `self` = self else {
+                    return
+                }
+                
+                self.delegate?.chatViewController(markedRead: self.chat, message: message)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.newMessages
+            .drive(onNext: { [weak self] newMessages in
+                self?.chatView.tableView.add(messages: newMessages)
+            })
+            .disposed(by: disposeBag)
+            
+        let hideKeyboardGesture = UITapGestureRecognizer()
+        view.addGestureRecognizer(hideKeyboardGesture)
+        
+        hideKeyboardGesture.rx.event
+            .subscribe(onNext: { [weak self] _ in
+                self?.view.endEditing(true)
+            })
+            .disposed(by: disposeBag)
+        
+        chatView.chatInputView
+            .sendTapped
+            .asObservable()
+            .withLatestFrom(chatView.chatInputView.text)
+            .subscribe(onNext: { [weak self] text in
+                guard let message = text?.trimmingCharacters(in: .whitespaces), !message.isEmpty else {
+                    return
+                }
+
+                self?.viewModel.sendText.accept(message)
+                self?.chatView.chatInputView.set(text: "")
+            })
+            .disposed(by: disposeBag)
+
+        chatView.chatInputView
+            .attachTapped
+            .emit(onNext: { [weak self] state in
+                self?.attachTapped(state: state)
+            })
+            .disposed(by: disposeBag)
+        
+        chatView.tableView
+            .selectedMessage
+            .subscribe(onNext: { [weak self] message in
+                self?.messageTapped(message: message)
+            })
+            .disposed(by: disposeBag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,103 +159,56 @@ extension ChatViewController: ImagePickerDelegate {
     }
 }
 
+// MARK: InterlocutorProfileViewControllerDelegate
+
+extension ChatViewController: InterlocutorProfileViewControllerDelegate {
+    func interlocutorProfileViewController(unmatched: Chat) {
+        delegate?.chatViewController(unmatched: unmatched)
+        
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func interlocutorProfileViewController(reported: Chat) {
+        delegate?.chatViewController(reported: reported)
+        
+        navigationController?.popViewController(animated: true)
+    }
+}
+
 // MARK: Private
 
 private extension ChatViewController {
-    func bind() {
-        viewModel
-            .chatRemoved()
-            .emit(onNext: { [weak self] in
-                self?.navigationController?.popViewController(animated: true)
-            })
-            .disposed(by: disposeBag)
+    func addInterlocutorPhoto() {
+        guard let photoPath = chat.interlocutor.photos.sorted(by: { $0.order < $1.order }).first?.url, let photoUrl = URL(string: photoPath) else {
+            return
+        }
         
-        viewModel.sender()
-            .subscribe()
-            .disposed(by: disposeBag)
+        let interlocutorImageView = UIImageView()
+        interlocutorImageView.layer.cornerRadius = 20.scale
+        interlocutorImageView.layer.masksToBounds = true
+        interlocutorImageView.contentMode = .scaleAspectFill
+        interlocutorImageView.isUserInteractionEnabled = true
         
-        view.rx.keyboardHeight
-            .subscribe(onNext: { [weak self] keyboardHeight in
-                var inset = keyboardHeight
-                
-                if inset > 0, ScreenSize.hasBottomNotch {
-                    inset -= 35
-                }
-                self?.chatInputViewBottomConstraint.constant = -inset
-                
-                UIView.animate(withDuration: 0.25, animations: { [weak self] in
-                    self?.view.layoutIfNeeded()
-                })
-            })
-            .disposed(by: disposeBag)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(goToInterlocutorScreen))
+        interlocutorImageView.addGestureRecognizer(tapGesture)
         
-        tableView.reachedTop
-            .bind(to: viewModel.nextPage)
-            .disposed(by: disposeBag)
+        interlocutorImageView.kf.setImage(with: photoUrl)
         
-        tableView.viewedMessage
-            .bind(to: viewModel.viewedMessage)
-            .disposed(by: disposeBag)
+        let barItem = UIBarButtonItem(customView: interlocutorImageView)
         
-        tableView.viewedMessage
-            .filter { !$0.isOwner }
-            .throttle(RxTimeInterval.milliseconds(500), scheduler: MainScheduler.asyncInstance)
-            .subscribe(onNext: { [weak self] message in
-                guard let `self` = self else {
-                    return
-                }
-                
-                self.delegate?.markReaded(chat: self.chat, message: message)
-            })
-            .disposed(by: disposeBag)
+        NSLayoutConstraint.activate([
+            interlocutorImageView.widthAnchor.constraint(equalToConstant: 40.scale),
+            interlocutorImageView.heightAnchor.constraint(equalToConstant: 40.scale)
+        ])
         
-        viewModel.newMessages
-            .drive(onNext: { [weak self] newMessages in
-                self?.tableView.add(messages: newMessages)
-            })
-            .disposed(by: disposeBag)
-            
-        let hideKeyboardGesture = UITapGestureRecognizer()
-        view.addGestureRecognizer(hideKeyboardGesture)
-        
-        hideKeyboardGesture.rx.event
-            .subscribe(onNext: { [weak self] _ in
-                self?.view.endEditing(true)
-            })
-            .disposed(by: disposeBag)
-        
-        chatInputView.sendTapped
-            .asObservable()
-            .withLatestFrom(chatInputView.text)
-            .subscribe(onNext: { [weak self] text in
-                guard let message = text?.trimmingCharacters(in: .whitespaces), !message.isEmpty else {
-                    return
-                }
-
-                self?.viewModel.sendText.accept(message)
-                self?.chatInputView.set(text: "")
-            })
-            .disposed(by: disposeBag)
-
-        chatInputView
-            .attachTapped
-            .emit(onNext: { [weak self] state in
-                self?.attachTapped(state: state)
-            })
-            .disposed(by: disposeBag)
-        
-        menuItem.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.menuTapped()
-            })
-            .disposed(by: disposeBag)
-        
-        tableView
-            .selectedMessage
-            .subscribe(onNext: { [weak self] message in
-                self?.messageTapped(message: message)
-            })
-            .disposed(by: disposeBag)
+        navigationItem.rightBarButtonItem = barItem
+    }
+    
+    @objc
+    func goToInterlocutorScreen() {
+        let vc = InterlocutorProfileViewController.make(chat: chat)
+        vc.delegate = self
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func attachTapped(state: ChatAttachButton.State) {
@@ -196,10 +218,10 @@ private extension ChatViewController {
                 return
             }
             
-            let attachView = ChatAttachView(frame: CGRect(x: 8,
-                                                          y: self.chatInputView.frame.origin.y - self.chatInputView.frame.height - 10,
-                                                          width: 260,
-                                                          height: 60))
+            let attachView = ChatAttachView(frame: CGRect(x: 8.scale,
+                                                          y: chatView.chatInputView.frame.origin.y - chatView.chatInputView.frame.height - 10.scale,
+                                                          width: 260.scale,
+                                                          height: 60.scale))
             self.attachView = attachView
             view.addSubview(attachView)
             
@@ -208,22 +230,6 @@ private extension ChatViewController {
             attachView?.removeFromSuperview()
             attachView = nil
         }
-    }
-    
-    func menuTapped() {
-        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-        let reportAction = UIAlertAction(title: "Chat.Menu.Report".localized, style: .default) { [unowned self] _ in
-            let vc = ReportViewController.make(reportOn: .chatInterlocutor(self.chat))
-            self.present(vc, animated: false)
-        }
-
-        let doneAction = UIAlertAction(title: "Chat.Menu.Done".localized, style: .cancel)
-
-        actionSheet.addAction(reportAction)
-        actionSheet.addAction(doneAction)
-
-        present(actionSheet, animated: true)
     }
     
     func detectAttachViewTapped() {
@@ -240,7 +246,7 @@ private extension ChatViewController {
                     self.attachView?.removeFromSuperview()
                     self.attachView = nil
                     
-                    self.chatInputView.set(attachState: .attach)
+                    self.chatView.chatInputView.set(attachState: .attach)
                     
                     self.imagePicker.present(from: self.view)
                 }
@@ -260,71 +266,16 @@ private extension ChatViewController {
         }
     }
     
-    func setupInterlocutorInfo() {
-        intercolutorView.setup(chat: chat)
-        intercolutorView.sizeToFit()
-        intercolutorView.layoutIfNeeded()
-    }
-    
     func goToImageScreen(with imageUrl: URL) {
         let vc = ImageViewController.make(imageUrl: imageUrl)
         navigationController?.pushViewController(vc, animated: true)
     }
 }
 
-// MARK: Make constraints
-
-private extension ChatViewController {
-    func makeConstraints() {
-        NSLayoutConstraint.activate([
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: chatInputView.topAnchor)
-        ])
-        
-        chatInputViewBottomConstraint = chatInputView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        NSLayoutConstraint.activate([
-            chatInputView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            chatInputView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            chatInputViewBottomConstraint
-        ])
-    }
-}
-
 // MARK: Lazy initialization
 
 private extension ChatViewController {
-    func makeTableView() -> ChatTableView {
-        let view = ChatTableView()
-        view.separatorStyle = .none
-        view.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(view)
-        return view
-    }
-    
-    func makeChatInputView() -> ChatInputView {
-        let view = ChatInputView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(view)
-        return view
-    }
-    
     func makeImagePicker() -> ImagePicker {
         ImagePicker(presentationController: self, delegate: self)
-    }
-    
-    func makeMenuBarButtonItem() -> UIBarButtonItem {
-        let view = UIBarButtonItem()
-        view.tintColor = .white
-        view.image = UIImage(named: "report_btn")
-        navigationItem.rightBarButtonItem = view
-        return view
-    }
-    
-    func makeChatInterlocutorView() -> ChatInterlocutorView {
-        let view = ChatInterlocutorView()
-        navigationItem.titleView = view
-        return view
     }
 }

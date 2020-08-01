@@ -15,7 +15,7 @@ final class InterlocutorChatMessageCell: MessageTableCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        contentView.backgroundColor = UIColor(red: 33 / 255, green: 33 / 255, blue: 33 / 255, alpha: 1)
+        contentView.backgroundColor = .white
         
         makeConstraints()
     }
@@ -57,7 +57,7 @@ private extension InterlocutorChatMessageCell {
     func makeBackgroundView() -> UIView {
         let view = UIView()
         view.layer.cornerRadius = 18.scale
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        view.backgroundColor = UIColor(red: 237 / 255, green: 103 / 255, blue: 117 / 255, alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)
         return view

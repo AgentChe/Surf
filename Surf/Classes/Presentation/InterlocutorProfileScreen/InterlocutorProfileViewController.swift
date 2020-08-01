@@ -41,8 +41,10 @@ final class InterlocutorProfileViewController: UIViewController {
                 Toast.notify(with: success ? "InterlocutorProfile.UnmatchSuccess".localized : "InterlocutorProfile.UnmatchFailure".localized,
                              style: success ? .success : .danger)
                 
-                if !success {
-                    self?.complete()
+                if success, let chat = self?.chat {
+                    self?.delegate?.interlocutorProfileViewController(unmatched: chat)
+                    
+                    self?.navigationController?.popViewController(animated: true)
                 }
             })
             .disposed(by: disposeBag)
@@ -76,19 +78,15 @@ extension InterlocutorProfileViewController: InterlocutorProfileTableActionDeleg
 
 extension InterlocutorProfileViewController: ReportViewControllerDelegate {
     func reportViewController(reportWasCreated on: ReportOn) {
-        complete()
+        delegate?.interlocutorProfileViewController(reported: chat)
+        
+        navigationController?.popViewController(animated: true)
     }
 }
 
 // MARK: Private
 
 private extension InterlocutorProfileViewController {
-    func complete() {
-        delegate?.interlocutorProfileViewController(reported: chat)
-        
-        navigationController?.popViewController(animated: true)
-    }
-    
     func goToReportScreen() {
         let vc = ReportViewController.make(reportOn: .chatInterlocutor(chat))
         vc.delegate = self
