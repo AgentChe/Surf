@@ -33,8 +33,7 @@ extension ProposedInterlocutor: Model {
         photos = try container.decode([Photo].self, forKey: .photos)
         emoji = try container.decode(String.self, forKey: .emoji)
         
-        // TODO
-        let birthdateStringFormat = "1992-04-17" //try data.decode(String.self, forKey: .birthdate)
+        let birthdateStringFormat = try container.decode(String.self, forKey: .birthdate)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         guard let birthdate = dateFormatter.date(from: birthdateStringFormat) else {
