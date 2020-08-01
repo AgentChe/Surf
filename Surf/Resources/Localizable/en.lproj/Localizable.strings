@@ -165,3 +165,5 @@
 // MARK: Chat
 "Chat.Attach.Photo" = "Photo";
 "Chat.Input.Placeholder" = "Message...";
+"Chat.Empty.Title" = "You matched with %@";
+"Chat.Empty.SubTitle" = "Insert thoughtful message below.";

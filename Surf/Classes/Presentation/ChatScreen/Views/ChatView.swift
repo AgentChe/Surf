@@ -12,6 +12,7 @@ import RxSwift
 final class ChatView: UIView {
     lazy var tableView = makeTableView()
     lazy var chatInputView = makeChatInputView()
+    lazy var emptyView = makeChatEmptyView()
     
     var chatInputViewBottomConstraint: NSLayoutConstraint!
     
@@ -63,6 +64,13 @@ extension ChatView {
             chatInputView.trailingAnchor.constraint(equalTo: trailingAnchor),
             chatInputViewBottomConstraint
         ])
+        
+        NSLayoutConstraint.activate([
+            emptyView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            emptyView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            emptyView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            emptyView.bottomAnchor.constraint(equalTo: chatInputView.topAnchor)
+        ])
     }
 }
 
@@ -82,6 +90,14 @@ extension ChatView {
     func makeChatInputView() -> ChatInputView {
         let view = ChatInputView()
         view.backgroundColor = UIColor(red: 248 / 255, green: 248 / 255, blue: 249 / 255, alpha: 1)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeChatEmptyView() -> ChatEmptyView {
+        let view = ChatEmptyView()
+        view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

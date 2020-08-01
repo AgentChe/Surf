@@ -11,9 +11,10 @@ import RxSwift
 import RxCocoa
 
 final class ChatTableView: UITableView {
-    let viewedMessage = PublishRelay<Message>()
-    let reachedTop = PublishRelay<Void>()
-    let selectedMessage = PublishRelay<Message>()
+    fileprivate let viewedMessage = PublishRelay<Message>()
+    fileprivate let reachedTop = PublishRelay<Void>()
+    fileprivate let selectedMessage = PublishRelay<Message>()
+    fileprivate let changedElementsCount = PublishRelay<Int>()
     
     private var items: [Message] = []
     private var itemsCount = 0
@@ -43,6 +44,8 @@ extension ChatTableView {
     func add(messages: [Message]) {
         items.append(contentsOf: messages)
         itemsCount = items.count
+        
+        changedElementsCount.accept(itemsCount)
         
         let isScrollAtBottom = indexPathsForVisibleRows?.contains(IndexPath(row: 0, section: 0)) ?? false
         
@@ -105,5 +108,25 @@ extension ChatTableView: UITableViewDataSource {
         cell.transform = CGAffineTransform(scaleX: 1, y: -1)
         
         return cell
+    }
+}
+
+// MARK: Rx
+
+extension Reactive where Base: ChatTableView {
+    var viewedMessage: Signal<Message> {
+        base.viewedMessage.asSignal()
+    }
+    
+    var reachedTop: Signal<Void> {
+        base.reachedTop.asSignal()
+    }
+    
+    var selectedMessage: Signal<Message> {
+        base.selectedMessage.asSignal()
+    }
+    
+    var changedElementsCount: Signal<Int> {
+        base.changedElementsCount.asSignal()
     }
 }

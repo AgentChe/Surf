@@ -47,6 +47,7 @@ final class ChatViewController: UIViewController {
         AmplitudeAnalytics.shared.log(with: .chatScr)
         
         addInterlocutorPhoto()
+        chatView.emptyView.setup(interlocutor: chat.interlocutor)
         
         viewModel
             .chatRemoved()
@@ -55,25 +56,29 @@ final class ChatViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        viewModel.sender()
+        viewModel
+            .sender()
             .subscribe()
             .disposed(by: disposeBag)
         
-        chatView.tableView
+        chatView
+            .tableView.rx
             .reachedTop
-            .bind(to: viewModel.nextPage)
+            .emit(to: viewModel.nextPage)
             .disposed(by: disposeBag)
         
-        chatView.tableView
+        chatView
+            .tableView.rx
             .viewedMessage
-            .bind(to: viewModel.viewedMessage)
+            .emit(to: viewModel.viewedMessage)
             .disposed(by: disposeBag)
         
-        chatView.tableView
+        chatView
+            .tableView.rx
             .viewedMessage
             .filter { !$0.isOwner }
-            .throttle(RxTimeInterval.milliseconds(500), scheduler: MainScheduler.asyncInstance)
-            .subscribe(onNext: { [weak self] message in
+            .throttle(RxTimeInterval.milliseconds(500))
+            .emit(onNext: { [weak self] message in
                 guard let `self` = self else {
                     return
                 }
@@ -82,7 +87,8 @@ final class ChatViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        viewModel.newMessages
+        viewModel
+            .newMessages
             .drive(onNext: { [weak self] newMessages in
                 self?.chatView.tableView.add(messages: newMessages)
             })
@@ -97,7 +103,8 @@ final class ChatViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        chatView.chatInputView
+        chatView
+            .chatInputView
             .sendTapped
             .asObservable()
             .withLatestFrom(chatView.chatInputView.text)
@@ -111,17 +118,29 @@ final class ChatViewController: UIViewController {
             })
             .disposed(by: disposeBag)
 
-        chatView.chatInputView
+        chatView
+            .chatInputView
             .attachTapped
             .emit(onNext: { [weak self] state in
                 self?.attachTapped(state: state)
             })
             .disposed(by: disposeBag)
         
-        chatView.tableView
+        chatView
+            .tableView.rx
             .selectedMessage
-            .subscribe(onNext: { [weak self] message in
+            .emit(onNext: { [weak self] message in
                 self?.messageTapped(message: message)
+            })
+            .disposed(by: disposeBag)
+        
+        chatView
+            .tableView.rx
+            .changedElementsCount
+            .startWith(0)
+            .emit(onNext: { [weak self] count in
+                self?.chatView.tableView.isHidden = count == 0
+                self?.chatView.emptyView.isHidden = count != 0
             })
             .disposed(by: disposeBag)
     }

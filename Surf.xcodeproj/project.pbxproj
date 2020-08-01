@@ -230,6 +230,7 @@
 		9679481C24D2C05C00F21A78 /* InterlocutorProfileTablePhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9679481B24D2C05C00F21A78 /* InterlocutorProfileTablePhotosCell.swift */; };
 		9679481E24D4B80D00F21A78 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9679481D24D4B80D00F21A78 /* ChatView.swift */; };
 		9679482024D4B8D500F21A78 /* ChatViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9679481F24D4B8D500F21A78 /* ChatViewControllerDelegate.swift */; };
+		968424F724D60C0900F8D692 /* ChatEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968424F624D60C0900F8D692 /* ChatEmptyView.swift */; };
 		969DE79824C857FE000BD2E8 /* EditProfileConfirmDeletingAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969DE79724C857FE000BD2E8 /* EditProfileConfirmDeletingAlert.swift */; };
 		969DE79A24C863F5000BD2E8 /* EditProfileTableNameElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969DE79924C863F5000BD2E8 /* EditProfileTableNameElement.swift */; };
 		96A1BC8C24C04D010043DCCC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 96A1BC8B24C04D010043DCCC /* GoogleService-Info.plist */; };
@@ -508,6 +509,7 @@
 		9679481B24D2C05C00F21A78 /* InterlocutorProfileTablePhotosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterlocutorProfileTablePhotosCell.swift; sourceTree = "<group>"; };
 		9679481D24D4B80D00F21A78 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		9679481F24D4B8D500F21A78 /* ChatViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewControllerDelegate.swift; sourceTree = "<group>"; };
+		968424F624D60C0900F8D692 /* ChatEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatEmptyView.swift; sourceTree = "<group>"; };
 		969DE79724C857FE000BD2E8 /* EditProfileConfirmDeletingAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileConfirmDeletingAlert.swift; sourceTree = "<group>"; };
 		969DE79924C863F5000BD2E8 /* EditProfileTableNameElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableNameElement.swift; sourceTree = "<group>"; };
 		96A1BC8B24C04D010043DCCC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -1177,6 +1179,7 @@
 				963F597E24BCD02E0063D615 /* ChatInputView */,
 				963F598724BCD02E0063D615 /* ChatTableView */,
 				9679481D24D4B80D00F21A78 /* ChatView.swift */,
+				968424F624D60C0900F8D692 /* ChatEmptyView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2115,6 +2118,7 @@
 				96BCD88B24CF24FC004B40B2 /* SearchSettingsViewController.swift in Sources */,
 				96228AD924C8336C00F5B129 /* EditProfileTableActionDelegate.swift in Sources */,
 				963F59B824BCD02E0063D615 /* PaginatedDataLoader.swift in Sources */,
+				968424F724D60C0900F8D692 /* ChatEmptyView.swift in Sources */,
 				9679481A24D2BF3E00F21A78 /* InterlocutorProfileTableDirectionCell.swift in Sources */,
 				963F59DF24BCD02E0063D615 /* DislikeProposedInterlocutorRequest.swift in Sources */,
 				96E6260424C6F6AB00533C05 /* ChatsManagerDelegate.swift in Sources */,
