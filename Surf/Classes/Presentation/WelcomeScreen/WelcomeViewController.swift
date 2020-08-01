@@ -27,6 +27,12 @@ final class WelcomeViewController: UIViewController {
         
         AmplitudeAnalytics.shared.log(with: .loginScr)
         
+        if #available(iOS 13.0, *) {
+            welcomeView
+                .appleSingInButton
+                .addTarget(self, action: #selector(appleSignInTapped), for: .touchUpInside)
+        } 
+        
         viewModel.authWithFBComplete()
             .drive(onNext: { [weak self] new in
                 guard let isNew = new else {
@@ -37,6 +43,20 @@ final class WelcomeViewController: UIViewController {
                 isNew ? self?.goToOnboardingScreen() : self?.goToMainScreen()
             })
             .disposed(by: disposeBag)
+        
+        if #available(iOS 13.0, *) {
+            viewModel
+                .authWithAppleComlete()
+                .drive(onNext: { [weak self] new in
+                    guard let isNew = new else {
+                        Toast.notify(with: "NoInternetConnection".localized, style: .danger)
+                        return
+                    }
+                    
+                    isNew ? self?.goToOnboardingScreen() : self?.goToMainScreen()
+                })
+                .disposed(by: disposeBag)
+        }
         
         welcomeView
             .facebookButton.rx.tap
@@ -71,6 +91,11 @@ extension WelcomeViewController {
 // MARK: Private
 
 private extension WelcomeViewController {
+    @objc
+    func appleSignInTapped() {
+        viewModel.authWithApple.accept(Void())
+    }
+    
     func goToMainScreen() {
         UIApplication.shared.keyWindow?.rootViewController = SurfNavigationController(rootViewController: MainViewController.make())
     }

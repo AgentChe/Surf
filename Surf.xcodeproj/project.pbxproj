@@ -231,6 +231,9 @@
 		9679481E24D4B80D00F21A78 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9679481D24D4B80D00F21A78 /* ChatView.swift */; };
 		9679482024D4B8D500F21A78 /* ChatViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9679481F24D4B8D500F21A78 /* ChatViewControllerDelegate.swift */; };
 		968424F724D60C0900F8D692 /* ChatEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968424F624D60C0900F8D692 /* ChatEmptyView.swift */; };
+		968424FC24D614CC00F8D692 /* AppleSignInCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968424FB24D614CC00F8D692 /* AppleSignInCredentials.swift */; };
+		968424FE24D614EA00F8D692 /* AppleSignInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968424FD24D614EA00F8D692 /* AppleSignInManager.swift */; };
+		9684250024D6153E00F8D692 /* AppleLoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968424FF24D6153E00F8D692 /* AppleLoginRequest.swift */; };
 		969DE79824C857FE000BD2E8 /* EditProfileConfirmDeletingAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969DE79724C857FE000BD2E8 /* EditProfileConfirmDeletingAlert.swift */; };
 		969DE79A24C863F5000BD2E8 /* EditProfileTableNameElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969DE79924C863F5000BD2E8 /* EditProfileTableNameElement.swift */; };
 		96A1BC8C24C04D010043DCCC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 96A1BC8B24C04D010043DCCC /* GoogleService-Info.plist */; };
@@ -510,6 +513,9 @@
 		9679481D24D4B80D00F21A78 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		9679481F24D4B8D500F21A78 /* ChatViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewControllerDelegate.swift; sourceTree = "<group>"; };
 		968424F624D60C0900F8D692 /* ChatEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatEmptyView.swift; sourceTree = "<group>"; };
+		968424FB24D614CC00F8D692 /* AppleSignInCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignInCredentials.swift; sourceTree = "<group>"; };
+		968424FD24D614EA00F8D692 /* AppleSignInManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignInManager.swift; sourceTree = "<group>"; };
+		968424FF24D6153E00F8D692 /* AppleLoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginRequest.swift; sourceTree = "<group>"; };
 		969DE79724C857FE000BD2E8 /* EditProfileConfirmDeletingAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileConfirmDeletingAlert.swift; sourceTree = "<group>"; };
 		969DE79924C863F5000BD2E8 /* EditProfileTableNameElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableNameElement.swift; sourceTree = "<group>"; };
 		96A1BC8B24C04D010043DCCC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -1237,6 +1243,7 @@
 		963F599024BCD02E0063D615 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				968424F824D614A000F8D692 /* Session */,
 				963693B224D0541800BAA812 /* Report */,
 				96D81C5F24C729980095CE2B /* Profile */,
 				96E6260024C6ED2700533C05 /* Chats */,
@@ -1248,7 +1255,6 @@
 				963F599624BCD02E0063D615 /* AppStateProxy.swift */,
 				963F599524BCD02E0063D615 /* ChatService.swift */,
 				963F599E24BCD02E0063D615 /* SearchService.swift */,
-				963F599F24BCD02E0063D615 /* SessionService.swift */,
 				9655986524C05F1D0022931D /* ZodiacManager.swift */,
 			);
 			path = Services;
@@ -1517,6 +1523,24 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		968424F824D614A000F8D692 /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				968424F924D614BA00F8D692 /* AppleSignIn */,
+				963F599F24BCD02E0063D615 /* SessionService.swift */,
+			);
+			path = Session;
+			sourceTree = "<group>";
+		};
+		968424F924D614BA00F8D692 /* AppleSignIn */ = {
+			isa = PBXGroup;
+			children = (
+				968424FB24D614CC00F8D692 /* AppleSignInCredentials.swift */,
+				968424FD24D614EA00F8D692 /* AppleSignInManager.swift */,
+			);
+			path = AppleSignIn;
+			sourceTree = "<group>";
+		};
 		969DE79624C8573B000BD2E8 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -1621,6 +1645,7 @@
 				963F591224BCD02E0063D615 /* CreateUserRequest.swift */,
 				963F590D24BCD02E0063D615 /* FacebookLoginRequest.swift */,
 				963F590B24BCD02E0063D615 /* ConfirmCodeRequest.swift */,
+				968424FF24D6153E00F8D692 /* AppleLoginRequest.swift */,
 			);
 			path = CreateUser;
 			sourceTree = "<group>";
@@ -1906,6 +1931,7 @@
 				963F59DE24BCD02E0063D615 /* GetPaygateRequest.swift in Sources */,
 				965588CE24BEF9A000D6EB83 /* PaddingTextField.swift in Sources */,
 				963F5A2724BCD02F0063D615 /* ChatInputPlaceholderTextView.swift in Sources */,
+				968424FE24D614EA00F8D692 /* AppleSignInManager.swift in Sources */,
 				963F59D624BCD02E0063D615 /* AppRegisterRequest.swift in Sources */,
 				96E6260624C6FE7900533C05 /* CheckUserBannedRequest.swift in Sources */,
 				965588DD24BF22A500D6EB83 /* PushNotificationsManagerDelegate.swift in Sources */,
@@ -2011,6 +2037,7 @@
 				963F5A2024BCD02F0063D615 /* ReportViewController.swift in Sources */,
 				963F59CC24BCD02E0063D615 /* ProposedInterlocutorTransformation.swift in Sources */,
 				963F5A3324BCD02F0063D615 /* PaygatePingManager.swift in Sources */,
+				968424FC24D614CC00F8D692 /* AppleSignInCredentials.swift in Sources */,
 				96008BB424C748FC00CFF84A /* Photo.swift in Sources */,
 				963F5A0E24BCD02F0063D615 /* ChatsViewModel.swift in Sources */,
 				963F59C924BCD02E0063D615 /* PaygateMapper.swift in Sources */,
@@ -2061,6 +2088,7 @@
 				963F5A1E24BCD02F0063D615 /* ReportViewModel.swift in Sources */,
 				96008BB624C776B500CFF84A /* SetDefaultPhotoRequest.swift in Sources */,
 				96CAFFE024D06F12000F5668 /* ReportOn.swift in Sources */,
+				9684250024D6153E00F8D692 /* AppleLoginRequest.swift in Sources */,
 				96EDBC7924CDF74600C814CA /* SearchView.swift in Sources */,
 				96E6261324C7229E00533C05 /* ProfileBuilder.swift in Sources */,
 				960814FC24C4ED2000992DFB /* Profile.swift in Sources */,

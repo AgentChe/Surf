@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import AuthenticationServices
 
 final class WelcomeView: UIView {
     lazy var titleLabel = makeTitleLabel()
     lazy var subTitleLabel = makeSubTitleLabel()
+    @available(iOS 13.0, *) lazy var appleSingInButton = makeAppleSignInButton()
     lazy var facebookButton = makeFacebookButton()
     lazy var aboutFacebookSignInInfoLabel = makeAboutFacebookSignInInfoLabel()
     lazy var emailButton = makeEmailButton()
@@ -44,11 +46,20 @@ private extension WelcomeView {
             subTitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: ScreenSize.isIphoneXFamily ? 276.scale : 210.scale)
         ])
         
+        if #available(iOS 13.0, *) {
+            NSLayoutConstraint.activate([
+                appleSingInButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40.scale),
+                appleSingInButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40.scale),
+                appleSingInButton.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 16.scale),
+                appleSingInButton.heightAnchor.constraint(equalToConstant: 48.scale)
+            ])
+        }
+        
         NSLayoutConstraint.activate([
             facebookButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40.scale),
             facebookButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40.scale),
-            facebookButton.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 32.scale),
-            facebookButton.heightAnchor.constraint(equalToConstant: 56.scale)
+            facebookButton.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 80.scale),
+            facebookButton.heightAnchor.constraint(equalToConstant: 48.scale)
         ])
         
         NSLayoutConstraint.activate([
@@ -94,13 +105,22 @@ private extension WelcomeView {
         return view
     }
     
+    @available(iOS 13.0, *)
+    func makeAppleSignInButton() -> ASAuthorizationAppleIDButton {
+        let view = ASAuthorizationAppleIDButton(type: .default, style: .white)
+        view.cornerRadius = 24.scale
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
     func makeFacebookButton() -> UIButton {
         let view = UIButton()
         view.setTitle("Welcome.ContinueWithFacebook".localized, for: .normal)
         view.backgroundColor = UIColor(red: 86 / 255, green: 86 / 255, blue: 214 / 255, alpha: 1)
         view.titleLabel?.font = Font.OpenSans.semibold(size: 17.scale)
         view.setTitleColor(.white, for: .normal)
-        view.layer.cornerRadius = 28.scale
+        view.layer.cornerRadius = 24.scale
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
