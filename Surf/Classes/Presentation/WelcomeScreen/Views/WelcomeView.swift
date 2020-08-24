@@ -36,14 +36,14 @@ private extension WelcomeView {
     func makeConstraints() {
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40.scale),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: ScreenSize.isIphoneXFamily ? 110.scale : 70.scale),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: ScreenSize.isIphoneXFamily ? 80.scale : 40.scale),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40.scale)
         ])
         
         NSLayoutConstraint.activate([
             subTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40.scale),
             subTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40.scale),
-            subTitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: ScreenSize.isIphoneXFamily ? 276.scale : 210.scale)
+            subTitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: ScreenSize.isIphoneXFamily ? 246.scale : 170.scale)
         ])
         
         if #available(iOS 13.0, *) {
@@ -94,8 +94,8 @@ private extension WelcomeView {
         let attrs = "Welcome.SubTitle".localized
             .attributed(with: TextAttributes()
                 .textColor(.white)
-                .font(Font.OpenSans.bold(size: 34.scale))
-                .lineHeight(41.scale))
+                .font(Font.OpenSans.bold(size: ScreenSize.isIphoneXFamily ? 34.scale : 30.scale))
+                .lineHeight(ScreenSize.isIphoneXFamily ? 41.scale : 37.scale))
         
         let view = UILabel()
         view.attributedText = attrs

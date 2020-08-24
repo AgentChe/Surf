@@ -42,7 +42,7 @@
 
 // MARK: Welcome
 "Welcome.Title" = "SURF";
-"Welcome.SubTitle" = "Your best tool\nfor finding\na chat match in\na short time";
+"Welcome.SubTitle" = "Get aboard the Zodiac-based network and find a match that's written in the stars!";
 "Welcome.ContinueWithFacebook" = "Continue with Facebook";
 "Welcome.AboutFacebookSignInInfo" = "We never post anything on Facebook. And also do not send mailings.";
 "Welcome.ContinueWithEmail" = "Continue with Email";
