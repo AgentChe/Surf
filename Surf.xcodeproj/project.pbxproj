@@ -52,6 +52,20 @@
 		963A445425005A220018A8CA /* Horoscopes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A445325005A220018A8CA /* Horoscopes.swift */; };
 		963A44562500612F0018A8CA /* HoroscopeManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A44552500612F0018A8CA /* HoroscopeManagerDelegate.swift */; };
 		963A445A250064E30018A8CA /* GetHoroscopesResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A4459250064E30018A8CA /* GetHoroscopesResponseMapper.swift */; };
+		963A445E250077C90018A8CA /* GetCompatibilitiesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A445D250077C90018A8CA /* GetCompatibilitiesRequest.swift */; };
+		963A4461250078810018A8CA /* CompatibilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A4460250078810018A8CA /* CompatibilityManager.swift */; };
+		963A4463250078980018A8CA /* CompatibilityManagerCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A4462250078980018A8CA /* CompatibilityManagerCore.swift */; };
+		963A4465250078AE0018A8CA /* CompatibilityManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A4464250078AE0018A8CA /* CompatibilityManagerDelegate.swift */; };
+		963A4469250159540018A8CA /* CompatibilityUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A4468250159540018A8CA /* CompatibilityUnits.swift */; };
+		963A446B25015A810018A8CA /* Compatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A446A25015A810018A8CA /* Compatibility.swift */; };
+		963A446D25015B300018A8CA /* Compatibilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A446C25015B300018A8CA /* Compatibilities.swift */; };
+		963A446F25015D220018A8CA /* GetCompatibilitiesResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A446E25015D220018A8CA /* GetCompatibilitiesResponseMapper.swift */; };
+		963A447325019FDA0018A8CA /* CompatibilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A447225019FDA0018A8CA /* CompatibilityViewController.swift */; };
+		963A44752501A00E0018A8CA /* CompatibilityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A44742501A00E0018A8CA /* CompatibilityViewModel.swift */; };
+		963A44772501A0430018A8CA /* CompatibilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A44762501A0430018A8CA /* CompatibilityView.swift */; };
+		963A44792501A0CE0018A8CA /* HoroscopeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A44782501A0CE0018A8CA /* HoroscopeViewController.swift */; };
+		963A447B2501A1120018A8CA /* HoroscopeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A447A2501A1120018A8CA /* HoroscopeViewModel.swift */; };
+		963A447D2501A12D0018A8CA /* HoroscopeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A447C2501A12D0018A8CA /* HoroscopeView.swift */; };
 		963F54B624B8939F0063D615 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F54B524B8939F0063D615 /* AppDelegate.swift */; };
 		963F54BF24B893A10063D615 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 963F54BE24B893A10063D615 /* Assets.xcassets */; };
 		963F54C224B893A10063D615 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963F54C024B893A10063D615 /* LaunchScreen.storyboard */; };
@@ -340,6 +354,20 @@
 		963A445325005A220018A8CA /* Horoscopes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Horoscopes.swift; sourceTree = "<group>"; };
 		963A44552500612F0018A8CA /* HoroscopeManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoroscopeManagerDelegate.swift; sourceTree = "<group>"; };
 		963A4459250064E30018A8CA /* GetHoroscopesResponseMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHoroscopesResponseMapper.swift; sourceTree = "<group>"; };
+		963A445D250077C90018A8CA /* GetCompatibilitiesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCompatibilitiesRequest.swift; sourceTree = "<group>"; };
+		963A4460250078810018A8CA /* CompatibilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityManager.swift; sourceTree = "<group>"; };
+		963A4462250078980018A8CA /* CompatibilityManagerCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityManagerCore.swift; sourceTree = "<group>"; };
+		963A4464250078AE0018A8CA /* CompatibilityManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityManagerDelegate.swift; sourceTree = "<group>"; };
+		963A4468250159540018A8CA /* CompatibilityUnits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityUnits.swift; sourceTree = "<group>"; };
+		963A446A25015A810018A8CA /* Compatibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Compatibility.swift; sourceTree = "<group>"; };
+		963A446C25015B300018A8CA /* Compatibilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Compatibilities.swift; sourceTree = "<group>"; };
+		963A446E25015D220018A8CA /* GetCompatibilitiesResponseMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCompatibilitiesResponseMapper.swift; sourceTree = "<group>"; };
+		963A447225019FDA0018A8CA /* CompatibilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityViewController.swift; sourceTree = "<group>"; };
+		963A44742501A00E0018A8CA /* CompatibilityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityViewModel.swift; sourceTree = "<group>"; };
+		963A44762501A0430018A8CA /* CompatibilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityView.swift; sourceTree = "<group>"; };
+		963A44782501A0CE0018A8CA /* HoroscopeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoroscopeViewController.swift; sourceTree = "<group>"; };
+		963A447A2501A1120018A8CA /* HoroscopeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoroscopeViewModel.swift; sourceTree = "<group>"; };
+		963A447C2501A12D0018A8CA /* HoroscopeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoroscopeView.swift; sourceTree = "<group>"; };
 		963F54B224B8939F0063D615 /* Surf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Surf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		963F54B524B8939F0063D615 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		963F54BE24B893A10063D615 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -778,6 +806,56 @@
 			path = Mappers;
 			sourceTree = "<group>";
 		};
+		963A445B250077080018A8CA /* Compatibility */ = {
+			isa = PBXGroup;
+			children = (
+				963A445F2500786F0018A8CA /* Mappers */,
+				963A445C2500771B0018A8CA /* Models */,
+				963A4460250078810018A8CA /* CompatibilityManager.swift */,
+				963A4462250078980018A8CA /* CompatibilityManagerCore.swift */,
+				963A4464250078AE0018A8CA /* CompatibilityManagerDelegate.swift */,
+			);
+			path = Compatibility;
+			sourceTree = "<group>";
+		};
+		963A445C2500771B0018A8CA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				963A4468250159540018A8CA /* CompatibilityUnits.swift */,
+				963A446A25015A810018A8CA /* Compatibility.swift */,
+				963A446C25015B300018A8CA /* Compatibilities.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		963A445F2500786F0018A8CA /* Mappers */ = {
+			isa = PBXGroup;
+			children = (
+				963A446E25015D220018A8CA /* GetCompatibilitiesResponseMapper.swift */,
+			);
+			path = Mappers;
+			sourceTree = "<group>";
+		};
+		963A447025019FB10018A8CA /* HoroscopeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				963A44782501A0CE0018A8CA /* HoroscopeViewController.swift */,
+				963A447A2501A1120018A8CA /* HoroscopeViewModel.swift */,
+				963A447C2501A12D0018A8CA /* HoroscopeView.swift */,
+			);
+			path = HoroscopeScreen;
+			sourceTree = "<group>";
+		};
+		963A447125019FC20018A8CA /* CompatibilityScreen */ = {
+			isa = PBXGroup;
+			children = (
+				963A447225019FDA0018A8CA /* CompatibilityViewController.swift */,
+				963A44742501A00E0018A8CA /* CompatibilityViewModel.swift */,
+				963A44762501A0430018A8CA /* CompatibilityView.swift */,
+			);
+			path = CompatibilityScreen;
+			sourceTree = "<group>";
+		};
 		963F54A924B8939F0063D615 = {
 			isa = PBXGroup;
 			children = (
@@ -995,6 +1073,7 @@
 				96E6260524C6FE7900533C05 /* CheckUserBannedRequest.swift */,
 				96228ADA24C8540000F5B129 /* DeleteAccountRequest.swift */,
 				963A443D25003B200018A8CA /* GetHoroscopesRequest.swift */,
+				963A445D250077C90018A8CA /* GetCompatibilitiesRequest.swift */,
 			);
 			path = RequestBody;
 			sourceTree = "<group>";
@@ -1014,6 +1093,8 @@
 		963F592124BCD02E0063D615 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				963A447125019FC20018A8CA /* CompatibilityScreen */,
+				963A447025019FB10018A8CA /* HoroscopeScreen */,
 				9679480024D2B93A00F21A78 /* InterlocutorProfileScreen */,
 				96BCD88924CF24C9004B40B2 /* SearchSettingsScreen */,
 				96EDBC8124CF135600C814CA /* MutualLikedScreen */,
@@ -1293,6 +1374,7 @@
 		963F599024BCD02E0063D615 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				963A445B250077080018A8CA /* Compatibility */,
 				963A4441250045990018A8CA /* Horoscope */,
 				968424F824D614A000F8D692 /* Session */,
 				963693B224D0541800BAA812 /* Report */,
@@ -1958,11 +2040,13 @@
 				96CAFFF424D209A2000F5668 /* ChatsMenuView.swift in Sources */,
 				9679481324D2BCFE00F21A78 /* InterlocutorProfileTableDirection.swift in Sources */,
 				965588CA24BE543E00D6EB83 /* OnboardingMyGenderView.swift in Sources */,
+				963A446B25015A810018A8CA /* Compatibility.swift in Sources */,
 				9648702624C453110084CC2D /* MainTabBarItem.swift in Sources */,
 				9679480424D2B98E00F21A78 /* InterlocutorProfileViewModel.swift in Sources */,
 				96CAFFCF24D05C21000F5668 /* ReportView.swift in Sources */,
 				964890F424CC397200EA9F20 /* GetChatsResponseMapper.swift in Sources */,
 				965588DC24BF22A500D6EB83 /* PushNotificationModelMapper.swift in Sources */,
+				963A44772501A0430018A8CA /* CompatibilityView.swift in Sources */,
 				96CAFFD924D06E05000F5668 /* ReportActionSheet.swift in Sources */,
 				963F59DA24BCD02E0063D615 /* PaygatePingRequest.swift in Sources */,
 				963F59CB24BCD02E0063D615 /* TokenTransformation.swift in Sources */,
@@ -1974,6 +2058,7 @@
 				963A445A250064E30018A8CA /* GetHoroscopesResponseMapper.swift in Sources */,
 				9679482024D4B8D500F21A78 /* ChatViewControllerDelegate.swift in Sources */,
 				963F59CE24BCD02E0063D615 /* MessageTransformation.swift in Sources */,
+				963A445E250077C90018A8CA /* GetCompatibilitiesRequest.swift in Sources */,
 				960814FA24C4EB5500992DFB /* ZodiacSignMapper.swift in Sources */,
 				9679481C24D2C05C00F21A78 /* InterlocutorProfileTablePhotosCell.swift in Sources */,
 				9679481E24D4B80D00F21A78 /* ChatView.swift in Sources */,
@@ -1987,6 +2072,7 @@
 				963F59D624BCD02E0063D615 /* AppRegisterRequest.swift in Sources */,
 				96E6260624C6FE7900533C05 /* CheckUserBannedRequest.swift in Sources */,
 				965588DD24BF22A500D6EB83 /* PushNotificationsManagerDelegate.swift in Sources */,
+				963A4469250159540018A8CA /* CompatibilityUnits.swift in Sources */,
 				9648702824C45BCF0084CC2D /* MainTabBarView.swift in Sources */,
 				963F59E024BCD02E0063D615 /* CreateUserRequest.swift in Sources */,
 				963F5A0B24BCD02F0063D615 /* PaygateView.swift in Sources */,
@@ -1995,6 +2081,7 @@
 				963F5A2C24BCD02F0063D615 /* MessageTableCell.swift in Sources */,
 				963F59B424BCD02E0063D615 /* RxActivityIndicator.swift in Sources */,
 				963F59F524BCD02E0063D615 /* SearchViewController.swift in Sources */,
+				963A4461250078810018A8CA /* CompatibilityManager.swift in Sources */,
 				963F5A0A24BCD02F0063D615 /* PaygateOptionView.swift in Sources */,
 				963F59DC24BCD02E0063D615 /* APIRequestBody.swift in Sources */,
 				9648702C24C4692A0084CC2D /* MainTabBarViewDelegate.swift in Sources */,
@@ -2009,7 +2096,9 @@
 				96E6260D24C7085200533C05 /* BannedView.swift in Sources */,
 				9648702124C4490B0084CC2D /* MainView.swift in Sources */,
 				96E6260224C6ED3F00533C05 /* ChatsManager.swift in Sources */,
+				963A447325019FDA0018A8CA /* CompatibilityViewController.swift in Sources */,
 				963F5A3624BCD02F0063D615 /* AppStateProxy.swift in Sources */,
+				963A44752501A00E0018A8CA /* CompatibilityViewModel.swift in Sources */,
 				965588DB24BF22A500D6EB83 /* PushNotificationModel.swift in Sources */,
 				963F59DB24BCD02E0063D615 /* FacebookLoginRequest.swift in Sources */,
 				963693AF24D0534D00BAA812 /* CreateReportOnProposedInterlocutorRequest.swift in Sources */,
@@ -2071,6 +2160,8 @@
 				96228AD124C8303800F5B129 /* EditProfileTablePhotosCell.swift in Sources */,
 				96008BC024C77F9B00CFF84A /* ProfilePhotosActionSheet.swift in Sources */,
 				963F59B024BCD02E0063D615 /* DictionaryExtension.swift in Sources */,
+				963A446F25015D220018A8CA /* GetCompatibilitiesResponseMapper.swift in Sources */,
+				963A44792501A0CE0018A8CA /* HoroscopeViewController.swift in Sources */,
 				9648701224C1CE5E0084CC2D /* ConfirmCodeView.swift in Sources */,
 				9655986224C05DDC0022931D /* Zodiac.swift in Sources */,
 				965588E124BF287A00D6EB83 /* Gender.swift in Sources */,
@@ -2103,6 +2194,7 @@
 				9679480624D2B9E500F21A78 /* InterlocutorProfileViewControllerDelegate.swift in Sources */,
 				967947FD24D2205100F21A78 /* ChatsMenuViewControllerDelegate.swift in Sources */,
 				96463DE324C9DBAD00EBC123 /* ChatsViewControllerDelegate.swift in Sources */,
+				963A4463250078980018A8CA /* CompatibilityManagerCore.swift in Sources */,
 				96CAFFD324D064DA000F5668 /* ReportWhatExactlyView.swift in Sources */,
 				963F5A3724BCD02F0063D615 /* ProfileManager.swift in Sources */,
 				965588DF24BF233000D6EB83 /* Weak.swift in Sources */,
@@ -2143,6 +2235,7 @@
 				963F59D024BCD02E0063D615 /* Model.swift in Sources */,
 				963F59FE24BCD02E0063D615 /* OnboardingPhotosManager.swift in Sources */,
 				963F59B324BCD02E0063D615 /* TextAttributes.swift in Sources */,
+				963A447D2501A12D0018A8CA /* HoroscopeView.swift in Sources */,
 				963F5A1E24BCD02F0063D615 /* ReportViewModel.swift in Sources */,
 				96008BB624C776B500CFF84A /* SetDefaultPhotoRequest.swift in Sources */,
 				96CAFFE024D06F12000F5668 /* ReportOn.swift in Sources */,
@@ -2188,11 +2281,14 @@
 				963F59ED24BCD02E0063D615 /* DataBaseError.swift in Sources */,
 				963F5A2124BCD02F0063D615 /* ConfirmCodeViewController.swift in Sources */,
 				963F59D724BCD02E0063D615 /* GetChatsRequest.swift in Sources */,
+				963A4465250078AE0018A8CA /* CompatibilityManagerDelegate.swift in Sources */,
 				963F5A0C24BCD02F0063D615 /* PaygateSpecialOfferView.swift in Sources */,
 				96008BC424C7974200CFF84A /* ProfilePhotosMaker.swift in Sources */,
 				963F5A3D24BCD02F0063D615 /* SessionService.swift in Sources */,
 				967947FF24D220B100F21A78 /* ChatsMenuViewModel.swift in Sources */,
 				963F5A2524BCD02F0063D615 /* ChatAttachCaseView.swift in Sources */,
+				963A447B2501A1120018A8CA /* HoroscopeViewModel.swift in Sources */,
+				963A446D25015B300018A8CA /* Compatibilities.swift in Sources */,
 				96008BB024C7424400CFF84A /* ProfileTablePhotoView.swift in Sources */,
 				9679480F24D2BCD700F21A78 /* InterlocutorProfileTableSection.swift in Sources */,
 				96228ABE24C8287E00F5B129 /* EditProfileViewController.swift in Sources */,

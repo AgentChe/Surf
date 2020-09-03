@@ -48,4 +48,22 @@ extension ZodiacSignMapper {
             case .virgo: return 6
         }
     }
+    
+    static func zodiacSign(from index: Int) -> ZodiacSign? {
+        switch index {
+            case 8: return .scorpio
+            case 12: return .pisces
+            case 7: return.libra
+            case 9: return .sagittarius
+            case 5: return .leo
+            case 10: return .capricorn
+            case 11: return .aquarius
+            case 3: return .gemini
+            case 1: return .aries
+            case 4: return .cancer
+            case 2: return .taurus
+            case 6: return .virgo
+            default: return nil 
+        }
+    }
 }

@@ -8,7 +8,13 @@
 
 import Alamofire
 
-struct GetCompatibilityRequest: APIRequestBody {
+struct GetCompatibilitiesRequest: APIRequestBody {
+    private let locale: String
+    
+    init(locale: String) {
+        self.locale = locale
+    }
+    
     var url: String {
         GlobalDefinitions.Backend.domain + "/api/compatibility/all"
     }
@@ -19,7 +25,8 @@ struct GetCompatibilityRequest: APIRequestBody {
     
     var parameters: Parameters? {
         [
-            "_api_key": GlobalDefinitions.Backend.apiKey
+            "_api_key": GlobalDefinitions.Backend.apiKey,
+            "locale": locale
         ]
     }
 }

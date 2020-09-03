@@ -6,4 +6,21 @@
 //  Copyright © 2020 Andrey Chernyshev. All rights reserved.
 //
 
-import Foundation
+import RxSwift
+
+protocol CompatibilityManager: class {
+    // MARK: API
+    
+    func getCompatibility(whatSignHasThis: ZodiacSign, withWhatSignCompared: ZodiacSign) -> Compatibility?
+    func hasCachedCompatibility() -> Bool
+    
+    // MARK: API (Rx)
+    
+    func rxGetCompatibility(whatSignHasThis: ZodiacSign, withWhatSignCompared: ZodiacSign, forceUpdate: Bool) -> Single<Compatibility?>
+    func rxHasCachedCompatibility() -> Single<Bool>
+    
+    // MARK: Observer
+    
+    func add(observer: CompatibilityManagerDelegate)
+    func remove(observer: CompatibilityManagerDelegate)
+}

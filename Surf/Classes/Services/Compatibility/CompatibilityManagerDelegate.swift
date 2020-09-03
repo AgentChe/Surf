@@ -6,4 +6,10 @@
 //  Copyright © 2020 Andrey Chernyshev. All rights reserved.
 //
 
-import Foundation
+protocol CompatibilityManagerDelegate: class {
+    func compatibilityManagerDidUpdate(compatibilities: Compatibilities)
+}
+
+extension CompatibilityManagerDelegate {
+    func compatibilityManagerDidUpdate(compatibilities: Compatibilities) {}
+}
