@@ -43,6 +43,15 @@
 		963693AD24D052CB00BAA812 /* CreateReportOnChatInterlocutorRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963693AC24D052CB00BAA812 /* CreateReportOnChatInterlocutorRequest.swift */; };
 		963693AF24D0534D00BAA812 /* CreateReportOnProposedInterlocutorRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963693AE24D0534D00BAA812 /* CreateReportOnProposedInterlocutorRequest.swift */; };
 		963693B124D0540A00BAA812 /* ReportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963693B024D0540A00BAA812 /* ReportManager.swift */; };
+		963A443E25003B200018A8CA /* GetHoroscopesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A443D25003B200018A8CA /* GetHoroscopesRequest.swift */; };
+		963A4443250047190018A8CA /* HoroscopeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A4442250047190018A8CA /* HoroscopeManager.swift */; };
+		963A44452500472F0018A8CA /* HoroscopeManagerCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A44442500472F0018A8CA /* HoroscopeManagerCore.swift */; };
+		963A4448250049ED0018A8CA /* HoroscopeOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A4447250049ED0018A8CA /* HoroscopeOn.swift */; };
+		963A444A25004B590018A8CA /* HoroscopeArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A444925004B590018A8CA /* HoroscopeArticle.swift */; };
+		963A444E25004E000018A8CA /* Horoscope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A444D25004E000018A8CA /* Horoscope.swift */; };
+		963A445425005A220018A8CA /* Horoscopes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A445325005A220018A8CA /* Horoscopes.swift */; };
+		963A44562500612F0018A8CA /* HoroscopeManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A44552500612F0018A8CA /* HoroscopeManagerDelegate.swift */; };
+		963A445A250064E30018A8CA /* GetHoroscopesResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A4459250064E30018A8CA /* GetHoroscopesResponseMapper.swift */; };
 		963F54B624B8939F0063D615 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F54B524B8939F0063D615 /* AppDelegate.swift */; };
 		963F54BF24B893A10063D615 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 963F54BE24B893A10063D615 /* Assets.xcassets */; };
 		963F54C224B893A10063D615 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963F54C024B893A10063D615 /* LaunchScreen.storyboard */; };
@@ -322,6 +331,15 @@
 		963693AC24D052CB00BAA812 /* CreateReportOnChatInterlocutorRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReportOnChatInterlocutorRequest.swift; sourceTree = "<group>"; };
 		963693AE24D0534D00BAA812 /* CreateReportOnProposedInterlocutorRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReportOnProposedInterlocutorRequest.swift; sourceTree = "<group>"; };
 		963693B024D0540A00BAA812 /* ReportManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportManager.swift; sourceTree = "<group>"; };
+		963A443D25003B200018A8CA /* GetHoroscopesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHoroscopesRequest.swift; sourceTree = "<group>"; };
+		963A4442250047190018A8CA /* HoroscopeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoroscopeManager.swift; sourceTree = "<group>"; };
+		963A44442500472F0018A8CA /* HoroscopeManagerCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoroscopeManagerCore.swift; sourceTree = "<group>"; };
+		963A4447250049ED0018A8CA /* HoroscopeOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoroscopeOn.swift; sourceTree = "<group>"; };
+		963A444925004B590018A8CA /* HoroscopeArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoroscopeArticle.swift; sourceTree = "<group>"; };
+		963A444D25004E000018A8CA /* Horoscope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Horoscope.swift; sourceTree = "<group>"; };
+		963A445325005A220018A8CA /* Horoscopes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Horoscopes.swift; sourceTree = "<group>"; };
+		963A44552500612F0018A8CA /* HoroscopeManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoroscopeManagerDelegate.swift; sourceTree = "<group>"; };
+		963A4459250064E30018A8CA /* GetHoroscopesResponseMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHoroscopesResponseMapper.swift; sourceTree = "<group>"; };
 		963F54B224B8939F0063D615 /* Surf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Surf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		963F54B524B8939F0063D615 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		963F54BE24B893A10063D615 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -729,6 +747,37 @@
 			path = Report;
 			sourceTree = "<group>";
 		};
+		963A4441250045990018A8CA /* Horoscope */ = {
+			isa = PBXGroup;
+			children = (
+				963A4457250064BC0018A8CA /* Mappers */,
+				963A4446250047910018A8CA /* Models */,
+				963A4442250047190018A8CA /* HoroscopeManager.swift */,
+				963A44442500472F0018A8CA /* HoroscopeManagerCore.swift */,
+				963A44552500612F0018A8CA /* HoroscopeManagerDelegate.swift */,
+			);
+			path = Horoscope;
+			sourceTree = "<group>";
+		};
+		963A4446250047910018A8CA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				963A4447250049ED0018A8CA /* HoroscopeOn.swift */,
+				963A444925004B590018A8CA /* HoroscopeArticle.swift */,
+				963A444D25004E000018A8CA /* Horoscope.swift */,
+				963A445325005A220018A8CA /* Horoscopes.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		963A4457250064BC0018A8CA /* Mappers */ = {
+			isa = PBXGroup;
+			children = (
+				963A4459250064E30018A8CA /* GetHoroscopesResponseMapper.swift */,
+			);
+			path = Mappers;
+			sourceTree = "<group>";
+		};
 		963F54A924B8939F0063D615 = {
 			isa = PBXGroup;
 			children = (
@@ -945,6 +994,7 @@
 				96E625FE24C6EBC100533C05 /* RemoveAllChatsRequest.swift */,
 				96E6260524C6FE7900533C05 /* CheckUserBannedRequest.swift */,
 				96228ADA24C8540000F5B129 /* DeleteAccountRequest.swift */,
+				963A443D25003B200018A8CA /* GetHoroscopesRequest.swift */,
 			);
 			path = RequestBody;
 			sourceTree = "<group>";
@@ -1243,6 +1293,7 @@
 		963F599024BCD02E0063D615 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				963A4441250045990018A8CA /* Horoscope */,
 				968424F824D614A000F8D692 /* Session */,
 				963693B224D0541800BAA812 /* Report */,
 				96D81C5F24C729980095CE2B /* Profile */,
@@ -1920,6 +1971,7 @@
 				963F59E824BCD02E0063D615 /* SetRequest.swift in Sources */,
 				963F59D324BCD02E0063D615 /* ProposedInterlocutor.swift in Sources */,
 				96CAFFDC24D06EEC000F5668 /* ReportType.swift in Sources */,
+				963A445A250064E30018A8CA /* GetHoroscopesResponseMapper.swift in Sources */,
 				9679482024D4B8D500F21A78 /* ChatViewControllerDelegate.swift in Sources */,
 				963F59CE24BCD02E0063D615 /* MessageTransformation.swift in Sources */,
 				960814FA24C4EB5500992DFB /* ZodiacSignMapper.swift in Sources */,
@@ -1953,6 +2005,7 @@
 				960814F824C4E68A00992DFB /* ProfilePersonalTableCell.swift in Sources */,
 				9679481124D2BCED00F21A78 /* InterlocutorProfileTableItem.swift in Sources */,
 				963F5A4224BCD02F0063D615 /* AmplitudeAnalytics.swift in Sources */,
+				963A444A25004B590018A8CA /* HoroscopeArticle.swift in Sources */,
 				96E6260D24C7085200533C05 /* BannedView.swift in Sources */,
 				9648702124C4490B0084CC2D /* MainView.swift in Sources */,
 				96E6260224C6ED3F00533C05 /* ChatsManager.swift in Sources */,
@@ -1986,6 +2039,7 @@
 				96E625FF24C6EBC100533C05 /* RemoveAllChatsRequest.swift in Sources */,
 				963F5A2A24BCD02F0063D615 /* ChatInputView.swift in Sources */,
 				963F59AE24BCD02E0063D615 /* UIDeviceExtension.swift in Sources */,
+				963A445425005A220018A8CA /* Horoscopes.swift in Sources */,
 				96CAFFD524D06996000F5668 /* ReportPreloaderView.swift in Sources */,
 				96228AD524C832C800F5B129 /* EditProfileTableItem.swift in Sources */,
 				963F59F724BCD02E0063D615 /* ProposedInterlocutorCollectionCell.swift in Sources */,
@@ -1997,6 +2051,7 @@
 				963F5A4124BCD02F0063D615 /* IDFAService.swift in Sources */,
 				963F5A1724BCD02F0063D615 /* SplashViewModel.swift in Sources */,
 				96008BB224C745CD00CFF84A /* ProfileTablePhotosCell.swift in Sources */,
+				963A44562500612F0018A8CA /* HoroscopeManagerDelegate.swift in Sources */,
 				9679480224D2B95400F21A78 /* InterlocutorProfileViewController.swift in Sources */,
 				963F5A1D24BCD02F0063D615 /* ProfileViewController.swift in Sources */,
 				96E43EA424C5F30200831DC3 /* ProfileTableLookingForCell.swift in Sources */,
@@ -2010,6 +2065,7 @@
 				963F5A3F24BCD02F0063D615 /* SearchAttributionsDetails.swift in Sources */,
 				96CAFFDE24D06EFC000F5668 /* Report.swift in Sources */,
 				969DE79A24C863F5000BD2E8 /* EditProfileTableNameElement.swift in Sources */,
+				963A44452500472F0018A8CA /* HoroscopeManagerCore.swift in Sources */,
 				965588E324BF390800D6EB83 /* OnboardingView.swift in Sources */,
 				963F59D124BCD02E0063D615 /* ChatMessage.swift in Sources */,
 				96228AD124C8303800F5B129 /* EditProfileTablePhotosCell.swift in Sources */,
@@ -2054,6 +2110,7 @@
 				963F5A4024BCD02F0063D615 /* AnalyticsEvent.swift in Sources */,
 				96E43E9524C5C0F400831DC3 /* ProfileTableActionDelegate.swift in Sources */,
 				963F5A3424BCD02F0063D615 /* PaygateManager.swift in Sources */,
+				963A4448250049ED0018A8CA /* HoroscopeOn.swift in Sources */,
 				963F59E724BCD02E0063D615 /* AddSearchAdsInfoRequest.swift in Sources */,
 				963F5A1624BCD02F0063D615 /* SplashViewController.swift in Sources */,
 				963F59FA24BCD02E0063D615 /* WelcomeViewModel.swift in Sources */,
@@ -2065,6 +2122,7 @@
 				963F59FD24BCD02E0063D615 /* OnboardingBirthdayView.swift in Sources */,
 				963F59E224BCD02E0063D615 /* LikeProposedInterlocutorRequest.swift in Sources */,
 				963F5A3C24BCD02F0063D615 /* SearchService.swift in Sources */,
+				963A444E25004E000018A8CA /* Horoscope.swift in Sources */,
 				963F5A2324BCD02F0063D615 /* ChatViewController.swift in Sources */,
 				9648702F24C4758C0084CC2D /* MainPageViewControllerDelegate.swift in Sources */,
 				964890F624CC3AED00EA9F20 /* ChatsLiveManager.swift in Sources */,
@@ -2097,12 +2155,14 @@
 				965588DA24BF22A500D6EB83 /* PushNotificationsManager.swift in Sources */,
 				963F59D824BCD02E0063D615 /* RandomizeEmojiRequest.swift in Sources */,
 				963F59F924BCD02E0063D615 /* NoProposedInterlocutorsView.swift in Sources */,
+				963A443E25003B200018A8CA /* GetHoroscopesRequest.swift in Sources */,
 				96BCD89224CF42F4004B40B2 /* InterceptingEventsView.swift in Sources */,
 				963F59F824BCD02E0063D615 /* ProposedInterlocutorsCollectionView.swift in Sources */,
 				963F59D424BCD02E0063D615 /* Token.swift in Sources */,
 				963F5A2F24BCD02F0063D615 /* MyChatImageCell.swift in Sources */,
 				9648700F24C093530084CC2D /* RegistrationEmailView.swift in Sources */,
 				963F59B224BCD02E0063D615 /* Scalable.swift in Sources */,
+				963A4443250047190018A8CA /* HoroscopeManager.swift in Sources */,
 				96008BBB24C77B3900CFF84A /* RemovePhotoResponseMapper.swift in Sources */,
 				963F5A1324BCD02F0063D615 /* RegistrationEmailViewModel.swift in Sources */,
 				963F5A3524BCD02F0063D615 /* ChatService.swift in Sources */,

@@ -6,7 +6,11 @@
 //  Copyright © 2020 Andrey Chernyshev. All rights reserved.
 //
 
-final class ZodiacSignMapper {
+final class ZodiacSignMapper {}
+
+// MARK: Sign to name
+
+extension ZodiacSignMapper {
     static func localize(zodiacSign: ZodiacSign) -> String {
         switch zodiacSign {
         case .scorpio:
