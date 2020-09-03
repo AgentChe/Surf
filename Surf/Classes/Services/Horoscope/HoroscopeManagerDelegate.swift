@@ -7,5 +7,9 @@
 //
 
 protocol HoroscopeManagerDelegate: class {
-    
+    func horoscopeManagerDidUpdate(horoscopes: Horoscopes)
+}
+
+extension HoroscopeManagerDelegate {
+    func horoscopeManagerDidUpdate(horoscopes: Horoscopes) {}
 }

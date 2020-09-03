@@ -16,6 +16,10 @@ extension Horoscopes {
     subscript (horoOn: HoroscopeOn) -> Horoscope? {
         list.first(where: { $0.on == horoOn })
     }
+    
+    subscript (zodiacSign: ZodiacSign) -> Horoscope? {
+        list.first(where: { $0.forSign == zodiacSign })
+    }
 }
 
 // MARK: Make

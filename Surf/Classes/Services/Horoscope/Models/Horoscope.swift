@@ -8,6 +8,7 @@
 
 struct Horoscope {
     let on: HoroscopeOn
+    let forSign: ZodiacSign
     let articles: [HoroscopeArticle]
 }
 
@@ -16,6 +17,7 @@ struct Horoscope {
 extension Horoscope: Model {
     private enum Keys: String, CodingKey {
         case on
+        case forSign
         case articles
     }
     
@@ -23,6 +25,7 @@ extension Horoscope: Model {
         let container = try decoder.container(keyedBy: Keys.self)
         
         on = try container.decode(HoroscopeOn.self, forKey: .on)
+        forSign = try container.decode(ZodiacSign.self, forKey: .forSign)
         articles = try container.decode([HoroscopeArticle].self, forKey: .articles)
     }
     
@@ -30,6 +33,7 @@ extension Horoscope: Model {
         var container = encoder.container(keyedBy: Keys.self)
         
         try container.encode(on, forKey: .on)
+        try container.encode(forSign, forKey: .forSign)
         try container.encode(articles, forKey: .articles)
     }
 }

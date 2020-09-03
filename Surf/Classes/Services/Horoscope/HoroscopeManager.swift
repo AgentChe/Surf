@@ -11,13 +11,13 @@ import RxSwift
 protocol HoroscopeManager: class {
     // MARK: API
     
-    func getHoroscopes() -> Horoscopes?
-    func hasCachedHoroscopes() -> Bool
+    func getHoroscopes(for sign: ZodiacSign) -> Horoscopes?
+    func hasCachedHoroscopes(with sign: ZodiacSign) -> Bool
     
     // MARK: API (Rx)
     
-    func rxGetHoroscopes(forceUpdate: Bool) -> Single<Horoscopes?>
-    func rxHasCachedHoroscopes() -> Single<Bool>
+    func rxGetHoroscopes(for sign: ZodiacSign, forceUpdate: Bool) -> Single<Horoscopes?>
+    func rxHasCachedHoroscopes(with sign: ZodiacSign) -> Single<Bool>
     
     // MARK: Observer
     

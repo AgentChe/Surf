@@ -7,7 +7,7 @@
 //
 
 final class GetHoroscopesResponseMapper {
-    static func map(_ response: Any) -> Horoscopes? {
+    static func map(response: Any, zodiacSign: ZodiacSign) -> Horoscopes? {
         guard
             let json = response as? [String: Any],
             let data = json["_data"] as? [String: Any]
@@ -32,7 +32,7 @@ final class GetHoroscopesResponseMapper {
                 continue
             }
             
-            let horoscope = Horoscope(on: on, articles: articles)
+            let horoscope = Horoscope(on: on, forSign: zodiacSign, articles: articles)
             
             list.append(horoscope)
         }

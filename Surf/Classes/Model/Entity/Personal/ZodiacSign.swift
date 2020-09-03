@@ -6,7 +6,7 @@
 //  Copyright © 2020 Andrey Chernyshev. All rights reserved.
 //
 
-enum ZodiacSign {
+enum ZodiacSign: String, Codable {
     case scorpio
     case pisces
     case libra
