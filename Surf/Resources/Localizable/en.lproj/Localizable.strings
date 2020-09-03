@@ -60,9 +60,13 @@
 "ConfirmCode.SendNewCode" = "Send a New Code";
 "ConfirmCode.CodeIncorrect" = "The code is\nincorrect.";
 
-// MARK: Main tab bar
-"MainTabBar.Search" = "Surf";
-"MainTabBar.Chats" = "Chats";
+// MARK: Main
+"Main.HoroscopeTitle" = "Daily Horoscope";
+"Main.HoroscopeSubTitle" = "Find out if future holds any new opportunities";
+"Main.SearchTitle" = "Search friends";
+"Main.SearchSubTitle" = "Choose search parameters and find new friends";
+"Main.ChatsTitle" = "Your chats";
+"Main.ChatsSubTitle" = "Perhaps your friends are online and are waiting for communication with you";
 
 // MARK: Zodiac signs
 "ZodiacSign.Scorpio" = "Scorpio";

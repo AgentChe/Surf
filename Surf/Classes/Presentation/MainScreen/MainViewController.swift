@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import RxSwift
 
 final class MainViewController: UIViewController {
     var mainView = MainView()
+    
+    private let viewModel = MainViewModel()
+    
+    private let disposeBag = DisposeBag()
     
     override func loadView() {
         super.loadView()
@@ -20,7 +25,14 @@ final class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addPagesController()
+        mainView.collectionView.mainCollectionDelegate = self 
+        
+        viewModel
+            .elements()
+            .drive(onNext: { [weak self] elements in
+                self?.mainView.collectionView.setup(elements: elements)
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -34,11 +46,35 @@ extension MainViewController {
     }
 }
 
+// MARK: MainCollectionViewDelegate
+
+extension MainViewController: MainCollectionViewDelegate {
+    func mainCollectionViewDidDirectTapped(element: MainCollectionDirectElement) {
+        switch element.direct {
+        case .horoscope:
+            let vc = HoroscopeViewController.make()
+            navigationController?.pushViewController(vc, animated: true)
+        case .search:
+            let vc = SearchViewController.make()
+            vc.delegate = self
+            navigationController?.pushViewController(vc, animated: true)
+        case .chats:
+            let vc = ChatsViewController.make()
+            vc.delegate = self
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+}
+
 // MARK: ChatsViewControllerDelegate
 
 extension MainViewController: ChatsViewControllerDelegate {
     func newSearchTapped() {
-        mainView.tabBarView.selectSearchItem()
+        navigationController?.popViewController(animated: false)
+        
+        let vc = SearchViewController.make()
+        vc.delegate = self
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -46,47 +82,10 @@ extension MainViewController: ChatsViewControllerDelegate {
 
 extension MainViewController: SearchViewControllerDelegate {
     func searchViewControllerSendMessageTapped() {
-        mainView.tabBarView.selectChatsItem()
-    }
-}
-
-// MARK: MainPageViewControllerDelegate
-
-extension MainViewController: MainPageViewControllerDelegate {
-    func changed(page index: Int) {
-        if index == 0 {
-            mainView.tabBarView.selectSearchItem()
-        } else if index == 1 {
-            mainView.tabBarView.selectChatsItem()
-        }
-    }
-}
-
-// MARK: Private
-
-private extension MainViewController {
-    func addPagesController() {
-        let searchVC = SearchViewController.make()
-        searchVC.delegate = self
-       
-        let chatsVC = ChatsViewController.make()
-        chatsVC.delegate = self
+        navigationController?.popViewController(animated: false)
         
-        let pageVC = MainPageController.make(viewControllers: [searchVC, chatsVC])
-        pageVC.pageControllerDelegate = self
-        addChild(pageVC)
-        
-        pageVC.view.translatesAutoresizingMaskIntoConstraints = false
-        
-        mainView.screensContainerView.addSubview(pageVC.view)
-        
-        NSLayoutConstraint.activate([
-            pageVC.view.leadingAnchor.constraint(equalTo: mainView.screensContainerView.leadingAnchor),
-            pageVC.view.trailingAnchor.constraint(equalTo: mainView.screensContainerView.trailingAnchor),
-            pageVC.view.topAnchor.constraint(equalTo: mainView.screensContainerView.topAnchor),
-            pageVC.view.bottomAnchor.constraint(equalTo: mainView.screensContainerView.bottomAnchor)
-        ])
-        
-        mainView.tabBarView.delegate = pageVC
+        let vc = ChatsViewController.make()
+        vc.delegate = self
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
