@@ -21,6 +21,21 @@ final class HoroscopeViewController: UIViewController {
         
         view = horoscopeView
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        horoscopeView.tableView.actionsDelegate = self
+        
+        navigationItem.title = "Horoscope.Title".localized
+        
+        viewModel
+            .sections()
+            .drive(onNext: { [weak self] sections in
+                self?.horoscopeView.tableView.setup(sections: sections)
+            })
+            .disposed(by: disposeBag)
+    }
 }
 
 // MARK: Make
@@ -28,5 +43,26 @@ final class HoroscopeViewController: UIViewController {
 extension HoroscopeViewController {
     static func make() -> HoroscopeViewController {
         HoroscopeViewController()
+    }
+}
+
+// MARK: HoroscopesTableViewDelegate
+
+extension HoroscopeViewController: HoroscopesTableViewDelegate {
+    func horoscopeTableDidTapped(tag: HoroscopeOnTableCell.Tag) {
+        switch tag {
+        case .today:
+            viewModel.selectHoroscopeOn.accept(.today)
+        case .tomorrow:
+            viewModel.selectHoroscopeOn.accept(.tomorrow)
+        case .week:
+            viewModel.selectHoroscopeOn.accept(.week)
+        case .month:
+            viewModel.selectHoroscopeOn.accept(.month)
+        }
+    }
+    
+    func horoscopeTableDidReadMoreTapped(articleId: String) {
+        viewModel.expandArticleId.accept(articleId)
     }
 }

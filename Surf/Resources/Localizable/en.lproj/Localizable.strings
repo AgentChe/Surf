@@ -171,3 +171,11 @@
 "Chat.Input.Placeholder" = "Message...";
 "Chat.Empty.Title" = "You matched with %@";
 "Chat.Empty.SubTitle" = "Insert thoughtful message below.";
+
+// MARK: Horoscope
+"Horoscope.Today" = "Today";
+"Horoscope.Tomorrow" = "Tomo";
+"Horoscope.Week" = "Week";
+"Horoscope.Month" = "Month";
+"Horoscope.ReadMore" = "Read more";
+"Horoscope.Title" = "Horoscope";

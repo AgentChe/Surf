@@ -27,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AmplitudeAnalytics.shared.configure()
         FacebookAnalytics.shared.configure()
         PushNotificationsManager.shared.configure(launchOptions: launchOptions)
+        CompatibilityUpdater.shared.updateCache()
+        HoroscopeUpdater.shared.updateCacheWithCurrentProfileZodiacSign()
         
         return true
     }

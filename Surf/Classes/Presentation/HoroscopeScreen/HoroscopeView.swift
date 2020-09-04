@@ -9,10 +9,14 @@
 import UIKit
 
 final class HoroscopeView: UIView {
+    lazy var tableView = makeTableView()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .blue
+        backgroundColor = UIColor.white
+        
+        makeConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -23,11 +27,26 @@ final class HoroscopeView: UIView {
 // MARK: Make constraints
 
 private extension HoroscopeView {
-    
+    func makeConstraints() {
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+        ])
+    }
 }
 
 // MARK: Lazy initialization
 
 private extension HoroscopeView {
-    
+    func makeTableView() -> HoroscopesTableView {
+        let view = HoroscopesTableView()
+        view.backgroundColor = UIColor.clear
+        view.allowsSelection = false
+        view.separatorStyle = .none
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
 }

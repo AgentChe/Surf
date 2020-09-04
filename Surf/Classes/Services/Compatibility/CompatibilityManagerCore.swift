@@ -22,6 +22,14 @@ final class CompatibilityManagerCore: CompatibilityManager {
 // MARK: API
 
 extension CompatibilityManagerCore {
+    func getCompatibilities() -> Compatibilities? {
+        guard let data = UserDefaults.standard.data(forKey: Constants.compatibilitiesCacheKey) else {
+            return nil
+        }
+        
+        return try? Compatibilities.parse(from: data)
+    }
+    
     func getCompatibility(whatSignHasThis: ZodiacSign, withWhatSignCompared: ZodiacSign) -> Compatibility? {
         guard
             let data = UserDefaults.standard.data(forKey: Constants.compatibilitiesCacheKey),
@@ -33,7 +41,7 @@ extension CompatibilityManagerCore {
         return compatibilities[whatSignHasThis, withWhatSignCompared]
     }
     
-    func hasCachedCompatibility() -> Bool {
+    func hasCachedCompatibilities() -> Bool {
         UserDefaults.standard.data(forKey: Constants.compatibilitiesCacheKey) != nil
     }
 }
@@ -41,13 +49,25 @@ extension CompatibilityManagerCore {
 // MARK: API (Rx)
 
 extension CompatibilityManagerCore {
+    func rxGetCompatibilities(forceUpdate: Bool = false) -> Single<Compatibilities?> {
+        if forceUpdate {
+            return retrieveCompatibilities()
+        }
+        
+        if hasCachedCompatibilities() {
+            return .deferred { [weak self] in return .just(self?.getCompatibilities()) }
+        } else {
+            return retrieveCompatibilities()
+        }
+    }
+    
     func rxGetCompatibility(whatSignHasThis: ZodiacSign, withWhatSignCompared: ZodiacSign, forceUpdate: Bool = false) -> Single<Compatibility?> {
         if forceUpdate {
             return retrieveCompatibilities()
                 .map { $0?[whatSignHasThis, withWhatSignCompared] }
         }
         
-        if hasCachedCompatibility() {
+        if hasCachedCompatibilities() {
             return .deferred { [weak self] in
                 let compatibility = self?.getCompatibility(whatSignHasThis: whatSignHasThis,
                                                            withWhatSignCompared: withWhatSignCompared)
@@ -60,8 +80,8 @@ extension CompatibilityManagerCore {
         }
     }
     
-    func rxHasCachedCompatibility() -> Single<Bool> {
-        .deferred { [weak self] in return .just(self?.hasCachedCompatibility() ?? false) }
+    func rxHasCachedCompatibilities() -> Single<Bool> {
+        .deferred { [weak self] in return .just(self?.hasCachedCompatibilities() ?? false) }
     }
 }
 

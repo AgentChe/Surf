@@ -73,6 +73,10 @@ private extension OnboardingViewController {
         onboardingView.birthdayView.onNext = { [unowned self] date in
             self.viewModel.birthdate.accept(date)
             
+            if let zodiacSign = ZodiacManager.shared.zodiac(at: date) {
+                HoroscopeUpdater.shared.updateCache(for: zodiacSign.sign)
+            }
+            
             self.move(on: self.onboardingView.photosView, from: self.onboardingView.birthdayView)
         }
         

@@ -11,13 +11,15 @@ import RxSwift
 protocol CompatibilityManager: class {
     // MARK: API
     
+    func getCompatibilities() -> Compatibilities?
     func getCompatibility(whatSignHasThis: ZodiacSign, withWhatSignCompared: ZodiacSign) -> Compatibility?
-    func hasCachedCompatibility() -> Bool
+    func hasCachedCompatibilities() -> Bool
     
     // MARK: API (Rx)
     
+    func rxGetCompatibilities(forceUpdate: Bool) -> Single<Compatibilities?>
     func rxGetCompatibility(whatSignHasThis: ZodiacSign, withWhatSignCompared: ZodiacSign, forceUpdate: Bool) -> Single<Compatibility?>
-    func rxHasCachedCompatibility() -> Single<Bool>
+    func rxHasCachedCompatibilities() -> Single<Bool>
     
     // MARK: Observer
     
