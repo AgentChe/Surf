@@ -92,7 +92,7 @@ private extension SplashViewController {
         let view = UILabel()
         view.numberOfLines = 1
         view.textAlignment = .center
-        view.text = "Splash.Surf".localized
+        view.text = "Splash.ASTRA".localized
         view.font = Font.OpenSans.bold(size: 66)
         view.textColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false

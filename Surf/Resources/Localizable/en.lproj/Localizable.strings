@@ -18,7 +18,7 @@
 "ImagePicker.PhotoLibrary" = "Photo library";
 
 // MARK: Splash
-"Splash.Surf" = "SURF";
+"Splash.ASTRA" = "ASTRA";
 "Splash.Banned" = "Sorry. Your\nAccount's Been\nDisabled.";
 
 // MARK: Onboarding
@@ -37,11 +37,11 @@
 "Onboarding.RandomizeEmoji" = "Randomize Emoji";
 "Onboarding.Niccce!" = "Niccce!";
 "Onboarding.FinalStepBeforeYouBegin" = "Final step before\nyou begin";
-"Onboarding.PushNotificationInfo" = "If you accept the permission request Surf will notify you on new matches and messages";
+"Onboarding.PushNotificationInfo" = "If you accept the permission request ASTRA will notify you on new matches and messages";
 "Onboarding.FailedUploadImage" = "Failed upload image";
 
 // MARK: Welcome
-"Welcome.Title" = "SURF";
+"Welcome.Title" = "ASTRA";
 "Welcome.SubTitle" = "Get aboard the Zodiac-based network and find a match that's written in the stars!";
 "Welcome.ContinueWithFacebook" = "Continue with Facebook";
 "Welcome.AboutFacebookSignInInfo" = "We never post anything on Facebook. And also do not send mailings.";
@@ -85,7 +85,7 @@
 // MARK: Profile
 "Profile.Direction.ClearAllHistory" = "Clear All History";
 "Profile.Direction.RestorePurchases" = "Restore Purchases";
-"Profile.Direction.ShareSurf" = "Share Surf";
+"Profile.Direction.ShareSurf" = "Share ASTRA";
 "Profile.Direction.ContactUs" = "Contact Us";
 "Profile.Direction.PrivacyPolicy" = "Privacy Policy";
 "Profile.Direction.TermsOfService" = "Terms of Service";

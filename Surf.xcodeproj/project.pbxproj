@@ -386,7 +386,7 @@
 		963A44852501A9A20018A8CA /* MainCollectionElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionElement.swift; sourceTree = "<group>"; };
 		963A44872501AA2E0018A8CA /* MainCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionView.swift; sourceTree = "<group>"; };
 		963A44892501AA4E0018A8CA /* MainCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewDelegate.swift; sourceTree = "<group>"; };
-		963F54B224B8939F0063D615 /* Surf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Surf.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		963F54B224B8939F0063D615 /* ASTRA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ASTRA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		963F54B524B8939F0063D615 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		963F54BE24B893A10063D615 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		963F54C124B893A10063D615 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -926,7 +926,7 @@
 		963F54B324B8939F0063D615 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				963F54B224B8939F0063D615 /* Surf.app */,
+				963F54B224B8939F0063D615 /* ASTRA.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1991,7 +1991,7 @@
 			);
 			name = Surf;
 			productName = Surf;
-			productReference = 963F54B224B8939F0063D615 /* Surf.app */;
+			productReference = 963F54B224B8939F0063D615 /* ASTRA.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2569,7 +2569,7 @@
 				);
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = app.dating.surf;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ASTRA;
 				PROVISIONING_PROFILE_SPECIFIER = "Surf Development";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2594,7 +2594,7 @@
 				);
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = app.dating.surf;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ASTRA;
 				PROVISIONING_PROFILE_SPECIFIER = "Surf AppStore";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
