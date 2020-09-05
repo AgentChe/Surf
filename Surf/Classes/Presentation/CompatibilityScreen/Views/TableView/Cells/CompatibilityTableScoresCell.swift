@@ -17,7 +17,7 @@ final class CompatibilityTableScoresCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        contentView.backgroundColor = UIColor.clear
+        contentView.backgroundColor = UIColor.white
         
         makeConstraints()
     }
