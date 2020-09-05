@@ -9,10 +9,12 @@
 import UIKit
 
 final class CompatibilityView: UIView {
+    lazy var tableView = makeTableView()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .red
+        makeConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -23,11 +25,27 @@ final class CompatibilityView: UIView {
 // MARK: Make constraints
 
 private extension CompatibilityView {
-    
+    func makeConstraints() {
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+    }
 }
 
 // MARK: Lazy initialization
 
 private extension CompatibilityView {
-    
+    func makeTableView() -> CompatibilityTableView {
+        let view = CompatibilityTableView()
+        view.backgroundColor = UIColor.white
+        view.allowsSelection = false
+        view.separatorStyle = .none
+        view.showsVerticalScrollIndicator = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
 }

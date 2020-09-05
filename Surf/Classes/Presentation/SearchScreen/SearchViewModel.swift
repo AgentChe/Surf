@@ -18,6 +18,7 @@ final class SearchViewModel {
     let downloadProposedInterlocutors = PublishRelay<Void>()
     let like = PublishRelay<ProposedInterlocutor>()
     let dislike = PublishRelay<ProposedInterlocutor>()
+    let compatibilityWithProposedInterlocutor = PublishRelay<ProposedInterlocutor>()
     
     func step() -> Driver<Step> {
         downloadProposedInterlocutors
@@ -66,5 +67,31 @@ final class SearchViewModel {
                     .catchError { _ in .never() }
                 }
             .asDriver(onErrorDriveWith: .never())
+    }
+    
+    func signsForCompatibility() -> Driver<(ZodiacSign, ZodiacSign)> {
+        let userZodiacSign = ProfileManager
+            .retrieve()
+            .flatMap { profile -> Single<ZodiacSign> in
+                guard let profile = profile, let zodiac = ZodiacManager.shared.zodiac(at: profile.birthdate) else {
+                    return .never()
+                }
+                
+                return .deferred { .just(zodiac.sign) }
+            }
+            .asDriver(onErrorDriveWith: .empty())
+        
+        let proposedInterlocutorZodiacSign = compatibilityWithProposedInterlocutor
+            .flatMapLatest { proposedInterlocutor -> Observable<ZodiacSign> in
+                guard let zodiac = ZodiacManager.shared.zodiac(at: proposedInterlocutor.birthdate) else {
+                    return .empty()
+                }
+                
+                return .deferred { .just(zodiac.sign) }
+            }
+            .asDriver(onErrorDriveWith: .empty())
+        
+        return Driver
+            .combineLatest(userZodiacSign, proposedInterlocutorZodiacSign) { ($0, $1) }
     }
 }

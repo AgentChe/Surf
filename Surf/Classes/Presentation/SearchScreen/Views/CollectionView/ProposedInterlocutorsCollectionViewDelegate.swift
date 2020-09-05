@@ -12,6 +12,7 @@ protocol ProposedInterlocutorsCollectionViewDelegate: class {
     func report(on proposedInterlocutor: ProposedInterlocutor)
     func setupSettings()
     func proposedInterlocutorsCollectionView(changed items: Int)
+    func compatibility(with proposedInterlocutor: ProposedInterlocutor)
 }
 
 extension ProposedInterlocutorsCollectionViewDelegate {
@@ -20,4 +21,5 @@ extension ProposedInterlocutorsCollectionViewDelegate {
     func report(on proposedInterlocutor: ProposedInterlocutor) {}
     func setupSettings() {}
     func proposedInterlocutorsCollectionView(changed items: Int) {}
+    func compatibility(with proposedInterlocutor: ProposedInterlocutor) {}
 }

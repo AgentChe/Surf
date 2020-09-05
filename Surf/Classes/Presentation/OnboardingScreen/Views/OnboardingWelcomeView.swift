@@ -48,7 +48,7 @@ final class OnboardingWelcomeView: UIView {
         
         if let zodiacSign = ZodiacManager.shared.zodiac(at: birthdate) {
             let describingZodiacSign = String(describing: zodiacSign.sign)
-            horoImageView.image = UIImage(named: String(format: "white_sign_%@", describingZodiacSign))
+            horoImageView.image = UIImage(named: String(format: "HoroSign.White.%@", describingZodiacSign))
         }
     }
 }

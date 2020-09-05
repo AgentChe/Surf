@@ -20,6 +20,7 @@ final class ProposedInterlocutorCollectionCell: UICollectionViewCell {
     lazy var horoSignImageView = makeHoroSignImageView()
     lazy var likeButton = makeLikeButton()
     lazy var dislikeButton = makeDislikeButton()
+    lazy var compatibilityButton = makeCompatibilityButton()
     
     private var proposedInterlocutor: ProposedInterlocutor!
     
@@ -51,7 +52,7 @@ final class ProposedInterlocutorCollectionCell: UICollectionViewCell {
         
         if let zodiacSign = ZodiacManager.shared.zodiac(at: proposedInterlocutor.birthdate) {
             let describingZodiacSign = String(describing: zodiacSign.sign)
-            horoSignImageView.image = UIImage(named: String(format: "white_sign_%@", describingZodiacSign))
+            horoSignImageView.image = UIImage(named: String(format: "HoroSign.White.%@", describingZodiacSign))
         }
         
         photosSlider.setup(urls: proposedInterlocutor.photos.sorted(by: { $0.order < $1.order } ).compactMap { URL(string: $0.url) })
@@ -79,6 +80,11 @@ private extension ProposedInterlocutorCollectionCell {
     @objc
     func dislikeTapped() {
         delegate?.disliked(proposedInterlocutor: proposedInterlocutor)
+    }
+    
+    @objc
+    func compatibilityButtonTapped() {
+        delegate?.compatibility(with: proposedInterlocutor)
     }
 }
 
@@ -129,14 +135,21 @@ private extension ProposedInterlocutorCollectionCell {
             likeButton.widthAnchor.constraint(equalToConstant: 60.scale),
             likeButton.heightAnchor.constraint(equalToConstant: 60.scale),
             likeButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -97.scale),
-            likeButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            likeButton.bottomAnchor.constraint(equalTo: compatibilityButton.topAnchor, constant: -32.scale)
         ])
         
         NSLayoutConstraint.activate([
             dislikeButton.widthAnchor.constraint(equalToConstant: 60.scale),
             dislikeButton.heightAnchor.constraint(equalToConstant: 60.scale),
             dislikeButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 97.scale),
-            dislikeButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            dislikeButton.bottomAnchor.constraint(equalTo: compatibilityButton.topAnchor, constant: -32.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            compatibilityButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 36.scale),
+            compatibilityButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -36.scale),
+            compatibilityButton.heightAnchor.constraint(equalToConstant: 48.scale),
+            compatibilityButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
 }
@@ -224,6 +237,19 @@ private extension ProposedInterlocutorCollectionCell {
         
         view.addTarget(self, action: #selector(dislikeTapped), for: .touchUpInside)
         
+        return view
+    }
+    
+    func makeCompatibilityButton() -> UIButton {
+        let view = UIButton()
+        view.backgroundColor = UIColor(red: 28 / 255, green: 28 / 255, blue: 30 / 255, alpha: 1)
+        view.layer.cornerRadius = 16.scale
+        view.setTitle("Search.CheckCompatibility".localized, for: .normal)
+        view.setTitleColor(UIColor.white, for: .normal)
+        view.titleLabel?.font = Font.OpenSans.semibold(size: 17.scale)
+        view.addTarget(self, action: #selector(compatibilityButtonTapped), for: .touchUpInside)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(view)
         return view
     }
 }

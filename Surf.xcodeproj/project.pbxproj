@@ -273,6 +273,17 @@
 		96AA42522502E1FD004F19CE /* HoroscopesTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AA42512502E1FD004F19CE /* HoroscopesTableViewDelegate.swift */; };
 		96AA42542502EE41004F19CE /* ReadMoreViewAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AA42532502EE41004F19CE /* ReadMoreViewAttributes.swift */; };
 		96AA42562502EE76004F19CE /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AA42552502EE76004F19CE /* GradientView.swift */; };
+		96AA425E250398BC004F19CE /* CompatibilityTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AA425D250398BC004F19CE /* CompatibilityTableView.swift */; };
+		96AA426225039948004F19CE /* CompatibilityTableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AA426125039948004F19CE /* CompatibilityTableSection.swift */; };
+		96AA42642503995B004F19CE /* CompatibilityTableSectionElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AA42632503995B004F19CE /* CompatibilityTableSectionElement.swift */; };
+		96AA426625039A02004F19CE /* CompatibilityTableScoresElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AA426525039A02004F19CE /* CompatibilityTableScoresElement.swift */; };
+		96AA426825039BAA004F19CE /* CompatibilityTableSignsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AA426725039BAA004F19CE /* CompatibilityTableSignsCell.swift */; };
+		96AA426A25039D5F004F19CE /* CompatibilityTableScoresCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AA426925039D5F004F19CE /* CompatibilityTableScoresCell.swift */; };
+		96AA426C25039DAC004F19CE /* CompatibilityTableOverallScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AA426B25039DAC004F19CE /* CompatibilityTableOverallScoreCell.swift */; };
+		96AA426E25039DDE004F19CE /* CompatibilityTableTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AA426D25039DDE004F19CE /* CompatibilityTableTextCell.swift */; };
+		96AA42702503AD44004F19CE /* PieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AA426F2503AD44004F19CE /* PieView.swift */; };
+		96AA427625040989004F19CE /* CompatibilityScoreLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AA427525040989004F19CE /* CompatibilityScoreLineView.swift */; };
+		96AA427825041D47004F19CE /* CompatibilityScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AA427725041D47004F19CE /* CompatibilityScoreView.swift */; };
 		96BCD88524CF13E9004B40B2 /* MutualLikedViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BCD88424CF13E9004B40B2 /* MutualLikedViewControllerDelegate.swift */; };
 		96BCD88724CF2132004B40B2 /* SearchViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BCD88624CF2132004B40B2 /* SearchViewControllerDelegate.swift */; };
 		96BCD88B24CF24FC004B40B2 /* SearchSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BCD88A24CF24FC004B40B2 /* SearchSettingsViewController.swift */; };
@@ -591,6 +602,17 @@
 		96AA42512502E1FD004F19CE /* HoroscopesTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoroscopesTableViewDelegate.swift; sourceTree = "<group>"; };
 		96AA42532502EE41004F19CE /* ReadMoreViewAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMoreViewAttributes.swift; sourceTree = "<group>"; };
 		96AA42552502EE76004F19CE /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		96AA425D250398BC004F19CE /* CompatibilityTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityTableView.swift; sourceTree = "<group>"; };
+		96AA426125039948004F19CE /* CompatibilityTableSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityTableSection.swift; sourceTree = "<group>"; };
+		96AA42632503995B004F19CE /* CompatibilityTableSectionElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityTableSectionElement.swift; sourceTree = "<group>"; };
+		96AA426525039A02004F19CE /* CompatibilityTableScoresElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityTableScoresElement.swift; sourceTree = "<group>"; };
+		96AA426725039BAA004F19CE /* CompatibilityTableSignsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityTableSignsCell.swift; sourceTree = "<group>"; };
+		96AA426925039D5F004F19CE /* CompatibilityTableScoresCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityTableScoresCell.swift; sourceTree = "<group>"; };
+		96AA426B25039DAC004F19CE /* CompatibilityTableOverallScoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityTableOverallScoreCell.swift; sourceTree = "<group>"; };
+		96AA426D25039DDE004F19CE /* CompatibilityTableTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityTableTextCell.swift; sourceTree = "<group>"; };
+		96AA426F2503AD44004F19CE /* PieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieView.swift; sourceTree = "<group>"; };
+		96AA427525040989004F19CE /* CompatibilityScoreLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityScoreLineView.swift; sourceTree = "<group>"; };
+		96AA427725041D47004F19CE /* CompatibilityScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityScoreView.swift; sourceTree = "<group>"; };
 		96BCD88424CF13E9004B40B2 /* MutualLikedViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutualLikedViewControllerDelegate.swift; sourceTree = "<group>"; };
 		96BCD88624CF2132004B40B2 /* SearchViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewControllerDelegate.swift; sourceTree = "<group>"; };
 		96BCD88A24CF24FC004B40B2 /* SearchSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSettingsViewController.swift; sourceTree = "<group>"; };
@@ -878,6 +900,7 @@
 		963A447125019FC20018A8CA /* CompatibilityScreen */ = {
 			isa = PBXGroup;
 			children = (
+				96AA425725038F46004F19CE /* Views */,
 				963A447225019FDA0018A8CA /* CompatibilityViewController.swift */,
 				963A44742501A00E0018A8CA /* CompatibilityViewModel.swift */,
 				963A44762501A0430018A8CA /* CompatibilityView.swift */,
@@ -1042,6 +1065,7 @@
 				965588CD24BEF9A000D6EB83 /* PaddingTextField.swift */,
 				96BCD89124CF42F4004B40B2 /* InterceptingEventsView.swift */,
 				96AA42552502EE76004F19CE /* GradientView.swift */,
+				96AA426F2503AD44004F19CE /* PieView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1769,6 +1793,55 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		96AA425725038F46004F19CE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				96AA427425040967004F19CE /* ScoreView */,
+				96AA425C250398AB004F19CE /* TableView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		96AA425C250398AB004F19CE /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				96AA42602503990A004F19CE /* Models */,
+				96AA425F25039904004F19CE /* Cells */,
+				96AA425D250398BC004F19CE /* CompatibilityTableView.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		96AA425F25039904004F19CE /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				96AA426725039BAA004F19CE /* CompatibilityTableSignsCell.swift */,
+				96AA426925039D5F004F19CE /* CompatibilityTableScoresCell.swift */,
+				96AA426B25039DAC004F19CE /* CompatibilityTableOverallScoreCell.swift */,
+				96AA426D25039DDE004F19CE /* CompatibilityTableTextCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		96AA42602503990A004F19CE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				96AA426125039948004F19CE /* CompatibilityTableSection.swift */,
+				96AA42632503995B004F19CE /* CompatibilityTableSectionElement.swift */,
+				96AA426525039A02004F19CE /* CompatibilityTableScoresElement.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		96AA427425040967004F19CE /* ScoreView */ = {
+			isa = PBXGroup;
+			children = (
+				96AA427525040989004F19CE /* CompatibilityScoreLineView.swift */,
+				96AA427725041D47004F19CE /* CompatibilityScoreView.swift */,
+			);
+			path = ScoreView;
+			sourceTree = "<group>";
+		};
 		96BCD88824CF2428004B40B2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -2144,6 +2217,7 @@
 				963A445A250064E30018A8CA /* GetHoroscopesResponseMapper.swift in Sources */,
 				9679482024D4B8D500F21A78 /* ChatViewControllerDelegate.swift in Sources */,
 				963F59CE24BCD02E0063D615 /* MessageTransformation.swift in Sources */,
+				96AA426A25039D5F004F19CE /* CompatibilityTableScoresCell.swift in Sources */,
 				963A445E250077C90018A8CA /* GetCompatibilitiesRequest.swift in Sources */,
 				960814FA24C4EB5500992DFB /* ZodiacSignMapper.swift in Sources */,
 				9679481C24D2C05C00F21A78 /* InterlocutorProfileTablePhotosCell.swift in Sources */,
@@ -2187,6 +2261,7 @@
 				963A44752501A00E0018A8CA /* CompatibilityViewModel.swift in Sources */,
 				965588DB24BF22A500D6EB83 /* PushNotificationModel.swift in Sources */,
 				963F59DB24BCD02E0063D615 /* FacebookLoginRequest.swift in Sources */,
+				96AA425E250398BC004F19CE /* CompatibilityTableView.swift in Sources */,
 				96AA424C25028771004F19CE /* HoroscopeUpdater.swift in Sources */,
 				963693AF24D0534D00BAA812 /* CreateReportOnProposedInterlocutorRequest.swift in Sources */,
 				96E6260824C702F700533C05 /* CheckUserBannedResponseMapper.swift in Sources */,
@@ -2211,11 +2286,13 @@
 				965588C824BDEF4200D6EB83 /* WelcomeView.swift in Sources */,
 				963F59EC24BCD02E0063D615 /* PaymentError.swift in Sources */,
 				96BCD88E24CF254E004B40B2 /* SearchSettingsView.swift in Sources */,
+				96AA426C25039DAC004F19CE /* CompatibilityTableOverallScoreCell.swift in Sources */,
 				963F5A2224BCD02F0063D615 /* ConfirmCodeViewModel.swift in Sources */,
 				963F5A2E24BCD02F0063D615 /* InterlocutorChatImageCell.swift in Sources */,
 				96E625FF24C6EBC100533C05 /* RemoveAllChatsRequest.swift in Sources */,
 				963F5A2A24BCD02F0063D615 /* ChatInputView.swift in Sources */,
 				963F59AE24BCD02E0063D615 /* UIDeviceExtension.swift in Sources */,
+				96AA426825039BAA004F19CE /* CompatibilityTableSignsCell.swift in Sources */,
 				963A445425005A220018A8CA /* Horoscopes.swift in Sources */,
 				96CAFFD524D06996000F5668 /* ReportPreloaderView.swift in Sources */,
 				96228AD524C832C800F5B129 /* EditProfileTableItem.swift in Sources */,
@@ -2223,6 +2300,7 @@
 				963F59BA24BCD02E0063D615 /* SizeUtils.swift in Sources */,
 				9655986024C05C570022931D /* ZodiacSign.swift in Sources */,
 				963F59FC24BCD02E0063D615 /* OnboardingViewController.swift in Sources */,
+				96AA426225039948004F19CE /* CompatibilityTableSection.swift in Sources */,
 				96EDBC7724CC5AF400C814CA /* ProposedInterlocutorsCollectionViewDelegate.swift in Sources */,
 				963F5A4124BCD02F0063D615 /* IDFAService.swift in Sources */,
 				963F5A1724BCD02F0063D615 /* SplashViewModel.swift in Sources */,
@@ -2295,6 +2373,7 @@
 				96E43E9524C5C0F400831DC3 /* ProfileTableActionDelegate.swift in Sources */,
 				963F5A3424BCD02F0063D615 /* PaygateManager.swift in Sources */,
 				963A4448250049ED0018A8CA /* HoroscopeOn.swift in Sources */,
+				96AA426E25039DDE004F19CE /* CompatibilityTableTextCell.swift in Sources */,
 				963F59E724BCD02E0063D615 /* AddSearchAdsInfoRequest.swift in Sources */,
 				963F5A1624BCD02F0063D615 /* SplashViewController.swift in Sources */,
 				963F59FA24BCD02E0063D615 /* WelcomeViewModel.swift in Sources */,
@@ -2302,6 +2381,7 @@
 				963F59FF24BCD02E0063D615 /* OnboardingPhotoView.swift in Sources */,
 				96708EA924CAEC4A003DC21C /* ChatsCollectionViewLayout.swift in Sources */,
 				963F59E324BCD02E0063D615 /* UnmatchRequest.swift in Sources */,
+				96AA426625039A02004F19CE /* CompatibilityTableScoresElement.swift in Sources */,
 				963F59C424BCD02E0063D615 /* CircleView.swift in Sources */,
 				963F59FD24BCD02E0063D615 /* OnboardingBirthdayView.swift in Sources */,
 				963F59E224BCD02E0063D615 /* LikeProposedInterlocutorRequest.swift in Sources */,
@@ -2316,6 +2396,7 @@
 				96AA424E25028C87004F19CE /* CompatibilityUpdater.swift in Sources */,
 				963F5A0D24BCD02F0063D615 /* ChatsViewController.swift in Sources */,
 				963F59D524BCD02E0063D615 /* GetMessagesRequest.swift in Sources */,
+				96AA427825041D47004F19CE /* CompatibilityScoreView.swift in Sources */,
 				963F5A1424BCD02F0063D615 /* RegistrationEmailViewController.swift in Sources */,
 				963F5A0024BCD02E0063D615 /* OnboardingNameView.swift in Sources */,
 				963F59F224BCD02E0063D615 /* SurfNavigationController.swift in Sources */,
@@ -2334,6 +2415,7 @@
 				963F5A1E24BCD02F0063D615 /* ReportViewModel.swift in Sources */,
 				96008BB624C776B500CFF84A /* SetDefaultPhotoRequest.swift in Sources */,
 				96CAFFE024D06F12000F5668 /* ReportOn.swift in Sources */,
+				96AA42702503AD44004F19CE /* PieView.swift in Sources */,
 				9684250024D6153E00F8D692 /* AppleLoginRequest.swift in Sources */,
 				96EDBC7924CDF74600C814CA /* SearchView.swift in Sources */,
 				96E6261324C7229E00533C05 /* ProfileBuilder.swift in Sources */,
@@ -2369,6 +2451,7 @@
 				9648701A24C440BF0084CC2D /* MainViewController.swift in Sources */,
 				965588B024BDC8D400D6EB83 /* Toast.swift in Sources */,
 				963F59E124BCD02E0063D615 /* RequireConfirmCodeRequest.swift in Sources */,
+				96AA42642503995B004F19CE /* CompatibilityTableSectionElement.swift in Sources */,
 				96CD2AE324C72A2F0026A1DA /* ProfileManagerDelegate.swift in Sources */,
 				963F59B924BCD02E0063D615 /* Fonts.swift in Sources */,
 				96CAFFCC24D05438000F5668 /* ReportManagerDelegate.swift in Sources */,
@@ -2408,6 +2491,7 @@
 				96E6260424C6F6AB00533C05 /* ChatsManagerDelegate.swift in Sources */,
 				963F5A0724BCD02F0063D615 /* PaygateViewControllerDelegate.swift in Sources */,
 				963F5A2D24BCD02F0063D615 /* MyChatMessageCell.swift in Sources */,
+				96AA427625040989004F19CE /* CompatibilityScoreLineView.swift in Sources */,
 				963F5A0424BCD02F0063D615 /* OnboardingPhotosView.swift in Sources */,
 				963F5A3824BCD02F0063D615 /* RetrievedProductsPrices.swift in Sources */,
 				96463DDE24C98C8B00EBC123 /* ChatsCollectionView.swift in Sources */,

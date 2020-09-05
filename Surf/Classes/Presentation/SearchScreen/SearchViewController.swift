@@ -84,6 +84,16 @@ final class SearchViewController: UIViewController {
                 self?.goToSettingsScreen()
             })
             .disposed(by: disposeBag)
+        
+        viewModel
+            .signsForCompatibility()
+            .drive(onNext: { [weak self] signs in
+                let (userZodiacSign, proposedInterlocutorZodiacSign) = signs
+                
+                self?.goToCompatibilityScreen(userZodiacSign: userZodiacSign,
+                                              proposedInterlocutorZodiacSign: proposedInterlocutorZodiacSign)
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -143,6 +153,10 @@ extension SearchViewController: ProposedInterlocutorsCollectionViewDelegate {
         
         viewModel.downloadProposedInterlocutors.accept(Void())
     }
+    
+    func compatibility(with proposedInterlocutor: ProposedInterlocutor) {
+        viewModel.compatibilityWithProposedInterlocutor.accept(proposedInterlocutor)
+    }
 }
 
 // MARK: MutualLikedViewControllerDelegate
@@ -177,6 +191,12 @@ private extension SearchViewController {
     
     func goToSettingsScreen() {
         let vc = SearchSettingsViewController.make()
+        navigationController?.present(vc, animated: true)
+    }
+    
+    func goToCompatibilityScreen(userZodiacSign: ZodiacSign, proposedInterlocutorZodiacSign: ZodiacSign) {
+        let vc = CompatibilityViewController.make(userZodiacSign: userZodiacSign,
+                                                  proposedInterlocutorZodiacSign: proposedInterlocutorZodiacSign)
         navigationController?.present(vc, animated: true)
     }
 }

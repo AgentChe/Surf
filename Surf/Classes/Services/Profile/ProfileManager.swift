@@ -27,25 +27,16 @@ final class ProfileManager {
 //  MARK: Retrieve
 
 extension ProfileManager {
-    static func retrieve() -> Single<Profile?> {
-        guard let userToken = SessionService.shared.userToken else {
-            return .deferred { .just(nil) }
+    static func retrieve(forceUpdate: Bool = false) -> Single<Profile?> {
+        if forceUpdate {
+            return updateProfile()
         }
         
-        return RestAPITransport()
-            .callServerApi(requestBody: GetProfileRequest(userToken: userToken))
-            .map { Profile.parseFromDictionary(any: $0) }
-            .do(onSuccess: { profile in
-                guard let profile = profile, save(profile: profile) else {
-                    return
-                }
-                
-                ProfileManager.shared.delegates.forEach {
-                    $0.weak?.profileManager(retrieved: profile)
-                }
-                
-                ProfileManager.shared.retrievedTrigger.accept(profile)
-            })
+        if let profile = get() {
+            return .deferred { .just(profile) }
+        } else {
+            return updateProfile()
+        }
     }
     
     static func get() -> Profile? {
@@ -318,8 +309,29 @@ extension Reactive where Base: ProfileManager {
 // MARK: Private
 
 private extension ProfileManager {
+    static func updateProfile() -> Single<Profile?> {
+        guard let userToken = SessionService.shared.userToken else {
+            return .deferred { .just(nil) }
+        }
+        
+        return RestAPITransport()
+            .callServerApi(requestBody: GetProfileRequest(userToken: userToken))
+            .map { Profile.parseFromDictionary(any: $0) }
+            .do(onSuccess: { profile in
+                guard let profile = profile, save(profile: profile) else {
+                    return
+                }
+                
+                ProfileManager.shared.delegates.forEach {
+                    $0.weak?.profileManager(retrieved: profile)
+                }
+                
+                ProfileManager.shared.retrievedTrigger.accept(profile)
+            })
+    }
+    
     @discardableResult
-    private static func save(profile: Profile) -> Bool {
+    static func save(profile: Profile) -> Bool {
         guard let data = try? Profile.encode(object: profile) else {
             return false
         }

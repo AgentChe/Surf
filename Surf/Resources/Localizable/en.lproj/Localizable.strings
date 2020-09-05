@@ -138,6 +138,7 @@
 "Search.Matched.Title" = "It's Match!";
 "Search.Matched.SendMessage" = "Send a message";
 "Search.Matched.KeepSurfing" = "Keep Surfing";
+"Search.CheckCompatibility" = "Check compatibility";
 
 // MARK: Search Settings
 "SearchSettings.Title" = "ShowMe";
@@ -179,3 +180,10 @@
 "Horoscope.Month" = "Month";
 "Horoscope.ReadMore" = "Read more";
 "Horoscope.Title" = "Horoscope";
+
+// MARK: Compatibility
+"Compatibility.OverallScore.Title" = "Overall";
+"Compatibility.Score.Love" = "Love";
+"Compatibility.Score.Trust" = "Trust";
+"Compatibility.Score.Emotions" = "Emotions";
+"Compatibility.Score.Values" = "Values";

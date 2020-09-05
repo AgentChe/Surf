@@ -80,6 +80,6 @@ extension ProposedInterlocutorsCollectionView: UICollectionViewDataSource {
 
 extension ProposedInterlocutorsCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: 375.scale, height: ScreenSize.isIphoneXFamily ? 590.scale : 490.scale)
+        CGSize(width: 375.scale, height: ScreenSize.isIphoneXFamily ? 670.scale : 570.scale)
     }
 }
