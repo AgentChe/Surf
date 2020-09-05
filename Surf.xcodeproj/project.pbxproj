@@ -259,7 +259,6 @@
 		9684250024D6153E00F8D692 /* AppleLoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968424FF24D6153E00F8D692 /* AppleLoginRequest.swift */; };
 		969DE79824C857FE000BD2E8 /* EditProfileConfirmDeletingAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969DE79724C857FE000BD2E8 /* EditProfileConfirmDeletingAlert.swift */; };
 		969DE79A24C863F5000BD2E8 /* EditProfileTableNameElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969DE79924C863F5000BD2E8 /* EditProfileTableNameElement.swift */; };
-		96A1BC8C24C04D010043DCCC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 96A1BC8B24C04D010043DCCC /* GoogleService-Info.plist */; };
 		96AA42322501ACD9004F19CE /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AA42312501ACD9004F19CE /* MainViewModel.swift */; };
 		96AA423C2502583C004F19CE /* HoroscopeArticleTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AA423B2502583C004F19CE /* HoroscopeArticleTableCell.swift */; };
 		96AA424125025A17004F19CE /* ReadMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AA424025025A17004F19CE /* ReadMoreView.swift */; };
@@ -309,6 +308,7 @@
 		96CAFFF024D1BC21000F5668 /* PaygateMainFeatureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CAFFEF24D1BC21000F5668 /* PaygateMainFeatureCell.swift */; };
 		96CAFFF424D209A2000F5668 /* ChatsMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CAFFF324D209A2000F5668 /* ChatsMenuView.swift */; };
 		96CD2AE324C72A2F0026A1DA /* ProfileManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CD2AE224C72A2F0026A1DA /* ProfileManagerDelegate.swift */; };
+		96E3F233250457AF00DD273F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 96E3F232250457AF00DD273F /* GoogleService-Info.plist */; };
 		96E43E9124C5B16700831DC3 /* ProfileTableDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E43E9024C5B16700831DC3 /* ProfileTableDirection.swift */; };
 		96E43E9324C5B21700831DC3 /* ProfileTableDirectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E43E9224C5B21700831DC3 /* ProfileTableDirectionCell.swift */; };
 		96E43E9524C5C0F400831DC3 /* ProfileTableActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E43E9424C5C0F400831DC3 /* ProfileTableActionDelegate.swift */; };
@@ -588,7 +588,6 @@
 		968424FF24D6153E00F8D692 /* AppleLoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginRequest.swift; sourceTree = "<group>"; };
 		969DE79724C857FE000BD2E8 /* EditProfileConfirmDeletingAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileConfirmDeletingAlert.swift; sourceTree = "<group>"; };
 		969DE79924C863F5000BD2E8 /* EditProfileTableNameElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableNameElement.swift; sourceTree = "<group>"; };
-		96A1BC8B24C04D010043DCCC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		96AA42312501ACD9004F19CE /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		96AA423B2502583C004F19CE /* HoroscopeArticleTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoroscopeArticleTableCell.swift; sourceTree = "<group>"; };
 		96AA424025025A17004F19CE /* ReadMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMoreView.swift; sourceTree = "<group>"; };
@@ -638,6 +637,7 @@
 		96CAFFEF24D1BC21000F5668 /* PaygateMainFeatureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaygateMainFeatureCell.swift; sourceTree = "<group>"; };
 		96CAFFF324D209A2000F5668 /* ChatsMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsMenuView.swift; sourceTree = "<group>"; };
 		96CD2AE224C72A2F0026A1DA /* ProfileManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManagerDelegate.swift; sourceTree = "<group>"; };
+		96E3F232250457AF00DD273F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		96E43E9024C5B16700831DC3 /* ProfileTableDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableDirection.swift; sourceTree = "<group>"; };
 		96E43E9224C5B21700831DC3 /* ProfileTableDirectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableDirectionCell.swift; sourceTree = "<group>"; };
 		96E43E9424C5C0F400831DC3 /* ProfileTableActionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableActionDelegate.swift; sourceTree = "<group>"; };
@@ -969,7 +969,7 @@
 			children = (
 				963F54B524B8939F0063D615 /* AppDelegate.swift */,
 				963F54C324B893A10063D615 /* Info.plist */,
-				96A1BC8B24C04D010043DCCC /* GoogleService-Info.plist */,
+				96E3F232250457AF00DD273F /* GoogleService-Info.plist */,
 				963F54BE24B893A10063D615 /* Assets.xcassets */,
 				965588B124BDD43E00D6EB83 /* Fonts */,
 				963F54CC24B895AC0063D615 /* Localizable */,
@@ -2117,11 +2117,11 @@
 				965588C424BDD5E500D6EB83 /* OpenSans-Regular.ttf in Resources */,
 				965588C524BDD5E500D6EB83 /* OpenSans-SemiBold.ttf in Resources */,
 				965588BD24BDD5DE00D6EB83 /* SF-Pro-Text-Light.otf in Resources */,
+				96E3F233250457AF00DD273F /* GoogleService-Info.plist in Resources */,
 				965588BE24BDD5DE00D6EB83 /* SF-Pro-Text-Regular.otf in Resources */,
 				965588BF24BDD5DE00D6EB83 /* SF-Pro-Text-Semibold.otf in Resources */,
 				965588C024BDD5DE00D6EB83 /* SF-Pro-Text-Medium.otf in Resources */,
 				965588C124BDD5DE00D6EB83 /* SF-Pro-Text-Bold.otf in Resources */,
-				96A1BC8C24C04D010043DCCC /* GoogleService-Info.plist in Resources */,
 				963F54C224B893A10063D615 /* LaunchScreen.storyboard in Resources */,
 				963F54CF24B895D70063D615 /* Localizable.strings in Resources */,
 				963F54BF24B893A10063D615 /* Assets.xcassets in Resources */,
@@ -2643,18 +2643,18 @@
 				CODE_SIGN_ENTITLEMENTS = Surf/Surf.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = 84M2AR9RYC;
+				CURRENT_PROJECT_VERSION = 10;
+				DEVELOPMENT_TEAM = W644U2Y4YS;
 				INFOPLIST_FILE = "$(SRCROOT)/Surf/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = app.dating.surf;
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.explained-zodiacs";
 				PRODUCT_NAME = ASTRA;
-				PROVISIONING_PROFILE_SPECIFIER = "Surf Development";
+				PROVISIONING_PROFILE_SPECIFIER = "ASTRA Development";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2668,18 +2668,18 @@
 				CODE_SIGN_ENTITLEMENTS = Surf/Surf.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = 84M2AR9RYC;
+				CURRENT_PROJECT_VERSION = 10;
+				DEVELOPMENT_TEAM = W644U2Y4YS;
 				INFOPLIST_FILE = "$(SRCROOT)/Surf/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = app.dating.surf;
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.explained-zodiacs";
 				PRODUCT_NAME = ASTRA;
-				PROVISIONING_PROFILE_SPECIFIER = "Surf AppStore";
+				PROVISIONING_PROFILE_SPECIFIER = "ASTRA AppStore";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
