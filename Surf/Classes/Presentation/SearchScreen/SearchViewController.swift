@@ -197,6 +197,10 @@ private extension SearchViewController {
     func goToCompatibilityScreen(userZodiacSign: ZodiacSign, proposedInterlocutorZodiacSign: ZodiacSign) {
         let vc = CompatibilityViewController.make(userZodiacSign: userZodiacSign,
                                                   proposedInterlocutorZodiacSign: proposedInterlocutorZodiacSign)
-        navigationController?.present(vc, animated: true)
+        if #available(iOS 13.0, *) {
+            navigationController?.present(vc, animated: true)
+        } else {
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
