@@ -2643,7 +2643,7 @@
 				CODE_SIGN_ENTITLEMENTS = Surf/Surf.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = W644U2Y4YS;
 				INFOPLIST_FILE = "$(SRCROOT)/Surf/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -2651,7 +2651,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.explained-zodiacs";
 				PRODUCT_NAME = ASTRA;
 				PROVISIONING_PROFILE_SPECIFIER = "ASTRA Development";
@@ -2668,7 +2668,7 @@
 				CODE_SIGN_ENTITLEMENTS = Surf/Surf.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = W644U2Y4YS;
 				INFOPLIST_FILE = "$(SRCROOT)/Surf/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -2676,7 +2676,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.explained-zodiacs";
 				PRODUCT_NAME = ASTRA;
 				PROVISIONING_PROFILE_SPECIFIER = "ASTRA AppStore";

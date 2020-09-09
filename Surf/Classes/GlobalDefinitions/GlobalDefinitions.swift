@@ -35,5 +35,5 @@ final class GlobalDefinitions {
     }
     
     // TODO: Replace url
-    static let appStoreUrl = "https://apps.apple.com/us/app/celestial-motives/id1480953385?l=ru&ls=1"
+    static let appStoreUrl = "https://apps.apple.com/us/app/id1476874803"
 }
